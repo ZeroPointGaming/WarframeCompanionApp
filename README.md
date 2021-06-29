@@ -10,31 +10,31 @@ The short term roadmap is to just get the program into an alpha release, build a
 ## Available APIs
 ```c#
 //Official Warframe API Data
-namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Warframes
-namespace WarframeTracker.SerializationWrappers.WarframeAPI.WorldState
+namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Warframes {}
+namespace WarframeTracker.SerializationWrappers.WarframeAPI.WorldState {}
 
 //Warframe.Market
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.ItemInfo
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.ItemOrders
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.GetAllItems
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.RivenGetAuctions
+namespace WarframeTracker.SerializationWrappers.WarframeMarket.ItemInfo {}
+namespace WarframeTracker.SerializationWrappers.WarframeMarket.ItemOrders {}
+namespace WarframeTracker.SerializationWrappers.WarframeMarket.GetAllItems {}
+namespace WarframeTracker.SerializationWrappers.WarframeMarket.RivenGetAuctions {}
 
 //WarframeStats.us
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Arbitration
-namespace WarframeTracker.SerializationWrappers.WarframeStats.WorldSpace
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Alerts
-namespace WarframeTracker.SerializationWrappers.WarframeStats.CambionCycle
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Cetus
-namespace WarframeTracker.SerializationWrappers.WarframeStats.OrbVallis
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Baro
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Invasions
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Fissures
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Syndicate
-namespace WarframeTracker.SerializationWrappers.WarframeStats.News
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Nightwave
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Sortie
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Earth
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Arbitration {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.WorldSpace {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Alerts {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.CambionCycle {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Cetus {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.OrbVallis {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Baro {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Invasions {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Fissures {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Syndicate {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.News {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Nightwave {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Sortie {}
+namespace WarframeTracker.SerializationWrappers.WarframeStats.Earth {}
 
 //OGGTechnologies
-namespace WarframeTracker.SerializationWrappers.OGTech.ValutedItemData
+namespace WarframeTracker.SerializationWrappers.OGTech.ValutedItemData {}
 ```
