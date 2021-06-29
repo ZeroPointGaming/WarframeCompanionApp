@@ -29,11 +29,13 @@ namespace WarframeTracker
         {
             //Initialize the UI Components for the form.
             InitializeComponent();
+            GenerateData();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            WarframeListBox.SelectedItem = "Ash";
+            WarframeComboBox.SelectedItem = "Ash";
+            PrimaryWeaponComboBox.SelectedItem = "Acceltra";
         }
         #endregion
 
@@ -41,7 +43,7 @@ namespace WarframeTracker
         public string activeWarframe = "";
         public bool tradeable = false;
         //When you change the selection in the warframe listbox, digest api information reguarding the warframe.
-        private void WarframeListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -51,7 +53,7 @@ namespace WarframeTracker
 
                 foreach (SerializationWrappers.WarframeAPI.Items.Warframes.Root frame in Warframes)
                 {
-                    if (frame.Name.ToString() == WarframeListBox.SelectedItem.ToString())
+                    if (frame.Name.ToString() == WarframeComboBox.SelectedItem.ToString())
                     {
                         //Set static vars
                         activeWarframe = frame.Name.ToString();
@@ -128,7 +130,7 @@ namespace WarframeTracker
                         //Debug Info
                         if (DebugMode)
                         {
-                            Debugger.Log("Updated UI for " + WarframeListBox.SelectedItem.ToString());
+                            Debugger.Log("Updated UI for " + WarframeComboBox.SelectedItem.ToString());
                         }
                     }
                 }
@@ -155,22 +157,52 @@ namespace WarframeTracker
                 }
             }
         }
+        #endregion
 
+        #region Data Generation Code
         /// <summary>
-        /// Temporary function to download all data from api endpoints, incorperate it into local database style save sources, save it to disk for future use.
-        /// FUNCTIONAL!!
+        /// Generate & Regenerate all application data.
         /// </summary>
         private void GenerateData()
         {
-            List<SerializationWrappers.WarframeAPI.Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
+            #region Resets
+            WarframeComboBox.Items.Clear();
+            PrimaryWeaponComboBox.Items.Clear();
+            #endregion
 
-            //Reset warframes list incase of new data appeneded to the json file.
-            WarframeListBox.Items.Clear();
+            #region Warframes
+            List<SerializationWrappers.WarframeAPI.Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
 
             foreach (SerializationWrappers.WarframeAPI.Items.Warframes.Root frame in Warframes)
             {
-                WarframeListBox.Items.Add(frame.Name.ToString());
+                WarframeComboBox.Items.Add(frame.Name.ToString());
             }
+            #endregion
+
+            #region Load Primary Weapons
+            List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root> Primary_Weapons = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
+
+            foreach (SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root Weapon in Primary_Weapons)
+            {
+                PrimaryWeaponComboBox.Items.Add(Weapon.Name.ToString());
+            }
+            #endregion
+
+            #region Load Secondary Weapons
+
+            #endregion
+
+            #region Load Melee Weapons
+
+            #endregion
+
+            #region Load Companion Data
+
+            #endregion
+
+            #region Load World State Data
+
+            #endregion 
         }
         #endregion
 
@@ -217,7 +249,7 @@ namespace WarframeTracker
         {
             if (tradeable)
             {
-                SelectedItemInformation.activeItemName = WarframeListBox.SelectedItem.ToString() + " Set"; //Set static variable to handle on the orders page.
+                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Set"; //Set static variable to handle on the orders page.
                 new OrderSheet().Show(); //Launch order page
             }
             else
@@ -230,7 +262,7 @@ namespace WarframeTracker
         {
             if (tradeable)
             {
-                SelectedItemInformation.activeItemName = WarframeListBox.SelectedItem.ToString() + " Neuroptics"; //Set static variable to handle on the orders page.
+                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Neuroptics"; //Set static variable to handle on the orders page.
                 new OrderSheet().Show(); //Launch order page
             }
             else
@@ -243,7 +275,7 @@ namespace WarframeTracker
         {
             if (tradeable)
             {
-                SelectedItemInformation.activeItemName = WarframeListBox.SelectedItem.ToString() + " Chassis"; //Set static variable to handle on the orders page.
+                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Chassis"; //Set static variable to handle on the orders page.
                 new OrderSheet().Show(); //Launch order page
             }
             else
@@ -256,7 +288,7 @@ namespace WarframeTracker
         {
             if (tradeable)
             {
-                SelectedItemInformation.activeItemName = WarframeListBox.SelectedItem.ToString() + " Systems"; //Set static variable to handle on the orders page.
+                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Systems"; //Set static variable to handle on the orders page.
                 new OrderSheet().Show(); //Launch order page
             }
             else
@@ -285,6 +317,9 @@ namespace WarframeTracker
         #region World Cycle Context Menu
 
         #endregion
+
         #endregion
+
+        
     }
 }
