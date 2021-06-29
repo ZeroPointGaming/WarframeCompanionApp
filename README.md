@@ -18,6 +18,7 @@ Screenshot of current running version
 ```c#
 //Official Warframe API Data
 namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Warframes {}
+namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.PrimaryWeapons {}
 namespace WarframeTracker.SerializationWrappers.WarframeAPI.WorldState {}
 
 //Warframe.Market
