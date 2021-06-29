@@ -7,6 +7,9 @@ The long term end game goal is a total inventory management system with future a
 
 The short term roadmap is to just get the program into an alpha release, build a website for it with its own restful api interfaces. Eventually users will be able to manually input inventory data to their programs.
 
+Screenshot of current running version 
+![Alpha Screenshot](https://i.imgur.com/Nzh5T9J.png)
+
 ## APIs we use
 ```c#
 //Official Warframe API Data
