@@ -30,7 +30,7 @@ namespace WarframeTracker
             //Initialize the UI Components for the form.
             InitializeComponent();
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             WarframeListBox.SelectedItem = "Ash";
@@ -202,6 +202,10 @@ namespace WarframeTracker
 
         #endregion
 
+        #region World Cycle Code
+
+        #endregion
+
         private void button3_Click(object sender, EventArgs e)
         {
             GenerateData();
@@ -275,6 +279,10 @@ namespace WarframeTracker
         #endregion
 
         #region Companions Context Menu Commands
+
+        #endregion
+
+        #region World Cycle Context Menu
 
         #endregion
         #endregion
