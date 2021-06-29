@@ -1,0 +1,17 @@
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\bin\Debug\netcoreapp3.0\WarframeTracker.exe
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\bin\Debug\netcoreapp3.0\WarframeTracker.deps.json
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\bin\Debug\netcoreapp3.0\WarframeTracker.runtimeconfig.json
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\bin\Debug\netcoreapp3.0\WarframeTracker.runtimeconfig.dev.json
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\bin\Debug\netcoreapp3.0\WarframeTracker.dll
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\bin\Debug\netcoreapp3.0\WarframeTracker.pdb
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.csproj.AssemblyReference.cache
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.Form1.resources
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.csproj.GenerateResource.cache
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.AssemblyInfoInputs.cache
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.AssemblyInfo.cs
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.csproj.CoreCompileInputs.cache
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.csproj.CopyComplete
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.dll
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.pdb
+C:\Users\Redaj\Source\Repos\WarframeTracker\WarframeTracker\obj\Debug\netcoreapp3.0\WarframeTracker.genruntimeconfig.cache

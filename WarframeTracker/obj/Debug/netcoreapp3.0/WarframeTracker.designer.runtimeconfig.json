@@ -1,0 +1,17 @@
+{
+  "runtimeOptions": {
+    "tfm": "netcoreapp3.0",
+    "framework": {
+      "name": "Microsoft.WindowsDesktop.App",
+      "version": "3.0.0"
+    },
+    "additionalProbingPaths": [
+      "C:\\Users\\Redaj\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Redaj\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+    ],
+    "configProperties": {
+      "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
+    }
+  }
+}
