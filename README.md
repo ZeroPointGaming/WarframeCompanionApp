@@ -7,7 +7,7 @@ The long term end game goal is a total inventory management system with future a
 
 The short term roadmap is to just get the program into an alpha release, build a website for it with its own restful api interfaces. Eventually users will be able to manually input inventory data to their programs.
 
-## Available APIs
+## APIs we use
 ```c#
 //Official Warframe API Data
 namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Warframes {}
@@ -38,3 +38,5 @@ namespace WarframeTracker.SerializationWrappers.WarframeStats.Earth {}
 //OGGTechnologies
 namespace WarframeTracker.SerializationWrappers.OGTech.ValutedItemData {}
 ```
+
+Want to donate to support our project, feel free to do so here: https://www.patreon.com/ecm_gaming
