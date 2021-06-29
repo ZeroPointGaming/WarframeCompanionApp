@@ -37,26 +37,6 @@ namespace WarframeTracker
         }
         #endregion
 
-        /// <summary>
-        /// Test case to test api interface. Verified Working
-        /// </summary>
-        private void TestCase()
-        {
-            HttpWebRequest request = WebManager.GenerateRequest("meso_t5_relic", "ItemCall");
-            HttpWebResponse response = WebManager.GenerateResponse(request);
-
-            using (StreamReader reader = new StreamReader(response.GetResponseStream()))
-            {
-                var ObjText = reader.ReadToEnd();
-                reader.Close();reader.Dispose();
-
-                SerializationWrappers.WarframeMarket.ItemInfo.Root ItemReturned = JsonConvert.DeserializeObject<SerializationWrappers.WarframeMarket.ItemInfo.Root>(ObjText);    
-                MessageBox.Show(ItemReturned.Payload.Item.ItemsInSet[0].En.ItemName);
-
-                //pictureBox1.Load(WebManager.GetImageURL("icons/en/thumbs/heliocor.49fc1b3f6c4e4a550a15ad7c96885195.128x128.png")); //Verified Working
-            }
-        }
-
         #region Warframe Code
         public string activeWarframe = "";
         public bool tradeable = false;
@@ -194,11 +174,40 @@ namespace WarframeTracker
         }
         #endregion
 
+        #region Primary Weapons Code
+
+        #endregion
+
+        #region Secondary Weapons Code
+
+        #endregion
+
+        #region Melee Weapons Code
+
+        #endregion
+
+        #region Companions Code
+
+        #endregion
+
+        #region Settings Code
+
+        #endregion
+
+        #region Build Guides Code
+
+        #endregion
+
+        #region Crafting Guides Code
+
+        #endregion
+
         private void button3_Click(object sender, EventArgs e)
         {
             GenerateData();
         }
 
+        #region ContextMenu Code
         #region Warframe Context Menu Commands
         private void findSetOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -251,6 +260,23 @@ namespace WarframeTracker
                 MessageBox.Show("The item you have searched is not a tradeable item.");
             }
         }
+        #endregion
+
+        #region Primary Weapons Context Menu Commands
+
+        #endregion
+
+        #region Secondary Weapons Context Menu Commands
+
+        #endregion
+
+        #region Melee Weapons Context Menu Commands
+
+        #endregion
+
+        #region Companions Context Menu Commands
+
+        #endregion
         #endregion
     }
 }
