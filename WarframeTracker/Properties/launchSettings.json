@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WarframeTracker": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

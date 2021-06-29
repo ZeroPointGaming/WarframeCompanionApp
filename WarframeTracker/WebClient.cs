@@ -111,6 +111,7 @@ namespace WarframeTracker.WebInterface
 
             switch (name)
             {
+                #region Warframes
                 case "Atlas Prime":
                     return DownloadImage("https://static.wikia.nocookie.net/warframe/images/9/99/AtlasPrimeNewLook.png/revision/latest/scale-to-width-down/295?cb=20200208124530");
                 case "Banshee Prime":
@@ -188,6 +189,8 @@ namespace WarframeTracker.WebInterface
                     }
                 case "Xaku":
                     return DownloadImage("https://static.wikia.nocookie.net/warframe/images/0/06/Xaku.PNG/revision/latest/scale-to-width-down/270?cb=20200907135937");
+                #endregion
+
                 default:
                     if (name != null)
                     {

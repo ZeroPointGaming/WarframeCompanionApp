@@ -37,6 +37,10 @@ namespace WarframeTracker
             this.fiindChassiesOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findSystemsOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WarframeTrackerTabControl = new MetroFramework.Controls.MetroTabControl();
+            this.PrimWeaponsTabPage = new System.Windows.Forms.TabPage();
+            this.PrimaryWeaponContainer = new System.Windows.Forms.GroupBox();
+            this.PrimaryGunImageBox = new System.Windows.Forms.PictureBox();
+            this.PrimaryWeaponComboBox = new System.Windows.Forms.ComboBox();
             this.WarframeTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.WarframeComboBox = new System.Windows.Forms.ComboBox();
@@ -65,9 +69,6 @@ namespace WarframeTracker
             this.WarframeAbilityTextbox2 = new System.Windows.Forms.TextBox();
             this.WarframeAbilityGroupbox1 = new System.Windows.Forms.GroupBox();
             this.WarframeAbilityTextBox1 = new System.Windows.Forms.TextBox();
-            this.PrimWeaponsTabPage = new System.Windows.Forms.TabPage();
-            this.PrimaryWeaponContainer = new System.Windows.Forms.GroupBox();
-            this.PrimaryWeaponComboBox = new System.Windows.Forms.ComboBox();
             this.WorldStatePage = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.SyndicateInfoBox = new System.Windows.Forms.TextBox();
@@ -148,6 +149,9 @@ namespace WarframeTracker
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
+            this.PrimWeaponsTabPage.SuspendLayout();
+            this.PrimaryWeaponContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PrimaryGunImageBox)).BeginInit();
             this.WarframeTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -161,8 +165,6 @@ namespace WarframeTracker
             this.WarframeAbilityGroupbox3.SuspendLayout();
             this.WarframeAbilityGroupbox2.SuspendLayout();
             this.WarframeAbilityGroupbox1.SuspendLayout();
-            this.PrimWeaponsTabPage.SuspendLayout();
-            this.PrimaryWeaponContainer.SuspendLayout();
             this.WorldStatePage.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -256,8 +258,8 @@ namespace WarframeTracker
             // 
             // WarframeTrackerTabControl
             // 
-            this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
             this.WarframeTrackerTabControl.Controls.Add(this.SecWeaponsTabPage);
@@ -272,6 +274,50 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.SelectedIndex = 0;
             this.WarframeTrackerTabControl.Size = new System.Drawing.Size(1459, 900);
             this.WarframeTrackerTabControl.TabIndex = 6;
+            // 
+            // PrimWeaponsTabPage
+            // 
+            this.PrimWeaponsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PrimWeaponsTabPage.Controls.Add(this.PrimaryWeaponContainer);
+            this.PrimWeaponsTabPage.ForeColor = System.Drawing.Color.White;
+            this.PrimWeaponsTabPage.Location = new System.Drawing.Point(4, 35);
+            this.PrimWeaponsTabPage.Name = "PrimWeaponsTabPage";
+            this.PrimWeaponsTabPage.Size = new System.Drawing.Size(1451, 861);
+            this.PrimWeaponsTabPage.TabIndex = 1;
+            this.PrimWeaponsTabPage.Text = "Primary Weapons";
+            // 
+            // PrimaryWeaponContainer
+            // 
+            this.PrimaryWeaponContainer.Controls.Add(this.PrimaryGunImageBox);
+            this.PrimaryWeaponContainer.Controls.Add(this.PrimaryWeaponComboBox);
+            this.PrimaryWeaponContainer.ForeColor = System.Drawing.Color.White;
+            this.PrimaryWeaponContainer.Location = new System.Drawing.Point(8, 8);
+            this.PrimaryWeaponContainer.Name = "PrimaryWeaponContainer";
+            this.PrimaryWeaponContainer.Size = new System.Drawing.Size(1435, 845);
+            this.PrimaryWeaponContainer.TabIndex = 2;
+            this.PrimaryWeaponContainer.TabStop = false;
+            this.PrimaryWeaponContainer.Text = "groupBox17";
+            // 
+            // PrimaryGunImageBox
+            // 
+            this.PrimaryGunImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PrimaryGunImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PrimaryGunImageBox.Location = new System.Drawing.Point(15, 61);
+            this.PrimaryGunImageBox.Name = "PrimaryGunImageBox";
+            this.PrimaryGunImageBox.Size = new System.Drawing.Size(283, 188);
+            this.PrimaryGunImageBox.TabIndex = 3;
+            this.PrimaryGunImageBox.TabStop = false;
+            // 
+            // PrimaryWeaponComboBox
+            // 
+            this.PrimaryWeaponComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PrimaryWeaponComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PrimaryWeaponComboBox.FormattingEnabled = true;
+            this.PrimaryWeaponComboBox.Location = new System.Drawing.Point(15, 22);
+            this.PrimaryWeaponComboBox.Name = "PrimaryWeaponComboBox";
+            this.PrimaryWeaponComboBox.Size = new System.Drawing.Size(283, 29);
+            this.PrimaryWeaponComboBox.TabIndex = 1;
+            this.PrimaryWeaponComboBox.SelectedIndexChanged += new System.EventHandler(this.PrimaryWeaponComboBox_SelectedIndexChanged);
             // 
             // WarframeTabPage
             // 
@@ -347,7 +393,7 @@ namespace WarframeTracker
             this.PassiveAbilityTextbox.Location = new System.Drawing.Point(6, 16);
             this.PassiveAbilityTextbox.Multiline = true;
             this.PassiveAbilityTextbox.Name = "PassiveAbilityTextbox";
-            this.PassiveAbilityTextbox.Size = new System.Drawing.Size(372, 70);
+            this.PassiveAbilityTextbox.Size = new System.Drawing.Size(383, 70);
             this.PassiveAbilityTextbox.TabIndex = 0;
             // 
             // groupBox2
@@ -366,7 +412,7 @@ namespace WarframeTracker
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.BPComponentImgBox);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(419, 22);
+            this.groupBox2.Location = new System.Drawing.Point(419, 15);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1010, 260);
             this.groupBox2.TabIndex = 2;
@@ -522,7 +568,7 @@ namespace WarframeTracker
             this.WarframeAbilityTextbox4.Location = new System.Drawing.Point(6, 16);
             this.WarframeAbilityTextbox4.Multiline = true;
             this.WarframeAbilityTextbox4.Name = "WarframeAbilityTextbox4";
-            this.WarframeAbilityTextbox4.Size = new System.Drawing.Size(372, 70);
+            this.WarframeAbilityTextbox4.Size = new System.Drawing.Size(383, 70);
             this.WarframeAbilityTextbox4.TabIndex = 0;
             // 
             // WarframeAbilityGroupbox3
@@ -545,7 +591,7 @@ namespace WarframeTracker
             this.WarframeAbilityTextbox3.Location = new System.Drawing.Point(6, 16);
             this.WarframeAbilityTextbox3.Multiline = true;
             this.WarframeAbilityTextbox3.Name = "WarframeAbilityTextbox3";
-            this.WarframeAbilityTextbox3.Size = new System.Drawing.Size(372, 70);
+            this.WarframeAbilityTextbox3.Size = new System.Drawing.Size(383, 70);
             this.WarframeAbilityTextbox3.TabIndex = 0;
             // 
             // WarframeAbilityGroupbox2
@@ -568,7 +614,7 @@ namespace WarframeTracker
             this.WarframeAbilityTextbox2.Location = new System.Drawing.Point(6, 16);
             this.WarframeAbilityTextbox2.Multiline = true;
             this.WarframeAbilityTextbox2.Name = "WarframeAbilityTextbox2";
-            this.WarframeAbilityTextbox2.Size = new System.Drawing.Size(372, 70);
+            this.WarframeAbilityTextbox2.Size = new System.Drawing.Size(383, 70);
             this.WarframeAbilityTextbox2.TabIndex = 0;
             // 
             // WarframeAbilityGroupbox1
@@ -591,39 +637,8 @@ namespace WarframeTracker
             this.WarframeAbilityTextBox1.Location = new System.Drawing.Point(6, 16);
             this.WarframeAbilityTextBox1.Multiline = true;
             this.WarframeAbilityTextBox1.Name = "WarframeAbilityTextBox1";
-            this.WarframeAbilityTextBox1.Size = new System.Drawing.Size(372, 70);
+            this.WarframeAbilityTextBox1.Size = new System.Drawing.Size(383, 70);
             this.WarframeAbilityTextBox1.TabIndex = 0;
-            // 
-            // PrimWeaponsTabPage
-            // 
-            this.PrimWeaponsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.PrimWeaponsTabPage.Controls.Add(this.PrimaryWeaponContainer);
-            this.PrimWeaponsTabPage.ForeColor = System.Drawing.Color.White;
-            this.PrimWeaponsTabPage.Location = new System.Drawing.Point(4, 35);
-            this.PrimWeaponsTabPage.Name = "PrimWeaponsTabPage";
-            this.PrimWeaponsTabPage.Size = new System.Drawing.Size(1451, 861);
-            this.PrimWeaponsTabPage.TabIndex = 1;
-            this.PrimWeaponsTabPage.Text = "Primary Weapons";
-            // 
-            // PrimaryWeaponContainer
-            // 
-            this.PrimaryWeaponContainer.Controls.Add(this.PrimaryWeaponComboBox);
-            this.PrimaryWeaponContainer.ForeColor = System.Drawing.Color.White;
-            this.PrimaryWeaponContainer.Location = new System.Drawing.Point(8, 8);
-            this.PrimaryWeaponContainer.Name = "PrimaryWeaponContainer";
-            this.PrimaryWeaponContainer.Size = new System.Drawing.Size(1435, 845);
-            this.PrimaryWeaponContainer.TabIndex = 2;
-            this.PrimaryWeaponContainer.TabStop = false;
-            this.PrimaryWeaponContainer.Text = "groupBox17";
-            // 
-            // PrimaryWeaponComboBox
-            // 
-            this.PrimaryWeaponComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PrimaryWeaponComboBox.FormattingEnabled = true;
-            this.PrimaryWeaponComboBox.Location = new System.Drawing.Point(15, 22);
-            this.PrimaryWeaponComboBox.Name = "PrimaryWeaponComboBox";
-            this.PrimaryWeaponComboBox.Size = new System.Drawing.Size(229, 29);
-            this.PrimaryWeaponComboBox.TabIndex = 1;
             // 
             // WorldStatePage
             // 
@@ -1393,6 +1408,9 @@ namespace WarframeTracker
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.WarframeTrackerTabControl.ResumeLayout(false);
+            this.PrimWeaponsTabPage.ResumeLayout(false);
+            this.PrimaryWeaponContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PrimaryGunImageBox)).EndInit();
             this.WarframeTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -1412,8 +1430,6 @@ namespace WarframeTracker
             this.WarframeAbilityGroupbox2.PerformLayout();
             this.WarframeAbilityGroupbox1.ResumeLayout(false);
             this.WarframeAbilityGroupbox1.PerformLayout();
-            this.PrimWeaponsTabPage.ResumeLayout(false);
-            this.PrimaryWeaponContainer.ResumeLayout(false);
             this.WorldStatePage.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
@@ -1591,6 +1607,7 @@ namespace WarframeTracker
         private System.Windows.Forms.ComboBox PrimaryWeaponComboBox;
         private System.Windows.Forms.GroupBox PrimaryWeaponContainer;
         private System.Windows.Forms.ComboBox WarframeComboBox;
+        private System.Windows.Forms.PictureBox PrimaryGunImageBox;
     }
 }
 
