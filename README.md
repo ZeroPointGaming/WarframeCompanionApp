@@ -7,6 +7,10 @@ The long term end game goal is a total inventory management system with future a
 
 The short term roadmap is to just get the program into an alpha release, build a website for it with its own restful api interfaces. Eventually users will be able to manually input inventory data to their programs.
 
+Our app is built on the .NET 5.0 Framework using MetroFramework for UI. 
+
+Usage: Our app starts off with a list of all the warframes, currently the warframe tab is the only one that has developed functionality, to use it simply click on the warframe you want to see information about, and you can right click to find options to download available warframe.market orders for the prime sets and parts.
+
 Screenshot of current running version 
 ![Alpha Screenshot](https://i.imgur.com/Nzh5T9J.png)
 
