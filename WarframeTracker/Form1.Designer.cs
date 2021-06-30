@@ -39,6 +39,33 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl = new MetroFramework.Controls.MetroTabControl();
             this.PrimWeaponsTabPage = new System.Windows.Forms.TabPage();
             this.PrimaryWeaponContainer = new System.Windows.Forms.GroupBox();
+            this.PWComponentContainer = new System.Windows.Forms.GroupBox();
+            this.PWCompDataTxt = new System.Windows.Forms.TextBox();
+            this.PWWeaponDmgContainer = new System.Windows.Forms.GroupBox();
+            this.PWDataTxt = new System.Windows.Forms.TextBox();
+            this.PWFoundryPanel = new System.Windows.Forms.Panel();
+            this.PWFoundrySkipBuildLbl = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.PWFoundrySlot4Txt = new System.Windows.Forms.TextBox();
+            this.PWFoundrySlot4Img = new System.Windows.Forms.PictureBox();
+            this.PWFoundryBuildTime = new System.Windows.Forms.Label();
+            this.PWFoundryMarketPriceLbl = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.PWFoundrySlot3Txt = new System.Windows.Forms.TextBox();
+            this.PWFoundrySlot3Img = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.PWFoundrySlot2Txt = new System.Windows.Forms.TextBox();
+            this.PWFoundrySlot2Img = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.PWFoundrySlot1Txt = new System.Windows.Forms.TextBox();
+            this.PWFoundrySlot1Img = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.PWFoundrySlot0Txt = new System.Windows.Forms.TextBox();
+            this.PWFoundrySlot0Img = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.PWFoundryCreditsTxt = new System.Windows.Forms.TextBox();
+            this.PWFoundryCreditsImg = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.PrimaryGunImageBox = new System.Windows.Forms.PictureBox();
             this.PrimaryWeaponComboBox = new System.Windows.Forms.ComboBox();
             this.WarframeTabPage = new System.Windows.Forms.TabPage();
@@ -147,10 +174,26 @@ namespace WarframeTracker
             this.PetsTabPage = new System.Windows.Forms.TabPage();
             this.CraftingGuidesTabPage = new System.Windows.Forms.TabPage();
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
             this.PrimWeaponsTabPage.SuspendLayout();
             this.PrimaryWeaponContainer.SuspendLayout();
+            this.PWComponentContainer.SuspendLayout();
+            this.PWWeaponDmgContainer.SuspendLayout();
+            this.PWFoundryPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot4Img)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot3Img)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot2Img)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot1Img)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot0Img)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundryCreditsImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryGunImageBox)).BeginInit();
             this.WarframeTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -288,6 +331,9 @@ namespace WarframeTracker
             // 
             // PrimaryWeaponContainer
             // 
+            this.PrimaryWeaponContainer.Controls.Add(this.PWComponentContainer);
+            this.PrimaryWeaponContainer.Controls.Add(this.PWWeaponDmgContainer);
+            this.PrimaryWeaponContainer.Controls.Add(this.PWFoundryPanel);
             this.PrimaryWeaponContainer.Controls.Add(this.PrimaryGunImageBox);
             this.PrimaryWeaponContainer.Controls.Add(this.PrimaryWeaponComboBox);
             this.PrimaryWeaponContainer.ForeColor = System.Drawing.Color.White;
@@ -296,7 +342,301 @@ namespace WarframeTracker
             this.PrimaryWeaponContainer.Size = new System.Drawing.Size(1435, 845);
             this.PrimaryWeaponContainer.TabIndex = 2;
             this.PrimaryWeaponContainer.TabStop = false;
-            this.PrimaryWeaponContainer.Text = "groupBox17";
+            this.PrimaryWeaponContainer.Text = "selectedWeaponName";
+            // 
+            // PWComponentContainer
+            // 
+            this.PWComponentContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWComponentContainer.Controls.Add(this.PWCompDataTxt);
+            this.PWComponentContainer.ForeColor = System.Drawing.Color.White;
+            this.PWComponentContainer.Location = new System.Drawing.Point(304, 255);
+            this.PWComponentContainer.Name = "PWComponentContainer";
+            this.PWComponentContainer.Size = new System.Drawing.Size(1125, 584);
+            this.PWComponentContainer.TabIndex = 6;
+            this.PWComponentContainer.TabStop = false;
+            this.PWComponentContainer.Text = "Weapon Components Data";
+            // 
+            // PWCompDataTxt
+            // 
+            this.PWCompDataTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWCompDataTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PWCompDataTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PWCompDataTxt.ForeColor = System.Drawing.Color.White;
+            this.PWCompDataTxt.Location = new System.Drawing.Point(3, 19);
+            this.PWCompDataTxt.Multiline = true;
+            this.PWCompDataTxt.Name = "PWCompDataTxt";
+            this.PWCompDataTxt.ReadOnly = true;
+            this.PWCompDataTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.PWCompDataTxt.Size = new System.Drawing.Size(1119, 562);
+            this.PWCompDataTxt.TabIndex = 3;
+            // 
+            // PWWeaponDmgContainer
+            // 
+            this.PWWeaponDmgContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWWeaponDmgContainer.Controls.Add(this.PWDataTxt);
+            this.PWWeaponDmgContainer.ForeColor = System.Drawing.Color.White;
+            this.PWWeaponDmgContainer.Location = new System.Drawing.Point(15, 255);
+            this.PWWeaponDmgContainer.Name = "PWWeaponDmgContainer";
+            this.PWWeaponDmgContainer.Size = new System.Drawing.Size(283, 584);
+            this.PWWeaponDmgContainer.TabIndex = 5;
+            this.PWWeaponDmgContainer.TabStop = false;
+            this.PWWeaponDmgContainer.Text = "Weapon Data";
+            // 
+            // PWDataTxt
+            // 
+            this.PWDataTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWDataTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PWDataTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PWDataTxt.ForeColor = System.Drawing.Color.White;
+            this.PWDataTxt.Location = new System.Drawing.Point(3, 19);
+            this.PWDataTxt.Multiline = true;
+            this.PWDataTxt.Name = "PWDataTxt";
+            this.PWDataTxt.ReadOnly = true;
+            this.PWDataTxt.Size = new System.Drawing.Size(277, 562);
+            this.PWDataTxt.TabIndex = 4;
+            // 
+            // PWFoundryPanel
+            // 
+            this.PWFoundryPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PWFoundryPanel.Controls.Add(this.PWFoundrySkipBuildLbl);
+            this.PWFoundryPanel.Controls.Add(this.panel1);
+            this.PWFoundryPanel.Controls.Add(this.PWFoundryBuildTime);
+            this.PWFoundryPanel.Controls.Add(this.PWFoundryMarketPriceLbl);
+            this.PWFoundryPanel.Controls.Add(this.panel6);
+            this.PWFoundryPanel.Controls.Add(this.panel5);
+            this.PWFoundryPanel.Controls.Add(this.panel4);
+            this.PWFoundryPanel.Controls.Add(this.panel3);
+            this.PWFoundryPanel.Controls.Add(this.panel2);
+            this.PWFoundryPanel.Controls.Add(this.label5);
+            this.PWFoundryPanel.Location = new System.Drawing.Point(304, 22);
+            this.PWFoundryPanel.Name = "PWFoundryPanel";
+            this.PWFoundryPanel.Size = new System.Drawing.Size(539, 227);
+            this.PWFoundryPanel.TabIndex = 4;
+            // 
+            // PWFoundrySkipBuildLbl
+            // 
+            this.PWFoundrySkipBuildLbl.AutoSize = true;
+            this.PWFoundrySkipBuildLbl.Location = new System.Drawing.Point(5, 194);
+            this.PWFoundrySkipBuildLbl.Name = "PWFoundrySkipBuildLbl";
+            this.PWFoundrySkipBuildLbl.Size = new System.Drawing.Size(81, 15);
+            this.PWFoundrySkipBuildLbl.TabIndex = 7;
+            this.PWFoundrySkipBuildLbl.Text = "blueprintPrice";
+            this.PWFoundrySkipBuildLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.PWFoundrySlot4Txt);
+            this.panel1.Controls.Add(this.PWFoundrySlot4Img);
+            this.panel1.Location = new System.Drawing.Point(448, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(83, 104);
+            this.panel1.TabIndex = 6;
+            // 
+            // PWFoundrySlot4Txt
+            // 
+            this.PWFoundrySlot4Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWFoundrySlot4Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWFoundrySlot4Txt.ForeColor = System.Drawing.Color.White;
+            this.PWFoundrySlot4Txt.Location = new System.Drawing.Point(8, 72);
+            this.PWFoundrySlot4Txt.Name = "PWFoundrySlot4Txt";
+            this.PWFoundrySlot4Txt.ReadOnly = true;
+            this.PWFoundrySlot4Txt.Size = new System.Drawing.Size(64, 16);
+            this.PWFoundrySlot4Txt.TabIndex = 3;
+            this.PWFoundrySlot4Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PWFoundrySlot4Img
+            // 
+            this.PWFoundrySlot4Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PWFoundrySlot4Img.Location = new System.Drawing.Point(8, 2);
+            this.PWFoundrySlot4Img.Name = "PWFoundrySlot4Img";
+            this.PWFoundrySlot4Img.Size = new System.Drawing.Size(64, 64);
+            this.PWFoundrySlot4Img.TabIndex = 1;
+            this.PWFoundrySlot4Img.TabStop = false;
+            // 
+            // PWFoundryBuildTime
+            // 
+            this.PWFoundryBuildTime.AutoSize = true;
+            this.PWFoundryBuildTime.Location = new System.Drawing.Point(2, 168);
+            this.PWFoundryBuildTime.Name = "PWFoundryBuildTime";
+            this.PWFoundryBuildTime.Size = new System.Drawing.Size(81, 15);
+            this.PWFoundryBuildTime.TabIndex = 5;
+            this.PWFoundryBuildTime.Text = "blueprintPrice";
+            this.PWFoundryBuildTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PWFoundryMarketPriceLbl
+            // 
+            this.PWFoundryMarketPriceLbl.AutoSize = true;
+            this.PWFoundryMarketPriceLbl.Location = new System.Drawing.Point(2, 141);
+            this.PWFoundryMarketPriceLbl.Name = "PWFoundryMarketPriceLbl";
+            this.PWFoundryMarketPriceLbl.Size = new System.Drawing.Size(70, 15);
+            this.PWFoundryMarketPriceLbl.TabIndex = 4;
+            this.PWFoundryMarketPriceLbl.Text = "marketPrice";
+            this.PWFoundryMarketPriceLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.PWFoundrySlot3Txt);
+            this.panel6.Controls.Add(this.PWFoundrySlot3Img);
+            this.panel6.Location = new System.Drawing.Point(359, 25);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(83, 104);
+            this.panel6.TabIndex = 3;
+            // 
+            // PWFoundrySlot3Txt
+            // 
+            this.PWFoundrySlot3Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWFoundrySlot3Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWFoundrySlot3Txt.ForeColor = System.Drawing.Color.White;
+            this.PWFoundrySlot3Txt.Location = new System.Drawing.Point(8, 72);
+            this.PWFoundrySlot3Txt.Name = "PWFoundrySlot3Txt";
+            this.PWFoundrySlot3Txt.ReadOnly = true;
+            this.PWFoundrySlot3Txt.Size = new System.Drawing.Size(64, 16);
+            this.PWFoundrySlot3Txt.TabIndex = 3;
+            this.PWFoundrySlot3Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PWFoundrySlot3Img
+            // 
+            this.PWFoundrySlot3Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PWFoundrySlot3Img.Location = new System.Drawing.Point(8, 2);
+            this.PWFoundrySlot3Img.Name = "PWFoundrySlot3Img";
+            this.PWFoundrySlot3Img.Size = new System.Drawing.Size(64, 64);
+            this.PWFoundrySlot3Img.TabIndex = 1;
+            this.PWFoundrySlot3Img.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.PWFoundrySlot2Txt);
+            this.panel5.Controls.Add(this.PWFoundrySlot2Img);
+            this.panel5.Location = new System.Drawing.Point(270, 25);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(83, 104);
+            this.panel5.TabIndex = 2;
+            // 
+            // PWFoundrySlot2Txt
+            // 
+            this.PWFoundrySlot2Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWFoundrySlot2Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWFoundrySlot2Txt.ForeColor = System.Drawing.Color.White;
+            this.PWFoundrySlot2Txt.Location = new System.Drawing.Point(8, 72);
+            this.PWFoundrySlot2Txt.Name = "PWFoundrySlot2Txt";
+            this.PWFoundrySlot2Txt.ReadOnly = true;
+            this.PWFoundrySlot2Txt.Size = new System.Drawing.Size(64, 16);
+            this.PWFoundrySlot2Txt.TabIndex = 3;
+            this.PWFoundrySlot2Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PWFoundrySlot2Img
+            // 
+            this.PWFoundrySlot2Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PWFoundrySlot2Img.Location = new System.Drawing.Point(8, 2);
+            this.PWFoundrySlot2Img.Name = "PWFoundrySlot2Img";
+            this.PWFoundrySlot2Img.Size = new System.Drawing.Size(64, 64);
+            this.PWFoundrySlot2Img.TabIndex = 1;
+            this.PWFoundrySlot2Img.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.PWFoundrySlot1Txt);
+            this.panel4.Controls.Add(this.PWFoundrySlot1Img);
+            this.panel4.Location = new System.Drawing.Point(181, 25);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(83, 104);
+            this.panel4.TabIndex = 2;
+            // 
+            // PWFoundrySlot1Txt
+            // 
+            this.PWFoundrySlot1Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWFoundrySlot1Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWFoundrySlot1Txt.ForeColor = System.Drawing.Color.White;
+            this.PWFoundrySlot1Txt.Location = new System.Drawing.Point(8, 72);
+            this.PWFoundrySlot1Txt.Name = "PWFoundrySlot1Txt";
+            this.PWFoundrySlot1Txt.ReadOnly = true;
+            this.PWFoundrySlot1Txt.Size = new System.Drawing.Size(64, 16);
+            this.PWFoundrySlot1Txt.TabIndex = 3;
+            this.PWFoundrySlot1Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PWFoundrySlot1Img
+            // 
+            this.PWFoundrySlot1Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PWFoundrySlot1Img.Location = new System.Drawing.Point(8, 2);
+            this.PWFoundrySlot1Img.Name = "PWFoundrySlot1Img";
+            this.PWFoundrySlot1Img.Size = new System.Drawing.Size(64, 64);
+            this.PWFoundrySlot1Img.TabIndex = 1;
+            this.PWFoundrySlot1Img.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.PWFoundrySlot0Txt);
+            this.panel3.Controls.Add(this.PWFoundrySlot0Img);
+            this.panel3.Location = new System.Drawing.Point(92, 25);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(83, 104);
+            this.panel3.TabIndex = 2;
+            // 
+            // PWFoundrySlot0Txt
+            // 
+            this.PWFoundrySlot0Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWFoundrySlot0Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWFoundrySlot0Txt.ForeColor = System.Drawing.Color.White;
+            this.PWFoundrySlot0Txt.Location = new System.Drawing.Point(8, 72);
+            this.PWFoundrySlot0Txt.Name = "PWFoundrySlot0Txt";
+            this.PWFoundrySlot0Txt.ReadOnly = true;
+            this.PWFoundrySlot0Txt.Size = new System.Drawing.Size(64, 16);
+            this.PWFoundrySlot0Txt.TabIndex = 3;
+            this.PWFoundrySlot0Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PWFoundrySlot0Img
+            // 
+            this.PWFoundrySlot0Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PWFoundrySlot0Img.Location = new System.Drawing.Point(8, 2);
+            this.PWFoundrySlot0Img.Name = "PWFoundrySlot0Img";
+            this.PWFoundrySlot0Img.Size = new System.Drawing.Size(64, 64);
+            this.PWFoundrySlot0Img.TabIndex = 1;
+            this.PWFoundrySlot0Img.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.PWFoundryCreditsTxt);
+            this.panel2.Controls.Add(this.PWFoundryCreditsImg);
+            this.panel2.Location = new System.Drawing.Point(3, 25);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(83, 104);
+            this.panel2.TabIndex = 1;
+            // 
+            // PWFoundryCreditsTxt
+            // 
+            this.PWFoundryCreditsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PWFoundryCreditsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PWFoundryCreditsTxt.ForeColor = System.Drawing.Color.White;
+            this.PWFoundryCreditsTxt.Location = new System.Drawing.Point(8, 72);
+            this.PWFoundryCreditsTxt.Name = "PWFoundryCreditsTxt";
+            this.PWFoundryCreditsTxt.ReadOnly = true;
+            this.PWFoundryCreditsTxt.Size = new System.Drawing.Size(64, 16);
+            this.PWFoundryCreditsTxt.TabIndex = 2;
+            this.PWFoundryCreditsTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // PWFoundryCreditsImg
+            // 
+            this.PWFoundryCreditsImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PWFoundryCreditsImg.Location = new System.Drawing.Point(8, 2);
+            this.PWFoundryCreditsImg.Name = "PWFoundryCreditsImg";
+            this.PWFoundryCreditsImg.Size = new System.Drawing.Size(64, 64);
+            this.PWFoundryCreditsImg.TabIndex = 1;
+            this.PWFoundryCreditsImg.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(156, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Foundry Components";
             // 
             // PrimaryGunImageBox
             // 
@@ -1410,6 +1750,30 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.ResumeLayout(false);
             this.PrimWeaponsTabPage.ResumeLayout(false);
             this.PrimaryWeaponContainer.ResumeLayout(false);
+            this.PWComponentContainer.ResumeLayout(false);
+            this.PWComponentContainer.PerformLayout();
+            this.PWWeaponDmgContainer.ResumeLayout(false);
+            this.PWWeaponDmgContainer.PerformLayout();
+            this.PWFoundryPanel.ResumeLayout(false);
+            this.PWFoundryPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot4Img)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot3Img)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot2Img)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot1Img)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundrySlot0Img)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PWFoundryCreditsImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryGunImageBox)).EndInit();
             this.WarframeTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -1608,6 +1972,34 @@ namespace WarframeTracker
         private System.Windows.Forms.GroupBox PrimaryWeaponContainer;
         private System.Windows.Forms.ComboBox WarframeComboBox;
         private System.Windows.Forms.PictureBox PrimaryGunImageBox;
+        private System.Windows.Forms.Panel PWFoundryPanel;
+        private System.Windows.Forms.Label PWFoundryBuildTime;
+        private System.Windows.Forms.Label PWFoundryMarketPriceLbl;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox PWFoundrySlot3Txt;
+        private System.Windows.Forms.PictureBox PWFoundrySlot3Img;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox PWFoundrySlot2Txt;
+        private System.Windows.Forms.PictureBox PWFoundrySlot2Img;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox PWFoundrySlot1Txt;
+        private System.Windows.Forms.PictureBox PWFoundrySlot1Img;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox PWFoundrySlot0Txt;
+        private System.Windows.Forms.PictureBox PWFoundrySlot0Img;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox PWFoundryCreditsTxt;
+        private System.Windows.Forms.PictureBox PWFoundryCreditsImg;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox PWComponentContainer;
+        private System.Windows.Forms.TextBox PWCompDataTxt;
+        private System.Windows.Forms.GroupBox PWWeaponDmgContainer;
+        private System.Windows.Forms.TextBox PWDataTxt;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox PWFoundrySlot4Txt;
+        private System.Windows.Forms.PictureBox PWFoundrySlot4Img;
+        private System.Windows.Forms.Label PWFoundrySkipBuildLbl;
     }
 }
 

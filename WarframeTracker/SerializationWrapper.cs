@@ -570,7 +570,7 @@ namespace WarframeTracker.SerializationWrappers.Base.New
 }
 #endregion
 
-#region Official Warframe Aapi Integration
+#region Official Warframe Api Integration
 /// <summary>
 /// API String: http://content.warframe.com/PublicExport/index_en.txt.lzma [LZMA] is a 7zip compression algorithm [FUTURE TODO]
 /// </summary>

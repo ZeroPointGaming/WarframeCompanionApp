@@ -263,3 +263,174 @@ Updated UI for Ash
 Updated UI for Ash
 Updated UI for Ash
 Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file.System.IO.FileNotFoundException: C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\data\img\credits.jpg
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at WarframeTracker.WebInterface.WTWebClient.ServiceImage(String name, String alt_url) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\WebClient.cs:line 195
+   at WarframeTracker.Form1.PrimaryWeaponComboBox_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 243
+Updated UI for Ash
+Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file.System.IO.FileNotFoundException: C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\data\img\credits.jpg
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at WarframeTracker.WebInterface.WTWebClient.ServiceImage(String name, String alt_url) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\WebClient.cs:line 195
+   at WarframeTracker.Form1.PrimaryWeaponComboBox_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 247
+Updated UI for Ash
+Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file.System.IO.FileNotFoundException: C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\data\img\credits.jpg
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at WarframeTracker.WebInterface.WTWebClient.ServiceImage(String name, String alt_url) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\WebClient.cs:line 195
+   at WarframeTracker.Form1.PrimaryWeaponComboBox_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 256
+Updated UI for Ash
+Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file.System.IO.FileNotFoundException: C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\data\img\credits.jpg
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at WarframeTracker.WebInterface.WTWebClient.ServiceImage(String name, String alt_url) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\WebClient.cs:line 195
+   at WarframeTracker.Form1.PrimaryWeaponComboBox_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 256
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ember Prime
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Artax
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Artax
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Amprex
+Updated UI for Argonak
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Vectis Prime
+Updated UI for Supra Vandal
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Supra Vandal
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Argonak
+Updated UI for Supra Vandal
+Updated UI for Supra
+Updated UI for Supra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Strun
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Strun
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Strun Wraith
+Updated UI for Tenora
+Updated UI for Tenora Prime
+Updated UI for Ash Prime
+Order URL Name: ash_prime_set
+Order URL Name: ash_prime_set
+Order URL Name: ash_prime_set

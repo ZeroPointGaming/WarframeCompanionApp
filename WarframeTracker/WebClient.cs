@@ -191,6 +191,11 @@ namespace WarframeTracker.WebInterface
                     return DownloadImage("https://static.wikia.nocookie.net/warframe/images/0/06/Xaku.PNG/revision/latest/scale-to-width-down/270?cb=20200907135937");
                 #endregion
 
+                case "Credits":
+                    return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "credits.jpg");
+                case "Platinum":
+                    return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "platinum.jpg");
+
                 default:
                     if (name != null)
                     {
