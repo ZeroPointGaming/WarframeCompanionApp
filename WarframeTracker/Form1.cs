@@ -36,6 +36,7 @@ namespace WarframeTracker
         {
             WarframeComboBox.SelectedItem = "Ash";
             PrimaryWeaponComboBox.SelectedItem = "Acceltra";
+            SecondaryWeaponsComboBox.SelectedItem = "Acrid";
         }
         #endregion
 
@@ -431,17 +432,25 @@ namespace WarframeTracker
             #region Load Primary Weapons
             List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root> Primary_Weapons = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
 
-            foreach (SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root Weapon in Primary_Weapons)
+            foreach (SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
             {
-                if (Weapon.ProductCategory != "SentinelWeapons")
+                if (Primary_Weapon.ProductCategory != "SentinelWeapons")
                 {
-                    PrimaryWeaponComboBox.Items.Add(Weapon.Name.ToString());
+                    PrimaryWeaponComboBox.Items.Add(Primary_Weapon.Name.ToString());
                 }
             }
             #endregion
 
             #region Load Secondary Weapons
+            List<SerializationWrappers.WarframeAPI.Items.SecondaryWeapons.Root> Secondary_Weapons = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
 
+            foreach (SerializationWrappers.WarframeAPI.Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
+            {
+                if (Secondary_Weapon.ProductCategory != "SentinelWeapons")
+                {
+                    SecondaryWeaponsComboBox.Items.Add(Secondary_Weapon.Name.ToString());
+                }
+            }
             #endregion
 
             #region Load Melee Weapons

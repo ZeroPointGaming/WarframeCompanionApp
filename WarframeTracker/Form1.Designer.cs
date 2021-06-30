@@ -175,6 +175,7 @@ namespace WarframeTracker
             this.CraftingGuidesTabPage = new System.Windows.Forms.TabPage();
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.SecondaryWeaponsComboBox = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
             this.PrimWeaponsTabPage.SuspendLayout();
@@ -251,6 +252,7 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.SecWeaponsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -301,11 +303,11 @@ namespace WarframeTracker
             // 
             // WarframeTrackerTabControl
             // 
-            this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
-            this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
-            this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
-            this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
             this.WarframeTrackerTabControl.Controls.Add(this.SecWeaponsTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.MeleeWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PetsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.CraftingGuidesTabPage);
@@ -1692,6 +1694,7 @@ namespace WarframeTracker
             // SecWeaponsTabPage
             // 
             this.SecWeaponsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.SecWeaponsTabPage.Controls.Add(this.SecondaryWeaponsComboBox);
             this.SecWeaponsTabPage.ForeColor = System.Drawing.Color.White;
             this.SecWeaponsTabPage.Location = new System.Drawing.Point(4, 35);
             this.SecWeaponsTabPage.Name = "SecWeaponsTabPage";
@@ -1736,6 +1739,16 @@ namespace WarframeTracker
             this.SettingsTabPage.Size = new System.Drawing.Size(1451, 861);
             this.SettingsTabPage.TabIndex = 5;
             this.SettingsTabPage.Text = "Settings";
+            // 
+            // SecondaryWeaponsComboBox
+            // 
+            this.SecondaryWeaponsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SecondaryWeaponsComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SecondaryWeaponsComboBox.FormattingEnabled = true;
+            this.SecondaryWeaponsComboBox.Location = new System.Drawing.Point(8, 9);
+            this.SecondaryWeaponsComboBox.Name = "SecondaryWeaponsComboBox";
+            this.SecondaryWeaponsComboBox.Size = new System.Drawing.Size(221, 29);
+            this.SecondaryWeaponsComboBox.TabIndex = 0;
             // 
             // Form1
             // 
@@ -1850,6 +1863,7 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.SecWeaponsTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2000,6 +2014,7 @@ namespace WarframeTracker
         private System.Windows.Forms.TextBox PWFoundrySlot4Txt;
         private System.Windows.Forms.PictureBox PWFoundrySlot4Img;
         private System.Windows.Forms.Label PWFoundrySkipBuildLbl;
+        private System.Windows.Forms.ComboBox SecondaryWeaponsComboBox;
     }
 }
 
