@@ -417,6 +417,7 @@ namespace WarframeTracker
         {
             StreamReader reader;
 
+            #region Download Data
             HttpWebRequest world_state_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "WorldState", "pc");
             HttpWebResponse world_state_response = WebManager.GenerateResponse(world_state_request);
 
@@ -453,6 +454,9 @@ namespace WarframeTracker
             HttpWebRequest earth_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Earth", "pc");
             HttpWebResponse earth_response = WebManager.GenerateResponse(earth_request);
 
+            HttpWebRequest arbitration_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Arbitration", "pc");
+            HttpWebResponse arbitration_response = WebManager.GenerateResponse(arbitration_request);
+
             reader = new StreamReader(world_state_response.GetResponseStream());
             WorldState.Add("WorldState", reader.ReadToEnd()); reader.Close(); world_state_response.Close();world_state_response.Dispose();
 
@@ -488,6 +492,36 @@ namespace WarframeTracker
 
             reader = new StreamReader(earth_response.GetResponseStream());
             WorldState.Add("Earth", reader.ReadToEnd()); reader.Close(); earth_response.Close(); earth_response.Dispose(); reader.Dispose();
+
+            reader = new StreamReader(arbitration_response.GetResponseStream());
+            WorldState.Add("Arbitration", reader.ReadToEnd()); reader.Close(); arbitration_response.Close(); arbitration_response.Dispose(); reader.Dispose();
+            #endregion
+
+            #region Load Data
+            var objTxt = WorldState["Earth"];
+            SerializationWrappers.WarframeStats.Earth.Data EarthState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Earth.Data>(objTxt.ToString());
+            CycleTimersInfoBox.Text += ($"The current earth state is {EarthState.State} time and will change in {EarthState.TimeLeft}." + Environment.NewLine);
+
+            objTxt = WorldState["CetusCycle"];
+            SerializationWrappers.WarframeStats.Cetus.Data CetusState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Cetus.Data>(objTxt.ToString());
+            CycleTimersInfoBox.Text += ($"The current cetus state is {CetusState.State} time and will change in {CetusState.TimeLeft}." + Environment.NewLine);
+
+            objTxt = WorldState["VallisCycle"];
+            SerializationWrappers.WarframeStats.OrbVallis.Data VallisState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.OrbVallis.Data>(objTxt.ToString());
+            CycleTimersInfoBox.Text += ($"The current orb vallis state is {VallisState.State} and will change in {VallisState.TimeLeft}." + Environment.NewLine);
+
+            objTxt = WorldState["CambionCycle"];
+            SerializationWrappers.WarframeStats.CambionCycle.Data CambionState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.CambionCycle.Data>(objTxt.ToString());
+            CycleTimersInfoBox.Text += ($"The current state of the cambion drift is {CambionState.Active} and expires in {(Math.Round(DateTime.Now.Subtract(CambionState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours." + Environment.NewLine);
+
+            objTxt = WorldState["Baro"];
+            SerializationWrappers.WarframeStats.Baro.Data BaroState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Baro.Data>(objTxt.ToString());
+            BaroInfoBox.Text += ($"{BaroState.Character} arrives at {BaroState.Location} at {BaroState.Expiry}.") + Environment.NewLine;
+
+            objTxt = WorldState["Arbitration"];
+            SerializationWrappers.WarframeStats.Arbitration.ArbitrationMission ArbitrationState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Arbitration.ArbitrationMission>(objTxt.ToString());
+            ArbitrationInfoBox.Text += ($"{ArbitrationState.Enemy} {ArbitrationState.Type} on {ArbitrationState.Node} and expires in{(Math.Round(DateTime.Now.Subtract(ArbitrationState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
+            #endregion
         }
 
         /// <summary>

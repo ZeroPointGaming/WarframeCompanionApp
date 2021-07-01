@@ -79,6 +79,9 @@ namespace WarframeTracker.WebInterface
                 case "Earth":
                     HttpWebRequest earth_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/earthCycle");
                     return earth_request;
+                case "Arbitration":
+                    HttpWebRequest arbitration_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/arbitration");
+                    return arbitration_request;
                 #endregion
 
                 #region Warframe API Requests
