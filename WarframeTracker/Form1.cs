@@ -496,19 +496,29 @@ namespace WarframeTracker
             #region Resets
             WarframeComboBox.Items.Clear();
             PrimaryWeaponComboBox.Items.Clear();
+            MeleeWeaponsComboBox.Items.Clear();
+            SecondaryWeaponsComboBox.Items.Clear();
             #endregion
 
-            #region Warframes
+            #region IO Operations
             Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
+            Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
+            Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
+            Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json"));
+            Sentinel_List = JsonConvert.DeserializeObject<List<Items.Sentinels.Root>>(File.ReadAllText(local_Json_directory + "/Sentinels.json"));
+            Pets_List = JsonConvert.DeserializeObject<List<Items.Pets.Root>>(File.ReadAllText(local_Json_directory + "/Pets.json"));
+            Archwings = JsonConvert.DeserializeObject<List<Items.Archwing.Root>>(File.ReadAllText(local_Json_directory + "/Archwing.json"));
+            ArchGuns = JsonConvert.DeserializeObject<List<Items.ArcGun.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Gun.json"));
+            ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json"));
+            Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json"));
+            Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json"));
+            #endregion
 
+            #region Loop Items Into Comboboxes
             foreach (Items.Warframes.Root frame in Warframes)
             {
                 WarframeComboBox.Items.Add(frame.Name.ToString());
             }
-            #endregion
-
-            #region Load Primary Weapons
-            Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
 
             foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
             {
@@ -517,10 +527,6 @@ namespace WarframeTracker
                     PrimaryWeaponComboBox.Items.Add(Primary_Weapon.Name.ToString());
                 }
             }
-            #endregion
-
-            #region Load Secondary Weapons
-            Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
 
             foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
             {
@@ -529,10 +535,6 @@ namespace WarframeTracker
                     SecondaryWeaponsComboBox.Items.Add(Secondary_Weapon.Name.ToString());
                 }
             }
-            #endregion
-
-            #region Load Melee Weapons
-            Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json"));
 
             foreach (Items.Melee.Root Melee_Weapon in Melee_Weapons)
             {
@@ -540,9 +542,8 @@ namespace WarframeTracker
             }
             #endregion
 
-            #region Load World State Data
             LoadWorldState();
-            #endregion
+            
         }
         #endregion
 
