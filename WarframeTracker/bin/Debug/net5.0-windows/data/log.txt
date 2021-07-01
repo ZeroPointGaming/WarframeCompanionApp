@@ -613,3 +613,5 @@ Updated UI for Prisma Grinlok
 Updated UI for Quellor
 Updated UI for Prisma Grinlok
 Updated UI for Kuva Bramma
+Updated UI for Ash
+Updated UI for Acceltra

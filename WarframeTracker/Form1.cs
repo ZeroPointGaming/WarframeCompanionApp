@@ -420,166 +420,58 @@ namespace WarframeTracker
         #endregion
 
         #region Data Generation Code
-        Dictionary<string, object> WorldState = new Dictionary<string, object>();
-
         private void LoadWorldState()
         {
-            StreamReader reader;
-
-            if (WorldState.Count > 1)
-            {
-                WorldState.Clear();
-            }
-
-            #region Download Data
-            HttpWebRequest world_state_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "WorldState", "pc");
+            HttpWebRequest world_state_request = WebManager.GenerateRequest("", "WorldState", "pc");
             HttpWebResponse world_state_response = WebManager.GenerateResponse(world_state_request);
 
-            HttpWebRequest cambion_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "CambionCycle", "pc");
-            HttpWebResponse combion_response = WebManager.GenerateResponse(cambion_request);
-
-            HttpWebRequest cetus_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "CetusCycle", "pc");
-            HttpWebResponse cetus_response = WebManager.GenerateResponse(cetus_request);
-
-            HttpWebRequest vallis_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "OrbVallis", "pc");
-            HttpWebResponse vallis_response = WebManager.GenerateResponse(vallis_request);
-
-            HttpWebRequest baro_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Baro", "pc");
-            HttpWebResponse baro_response = WebManager.GenerateResponse(baro_request);
-
-            HttpWebRequest invasion_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Invasions", "pc");
-            HttpWebResponse invasion_response = WebManager.GenerateResponse(invasion_request);
-
-            HttpWebRequest fissure_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Fissures", "pc");
-            HttpWebResponse fissure_response = WebManager.GenerateResponse(fissure_request);
-
-            HttpWebRequest syndicate_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Syndicate", "pc");
-            HttpWebResponse syndicate_response = WebManager.GenerateResponse(syndicate_request);
-
-            HttpWebRequest news_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "News", "pc");
-            HttpWebResponse news_response = WebManager.GenerateResponse(news_request);
-
-            HttpWebRequest nightwave_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Nightwave", "pc");
-            HttpWebResponse nightwave_response = WebManager.GenerateResponse(nightwave_request);
-
-            HttpWebRequest sortie_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Sortie", "pc");
-            HttpWebResponse sortie_response = WebManager.GenerateResponse(sortie_request);
-
-            HttpWebRequest earth_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Earth", "pc");
-            HttpWebResponse earth_response = WebManager.GenerateResponse(earth_request);
-
-            HttpWebRequest arbitration_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Arbitration", "pc");
-            HttpWebResponse arbitration_response = WebManager.GenerateResponse(arbitration_request);
-
-            
-            reader = new StreamReader(world_state_response.GetResponseStream());
-            WorldState.Add("WorldState", reader.ReadToEnd()); reader.Close(); world_state_response.Close(); world_state_response.Dispose();
-
-            reader = new StreamReader(combion_response.GetResponseStream());
-            WorldState.Add("CambionCycle", reader.ReadToEnd()); reader.Close(); combion_response.Close(); combion_response.Dispose();
-
-            reader = new StreamReader(cetus_response.GetResponseStream());
-            WorldState.Add("CetusCycle", reader.ReadToEnd()); reader.Close(); cetus_response.Close(); cetus_response.Dispose();
-
-            reader = new StreamReader(vallis_response.GetResponseStream());
-            WorldState.Add("VallisCycle", reader.ReadToEnd()); reader.Close(); vallis_response.Close(); vallis_response.Dispose();
-
-            reader = new StreamReader(baro_response.GetResponseStream());
-            WorldState.Add("Baro", reader.ReadToEnd()); reader.Close(); baro_response.Close(); baro_response.Dispose();
-
-            reader = new StreamReader(invasion_response.GetResponseStream());
-            WorldState.Add("Invasion", reader.ReadToEnd()); reader.Close(); invasion_response.Close(); invasion_response.Dispose();
-
-            reader = new StreamReader(fissure_response.GetResponseStream());
-            WorldState.Add("Fissures", reader.ReadToEnd()); reader.Close(); fissure_response.Close(); fissure_response.Dispose();
-
-            reader = new StreamReader(syndicate_response.GetResponseStream());
-            WorldState.Add("Syndicate", reader.ReadToEnd()); reader.Close(); syndicate_response.Close(); syndicate_response.Dispose();
-
-            reader = new StreamReader(news_response.GetResponseStream());
-            WorldState.Add("News", reader.ReadToEnd()); reader.Close(); news_response.Close(); news_response.Dispose();
-
-            reader = new StreamReader(nightwave_response.GetResponseStream());
-            WorldState.Add("Nightwave", reader.ReadToEnd()); reader.Close(); nightwave_response.Close(); nightwave_response.Dispose();
-
-            reader = new StreamReader(sortie_response.GetResponseStream());
-            WorldState.Add("Sortie", reader.ReadToEnd()); reader.Close(); sortie_response.Close(); sortie_response.Dispose();
-
-            reader = new StreamReader(earth_response.GetResponseStream());
-            WorldState.Add("Earth", reader.ReadToEnd()); reader.Close(); earth_response.Close(); earth_response.Dispose(); reader.Dispose();
-
-            reader = new StreamReader(arbitration_response.GetResponseStream());
-            WorldState.Add("Arbitration", reader.ReadToEnd()); reader.Close(); arbitration_response.Close(); arbitration_response.Dispose(); reader.Dispose();
-            #endregion
+            StreamReader reader = new StreamReader(world_state_response.GetResponseStream()); 
+            WarframeStats.WorldSpace.Root WorldInformation = JsonConvert.DeserializeObject<WarframeStats.WorldSpace.Root>(reader.ReadToEnd()); 
+            reader.Close(); reader.Dispose(); world_state_response.Close(); world_state_response.Dispose();
 
             #region Load Data
-            var objTxt = WorldState["Earth"];
-            WarframeStats.Earth.Data EarthState = JsonConvert.DeserializeObject<WarframeStats.Earth.Data>(objTxt.ToString());
-            CycleTimersInfoBox.Text += ($"The current earth state is {EarthState.State} time and will change in {EarthState.TimeLeft}." + Environment.NewLine);
+            CycleTimersInfoBox.Text += ($"The current earth state is {WorldInformation.EarthCycle.State} time and will change in {WorldInformation.EarthCycle.TimeLeft}." + Environment.NewLine);
+            CycleTimersInfoBox.Text += ($"The current cetus state is {WorldInformation.CetusCycle.State} time and will change in {WorldInformation.CetusCycle.TimeLeft}." + Environment.NewLine);
+            CycleTimersInfoBox.Text += ($"The current orb vallis state is {WorldInformation.VallisCycle.State} and will change in {WorldInformation.VallisCycle.TimeLeft}." + Environment.NewLine);
+            CycleTimersInfoBox.Text += ($"The current state of the cambion drift is {WorldInformation.CambionCycle.Active} and expires in {(Math.Round(DateTime.Now.Subtract(WorldInformation.CambionCycle.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours." + Environment.NewLine);
 
-            objTxt = WorldState["CetusCycle"];
-            WarframeStats.Cetus.Data CetusState = JsonConvert.DeserializeObject<WarframeStats.Cetus.Data>(objTxt.ToString());
-            CycleTimersInfoBox.Text += ($"The current cetus state is {CetusState.State} time and will change in {CetusState.TimeLeft}." + Environment.NewLine);
+            BaroInfoBox.Text += ($"{WorldInformation.VoidTrader.Character} arrives at {WorldInformation.VoidTrader.Location} at {WorldInformation.VoidTrader.Expiry}.") + Environment.NewLine;
+            ArbitrationInfoBox.Text += ($"{WorldInformation.Arbitration.Enemy} {WorldInformation.Arbitration.Type} on {WorldInformation.Arbitration.Node} and expires in{(Math.Round(DateTime.Now.Subtract(WorldInformation.Arbitration.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
 
-            objTxt = WorldState["VallisCycle"];
-            WarframeStats.OrbVallis.Data VallisState = JsonConvert.DeserializeObject<WarframeStats.OrbVallis.Data>(objTxt.ToString());
-            CycleTimersInfoBox.Text += ($"The current orb vallis state is {VallisState.State} and will change in {VallisState.TimeLeft}." + Environment.NewLine);
-
-            objTxt = WorldState["CambionCycle"];
-            WarframeStats.CambionCycle.Data CambionState = JsonConvert.DeserializeObject<WarframeStats.CambionCycle.Data>(objTxt.ToString());
-            CycleTimersInfoBox.Text += ($"The current state of the cambion drift is {CambionState.Active} and expires in {(Math.Round(DateTime.Now.Subtract(CambionState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours." + Environment.NewLine);
-
-            objTxt = WorldState["Baro"];
-            WarframeStats.Baro.Data BaroState = JsonConvert.DeserializeObject<WarframeStats.Baro.Data>(objTxt.ToString());
-            BaroInfoBox.Text += ($"{BaroState.Character} arrives at {BaroState.Location} at {BaroState.Expiry}.") + Environment.NewLine;
-
-            objTxt = WorldState["Arbitration"];
-            WarframeStats.Arbitration.ArbitrationMission ArbitrationState = JsonConvert.DeserializeObject<WarframeStats.Arbitration.ArbitrationMission>(objTxt.ToString());
-            ArbitrationInfoBox.Text += ($"{ArbitrationState.Enemy} {ArbitrationState.Type} on {ArbitrationState.Node} and expires in{(Math.Round(DateTime.Now.Subtract(ArbitrationState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
-
-            objTxt = WorldState["Sortie"];
-            WarframeStats.Sortie.Sortie SortieState = JsonConvert.DeserializeObject<WarframeStats.Sortie.Sortie>(objTxt.ToString());
-            SortieInfoBox.Text += ($"Daily sortie is {SortieState.Faction} {SortieState.Boss} and expires in{(Math.Round(DateTime.Now.Subtract(ArbitrationState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
-            for (int i = 0; i < SortieState.Variants.Count; i++)
+            SortieInfoBox.Text += ($"Daily sortie is {WorldInformation.Sortie.Faction} {WorldInformation.Sortie.Boss} and expires in{(Math.Round(DateTime.Now.Subtract(WorldInformation.Sortie.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
+            for (int i = 0; i < WorldInformation.Sortie.Variants.Count; i++)
             {
-                SortieInfoBox.Text += ($"{SortieState.Variants[i].Modifier} {SortieState.Variants[i].MissionType} on {SortieState.Variants[i].Node}" + Environment.NewLine);
+                SortieInfoBox.Text += ($"{WorldInformation.Sortie.Variants[i].Modifier} {WorldInformation.Sortie.Variants[i].MissionType} on {WorldInformation.Sortie.Variants[i].Node}" + Environment.NewLine);
             }
 
-            objTxt = WorldState["Fissures"];
-            List<WarframeStats.Fissures.FissureEvent> FissureState = JsonConvert.DeserializeObject<List<WarframeStats.Fissures.FissureEvent>>(objTxt.ToString());
-            FissureState.Sort(delegate (WarframeStats.Fissures.FissureEvent x, WarframeStats.Fissures.FissureEvent y)
+            WorldInformation.Fissures.Sort(delegate (WarframeStats.WorldSpace.Fissure x, WarframeStats.WorldSpace.Fissure y)
             {
                 return x.TierNum.CompareTo(y.TierNum);
             });
-            for (int i = 0; i < FissureState.Count; i++)
+            for (int i = 0; i < WorldInformation.Fissures.Count; i++)
             {
-                var expireTime = (Math.Round(DateTime.Now.Subtract(FissureState[i].Expiry).TotalMinutes * 10) / 10).ToString().Replace("-", "");
+                var expireTime = (Math.Round(DateTime.Now.Subtract(WorldInformation.Fissures[i].Expiry).TotalMinutes * 10) / 10).ToString().Replace("-", "");
                 if (double.Parse(expireTime) > 60)
                 {
-                    FissureInfoBox.Text += ($"Tier {FissureState[i].TierNum} {FissureState[i].Tier} Relic {FissureState[i].MissionType} Mission. Enemy Type {FissureState[i].Enemy} at {FissureState[i].Node} Expiring in {Math.Round(double.Parse(expireTime) / 60)} hours.") + Environment.NewLine;
+                    FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {Math.Round(double.Parse(expireTime) / 60)} hours.") + Environment.NewLine;
                 }
                 else
                 {
-                    FissureInfoBox.Text += ($"Tier {FissureState[i].TierNum} {FissureState[i].Tier} Relic {FissureState[i].MissionType} Mission. Enemy Type {FissureState[i].Enemy} at {FissureState[i].Node} Expiring in {expireTime} minutes.") + Environment.NewLine;
+                    FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {expireTime} minutes.") + Environment.NewLine;
                 }
             }
 
-            objTxt = WorldState["Nightwave"];
-            WarframeStats.Nightwave.Root NightwaveState = JsonConvert.DeserializeObject<WarframeStats.Nightwave.Root>(objTxt.ToString());
-            NightwaveChalContainer.Text = $"Nightwave Challenges For Season {NightwaveState.Season} Expires on {NightwaveState.Expiry}";
-            for (int i = 0; i < NightwaveState.ActiveChallenges.Count; i++)
+            NightwaveChalContainer.Text = $"Nightwave Challenges For Season {WorldInformation.Nightwave.Season} Expires on {WorldInformation.Nightwave.Expiry}";
+            for (int i = 0; i < WorldInformation.Nightwave.ActiveChallenges.Count; i++)
             {
-                NightwaveInfoBox.Text += ($"{NightwaveState.ActiveChallenges[i].Desc} for {NightwaveState.ActiveChallenges[i].Reputation} points. Expires on {NightwaveState.ActiveChallenges[i].Expiry}" + Environment.NewLine);
+                NightwaveInfoBox.Text += ($"{WorldInformation.Nightwave.ActiveChallenges[i].Desc} for {WorldInformation.Nightwave.ActiveChallenges[i].Reputation} points. Expires on {WorldInformation.Nightwave.ActiveChallenges[i].Expiry}" + Environment.NewLine);
             }
 
-            objTxt = WorldState["Syndicate"];
-            List<WarframeStats.Syndicate.Mission> SyndicateState = JsonConvert.DeserializeObject<List<WarframeStats.Syndicate.Mission>>(objTxt.ToString());
-            SyndicateInfoBox.Text = $"Nightwave Challenges For Season {NightwaveState.Season} Expires on {NightwaveState.Expiry}";
-            for (int i = 0; i < SyndicateState.Count; i++)
+            SyndicateInfoBox.Text = $"";
+            for (int i = 0; i < WorldInformation.SyndicateMissions.Count; i++)
             {
                 SyndicateInfoBox.Text += ($"" + Environment.NewLine);
             }
-
             #endregion
         }
 
