@@ -32,6 +32,18 @@ namespace WarframeTracker
         public string local_Json_directory = Environment.CurrentDirectory.ToString() + "/data/json";
         public string local_media_directory = Environment.CurrentDirectory.ToString() + "/data/img/";
         public bool DebugMode = true;
+
+        List<Items.Warframes.Root> Warframes;
+        List<Items.PrimaryWeapons.Root> Primary_Weapons;
+        List<Items.SecondaryWeapons.Root> Secondary_Weapons;
+        List<Items.Melee.Root> Melee_Weapons;
+        List<Items.Sentinels.Root> Sentinel_List;
+        List<Items.Pets.Root> Pets_List;
+        List<Items.Archwing.Root> Archwings;
+        List<Items.ArcGun.Root> ArchGuns;
+        List<Items.ArcMelee.Root> ArcMelee;
+        List<Items.Arcanes.Root> Arcanes;
+        List<Items.Mods.Root> Mods;
         #endregion
 
         #region Form Events
@@ -58,8 +70,6 @@ namespace WarframeTracker
         {
             try
             {
-                List<Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
-
                 foreach (Items.Warframes.Root frame in Warframes)
                 {
                     if (frame.Name.ToString() == WarframeComboBox.SelectedItem.ToString())
@@ -193,9 +203,7 @@ namespace WarframeTracker
 
             try
             {
-                List<Items.PrimaryWeapons.Root> Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
-
-                foreach (Items.PrimaryWeapons.Root Weapon in Weapons)
+                foreach (Items.PrimaryWeapons.Root Weapon in Primary_Weapons)
                 {
                     if (Weapon.Name.ToString() == PrimaryWeaponComboBox.SelectedItem.ToString())
                     {
@@ -417,6 +425,11 @@ namespace WarframeTracker
                 }
             }
         }
+
+        private void SecondaryWeaponsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
         #region Data Generation Code
@@ -486,7 +499,7 @@ namespace WarframeTracker
             #endregion
 
             #region Warframes
-            List<Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
+            Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
 
             foreach (Items.Warframes.Root frame in Warframes)
             {
@@ -495,7 +508,7 @@ namespace WarframeTracker
             #endregion
 
             #region Load Primary Weapons
-            List<Items.PrimaryWeapons.Root> Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
+            Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
 
             foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
             {
@@ -507,7 +520,7 @@ namespace WarframeTracker
             #endregion
 
             #region Load Secondary Weapons
-            List<Items.SecondaryWeapons.Root> Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
+            Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
 
             foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
             {
@@ -519,11 +532,12 @@ namespace WarframeTracker
             #endregion
 
             #region Load Melee Weapons
+            Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json"));
 
-            #endregion
-
-            #region Load Companion Data
-
+            foreach (Items.Melee.Root Melee_Weapon in Melee_Weapons)
+            {
+                MeleeWeaponsComboBox.Items.Add(Melee_Weapon.Name.ToString());
+            }
             #endregion
 
             #region Load World State Data
@@ -613,6 +627,9 @@ namespace WarframeTracker
         #region World Cycle Context Menu
 
         #endregion
+
         #endregion
+
+        
     }
 }
