@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
-using WarframeTracker.SerializationWrappers.Base.Old;
 using WarframeTracker.WebInterface;
 using System.Net;
 using System.Drawing;
@@ -13,9 +12,13 @@ using System.Threading;
 namespace WarframeTracker
 {
     /// <summary> ACTIVE BUGS DIRECTORY
-    /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on.
+    /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on. (no damage, components or drop data)
     /// [Identified] Necrophage frames dont have images yet.
     /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
+    /// [Identified] Equinox frame doesnt update components.
+    /// [Fixed] Corvas not showing component information correctly.
+    /// [Fixed] Previous fix for weapons with less than 4 components broke the way components work, another fix is needed.
+    /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
     /// </summary>
 
     public partial class Form1 : Form
@@ -55,9 +58,9 @@ namespace WarframeTracker
         {
             try
             {
-                List<SerializationWrappers.WarframeAPI.Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
+                List<Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
 
-                foreach (SerializationWrappers.WarframeAPI.Items.Warframes.Root frame in Warframes)
+                foreach (Items.Warframes.Root frame in Warframes)
                 {
                     if (frame.Name.ToString() == WarframeComboBox.SelectedItem.ToString())
                     {
@@ -81,7 +84,7 @@ namespace WarframeTracker
                         if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription.ToString(); }
 
                         //Warframe Componets, Drop Locations, Chances, Etc
-                        foreach (SerializationWrappers.WarframeAPI.Items.Warframes.Component comp in frame.Components)
+                        foreach (Items.Warframes.Component comp in frame.Components)
                         {
                             switch (comp.Name)
                             {
@@ -190,9 +193,9 @@ namespace WarframeTracker
 
             try
             {
-                List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root> Weapons = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
+                List<Items.PrimaryWeapons.Root> Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
 
-                foreach (SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root Weapon in Weapons)
+                foreach (Items.PrimaryWeapons.Root Weapon in Weapons)
                 {
                     if (Weapon.Name.ToString() == PrimaryWeaponComboBox.SelectedItem.ToString())
                     {
@@ -219,45 +222,44 @@ namespace WarframeTracker
 
                         if (Weapon.Components != null)
                         {
-                            if (Weapon.Components.Count == 1)
+                            for (int i = 0; i < Weapon.Components.Count; i++)
                             {
-                                //Set foundry component information
-                                PWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
-                                PWFoundrySlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
-                                toolTip1.SetToolTip(PWFoundrySlot0Txt, Weapon.Components[0].Name);
-                                toolTip1.SetToolTip(PWFoundrySlot0Img, Weapon.Components[0].Name);
-                            }
-
-                            if (Weapon.Components.Count == 2)
-                            {
-                                PWFoundrySlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
-                                PWFoundrySlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
-                                toolTip1.SetToolTip(PWFoundrySlot1Txt, Weapon.Components[1].Name);
-                                toolTip1.SetToolTip(PWFoundrySlot1Img, Weapon.Components[1].Name);
-                            }
-
-                            if (Weapon.Components.Count == 3)
-                            {
-                                PWFoundrySlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
-                                PWFoundrySlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
-                                toolTip1.SetToolTip(PWFoundrySlot2Txt, Weapon.Components[2].Name);
-                                toolTip1.SetToolTip(PWFoundrySlot2Img, Weapon.Components[2].Name);
-                            }
-
-                            if (Weapon.Components.Count == 4)
-                            {
-                                PWFoundrySlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
-                                PWFoundrySlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
-                                toolTip1.SetToolTip(PWFoundrySlot3Txt, Weapon.Components[3].Name);
-                                toolTip1.SetToolTip(PWFoundrySlot3Img, Weapon.Components[3].Name);
-                            }
-
-                            if (Weapon.Components.Count == 5)
-                            {
-                                PWFoundrySlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
-                                PWFoundrySlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
-                                toolTip1.SetToolTip(PWFoundrySlot4Txt, Weapon.Components[4].Name);
-                                toolTip1.SetToolTip(PWFoundrySlot4Img, Weapon.Components[4].Name);
+                                if (i == 0)
+                                {
+                                    //Set foundry component information
+                                    PWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
+                                    PWFoundrySlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
+                                    toolTip1.SetToolTip(PWFoundrySlot0Txt, Weapon.Components[0].Name);
+                                    toolTip1.SetToolTip(PWFoundrySlot0Img, Weapon.Components[0].Name);
+                                }
+                                else if (i == 1)
+                                {
+                                    PWFoundrySlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
+                                    PWFoundrySlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
+                                    toolTip1.SetToolTip(PWFoundrySlot1Txt, Weapon.Components[1].Name);
+                                    toolTip1.SetToolTip(PWFoundrySlot1Img, Weapon.Components[1].Name);
+                                }
+                                else if (i == 2)
+                                {
+                                    PWFoundrySlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
+                                    PWFoundrySlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
+                                    toolTip1.SetToolTip(PWFoundrySlot2Txt, Weapon.Components[2].Name);
+                                    toolTip1.SetToolTip(PWFoundrySlot2Img, Weapon.Components[2].Name);
+                                }
+                                else if (i == 3)
+                                {
+                                    PWFoundrySlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
+                                    PWFoundrySlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
+                                    toolTip1.SetToolTip(PWFoundrySlot3Txt, Weapon.Components[3].Name);
+                                    toolTip1.SetToolTip(PWFoundrySlot3Img, Weapon.Components[3].Name);
+                                }
+                                else if (i == 4)
+                                {
+                                    PWFoundrySlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
+                                    PWFoundrySlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
+                                    toolTip1.SetToolTip(PWFoundrySlot4Txt, Weapon.Components[4].Name);
+                                    toolTip1.SetToolTip(PWFoundrySlot4Img, Weapon.Components[4].Name);
+                                }
                             }
                         }
 
@@ -512,31 +514,31 @@ namespace WarframeTracker
 
             #region Load Data
             var objTxt = WorldState["Earth"];
-            SerializationWrappers.WarframeStats.Earth.Data EarthState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Earth.Data>(objTxt.ToString());
+            WarframeStats.Earth.Data EarthState = JsonConvert.DeserializeObject<WarframeStats.Earth.Data>(objTxt.ToString());
             CycleTimersInfoBox.Text += ($"The current earth state is {EarthState.State} time and will change in {EarthState.TimeLeft}." + Environment.NewLine);
 
             objTxt = WorldState["CetusCycle"];
-            SerializationWrappers.WarframeStats.Cetus.Data CetusState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Cetus.Data>(objTxt.ToString());
+            WarframeStats.Cetus.Data CetusState = JsonConvert.DeserializeObject<WarframeStats.Cetus.Data>(objTxt.ToString());
             CycleTimersInfoBox.Text += ($"The current cetus state is {CetusState.State} time and will change in {CetusState.TimeLeft}." + Environment.NewLine);
 
             objTxt = WorldState["VallisCycle"];
-            SerializationWrappers.WarframeStats.OrbVallis.Data VallisState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.OrbVallis.Data>(objTxt.ToString());
+            WarframeStats.OrbVallis.Data VallisState = JsonConvert.DeserializeObject<WarframeStats.OrbVallis.Data>(objTxt.ToString());
             CycleTimersInfoBox.Text += ($"The current orb vallis state is {VallisState.State} and will change in {VallisState.TimeLeft}." + Environment.NewLine);
 
             objTxt = WorldState["CambionCycle"];
-            SerializationWrappers.WarframeStats.CambionCycle.Data CambionState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.CambionCycle.Data>(objTxt.ToString());
+            WarframeStats.CambionCycle.Data CambionState = JsonConvert.DeserializeObject<WarframeStats.CambionCycle.Data>(objTxt.ToString());
             CycleTimersInfoBox.Text += ($"The current state of the cambion drift is {CambionState.Active} and expires in {(Math.Round(DateTime.Now.Subtract(CambionState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours." + Environment.NewLine);
 
             objTxt = WorldState["Baro"];
-            SerializationWrappers.WarframeStats.Baro.Data BaroState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Baro.Data>(objTxt.ToString());
+            WarframeStats.Baro.Data BaroState = JsonConvert.DeserializeObject<WarframeStats.Baro.Data>(objTxt.ToString());
             BaroInfoBox.Text += ($"{BaroState.Character} arrives at {BaroState.Location} at {BaroState.Expiry}.") + Environment.NewLine;
 
             objTxt = WorldState["Arbitration"];
-            SerializationWrappers.WarframeStats.Arbitration.ArbitrationMission ArbitrationState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Arbitration.ArbitrationMission>(objTxt.ToString());
+            WarframeStats.Arbitration.ArbitrationMission ArbitrationState = JsonConvert.DeserializeObject<WarframeStats.Arbitration.ArbitrationMission>(objTxt.ToString());
             ArbitrationInfoBox.Text += ($"{ArbitrationState.Enemy} {ArbitrationState.Type} on {ArbitrationState.Node} and expires in{(Math.Round(DateTime.Now.Subtract(ArbitrationState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
 
             objTxt = WorldState["Sortie"];
-            SerializationWrappers.WarframeStats.Sortie.Sortie SortieState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Sortie.Sortie>(objTxt.ToString());
+            WarframeStats.Sortie.Sortie SortieState = JsonConvert.DeserializeObject<WarframeStats.Sortie.Sortie>(objTxt.ToString());
             SortieInfoBox.Text += ($"Daily sortie is {SortieState.Faction} {SortieState.Boss} and expires in{(Math.Round(DateTime.Now.Subtract(ArbitrationState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
             for (int i = 0; i < SortieState.Variants.Count; i++)
             {
@@ -544,8 +546,8 @@ namespace WarframeTracker
             }
 
             objTxt = WorldState["Fissures"];
-            List<SerializationWrappers.WarframeStats.Fissures.FissureEvent> FissureState = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeStats.Fissures.FissureEvent>>(objTxt.ToString());
-            FissureState.Sort(delegate (SerializationWrappers.WarframeStats.Fissures.FissureEvent x, SerializationWrappers.WarframeStats.Fissures.FissureEvent y)
+            List<WarframeStats.Fissures.FissureEvent> FissureState = JsonConvert.DeserializeObject<List<WarframeStats.Fissures.FissureEvent>>(objTxt.ToString());
+            FissureState.Sort(delegate (WarframeStats.Fissures.FissureEvent x, WarframeStats.Fissures.FissureEvent y)
             {
                 return x.TierNum.CompareTo(y.TierNum);
             });
@@ -563,12 +565,21 @@ namespace WarframeTracker
             }
 
             objTxt = WorldState["Nightwave"];
-            SerializationWrappers.WarframeStats.Nightwave.Root NightwaveState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Nightwave.Root>(objTxt.ToString());
+            WarframeStats.Nightwave.Root NightwaveState = JsonConvert.DeserializeObject<WarframeStats.Nightwave.Root>(objTxt.ToString());
             NightwaveChalContainer.Text = $"Nightwave Challenges For Season {NightwaveState.Season} Expires on {NightwaveState.Expiry}";
             for (int i = 0; i < NightwaveState.ActiveChallenges.Count; i++)
             {
                 NightwaveInfoBox.Text += ($"{NightwaveState.ActiveChallenges[i].Desc} for {NightwaveState.ActiveChallenges[i].Reputation} points. Expires on {NightwaveState.ActiveChallenges[i].Expiry}" + Environment.NewLine);
             }
+
+            objTxt = WorldState["Syndicate"];
+            List<WarframeStats.Syndicate.Mission> SyndicateState = JsonConvert.DeserializeObject<List<WarframeStats.Syndicate.Mission>>(objTxt.ToString());
+            SyndicateInfoBox.Text = $"Nightwave Challenges For Season {NightwaveState.Season} Expires on {NightwaveState.Expiry}";
+            for (int i = 0; i < SyndicateState.Count; i++)
+            {
+                SyndicateInfoBox.Text += ($"" + Environment.NewLine);
+            }
+
             #endregion
         }
 
@@ -583,18 +594,18 @@ namespace WarframeTracker
             #endregion
 
             #region Warframes
-            List<SerializationWrappers.WarframeAPI.Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
+            List<Items.Warframes.Root> Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
 
-            foreach (SerializationWrappers.WarframeAPI.Items.Warframes.Root frame in Warframes)
+            foreach (Items.Warframes.Root frame in Warframes)
             {
                 WarframeComboBox.Items.Add(frame.Name.ToString());
             }
             #endregion
 
             #region Load Primary Weapons
-            List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root> Primary_Weapons = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
+            List<Items.PrimaryWeapons.Root> Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
 
-            foreach (SerializationWrappers.WarframeAPI.Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
+            foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
             {
                 if (Primary_Weapon.ProductCategory != "SentinelWeapons")
                 {
@@ -604,9 +615,9 @@ namespace WarframeTracker
             #endregion
 
             #region Load Secondary Weapons
-            List<SerializationWrappers.WarframeAPI.Items.SecondaryWeapons.Root> Secondary_Weapons = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeAPI.Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
+            List<Items.SecondaryWeapons.Root> Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
 
-            foreach (SerializationWrappers.WarframeAPI.Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
+            foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
             {
                 if (Secondary_Weapon.ProductCategory != "SentinelWeapons")
                 {

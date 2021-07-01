@@ -6,3 +6,4 @@ WarframeTracker/obj/Debug/net5.0-windows/WarframeTracker.pdb
 WarframeTracker/bin/Debug/net5.0-windows/data/log.txt
 *.dll
 WarframeTracker/bin/Debug/net5.0-windows/data/log.txt
+*.txt

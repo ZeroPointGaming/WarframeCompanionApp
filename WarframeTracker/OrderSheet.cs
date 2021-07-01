@@ -53,14 +53,14 @@ namespace WarframeTracker
                     var ObjText = reader.ReadToEnd();
                     reader.Close(); reader.Dispose();
 
-                    SerializationWrappers.WarframeMarket.ItemOrders.Root Orders = JsonConvert.DeserializeObject<SerializationWrappers.WarframeMarket.ItemOrders.Root>(ObjText);
+                    WarframeMarket.ItemOrders.Root Orders = JsonConvert.DeserializeObject<WarframeMarket.ItemOrders.Root>(ObjText);
 
-                    Orders.Payload.Orders.Sort(delegate (SerializationWrappers.WarframeMarket.ItemOrders.Order x, SerializationWrappers.WarframeMarket.ItemOrders.Order y)
+                    Orders.Payload.Orders.Sort(delegate (WarframeMarket.ItemOrders.Order x, WarframeMarket.ItemOrders.Order y)
                     {
                         return x.Platinum.CompareTo(y.Platinum);
                     });
 
-                    foreach (SerializationWrappers.WarframeMarket.ItemOrders.Order _order in Orders.Payload.Orders)
+                    foreach (WarframeMarket.ItemOrders.Order _order in Orders.Payload.Orders)
                     {
                         Label new_label = new Label();
                         new_label.Text = _order.OrderType + " order posted by " + _order.User.IngameName + " who is " + _order.User.Status + " asking price is " + _order.Platinum + " on " + _order.Platform;
