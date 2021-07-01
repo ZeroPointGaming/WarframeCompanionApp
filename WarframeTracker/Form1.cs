@@ -13,7 +13,10 @@ using System.Threading;
 namespace WarframeTracker
 {
     /// <summary> ACTIVE BUGS DIRECTORY
-    /// FLUCTUS Weapon has a empty page, need to look into what is going on.
+    /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on.
+    /// [Identified] Necrophage frames dont have images yet.
+    /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
+    /// [FIXED] Selecting a necrophage from the warframes list causes NullReferenceException 
     /// </summary>
 
     public partial class Form1 : Form
@@ -75,7 +78,8 @@ namespace WarframeTracker
                         WarframeAbilityTextbox3.Text = frame.Abilities[2].Description.ToString();
                         WarframeAbilityGroupbox4.Text = frame.Abilities[3].Name.ToString();
                         WarframeAbilityTextbox4.Text = frame.Abilities[3].Description.ToString();
-                        PassiveAbilityTextbox.Text = frame.PassiveDescription.ToString();
+
+                        if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription.ToString(); }
 
                         //Warframe Componets, Drop Locations, Chances, Etc
                         foreach (SerializationWrappers.WarframeAPI.Items.Warframes.Component comp in frame.Components)

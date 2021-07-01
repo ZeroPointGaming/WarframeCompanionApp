@@ -569,3 +569,12 @@ Updated UI for Strun Wraith
 Updated UI for Tetra
 Updated UI for Tiberon Prime
 Updated UI for Velocitus
+Updated UI for Boar
+Updated UI for Tigris
+Updated UI for Zephyr Prime
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Voidrig
+Updated UI for Bonewidow
+Updated UI for Ember Prime
+Updated UI for Bonewidow
