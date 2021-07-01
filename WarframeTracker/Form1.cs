@@ -7,6 +7,7 @@ using WarframeTracker.SerializationWrappers.Base.Old;
 using WarframeTracker.WebInterface;
 using System.Net;
 using System.Drawing;
+using System.Threading;
 //lzma compression using SevenZip.Compression.LZMA;
 
 namespace WarframeTracker
@@ -410,6 +411,85 @@ namespace WarframeTracker
         #endregion
 
         #region Data Generation Code
+        Dictionary<string, object> WorldState = new Dictionary<string, object>();
+
+        private void LoadWorldState()
+        {
+            StreamReader reader;
+
+            HttpWebRequest world_state_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "WorldState", "pc");
+            HttpWebResponse world_state_response = WebManager.GenerateResponse(world_state_request);
+
+            HttpWebRequest cambion_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "CambionCycle", "pc");
+            HttpWebResponse combion_response = WebManager.GenerateResponse(cambion_request);
+
+            HttpWebRequest cetus_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "CetusCycle", "pc");
+            HttpWebResponse cetus_response = WebManager.GenerateResponse(cetus_request);
+
+            HttpWebRequest vallis_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "OrbVallis", "pc");
+            HttpWebResponse vallis_response = WebManager.GenerateResponse(vallis_request);
+
+            HttpWebRequest baro_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Baro", "pc");
+            HttpWebResponse baro_response = WebManager.GenerateResponse(baro_request);
+
+            HttpWebRequest invasion_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Invasions", "pc");
+            HttpWebResponse invasion_response = WebManager.GenerateResponse(invasion_request);
+
+            HttpWebRequest fissure_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Fissures", "pc");
+            HttpWebResponse fissure_response = WebManager.GenerateResponse(fissure_request);
+
+            HttpWebRequest syndicate_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Syndicate", "pc");
+            HttpWebResponse syndicate_response = WebManager.GenerateResponse(syndicate_request);
+
+            HttpWebRequest news_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "News", "pc");
+            HttpWebResponse news_response = WebManager.GenerateResponse(news_request);
+
+            HttpWebRequest nightwave_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Nightwave", "pc");
+            HttpWebResponse nightwave_response = WebManager.GenerateResponse(nightwave_request);
+
+            HttpWebRequest sortie_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Sortie", "pc");
+            HttpWebResponse sortie_response = WebManager.GenerateResponse(sortie_request);
+
+            HttpWebRequest earth_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Earth", "pc");
+            HttpWebResponse earth_response = WebManager.GenerateResponse(earth_request);
+
+            reader = new StreamReader(world_state_response.GetResponseStream());
+            WorldState.Add("WorldState", reader.ReadToEnd()); reader.Close(); world_state_response.Close();world_state_response.Dispose();
+
+            reader = new StreamReader(combion_response.GetResponseStream());
+            WorldState.Add("CambionCycle", reader.ReadToEnd()); reader.Close(); combion_response.Close(); combion_response.Dispose();
+
+            reader = new StreamReader(cetus_response.GetResponseStream());
+            WorldState.Add("CetusCycle", reader.ReadToEnd()); reader.Close(); cetus_response.Close(); cetus_response.Dispose();
+
+            reader = new StreamReader(vallis_response.GetResponseStream());
+            WorldState.Add("VallisCycle", reader.ReadToEnd()); reader.Close(); vallis_response.Close(); vallis_response.Dispose();
+
+            reader = new StreamReader(baro_response.GetResponseStream());
+            WorldState.Add("Baro", reader.ReadToEnd()); reader.Close(); baro_response.Close(); baro_response.Dispose();
+
+            reader = new StreamReader(invasion_response.GetResponseStream());
+            WorldState.Add("Invasion", reader.ReadToEnd()); reader.Close(); invasion_response.Close(); invasion_response.Dispose();
+
+            reader = new StreamReader(fissure_response.GetResponseStream());
+            WorldState.Add("Fissure", reader.ReadToEnd()); reader.Close(); fissure_response.Close(); fissure_response.Dispose();
+
+            reader = new StreamReader(syndicate_response.GetResponseStream());
+            WorldState.Add("Syndicate", reader.ReadToEnd()); reader.Close(); syndicate_response.Close(); syndicate_response.Dispose();
+
+            reader = new StreamReader(news_response.GetResponseStream());
+            WorldState.Add("News", reader.ReadToEnd()); reader.Close(); news_response.Close(); news_response.Dispose();
+
+            reader = new StreamReader(nightwave_response.GetResponseStream());
+            WorldState.Add("Nightwave", reader.ReadToEnd()); reader.Close(); nightwave_response.Close(); nightwave_response.Dispose();
+
+            reader = new StreamReader(sortie_response.GetResponseStream());
+            WorldState.Add("Sortie", reader.ReadToEnd()); reader.Close(); sortie_response.Close(); sortie_response.Dispose();
+
+            reader = new StreamReader(earth_response.GetResponseStream());
+            WorldState.Add("Earth", reader.ReadToEnd()); reader.Close(); earth_response.Close(); earth_response.Dispose(); reader.Dispose();
+        }
+
         /// <summary>
         /// Generate & Regenerate all application data.
         /// </summary>
@@ -462,8 +542,8 @@ namespace WarframeTracker
             #endregion
 
             #region Load World State Data
-
-            #endregion 
+            LoadWorldState();
+            #endregion
         }
         #endregion
 

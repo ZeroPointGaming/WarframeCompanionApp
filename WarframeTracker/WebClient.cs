@@ -24,7 +24,7 @@ namespace WarframeTracker.WebInterface
         /// <param name="url_name">An api query string for Warframe.Market api calls.</param>
         /// <param name="request_type">A String type which will return the requested api request.</param>
         /// <returns></returns>
-        public HttpWebRequest GenerateRequest(string url_name, string request_type)
+        public HttpWebRequest GenerateRequest(string url_name, string request_type, string platform = "pc")
         {
             switch (request_type)
             {
@@ -43,7 +43,42 @@ namespace WarframeTracker.WebInterface
                 #endregion
 
                 #region Warframestatus.us Requests
-
+                case "WorldState":
+                    HttpWebRequest world_state_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}");
+                    return world_state_request;
+                case "CambionCycle":
+                    HttpWebRequest cambion_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/cambionCycle");
+                    return cambion_request;
+                case "CetusCycle":
+                    HttpWebRequest cetus_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/cetusCycle");
+                    return cetus_request;
+                case "OrbVallis":
+                    HttpWebRequest vallis_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/vallisCycle");
+                    return vallis_request;
+                case "Baro":
+                    HttpWebRequest baro_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/voidTrader");
+                    return baro_request;
+                case "Invasions":
+                    HttpWebRequest invasions_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/invasions");
+                    return invasions_request;
+                case "Fissures":
+                    HttpWebRequest fissure_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/fissures");
+                    return fissure_request;
+                case "Syndicate":
+                    HttpWebRequest syndicate_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/syndicateMissions");
+                    return syndicate_request;
+                case "News":
+                    HttpWebRequest news_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/news");
+                    return news_request;
+                case "Nightwave":
+                    HttpWebRequest nightwave_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/nightwave");
+                    return nightwave_request;
+                case "Sortie":
+                    HttpWebRequest sortie_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/sortie");
+                    return sortie_request;
+                case "Earth":
+                    HttpWebRequest earth_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}/earthCycle");
+                    return earth_request;
                 #endregion
 
                 #region Warframe API Requests
