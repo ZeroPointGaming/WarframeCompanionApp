@@ -3749,6 +3749,518 @@ namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.ArgMelee
 
 
 }
+
+/// <summary>
+/// Read Mods.json from hardcoded data files on disk. Prechached files fetched from Warframe api, Will integrate the api call here at some point [LZMA Implementation]
+/// </summary>
+namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Mods
+{
+    public class LevelStat
+    {
+        [JsonProperty("stats")]
+        public List<string> Stats;
+    }
+
+    public class Drop
+    {
+        [JsonProperty("location")]
+        public string Location;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("chance")]
+        public double? Chance;
+
+        [JsonProperty("rarity")]
+        public string Rarity;
+    }
+
+    public class Patchlog
+    {
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("date")]
+        public DateTime Date;
+
+        [JsonProperty("url")]
+        public string Url;
+
+        [JsonProperty("additions")]
+        public string Additions;
+
+        [JsonProperty("changes")]
+        public string Changes;
+
+        [JsonProperty("fixes")]
+        public string Fixes;
+
+        [JsonProperty("imgUrl")]
+        public string ImgUrl;
+    }
+
+    public class UpgradeValue
+    {
+        [JsonProperty("value")]
+        public double Value;
+
+        [JsonProperty("locTag")]
+        public string LocTag;
+
+        [JsonProperty("reverseValueSymbol")]
+        public bool? ReverseValueSymbol;
+    }
+
+    public class UpgradeEntry
+    {
+        [JsonProperty("tag")]
+        public string Tag;
+
+        [JsonProperty("prefixTag")]
+        public string PrefixTag;
+
+        [JsonProperty("suffixTag")]
+        public string SuffixTag;
+
+        [JsonProperty("upgradeValues")]
+        public List<UpgradeValue> UpgradeValues;
+    }
+
+    public class Complication
+    {
+        [JsonProperty("fullName")]
+        public string FullName;
+
+        [JsonProperty("description")]
+        public string Description;
+    }
+
+    public class AvailableChallenge
+    {
+        [JsonProperty("fullName")]
+        public string FullName;
+
+        [JsonProperty("description")]
+        public string Description;
+
+        [JsonProperty("complications")]
+        public List<Complication> Complications;
+    }
+
+    public class Root
+    {
+        [JsonProperty("uniqueName")]
+        public string UniqueName;
+
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("polarity")]
+        public string Polarity;
+
+        [JsonProperty("rarity")]
+        public string Rarity;
+
+        [JsonProperty("baseDrain")]
+        public int BaseDrain;
+
+        [JsonProperty("fusionLimit")]
+        public int FusionLimit;
+
+        [JsonProperty("compatName")]
+        public string CompatName;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("levelStats")]
+        public List<LevelStat> LevelStats;
+
+        [JsonProperty("imageName")]
+        public string ImageName;
+
+        [JsonProperty("category")]
+        public string Category;
+
+        [JsonProperty("isAugment")]
+        public bool IsAugment;
+
+        [JsonProperty("tradable")]
+        public bool Tradable;
+
+        [JsonProperty("wikiaThumbnail")]
+        public string WikiaThumbnail;
+
+        [JsonProperty("wikiaUrl")]
+        public string WikiaUrl;
+
+        [JsonProperty("transmutable")]
+        public bool Transmutable;
+
+        [JsonProperty("drops")]
+        public List<Drop> Drops;
+
+        [JsonProperty("patchlogs")]
+        public List<Patchlog> Patchlogs;
+
+        [JsonProperty("isUtility")]
+        public bool? IsUtility;
+
+        [JsonProperty("modSet")]
+        public string ModSet;
+
+        [JsonProperty("isExilus")]
+        public bool? IsExilus;
+
+        [JsonProperty("excludeFromCodex")]
+        public bool? ExcludeFromCodex;
+
+        [JsonProperty("description")]
+        public string Description;
+
+        [JsonProperty("upgradeEntries")]
+        public List<UpgradeEntry> UpgradeEntries;
+
+        [JsonProperty("availableChallenges")]
+        public List<AvailableChallenge> AvailableChallenges;
+
+        [JsonProperty("modSetValues")]
+        public List<double> ModSetValues;
+    }
+
+
+}
+
+/// <summary>
+/// Read Arcanes.json from hardcoded data files on disk. Prechached files fetched from Warframe api, Will integrate the api call here at some point [LZMA Implementation]
+/// </summary>
+namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Arcanes
+{
+    public class Drop
+    {
+        [JsonProperty("location")]
+        public string Location;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("chance")]
+        public double Chance;
+
+        [JsonProperty("rarity")]
+        public string Rarity;
+    }
+
+    public class Patchlog
+    {
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("date")]
+        public DateTime Date;
+
+        [JsonProperty("url")]
+        public string Url;
+
+        [JsonProperty("additions")]
+        public string Additions;
+
+        [JsonProperty("changes")]
+        public string Changes;
+
+        [JsonProperty("fixes")]
+        public string Fixes;
+
+        [JsonProperty("imgUrl")]
+        public string ImgUrl;
+    }
+
+    public class LevelStat
+    {
+        [JsonProperty("stats")]
+        public List<string> Stats;
+    }
+
+    public class Component
+    {
+        [JsonProperty("uniqueName")]
+        public string UniqueName;
+
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("itemCount")]
+        public int ItemCount;
+
+        [JsonProperty("imageName")]
+        public string ImageName;
+
+        [JsonProperty("tradable")]
+        public bool Tradable;
+
+        [JsonProperty("description")]
+        public string Description;
+
+        [JsonProperty("drops")]
+        public List<Drop> Drops;
+    }
+
+    public class Root
+    {
+        [JsonProperty("uniqueName")]
+        public string UniqueName;
+
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("excludeFromCodex")]
+        public bool ExcludeFromCodex;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("imageName")]
+        public string ImageName;
+
+        [JsonProperty("category")]
+        public string Category;
+
+        [JsonProperty("tradable")]
+        public bool Tradable;
+
+        [JsonProperty("drops")]
+        public List<Drop> Drops;
+
+        [JsonProperty("patchlogs")]
+        public List<Patchlog> Patchlogs;
+
+        [JsonProperty("rarity")]
+        public string Rarity;
+
+        [JsonProperty("levelStats")]
+        public List<LevelStat> LevelStats;
+
+        [JsonProperty("buildPrice")]
+        public int? BuildPrice;
+
+        [JsonProperty("buildTime")]
+        public int? BuildTime;
+
+        [JsonProperty("skipBuildTimePrice")]
+        public int? SkipBuildTimePrice;
+
+        [JsonProperty("buildQuantity")]
+        public int? BuildQuantity;
+
+        [JsonProperty("consumeOnBuild")]
+        public bool? ConsumeOnBuild;
+
+        [JsonProperty("components")]
+        public List<Component> Components;
+    }
+
+
+}
+
+/// <summary>
+/// Read Fish.json from hardcoded data files on disk. Prechached files fetched from Warframe api, Will integrate the api call here at some point [LZMA Implementation]
+/// </summary>
+namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Fish
+{
+    public class Patchlog
+    {
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("date")]
+        public DateTime Date;
+
+        [JsonProperty("url")]
+        public string Url;
+
+        [JsonProperty("additions")]
+        public string Additions;
+
+        [JsonProperty("changes")]
+        public string Changes;
+
+        [JsonProperty("fixes")]
+        public string Fixes;
+
+        [JsonProperty("imgUrl")]
+        public string ImgUrl;
+    }
+
+    public class Drop
+    {
+        [JsonProperty("location")]
+        public string Location;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("chance")]
+        public double Chance;
+
+        [JsonProperty("rarity")]
+        public string Rarity;
+    }
+
+    public class Root
+    {
+        [JsonProperty("uniqueName")]
+        public string UniqueName;
+
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("description")]
+        public string Description;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("imageName")]
+        public string ImageName;
+
+        [JsonProperty("category")]
+        public string Category;
+
+        [JsonProperty("tradable")]
+        public bool Tradable;
+
+        [JsonProperty("patchlogs")]
+        public List<Patchlog> Patchlogs;
+
+        [JsonProperty("drops")]
+        public List<Drop> Drops;
+
+        [JsonProperty("excludeFromCodex")]
+        public bool? ExcludeFromCodex;
+    }
+
+
+}
+
+/// <summary>
+/// Read Enemy.json from hardcoded data files on disk. Prechached files fetched from Warframe api, Will integrate the api call here at some point [LZMA Implementation]
+/// </summary>
+namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Enemies
+{
+    public class Drop
+    {
+        [JsonProperty("location")]
+        public string Location;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("rarity")]
+        public string Rarity;
+
+        [JsonProperty("chance")]
+        public double? Chance;
+
+        [JsonProperty("rotation")]
+        public string Rotation;
+    }
+
+    public class Affector
+    {
+        [JsonProperty("element")]
+        public string Element;
+
+        [JsonProperty("modifier")]
+        public double Modifier;
+    }
+
+    public class Resistance
+    {
+        [JsonProperty("amount")]
+        public int Amount;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("affectors")]
+        public List<Affector> Affectors;
+    }
+
+    public class Patchlog
+    {
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("date")]
+        public DateTime Date;
+
+        [JsonProperty("url")]
+        public string Url;
+
+        [JsonProperty("imgUrl")]
+        public string ImgUrl;
+
+        [JsonProperty("additions")]
+        public string Additions;
+
+        [JsonProperty("changes")]
+        public string Changes;
+
+        [JsonProperty("fixes")]
+        public string Fixes;
+    }
+
+    public class Root
+    {
+        [JsonProperty("uniqueName")]
+        public string UniqueName;
+
+        [JsonProperty("name")]
+        public string Name;
+
+        [JsonProperty("description")]
+        public string Description;
+
+        [JsonProperty("health")]
+        public int Health;
+
+        [JsonProperty("shield")]
+        public int Shield;
+
+        [JsonProperty("armor")]
+        public int Armor;
+
+        [JsonProperty("regionBits")]
+        public int RegionBits;
+
+        [JsonProperty("type")]
+        public string Type;
+
+        [JsonProperty("imageName")]
+        public string ImageName;
+
+        [JsonProperty("category")]
+        public string Category;
+
+        [JsonProperty("tradable")]
+        public bool Tradable;
+
+        [JsonProperty("drops")]
+        public List<Drop> Drops;
+
+        [JsonProperty("resistances")]
+        public List<Resistance> Resistances;
+
+        [JsonProperty("patchlogs")]
+        public List<Patchlog> Patchlogs;
+
+        [JsonProperty("faction")]
+        public string Faction;
+    }
+
+
+}
 #endregion
 
 #region WarframeStats.us Api Integration
