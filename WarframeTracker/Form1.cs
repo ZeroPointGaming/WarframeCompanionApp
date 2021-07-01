@@ -16,7 +16,6 @@ namespace WarframeTracker
     /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on.
     /// [Identified] Necrophage frames dont have images yet.
     /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
-    /// [FIXED] Selecting a necrophage from the warframes list causes NullReferenceException 
     /// </summary>
 
     public partial class Form1 : Form
