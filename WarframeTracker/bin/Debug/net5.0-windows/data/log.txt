@@ -488,3 +488,84 @@ Updated UI for Ash
 Updated UI for Acceltra
 Updated UI for Ash
 Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash Prime
+Order URL Name: ash_prime_blueprint
+Order URL Name: ash_prime_set
+Order URL Name: ash_prime_chassis
+Order URL Name: ash_prime_chassis
+Order URL Name: ash_prime_chassis
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Chroma Prime
+Updated UI for Ash Prime
+Updated UI for Atlas
+Updated UI for Atlas
+Updated UI for Excalibur
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Boar
+Updated UI for Convectrix
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Burston Prime
+Updated UI for Dread
+Updated UI for Dual Decurion
+Updated UI for Exergis
+Updated UI for Ferrox
+Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file.System.IO.FileNotFoundException: C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\data\img\limbs.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at WarframeTracker.Form1.PrimaryWeaponComboBox_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 243
+Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file.System.IO.FileNotFoundException: C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\data\img\limbs.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at WarframeTracker.Form1.PrimaryWeaponComboBox_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 243
+Updated UI for Flux Rifle
+Updated UI for Fulmin
+Updated UI for Flux Rifle
+Updated UI for Ferrox
+Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file.System.IO.FileNotFoundException: C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\data\img\limbs.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at WarframeTracker.Form1.PrimaryWeaponComboBox_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 243
+Updated UI for Flux Rifle
+Updated UI for Fulmin
+Updated UI for Glaxion
+Updated UI for Glaxion Vandal
+Updated UI for Gorgon
+Updated UI for Gorgon Wraith
+Updated UI for Grakata
+Updated UI for Grattler
+Updated UI for Grinlok
+Updated UI for Harpak
+Updated UI for Hek
+Updated UI for Hema
+Updated UI for Hind
+Updated UI for Ignis
+Updated UI for Ignis Wraith
+Updated UI for Imperator
+Updated UI for Imperator Vandal
+Updated UI for Javlok
+Updated UI for Karak Wraith
+Updated UI for Karak
+Updated UI for Kohm
+Updated UI for Komorex
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Kuva Ayanga
+Updated UI for Kuva Bramma
+Updated UI for Kuva Chakkhurr
+Updated UI for Kuva Drakgoon
+Updated UI for Kuva Karak
+Updated UI for Latron
+Updated UI for Zhuge Prime
+Updated UI for Tetra
+Updated UI for Trumna
+Updated UI for Supra
+Updated UI for Strun Wraith
+Updated UI for Tetra
+Updated UI for Tiberon Prime
+Updated UI for Velocitus

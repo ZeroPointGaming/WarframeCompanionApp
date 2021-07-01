@@ -12,6 +12,11 @@ using System.Threading;
 
 namespace WarframeTracker
 {
+    /// <summary>
+    /// ACTIVE BUGS
+    /// FLUCTUS Weapon has a empty page, need to look into what is going on.
+    /// </summary>
+
     public partial class Form1 : Form
     {
         #region Declare Class Instances
@@ -212,7 +217,7 @@ namespace WarframeTracker
 
                         if (Weapon.Components != null)
                         {
-                            if (Weapon.Components.Count > 0)
+                            if (Weapon.Components.Count == 1)
                             {
                                 //Set foundry component information
                                 PWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
@@ -221,7 +226,7 @@ namespace WarframeTracker
                                 toolTip1.SetToolTip(PWFoundrySlot0Img, Weapon.Components[0].Name);
                             }
 
-                            if (Weapon.Components[1] != null)
+                            if (Weapon.Components.Count == 2)
                             {
                                 PWFoundrySlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
                                 PWFoundrySlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
@@ -229,7 +234,7 @@ namespace WarframeTracker
                                 toolTip1.SetToolTip(PWFoundrySlot1Img, Weapon.Components[1].Name);
                             }
 
-                            if (Weapon.Components[2] != null)
+                            if (Weapon.Components.Count == 3)
                             {
                                 PWFoundrySlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
                                 PWFoundrySlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
@@ -237,7 +242,7 @@ namespace WarframeTracker
                                 toolTip1.SetToolTip(PWFoundrySlot2Img, Weapon.Components[2].Name);
                             }
 
-                            if (Weapon.Components[3] != null)
+                            if (Weapon.Components.Count == 4)
                             {
                                 PWFoundrySlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
                                 PWFoundrySlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
@@ -245,7 +250,7 @@ namespace WarframeTracker
                                 toolTip1.SetToolTip(PWFoundrySlot3Img, Weapon.Components[3].Name);
                             }
 
-                            if (Weapon.Components.Count > 4)
+                            if (Weapon.Components.Count == 5)
                             {
                                 PWFoundrySlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
                                 PWFoundrySlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
@@ -417,6 +422,11 @@ namespace WarframeTracker
         {
             StreamReader reader;
 
+            if (WorldState.Count > 1)
+            {
+                WorldState.Clear();
+            }
+
             #region Download Data
             HttpWebRequest world_state_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "WorldState", "pc");
             HttpWebResponse world_state_response = WebManager.GenerateResponse(world_state_request);
@@ -457,8 +467,9 @@ namespace WarframeTracker
             HttpWebRequest arbitration_request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "Arbitration", "pc");
             HttpWebResponse arbitration_response = WebManager.GenerateResponse(arbitration_request);
 
+            
             reader = new StreamReader(world_state_response.GetResponseStream());
-            WorldState.Add("WorldState", reader.ReadToEnd()); reader.Close(); world_state_response.Close();world_state_response.Dispose();
+            WorldState.Add("WorldState", reader.ReadToEnd()); reader.Close(); world_state_response.Close(); world_state_response.Dispose();
 
             reader = new StreamReader(combion_response.GetResponseStream());
             WorldState.Add("CambionCycle", reader.ReadToEnd()); reader.Close(); combion_response.Close(); combion_response.Dispose();
@@ -638,59 +649,44 @@ namespace WarframeTracker
         }
 
         #region ContextMenu Code
-        #region Warframe Context Menu Commands
-        private void findSetOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FindOrderInformation(string item_name, string order_type, bool tradeable)
         {
             if (tradeable)
             {
-                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Set"; //Set static variable to handle on the orders page.
-                new OrderSheet().Show(); //Launch order page
+                SelectedItemInformation.activeItemName = $"{item_name} {order_type}";
+                new OrderSheet().Show();
             }
             else
             {
                 MessageBox.Show("The item you have searched is not a tradeable item.");
             }
+        }
+
+        #region Warframe Context Menu Commands
+        private void findSetOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Set", tradeable);
         }
 
         private void findNueroOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tradeable)
-            {
-                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Neuroptics"; //Set static variable to handle on the orders page.
-                new OrderSheet().Show(); //Launch order page
-            }
-            else
-            {
-                MessageBox.Show("The item you have searched is not a tradeable item.");
-            }
+            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Nueroptics", tradeable);
         }
 
         private void fiindChassiesOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tradeable)
-            {
-                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Chassis"; //Set static variable to handle on the orders page.
-                new OrderSheet().Show(); //Launch order page
-            }
-            else
-            {
-                MessageBox.Show("The item you have searched is not a tradeable item.");
-            }
+            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Chassis", tradeable);
         }
 
         private void findSystemsOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tradeable)
-            {
-                SelectedItemInformation.activeItemName = WarframeComboBox.SelectedItem.ToString() + " Systems"; //Set static variable to handle on the orders page.
-                new OrderSheet().Show(); //Launch order page
-            }
-            else
-            {
-                MessageBox.Show("The item you have searched is not a tradeable item.");
-            }
+            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Systems", tradeable);
         }
 
+        private void findBlueprintOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Blueprint", tradeable);
+        }
         #endregion
 
         #region Primary Weapons Context Menu Commands
@@ -712,8 +708,6 @@ namespace WarframeTracker
         #region World Cycle Context Menu
 
         #endregion
-
         #endregion
-
     }
 }

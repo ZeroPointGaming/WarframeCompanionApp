@@ -176,6 +176,7 @@ namespace WarframeTracker
             this.CraftingGuidesTabPage = new System.Windows.Forms.TabPage();
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.findBlueprintOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
             this.WorldStatePage.SuspendLayout();
@@ -260,7 +261,7 @@ namespace WarframeTracker
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.warframeMarketToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // warframeMarketToolStripMenuItem
             // 
@@ -268,9 +269,10 @@ namespace WarframeTracker
             this.findSetOrdersToolStripMenuItem,
             this.findNueroOrdersToolStripMenuItem,
             this.fiindChassiesOrdersToolStripMenuItem,
-            this.findSystemsOrdersToolStripMenuItem});
+            this.findSystemsOrdersToolStripMenuItem,
+            this.findBlueprintOrdersToolStripMenuItem});
             this.warframeMarketToolStripMenuItem.Name = "warframeMarketToolStripMenuItem";
-            this.warframeMarketToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.warframeMarketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.warframeMarketToolStripMenuItem.Text = "Warframe.Market";
             // 
             // findSetOrdersToolStripMenuItem
@@ -291,7 +293,7 @@ namespace WarframeTracker
             // 
             this.fiindChassiesOrdersToolStripMenuItem.Name = "fiindChassiesOrdersToolStripMenuItem";
             this.fiindChassiesOrdersToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.fiindChassiesOrdersToolStripMenuItem.Text = " ";
+            this.fiindChassiesOrdersToolStripMenuItem.Text = " Find Chassis Orders";
             this.fiindChassiesOrdersToolStripMenuItem.Click += new System.EventHandler(this.fiindChassiesOrdersToolStripMenuItem_Click);
             // 
             // findSystemsOrdersToolStripMenuItem
@@ -303,10 +305,10 @@ namespace WarframeTracker
             // 
             // WarframeTrackerTabControl
             // 
-            this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.SecWeaponsTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
             this.WarframeTrackerTabControl.Controls.Add(this.MeleeWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PetsTabPage);
@@ -1812,6 +1814,13 @@ namespace WarframeTracker
             this.SettingsTabPage.TabIndex = 5;
             this.SettingsTabPage.Text = "Settings";
             // 
+            // findBlueprintOrdersToolStripMenuItem
+            // 
+            this.findBlueprintOrdersToolStripMenuItem.Name = "findBlueprintOrdersToolStripMenuItem";
+            this.findBlueprintOrdersToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.findBlueprintOrdersToolStripMenuItem.Text = "Find Blueprint Orders";
+            this.findBlueprintOrdersToolStripMenuItem.Click += new System.EventHandler(this.findBlueprintOrdersToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2077,6 +2086,7 @@ namespace WarframeTracker
         private System.Windows.Forms.PictureBox PWFoundrySlot4Img;
         private System.Windows.Forms.Label PWFoundrySkipBuildLbl;
         private System.Windows.Forms.ComboBox SecondaryWeaponsComboBox;
+        private System.Windows.Forms.ToolStripMenuItem findBlueprintOrdersToolStripMenuItem;
     }
 }
 
