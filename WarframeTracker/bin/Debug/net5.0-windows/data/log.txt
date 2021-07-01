@@ -578,3 +578,5 @@ Updated UI for Voidrig
 Updated UI for Bonewidow
 Updated UI for Ember Prime
 Updated UI for Bonewidow
+Updated UI for Ash
+Updated UI for Acceltra
