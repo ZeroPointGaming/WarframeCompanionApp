@@ -12,8 +12,7 @@ using System.Threading;
 
 namespace WarframeTracker
 {
-    /// <summary>
-    /// ACTIVE BUGS
+    /// <summary> ACTIVE BUGS DIRECTORY
     /// FLUCTUS Weapon has a empty page, need to look into what is going on.
     /// </summary>
 
