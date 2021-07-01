@@ -5745,11 +5745,6 @@ namespace WarframeTracker.SerializationWrappers.WarframeStats.Invasions
 /// </summary>
 namespace WarframeTracker.SerializationWrappers.WarframeStats.Fissures
 {
-    public class Fissures
-    {
-        public List<FissureEvent> Events;
-    }
-
     public class FissureEvent
     {
         [JsonProperty("id")]

@@ -476,7 +476,7 @@ namespace WarframeTracker
             WorldState.Add("Invasion", reader.ReadToEnd()); reader.Close(); invasion_response.Close(); invasion_response.Dispose();
 
             reader = new StreamReader(fissure_response.GetResponseStream());
-            WorldState.Add("Fissure", reader.ReadToEnd()); reader.Close(); fissure_response.Close(); fissure_response.Dispose();
+            WorldState.Add("Fissures", reader.ReadToEnd()); reader.Close(); fissure_response.Close(); fissure_response.Dispose();
 
             reader = new StreamReader(syndicate_response.GetResponseStream());
             WorldState.Add("Syndicate", reader.ReadToEnd()); reader.Close(); syndicate_response.Close(); syndicate_response.Dispose();
@@ -521,6 +521,41 @@ namespace WarframeTracker
             objTxt = WorldState["Arbitration"];
             SerializationWrappers.WarframeStats.Arbitration.ArbitrationMission ArbitrationState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Arbitration.ArbitrationMission>(objTxt.ToString());
             ArbitrationInfoBox.Text += ($"{ArbitrationState.Enemy} {ArbitrationState.Type} on {ArbitrationState.Node} and expires in{(Math.Round(DateTime.Now.Subtract(ArbitrationState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
+
+            objTxt = WorldState["Sortie"];
+            SerializationWrappers.WarframeStats.Sortie.Sortie SortieState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Sortie.Sortie>(objTxt.ToString());
+            SortieInfoBox.Text += ($"Daily sortie is {SortieState.Faction} {SortieState.Boss} and expires in{(Math.Round(DateTime.Now.Subtract(ArbitrationState.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
+            for (int i = 0; i < SortieState.Variants.Count; i++)
+            {
+                SortieInfoBox.Text += ($"{SortieState.Variants[i].Modifier} {SortieState.Variants[i].MissionType} on {SortieState.Variants[i].Node}" + Environment.NewLine);
+            }
+
+            objTxt = WorldState["Fissures"];
+            List<SerializationWrappers.WarframeStats.Fissures.FissureEvent> FissureState = JsonConvert.DeserializeObject<List<SerializationWrappers.WarframeStats.Fissures.FissureEvent>>(objTxt.ToString());
+            FissureState.Sort(delegate (SerializationWrappers.WarframeStats.Fissures.FissureEvent x, SerializationWrappers.WarframeStats.Fissures.FissureEvent y)
+            {
+                return x.TierNum.CompareTo(y.TierNum);
+            });
+            for (int i = 0; i < FissureState.Count; i++)
+            {
+                var expireTime = (Math.Round(DateTime.Now.Subtract(FissureState[i].Expiry).TotalMinutes * 10) / 10).ToString().Replace("-", "");
+                if (double.Parse(expireTime) > 60)
+                {
+                    FissureInfoBox.Text += ($"Tier {FissureState[i].TierNum} {FissureState[i].Tier} Relic {FissureState[i].MissionType} Mission. Enemy Type {FissureState[i].Enemy} at {FissureState[i].Node} Expiring in {Math.Round(double.Parse(expireTime) / 60)} hours.") + Environment.NewLine;
+                }
+                else
+                {
+                    FissureInfoBox.Text += ($"Tier {FissureState[i].TierNum} {FissureState[i].Tier} Relic {FissureState[i].MissionType} Mission. Enemy Type {FissureState[i].Enemy} at {FissureState[i].Node} Expiring in {expireTime} minutes.") + Environment.NewLine;
+                }
+            }
+
+            objTxt = WorldState["Nightwave"];
+            SerializationWrappers.WarframeStats.Nightwave.Root NightwaveState = JsonConvert.DeserializeObject<SerializationWrappers.WarframeStats.Nightwave.Root>(objTxt.ToString());
+            NightwaveChalContainer.Text = $"Nightwave Challenges For Season {NightwaveState.Season} Expires on {NightwaveState.Expiry}";
+            for (int i = 0; i < NightwaveState.ActiveChallenges.Count; i++)
+            {
+                NightwaveInfoBox.Text += ($"{NightwaveState.ActiveChallenges[i].Desc} for {NightwaveState.ActiveChallenges[i].Reputation} points. Expires on {NightwaveState.ActiveChallenges[i].Expiry}" + Environment.NewLine);
+            }
             #endregion
         }
 
