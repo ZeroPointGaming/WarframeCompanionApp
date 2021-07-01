@@ -12,7 +12,7 @@ Our app is built on the .NET 5.0 Framework using MetroFramework for UI.
 Usage: Our app starts off with a list of all the warframes, currently the warframe tab is the only one that has developed functionality, to use it simply click on the warframe you want to see information about, and you can right click to find options to download available warframe.market orders for the prime sets and parts.
 
 Screenshot of current running version 
-![Alpha Screenshot](https://i.imgur.com/Nzh5T9J.png)
+![Alpha Screenshot](https://i.imgur.com/QAeKw1N.png)
 
 ## APIs we use
 ```c#
