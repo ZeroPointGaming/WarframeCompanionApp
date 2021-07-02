@@ -56,9 +56,10 @@ namespace WarframeTracker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            WarframeComboBox.SelectedItem = "Ash";
-            PrimaryWeaponComboBox.SelectedItem = "Acceltra";
-            SecondaryWeaponsComboBox.SelectedItem = "Acrid";
+            WarframeComboBox.SelectedIndex = 0;
+            PrimaryWeaponComboBox.SelectedIndex = 0;
+            SecondaryWeaponsComboBox.SelectedIndex = 0;
+            MeleeWeaponsComboBox.SelectedIndex = 0;
         }
         #endregion
 
@@ -108,7 +109,7 @@ namespace WarframeTracker
 
                                     if (comp.Drops != null)
                                     {
-                                        FrameChassTxtBox.Text = comp.Description + " Can be found on: " + comp.Drops[0].Location + " with a drop chance of " + Math.Round((double)comp.Drops[0].Chance * (double)100).ToString() + "% With a rarity class of " + comp.Drops[0].Rarity;
+                                        FrameChassTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
                                     }
                                     else
                                     {
@@ -121,7 +122,7 @@ namespace WarframeTracker
 
                                     if (comp.Drops != null)
                                     {
-                                        FrameNueroTxtBox.Text = comp.Description + " Can be found on: " + comp.Drops[0].Location + " with a drop chance of " + Math.Round((double)comp.Drops[0].Chance * (double)100).ToString() + "% With a rarity class of " + comp.Drops[0].Rarity;
+                                        FrameNueroTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
                                     }
                                     else
                                     {
@@ -134,7 +135,7 @@ namespace WarframeTracker
 
                                     if (comp.Drops != null)
                                     {
-                                        FrameSysTxtBox.Text = comp.Description + " Can be found on: " + comp.Drops[0].Location + " with a drop chance of " + Math.Round((double)comp.Drops[0].Chance * (double)100).ToString() + "% With a rarity class of " + comp.Drops[0].Rarity;
+                                        FrameSysTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
                                     }
                                     else
                                     {
@@ -150,7 +151,7 @@ namespace WarframeTracker
                         //Debug Info
                         if (DebugMode)
                         {
-                            Debugger.Log("Updated UI for " + WarframeComboBox.SelectedItem.ToString());
+                            Debugger.Log($"Updated UI for {WarframeComboBox.SelectedItem}");
                         }
                     }
                 }
@@ -159,21 +160,21 @@ namespace WarframeTracker
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file." + ex.ToString());
+                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file." + ex.ToString());
+                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred." + Environment.NewLine + "Stack Trace: " + ex.ToString());
+                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine} Stack Trace: {ex}");
                 }
             }
         }
