@@ -17,6 +17,7 @@ namespace WarframeTracker
     /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
     /// [Identified] Equinox frame doesnt update components.
     /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
+    /// [FIXED] Fixed an issue where nullref was thrown when marketcost was null.
     /// </summary>
 
     public partial class Form1 : Form
@@ -76,26 +77,26 @@ namespace WarframeTracker
             {
                 foreach (Items.Warframes.Root frame in Warframes)
                 {
-                    if (frame.Name.ToString() == WarframeComboBox.SelectedItem.ToString())
+                    if (frame.Name == $"{WarframeComboBox.SelectedItem}")
                     {
                         //Set static vars
                         activeWarframe = frame.Name.ToString();
                         tradeable = frame.Tradable;
 
                         //Set main warframe image
-                        SelectedWarframeImageBox.BackgroundImage = WebManager.ServiceImage(frame.Name.ToString(), frame.WikiaThumbnail);
+                        SelectedWarframeImageBox.BackgroundImage = WebManager.ServiceImage(frame.Name, frame.WikiaThumbnail);
 
                         //Set Abilities Ino
-                        WarframeAbilityGroupbox1.Text = frame.Abilities[0].Name.ToString();
-                        WarframeAbilityTextBox1.Text = frame.Abilities[0].Description.ToString();
-                        WarframeAbilityGroupbox2.Text = frame.Abilities[1].Name.ToString();
-                        WarframeAbilityTextbox2.Text = frame.Abilities[1].Description.ToString();
-                        WarframeAbilityGroupbox3.Text = frame.Abilities[2].Name.ToString();
-                        WarframeAbilityTextbox3.Text = frame.Abilities[2].Description.ToString();
-                        WarframeAbilityGroupbox4.Text = frame.Abilities[3].Name.ToString();
-                        WarframeAbilityTextbox4.Text = frame.Abilities[3].Description.ToString();
+                        WarframeAbilityGroupbox1.Text = $"{frame.Abilities[0].Name}";
+                        WarframeAbilityTextBox1.Text = $"{frame.Abilities[0].Description}";
+                        WarframeAbilityGroupbox2.Text = $"{frame.Abilities[1].Name}";
+                        WarframeAbilityTextbox2.Text = $"{frame.Abilities[1].Description}";
+                        WarframeAbilityGroupbox3.Text = $"{frame.Abilities[2].Name}";
+                        WarframeAbilityTextbox3.Text = $"{frame.Abilities[2].Description}";
+                        WarframeAbilityGroupbox4.Text = $"{frame.Abilities[3].Name}";
+                        WarframeAbilityTextbox4.Text = $"{frame.Abilities[3].Description}";
 
-                        if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription.ToString(); }
+                        if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription; }
 
                         //Warframe Componets, Drop Locations, Chances, Etc
                         foreach (Items.Warframes.Component comp in frame.Components)
@@ -209,7 +210,7 @@ namespace WarframeTracker
             {
                 foreach (Items.PrimaryWeapons.Root Weapon in Primary_Weapons)
                 {
-                    if (Weapon.Name.ToString() == PrimaryWeaponComboBox.SelectedItem.ToString())
+                    if ($"{Weapon.Name}" == $"{PrimaryWeaponComboBox.SelectedItem}")
                     {
                         //Set main Weapon image
                         if (Weapon.WikiaThumbnail != null)
@@ -229,7 +230,7 @@ namespace WarframeTracker
 
                         //Set  build cost in credits section
                         PWFoundryCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
-                        PWFoundryCreditsTxt.Text = Weapon.BuildPrice.ToString();
+                        PWFoundryCreditsTxt.Text = $"{Weapon.BuildPrice}";
                         toolTip1.SetToolTip(PWFoundryCreditsTxt, "Build Cost");
 
                         if (Weapon.Components != null)
@@ -391,13 +392,13 @@ namespace WarframeTracker
             {
                 foreach (Items.SecondaryWeapons.Root Weapon in Secondary_Weapons)
                 {
-                    if (Weapon.Name.ToString() == SecondaryWeaponsComboBox.SelectedItem.ToString())
+                    if ($"{Weapon.Name}" == SecondaryWeaponsComboBox.SelectedItem.ToString())
                     {
                         //Set main Weapon image
                         if (Weapon.WikiaThumbnail != null)
                         {
-                            SecondaryWeaponImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
-                            SecondaryWeaponContainer.Text = Weapon.Name.ToString();
+                            SecondaryWeaponImageBox.BackgroundImage = WebManager.ServiceImage($"{Weapon.Name}", Weapon.WikiaThumbnail);
+                            SecondaryWeaponContainer.Text = $"{Weapon.Name}";
                             if (Weapon.SkipBuildTimePrice > 0)
                             {
                                 SWFoundrySkipBuildLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
@@ -458,7 +459,7 @@ namespace WarframeTracker
                         }
 
                         //Set market cost and build time
-                        if (Weapon.MarketCost > 0)
+                        if (Weapon.MarketCost != null)
                         {
                             SWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
                             SWMarketPriceLbl.Visible = true;
@@ -571,7 +572,7 @@ namespace WarframeTracker
             {
                 foreach (Items.Melee.Root Weapon in Melee_Weapons)
                 {
-                    if (Weapon.Name.ToString() == MeleeWeaponsComboBox.SelectedItem.ToString())
+                    if ($"{Weapon.Name}" == MeleeWeaponsComboBox.SelectedItem.ToString())
                     {
                         //Set main Weapon image
                         if (Weapon.WikiaThumbnail != null)
@@ -638,7 +639,7 @@ namespace WarframeTracker
                         }
 
                         //Set market cost and build time
-                        if (double.Parse(Weapon.MarketCost.ToString()) > 0)
+                        if (Weapon.MarketCost != null)
                         {
                             MWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
                             MWMarketPriceLbl.Visible = true;
@@ -670,8 +671,9 @@ namespace WarframeTracker
                         MWDataTxt.Text += $"Slam Attack Radius: {Weapon.SlamRadius} {Environment.NewLine}";
                         MWDataTxt.Text += $"Heavy Slam Attack Damage: {Weapon.HeavySlamAttack} {Environment.NewLine}";
                         MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Heavy Slam Attack Radius: {Environment.NewLine}";
+                        MWDataTxt.Text += $"Heavy Slam Attack Radius: {Weapon.HeavySlamRadius}{Environment.NewLine}";
                         MWDataTxt.Text += $"Range: {Weapon.Range}s {Environment.NewLine}";
+                        MWDataTxt.Text += $"-----------------------------------------------------";
 
                         //Export Damage Ammounts
                         for (int i = 0; i < Weapon.DamagePerShot.Count; i++)

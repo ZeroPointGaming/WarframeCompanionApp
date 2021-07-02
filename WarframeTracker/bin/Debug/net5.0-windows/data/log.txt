@@ -631,3 +631,32 @@ Updated UI for Acrid
 Updated UI for Akjagara Prime
 Updated UI for Atomos
 Updated UI for Kunai
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Broken Scepter
+Updated UI for Cassowar
+Updated UI for Ceramic Dagger
+Updated UI for Dark Sword
+Updated UI for Endura
+Updated UI for Aklato
+Updated UI for Akvasto Prime
+Updated UI for Baza Prime
+Updated UI for Drakgoon
+Updated UI for Gara
+Updated UI for Ivara
+Updated UI for Trinity Prime
+Order URL Name: trinity_prime_set
+Updated UI for Kuva Shildeg
+Updated UI for Volnus
+Updated UI for Skana
+Updated UI for Synoid Heliocor
