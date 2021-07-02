@@ -16,8 +16,6 @@ namespace WarframeTracker
     /// [Identified] Necrophage frames dont have images yet.
     /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
     /// [Identified] Equinox frame doesnt update components.
-    /// [Fixed] Corvas not showing component information correctly.
-    /// [Fixed] Previous fix for weapons with less than 4 components broke the way components work, another fix is needed.
     /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
     /// </summary>
 
