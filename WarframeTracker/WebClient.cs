@@ -30,30 +30,26 @@ namespace WarframeTracker.WebInterface
             {
                 #region Warframe.Market Requests
                 case "ItemCall":
-                    HttpWebRequest item_request = (HttpWebRequest)WebRequest.Create("https://api.warframe.market/v1/items/" + url_name);
+                    HttpWebRequest item_request = (HttpWebRequest)WebRequest.Create($"https://api.warframe.market/v1/items/{url_name}");
                     return item_request;
 
                 case "OrderCall":
-                    HttpWebRequest order_request = (HttpWebRequest)WebRequest.Create("https://api.warframe.market/v1/items/" + url_name + "/orders");
+                    HttpWebRequest order_request = (HttpWebRequest)WebRequest.Create($"https://api.warframe.market/v1/items/{url_name}/orders");
                     return order_request;
 
                 case "AllItems":
-                    HttpWebRequest all_items_request = (HttpWebRequest)WebRequest.Create("https://api.warframe.market/v1/items");
+                    HttpWebRequest all_items_request = (HttpWebRequest)WebRequest.Create($"https://api.warframe.market/v1/items");
                     return all_items_request;
+
+                case "RivenOrders":
+                    HttpWebRequest riven_orders_request = (HttpWebRequest)WebRequest.Create($"https://api.warframe.market/v1/auctions/search?type=riven&weapon_url_name={url_name}");
+                    return riven_orders_request;
                 #endregion
 
                 #region Warframestatus.us Requests
                 case "WorldState":
                     HttpWebRequest world_state_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}");
                     return world_state_request;
-                #endregion
-
-                #region Warframe API Requests
-
-                #endregion
-
-                #region Other Requests
-
                 #endregion
 
                 default:
@@ -78,7 +74,7 @@ namespace WarframeTracker.WebInterface
         /// <returns></returns>
         public string GetImageURL(string subpart)
         {
-            return "https://warframe.market/static/assets/" + subpart;
+            return "$https://warframe.market/static/assets/{subpart}";
         }
 
         //Return Image From URL
@@ -96,7 +92,7 @@ namespace WarframeTracker.WebInterface
             }
             catch
             {
-                Image empty = Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "not_found.png");
+                Image empty = Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/not_found.png");
                 return empty;
             }
         }
@@ -109,7 +105,7 @@ namespace WarframeTracker.WebInterface
         /// <returns>Returns an image downloaded from the specified links.</returns>
         public Image ServiceImage(string name, string alt_url = "")
         {
-            Image empty = Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "not_found.png");
+            Image empty = Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/not_found.png");
 
             switch (name)
             {
@@ -125,9 +121,9 @@ namespace WarframeTracker.WebInterface
                 case "Chroma Prime":
                     return DownloadImage("https://static.wikia.nocookie.net/warframe/images/6/69/ChromaPrimeNewLook.png/revision/latest/scale-to-width-down/293?cb=20200208125702");
                 case "Gara Prime":
-                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/" + "gara_prime.jpg"))
+                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/gara_prime.jpg"))
                     {
-                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "gara_prime.jpg");
+                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/gara_prime.jpg");
                     }
                     else
                     {
@@ -137,9 +133,9 @@ namespace WarframeTracker.WebInterface
                 case "Hydroid Prime":
                     return DownloadImage("https://static.wikia.nocookie.net/warframe/images/c/c3/HydroidPrimeNewLook.png/revision/latest/scale-to-width-down/293?cb=20200208133019");
                 case "Inaros Prime":
-                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/" + "inaros_prime.jpg"))
+                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/inaros_prime.jpg"))
                     {
-                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "inaros_prime.jpg");
+                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/inaros_prime.jpg");
                     }
                     else
                     {
@@ -147,9 +143,9 @@ namespace WarframeTracker.WebInterface
                         return empty;
                     }
                 case "Lavos":
-                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/" + "lavos.jpg"))
+                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/lavos.jpg"))
                     {
-                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "lavos.jpg");
+                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/lavos.jpg");
                     }
                     else
                     {
@@ -159,7 +155,7 @@ namespace WarframeTracker.WebInterface
                 case "Nezha Prime":
                     return DownloadImage("https://static.wikia.nocookie.net/warframe/images/c/c5/NezhaPrimeIcon272.png/revision/latest/scale-to-width-down/272?cb=20201029014155");
                 case "Nova prime":
-                    string octavia = Environment.CurrentDirectory.ToString() + "/data/img/" + "nova_prime.jpg";
+                    string octavia = Environment.CurrentDirectory.ToString() + "/data/img/nova_prime.jpg";
                     if (File.Exists(octavia))
                     {
                         return Image.FromFile(octavia);
@@ -170,9 +166,9 @@ namespace WarframeTracker.WebInterface
                         return empty;
                     }
                 case "Octavia Prime":
-                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/" + "octavia_prime.jpg"))
+                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/octavia_prime.jpg"))
                     {
-                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "octavia_prime.jpg");
+                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/octavia_prime.jpg");
                     }
                     else
                     {
@@ -180,9 +176,9 @@ namespace WarframeTracker.WebInterface
                         return empty;
                     }
                 case "Sevagoth":
-                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/" + "sevagoth.jpg"))
+                    if (File.Exists(Environment.CurrentDirectory.ToString() + "/data/img/sevagoth.jpg"))
                     {
-                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "sevagoth.jpg");
+                        return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/sevagoth.jpg");
                     }
                     else
                     {
@@ -194,9 +190,9 @@ namespace WarframeTracker.WebInterface
                 #endregion
 
                 case "Credits":
-                    return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "credits.jpg");
+                    return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/credits.jpg");
                 case "Platinum":
-                    return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/" + "platinum.jpg");
+                    return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/platinum.jpg");
 
                 default:
                     if (name != null)
