@@ -114,7 +114,7 @@ namespace WarframeTracker.Items.Melee
         public DamageTypes DamageTypes;
 
         [JsonProperty("marketCost")]
-        public int? MarketCost;
+        public int MarketCost;
 
         [JsonProperty("polarities")]
         public List<string> Polarities;

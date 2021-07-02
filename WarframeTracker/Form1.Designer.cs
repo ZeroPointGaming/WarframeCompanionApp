@@ -207,6 +207,35 @@ namespace WarframeTracker
             this.CraftingGuidesTabPage = new System.Windows.Forms.TabPage();
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.MeleeWeaponContainer = new System.Windows.Forms.GroupBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.MWWeaponCompDataTxt = new System.Windows.Forms.TextBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.MWDataTxt = new System.Windows.Forms.TextBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.MWCreditCostLbl = new System.Windows.Forms.Label();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.MWSlot4Txt = new System.Windows.Forms.TextBox();
+            this.MWSlot4Img = new System.Windows.Forms.PictureBox();
+            this.MWSkipBuildCostLbl = new System.Windows.Forms.Label();
+            this.MWMarketPriceLbl = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.MWSlot3Txt = new System.Windows.Forms.TextBox();
+            this.MWSlot3Img = new System.Windows.Forms.PictureBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.MWSlot2Txt = new System.Windows.Forms.TextBox();
+            this.MWSlot2Img = new System.Windows.Forms.PictureBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.MWSlot1Txt = new System.Windows.Forms.TextBox();
+            this.MWSlot1Img = new System.Windows.Forms.PictureBox();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.MWSlot0Txt = new System.Windows.Forms.TextBox();
+            this.MWSlot0Img = new System.Windows.Forms.PictureBox();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.MWCreditsTxt = new System.Windows.Forms.TextBox();
+            this.MWCreditsImg = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.MWImageBox = new System.Windows.Forms.PictureBox();
             this.WarframeContextMenu.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
             this.SecWeaponsTabPage.SuspendLayout();
@@ -302,6 +331,23 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.MeleeWeaponContainer.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot4Img)).BeginInit();
+            this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot3Img)).BeginInit();
+            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot2Img)).BeginInit();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot1Img)).BeginInit();
+            this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot0Img)).BeginInit();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWCreditsImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MWImageBox)).BeginInit();
             this.SuspendLayout();
             // 
             // WarframeContextMenu
@@ -360,9 +406,9 @@ namespace WarframeTracker
             // 
             // WarframeTrackerTabControl
             // 
+            this.WarframeTrackerTabControl.Controls.Add(this.MeleeWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.SecWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
-            this.WarframeTrackerTabControl.Controls.Add(this.MeleeWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
@@ -1062,7 +1108,7 @@ namespace WarframeTracker
             // MeleeWeaponsTabPage
             // 
             this.MeleeWeaponsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.MeleeWeaponsTabPage.Controls.Add(this.MeleeWeaponsComboBox);
+            this.MeleeWeaponsTabPage.Controls.Add(this.MeleeWeaponContainer);
             this.MeleeWeaponsTabPage.ForeColor = System.Drawing.Color.White;
             this.MeleeWeaponsTabPage.Location = new System.Drawing.Point(4, 35);
             this.MeleeWeaponsTabPage.Name = "MeleeWeaponsTabPage";
@@ -1075,10 +1121,11 @@ namespace WarframeTracker
             this.MeleeWeaponsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MeleeWeaponsComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MeleeWeaponsComboBox.FormattingEnabled = true;
-            this.MeleeWeaponsComboBox.Location = new System.Drawing.Point(8, 9);
+            this.MeleeWeaponsComboBox.Location = new System.Drawing.Point(15, 22);
             this.MeleeWeaponsComboBox.Name = "MeleeWeaponsComboBox";
-            this.MeleeWeaponsComboBox.Size = new System.Drawing.Size(203, 29);
+            this.MeleeWeaponsComboBox.Size = new System.Drawing.Size(283, 29);
             this.MeleeWeaponsComboBox.TabIndex = 0;
+            this.MeleeWeaponsComboBox.SelectedIndexChanged += new System.EventHandler(this.MeleeWeaponsComboBox_SelectedIndexChanged);
             // 
             // WarframeTabPage
             // 
@@ -2200,6 +2247,325 @@ namespace WarframeTracker
             this.SettingsTabPage.TabIndex = 5;
             this.SettingsTabPage.Text = "Settings";
             // 
+            // MeleeWeaponContainer
+            // 
+            this.MeleeWeaponContainer.Controls.Add(this.groupBox19);
+            this.MeleeWeaponContainer.Controls.Add(this.MeleeWeaponsComboBox);
+            this.MeleeWeaponContainer.Controls.Add(this.groupBox20);
+            this.MeleeWeaponContainer.Controls.Add(this.panel14);
+            this.MeleeWeaponContainer.Controls.Add(this.MWImageBox);
+            this.MeleeWeaponContainer.ForeColor = System.Drawing.Color.White;
+            this.MeleeWeaponContainer.Location = new System.Drawing.Point(8, 8);
+            this.MeleeWeaponContainer.Name = "MeleeWeaponContainer";
+            this.MeleeWeaponContainer.Size = new System.Drawing.Size(1435, 845);
+            this.MeleeWeaponContainer.TabIndex = 4;
+            this.MeleeWeaponContainer.TabStop = false;
+            this.MeleeWeaponContainer.Text = "selectedWeaponName";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.groupBox19.Controls.Add(this.MWWeaponCompDataTxt);
+            this.groupBox19.ForeColor = System.Drawing.Color.White;
+            this.groupBox19.Location = new System.Drawing.Point(304, 255);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(1125, 584);
+            this.groupBox19.TabIndex = 6;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Weapon Components Data";
+            // 
+            // MWWeaponCompDataTxt
+            // 
+            this.MWWeaponCompDataTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWWeaponCompDataTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MWWeaponCompDataTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MWWeaponCompDataTxt.ForeColor = System.Drawing.Color.White;
+            this.MWWeaponCompDataTxt.Location = new System.Drawing.Point(3, 19);
+            this.MWWeaponCompDataTxt.Multiline = true;
+            this.MWWeaponCompDataTxt.Name = "MWWeaponCompDataTxt";
+            this.MWWeaponCompDataTxt.ReadOnly = true;
+            this.MWWeaponCompDataTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.MWWeaponCompDataTxt.Size = new System.Drawing.Size(1119, 562);
+            this.MWWeaponCompDataTxt.TabIndex = 3;
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.groupBox20.Controls.Add(this.MWDataTxt);
+            this.groupBox20.ForeColor = System.Drawing.Color.White;
+            this.groupBox20.Location = new System.Drawing.Point(15, 255);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(283, 584);
+            this.groupBox20.TabIndex = 5;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Weapon Data";
+            // 
+            // MWDataTxt
+            // 
+            this.MWDataTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWDataTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MWDataTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MWDataTxt.ForeColor = System.Drawing.Color.White;
+            this.MWDataTxt.Location = new System.Drawing.Point(3, 19);
+            this.MWDataTxt.Multiline = true;
+            this.MWDataTxt.Name = "MWDataTxt";
+            this.MWDataTxt.ReadOnly = true;
+            this.MWDataTxt.Size = new System.Drawing.Size(277, 562);
+            this.MWDataTxt.TabIndex = 4;
+            // 
+            // panel14
+            // 
+            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel14.Controls.Add(this.MWCreditCostLbl);
+            this.panel14.Controls.Add(this.panel15);
+            this.panel14.Controls.Add(this.MWSkipBuildCostLbl);
+            this.panel14.Controls.Add(this.MWMarketPriceLbl);
+            this.panel14.Controls.Add(this.panel16);
+            this.panel14.Controls.Add(this.panel17);
+            this.panel14.Controls.Add(this.panel18);
+            this.panel14.Controls.Add(this.panel19);
+            this.panel14.Controls.Add(this.panel20);
+            this.panel14.Controls.Add(this.label10);
+            this.panel14.Location = new System.Drawing.Point(304, 22);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(539, 227);
+            this.panel14.TabIndex = 4;
+            // 
+            // MWCreditCostLbl
+            // 
+            this.MWCreditCostLbl.AutoSize = true;
+            this.MWCreditCostLbl.Location = new System.Drawing.Point(1, 194);
+            this.MWCreditCostLbl.Name = "MWCreditCostLbl";
+            this.MWCreditCostLbl.Size = new System.Drawing.Size(81, 15);
+            this.MWCreditCostLbl.TabIndex = 7;
+            this.MWCreditCostLbl.Text = "blueprintPrice";
+            this.MWCreditCostLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel15
+            // 
+            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel15.Controls.Add(this.MWSlot4Txt);
+            this.panel15.Controls.Add(this.MWSlot4Img);
+            this.panel15.Location = new System.Drawing.Point(448, 25);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(83, 104);
+            this.panel15.TabIndex = 6;
+            // 
+            // MWSlot4Txt
+            // 
+            this.MWSlot4Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWSlot4Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MWSlot4Txt.ForeColor = System.Drawing.Color.White;
+            this.MWSlot4Txt.Location = new System.Drawing.Point(8, 72);
+            this.MWSlot4Txt.Name = "MWSlot4Txt";
+            this.MWSlot4Txt.ReadOnly = true;
+            this.MWSlot4Txt.Size = new System.Drawing.Size(64, 16);
+            this.MWSlot4Txt.TabIndex = 3;
+            this.MWSlot4Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MWSlot4Img
+            // 
+            this.MWSlot4Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MWSlot4Img.Location = new System.Drawing.Point(8, 2);
+            this.MWSlot4Img.Name = "MWSlot4Img";
+            this.MWSlot4Img.Size = new System.Drawing.Size(64, 64);
+            this.MWSlot4Img.TabIndex = 1;
+            this.MWSlot4Img.TabStop = false;
+            // 
+            // MWSkipBuildCostLbl
+            // 
+            this.MWSkipBuildCostLbl.AutoSize = true;
+            this.MWSkipBuildCostLbl.Location = new System.Drawing.Point(2, 168);
+            this.MWSkipBuildCostLbl.Name = "MWSkipBuildCostLbl";
+            this.MWSkipBuildCostLbl.Size = new System.Drawing.Size(81, 15);
+            this.MWSkipBuildCostLbl.TabIndex = 5;
+            this.MWSkipBuildCostLbl.Text = "blueprintPrice";
+            this.MWSkipBuildCostLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // MWMarketPriceLbl
+            // 
+            this.MWMarketPriceLbl.AutoSize = true;
+            this.MWMarketPriceLbl.Location = new System.Drawing.Point(2, 141);
+            this.MWMarketPriceLbl.Name = "MWMarketPriceLbl";
+            this.MWMarketPriceLbl.Size = new System.Drawing.Size(70, 15);
+            this.MWMarketPriceLbl.TabIndex = 4;
+            this.MWMarketPriceLbl.Text = "marketPrice";
+            this.MWMarketPriceLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel16
+            // 
+            this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel16.Controls.Add(this.MWSlot3Txt);
+            this.panel16.Controls.Add(this.MWSlot3Img);
+            this.panel16.Location = new System.Drawing.Point(359, 25);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(83, 104);
+            this.panel16.TabIndex = 3;
+            // 
+            // MWSlot3Txt
+            // 
+            this.MWSlot3Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWSlot3Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MWSlot3Txt.ForeColor = System.Drawing.Color.White;
+            this.MWSlot3Txt.Location = new System.Drawing.Point(8, 72);
+            this.MWSlot3Txt.Name = "MWSlot3Txt";
+            this.MWSlot3Txt.ReadOnly = true;
+            this.MWSlot3Txt.Size = new System.Drawing.Size(64, 16);
+            this.MWSlot3Txt.TabIndex = 3;
+            this.MWSlot3Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MWSlot3Img
+            // 
+            this.MWSlot3Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MWSlot3Img.Location = new System.Drawing.Point(8, 2);
+            this.MWSlot3Img.Name = "MWSlot3Img";
+            this.MWSlot3Img.Size = new System.Drawing.Size(64, 64);
+            this.MWSlot3Img.TabIndex = 1;
+            this.MWSlot3Img.TabStop = false;
+            // 
+            // panel17
+            // 
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel17.Controls.Add(this.MWSlot2Txt);
+            this.panel17.Controls.Add(this.MWSlot2Img);
+            this.panel17.Location = new System.Drawing.Point(270, 25);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(83, 104);
+            this.panel17.TabIndex = 2;
+            // 
+            // MWSlot2Txt
+            // 
+            this.MWSlot2Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWSlot2Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MWSlot2Txt.ForeColor = System.Drawing.Color.White;
+            this.MWSlot2Txt.Location = new System.Drawing.Point(8, 72);
+            this.MWSlot2Txt.Name = "MWSlot2Txt";
+            this.MWSlot2Txt.ReadOnly = true;
+            this.MWSlot2Txt.Size = new System.Drawing.Size(64, 16);
+            this.MWSlot2Txt.TabIndex = 3;
+            this.MWSlot2Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MWSlot2Img
+            // 
+            this.MWSlot2Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MWSlot2Img.Location = new System.Drawing.Point(8, 2);
+            this.MWSlot2Img.Name = "MWSlot2Img";
+            this.MWSlot2Img.Size = new System.Drawing.Size(64, 64);
+            this.MWSlot2Img.TabIndex = 1;
+            this.MWSlot2Img.TabStop = false;
+            // 
+            // panel18
+            // 
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.MWSlot1Txt);
+            this.panel18.Controls.Add(this.MWSlot1Img);
+            this.panel18.Location = new System.Drawing.Point(181, 25);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(83, 104);
+            this.panel18.TabIndex = 2;
+            // 
+            // MWSlot1Txt
+            // 
+            this.MWSlot1Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWSlot1Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MWSlot1Txt.ForeColor = System.Drawing.Color.White;
+            this.MWSlot1Txt.Location = new System.Drawing.Point(8, 72);
+            this.MWSlot1Txt.Name = "MWSlot1Txt";
+            this.MWSlot1Txt.ReadOnly = true;
+            this.MWSlot1Txt.Size = new System.Drawing.Size(64, 16);
+            this.MWSlot1Txt.TabIndex = 3;
+            this.MWSlot1Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MWSlot1Img
+            // 
+            this.MWSlot1Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MWSlot1Img.Location = new System.Drawing.Point(8, 2);
+            this.MWSlot1Img.Name = "MWSlot1Img";
+            this.MWSlot1Img.Size = new System.Drawing.Size(64, 64);
+            this.MWSlot1Img.TabIndex = 1;
+            this.MWSlot1Img.TabStop = false;
+            // 
+            // panel19
+            // 
+            this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel19.Controls.Add(this.MWSlot0Txt);
+            this.panel19.Controls.Add(this.MWSlot0Img);
+            this.panel19.Location = new System.Drawing.Point(92, 25);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(83, 104);
+            this.panel19.TabIndex = 2;
+            // 
+            // MWSlot0Txt
+            // 
+            this.MWSlot0Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWSlot0Txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MWSlot0Txt.ForeColor = System.Drawing.Color.White;
+            this.MWSlot0Txt.Location = new System.Drawing.Point(8, 72);
+            this.MWSlot0Txt.Name = "MWSlot0Txt";
+            this.MWSlot0Txt.ReadOnly = true;
+            this.MWSlot0Txt.Size = new System.Drawing.Size(64, 16);
+            this.MWSlot0Txt.TabIndex = 3;
+            this.MWSlot0Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MWSlot0Img
+            // 
+            this.MWSlot0Img.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MWSlot0Img.Location = new System.Drawing.Point(8, 2);
+            this.MWSlot0Img.Name = "MWSlot0Img";
+            this.MWSlot0Img.Size = new System.Drawing.Size(64, 64);
+            this.MWSlot0Img.TabIndex = 1;
+            this.MWSlot0Img.TabStop = false;
+            // 
+            // panel20
+            // 
+            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel20.Controls.Add(this.MWCreditsTxt);
+            this.panel20.Controls.Add(this.MWCreditsImg);
+            this.panel20.Location = new System.Drawing.Point(3, 25);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(83, 104);
+            this.panel20.TabIndex = 1;
+            // 
+            // MWCreditsTxt
+            // 
+            this.MWCreditsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MWCreditsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MWCreditsTxt.ForeColor = System.Drawing.Color.White;
+            this.MWCreditsTxt.Location = new System.Drawing.Point(8, 72);
+            this.MWCreditsTxt.Name = "MWCreditsTxt";
+            this.MWCreditsTxt.ReadOnly = true;
+            this.MWCreditsTxt.Size = new System.Drawing.Size(64, 16);
+            this.MWCreditsTxt.TabIndex = 2;
+            this.MWCreditsTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MWCreditsImg
+            // 
+            this.MWCreditsImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MWCreditsImg.Location = new System.Drawing.Point(8, 2);
+            this.MWCreditsImg.Name = "MWCreditsImg";
+            this.MWCreditsImg.Size = new System.Drawing.Size(64, 64);
+            this.MWCreditsImg.TabIndex = 1;
+            this.MWCreditsImg.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(207, 4);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(123, 15);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Foundry Components";
+            // 
+            // MWImageBox
+            // 
+            this.MWImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MWImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MWImageBox.Location = new System.Drawing.Point(15, 61);
+            this.MWImageBox.Name = "MWImageBox";
+            this.MWImageBox.Size = new System.Drawing.Size(283, 188);
+            this.MWImageBox.TabIndex = 3;
+            this.MWImageBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2341,6 +2707,32 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.MeleeWeaponContainer.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot4Img)).EndInit();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot3Img)).EndInit();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot2Img)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot1Img)).EndInit();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWSlot0Img)).EndInit();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MWCreditsImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MWImageBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2523,6 +2915,35 @@ namespace WarframeTracker
         private System.Windows.Forms.PictureBox SWCreditsImgBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox SecondaryWeaponImageBox;
+        private System.Windows.Forms.GroupBox MeleeWeaponContainer;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.TextBox MWWeaponCompDataTxt;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.TextBox MWDataTxt;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label MWCreditCostLbl;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.TextBox MWSlot4Txt;
+        private System.Windows.Forms.PictureBox MWSlot4Img;
+        private System.Windows.Forms.Label MWSkipBuildCostLbl;
+        private System.Windows.Forms.Label MWMarketPriceLbl;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.TextBox MWSlot3Txt;
+        private System.Windows.Forms.PictureBox MWSlot3Img;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.TextBox MWSlot2Txt;
+        private System.Windows.Forms.PictureBox MWSlot2Img;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.TextBox MWSlot1Txt;
+        private System.Windows.Forms.PictureBox MWSlot1Img;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.TextBox MWSlot0Txt;
+        private System.Windows.Forms.PictureBox MWSlot0Img;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.TextBox MWCreditsTxt;
+        private System.Windows.Forms.PictureBox MWCreditsImg;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox MWImageBox;
     }
 }
 

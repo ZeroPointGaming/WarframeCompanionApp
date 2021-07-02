@@ -59,6 +59,11 @@ namespace WarframeTracker
             SecondaryWeaponsComboBox.SelectedIndex = 0;
             MeleeWeaponsComboBox.SelectedIndex = 0;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GenerateData();
+        }
         #endregion
 
         #region Combobox Event Code
@@ -158,21 +163,21 @@ namespace WarframeTracker
             {
                 if (DebugMode)
                 {
-                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {ex}");
+                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {ex}");
+                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine} Stack Trace: {ex}");
+                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -213,7 +218,7 @@ namespace WarframeTracker
                             PrimaryWeaponContainer.Text = Weapon.Name.ToString();
                             if (Weapon.SkipBuildTimePrice > 0)
                             {
-                                PWFoundrySkipBuildLbl.Text = "Skip Build Time Cost: " + Weapon.SkipBuildTimePrice.ToString() + " platinum";
+                                PWFoundrySkipBuildLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
                                 PWFoundrySkipBuildLbl.Visible = true;
                             }
                             else
@@ -222,7 +227,7 @@ namespace WarframeTracker
                             }
                         }
 
-                        //Set foundry build cost in credits section
+                        //Set  build cost in credits section
                         PWFoundryCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
                         PWFoundryCreditsTxt.Text = Weapon.BuildPrice.ToString();
                         toolTip1.SetToolTip(PWFoundryCreditsTxt, "Build Cost");
@@ -233,7 +238,7 @@ namespace WarframeTracker
                             {
                                 if (i == 0)
                                 {
-                                    //Set foundry component information
+                                    //Set  component information
                                     PWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
                                     PWFoundrySlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
                                     toolTip1.SetToolTip(PWFoundrySlot0Txt, Weapon.Components[0].Name);
@@ -273,7 +278,7 @@ namespace WarframeTracker
                         //Set market cost and build time
                         if (Weapon.MarketCost > 0)
                         {
-                            PWFoundryMarketPriceLbl.Text = "Market Price: " + Weapon.MarketCost.ToString() + " Platinum";
+                            PWFoundryMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
                             PWFoundryMarketPriceLbl.Visible = true;
                         }
                         else
@@ -283,7 +288,7 @@ namespace WarframeTracker
 
                         if (Weapon.BuildTime > 0)
                         {
-                            PWFoundryBuildTime.Text = "Build Time: " + (Weapon.BuildTime / 60).ToString() + " Minutes";
+                            PWFoundryBuildTime.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
                             PWFoundryBuildTime.Visible = true;
                         }
                         else
@@ -292,83 +297,18 @@ namespace WarframeTracker
                         }
 
                         //Other Weapon Data
-                        PWDataTxt.Text += "Cricical Chance: " + Math.Round(Weapon.CriticalChance * 100) + Environment.NewLine;
-                        PWDataTxt.Text += "Cricical Multiplier: " + Weapon.CriticalMultiplier + Environment.NewLine;
-                        PWDataTxt.Text += "Proc Chance: " + Math.Round(Weapon.ProcChance * 100) + Environment.NewLine;
-                        PWDataTxt.Text += "Fire Rate: " + Weapon.FireRate + Environment.NewLine;
-                        PWDataTxt.Text += "Accuracy: " + Weapon.Accuracy + Environment.NewLine;
-                        PWDataTxt.Text += "Multishot: " + Weapon.Multishot + Environment.NewLine;
-                        PWDataTxt.Text += "Reload Time: " + Weapon.ReloadTime + "s" + Environment.NewLine;
+                        PWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)}{Environment.NewLine}";
+                        PWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier}{Environment.NewLine}";
+                        PWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)}{Environment.NewLine}";
+                        PWDataTxt.Text += $"Fire Rate: {Weapon.FireRate}{Environment.NewLine}";
+                        PWDataTxt.Text += $"Accuracy: {Weapon.Accuracy}{Environment.NewLine}";
+                        PWDataTxt.Text += $"Multishot: {Weapon.Multishot}{Environment.NewLine}";
+                        PWDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s{Environment.NewLine}";
 
                         //Export Damage Ammounts
                         for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
                         {
-                            switch (i)
-                            {
-                                case 0:
-                                    PWDataTxt.Text += "Base Physical Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 1:
-                                    PWDataTxt.Text += "Impact/Puncture Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 2:
-                                    PWDataTxt.Text += "Slash Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 3:
-                                    PWDataTxt.Text += "Heat Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 4:
-                                    PWDataTxt.Text += "Cold Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 5:
-                                    PWDataTxt.Text += "Electricity Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 6:
-                                    PWDataTxt.Text += "Toxin Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 7:
-                                    PWDataTxt.Text += "Blast Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 8:
-                                    PWDataTxt.Text += "Radiation Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 9:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 10:
-                                    PWDataTxt.Text += "Magnetic Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 11:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 12:
-                                    PWDataTxt.Text += "Corrosive Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 13:
-                                    PWDataTxt.Text += "Viral Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 14:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 15:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 16:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 17:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 18:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 19:
-                                    PWDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                default:
-                                    PWDataTxt.Text = "Error";
-                                    break;
-                            }
+                            PWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
                         }
 
                         //Export component drop data
@@ -397,7 +337,7 @@ namespace WarframeTracker
                         //Debug Info
                         if (DebugMode)
                         {
-                            Debugger.Log("Updated UI for " + PrimaryWeaponComboBox.SelectedItem.ToString());
+                            Debugger.Log($"Updated UI for {PrimaryWeaponComboBox.SelectedItem}");
                         }
                     }
                 }
@@ -406,21 +346,21 @@ namespace WarframeTracker
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file." + ex.ToString());
+                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file." + ex.ToString());
+                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred." + Environment.NewLine + "Stack Trace: " + ex.ToString());
+                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -460,7 +400,7 @@ namespace WarframeTracker
                             SecondaryWeaponContainer.Text = Weapon.Name.ToString();
                             if (Weapon.SkipBuildTimePrice > 0)
                             {
-                                SWFoundrySkipBuildLbl.Text = "Skip Build Time Cost: " + Weapon.SkipBuildTimePrice.ToString() + " platinum";
+                                SWFoundrySkipBuildLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
                                 SWFoundrySkipBuildLbl.Visible = true;
                             }
                             else
@@ -469,7 +409,7 @@ namespace WarframeTracker
                             }
                         }
 
-                        //Set foundry build cost in credits section
+                        //Set  build cost in credits section
                         SWCreditsImgBox.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
                         SWFoundryCreditsTxt.Text = Weapon.BuildPrice.ToString();
                         toolTip1.SetToolTip(SWFoundryCreditsTxt, "Build Cost");
@@ -480,7 +420,7 @@ namespace WarframeTracker
                             {
                                 if (i == 0)
                                 {
-                                    //Set foundry component information
+                                    //Set  component information
                                     SWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
                                     SWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
                                     toolTip1.SetToolTip(SWSlot0Txt, Weapon.Components[0].Name);
@@ -520,7 +460,7 @@ namespace WarframeTracker
                         //Set market cost and build time
                         if (Weapon.MarketCost > 0)
                         {
-                            SWMarketPriceLbl.Text = "Market Price: " + Weapon.MarketCost.ToString() + " Platinum";
+                            SWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
                             SWMarketPriceLbl.Visible = true;
                         }
                         else
@@ -530,7 +470,7 @@ namespace WarframeTracker
 
                         if (Weapon.BuildTime > 0)
                         {
-                            SWBuildTimeLbl.Text = "Build Time: " + (Weapon.BuildTime / 60).ToString() + " Minutes";
+                            SWBuildTimeLbl.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
                             SWBuildTimeLbl.Visible = true;
                         }
                         else
@@ -539,83 +479,18 @@ namespace WarframeTracker
                         }
 
                         //Other Weapon Data
-                        SWWeaponDataTxt.Text += "Cricical Chance: " + Math.Round(Weapon.CriticalChance * 100) + Environment.NewLine;
-                        SWWeaponDataTxt.Text += "Cricical Multiplier: " + Weapon.CriticalMultiplier + Environment.NewLine;
-                        SWWeaponDataTxt.Text += "Proc Chance: " + Math.Round(Weapon.ProcChance * 100) + Environment.NewLine;
-                        SWWeaponDataTxt.Text += "Fire Rate: " + Weapon.FireRate + Environment.NewLine;
-                        SWWeaponDataTxt.Text += "Accuracy: " + Weapon.Accuracy + Environment.NewLine;
-                        SWWeaponDataTxt.Text += "Multishot: " + Weapon.Multishot + Environment.NewLine;
-                        SWWeaponDataTxt.Text += "Reload Time: " + Weapon.ReloadTime + "s" + Environment.NewLine;
+                        SWWeaponDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
+                        SWWeaponDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
+                        SWWeaponDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
+                        SWWeaponDataTxt.Text += $"Fire Rate: {Weapon.FireRate} {Environment.NewLine}";
+                        SWWeaponDataTxt.Text += $"Accuracy: {Weapon.Accuracy} {Environment.NewLine}";
+                        SWWeaponDataTxt.Text += $"Multishot: {Weapon.Multishot} {Environment.NewLine}";
+                        SWWeaponDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s {Environment.NewLine}";
 
                         //Export Damage Ammounts
                         for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
                         {
-                            switch (i)
-                            {
-                                case 0:
-                                    SWWeaponDataTxt.Text += "Base Physical Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 1:
-                                    SWWeaponDataTxt.Text += "Impact/Puncture Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 2:
-                                    SWWeaponDataTxt.Text += "Slash Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 3:
-                                    SWWeaponDataTxt.Text += "Heat Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 4:
-                                    SWWeaponDataTxt.Text += "Cold Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 5:
-                                    SWWeaponDataTxt.Text += "Electricity Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 6:
-                                    SWWeaponDataTxt.Text += "Toxin Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 7:
-                                    SWWeaponDataTxt.Text += "Blast Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 8:
-                                    SWWeaponDataTxt.Text += "Radiation Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 9:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 10:
-                                    SWWeaponDataTxt.Text += "Magnetic Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 11:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 12:
-                                    SWWeaponDataTxt.Text += "Corrosive Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 13:
-                                    SWWeaponDataTxt.Text += "Viral Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 14:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 15:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 16:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 17:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 18:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                case 19:
-                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
-                                    break;
-                                default:
-                                    SWWeaponDataTxt.Text = "Error";
-                                    break;
-                            }
+                            SWWeaponDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
                         }
 
                         //Export component drop data
@@ -629,14 +504,11 @@ namespace WarframeTracker
                                     {
                                         if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
                                         {
-                                            SWComponentDataTxt.Text +=
-                                            Weapon.Components[i].Drops[c].Type + " Drops from " + Weapon.Components[i].Drops[c].Location + " with a " +
-                                            Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100)).ToString() + " % chance with a rarity class of " +
-                                            Weapon.Components[i].Drops[c].Rarity + Environment.NewLine;
+                                            SWComponentDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
                                         }
                                     }
 
-                                    SWComponentDataTxt.Text += "----------------------------------------------------------------------" + Environment.NewLine;
+                                    SWComponentDataTxt.Text += $"---------------------------------------------------------------------{Environment.NewLine}";
                                 }
                             }
                         }
@@ -644,7 +516,7 @@ namespace WarframeTracker
                         //Debug Info
                         if (DebugMode)
                         {
-                            Debugger.Log("Updated UI for " + SecondaryWeaponsComboBox.SelectedItem.ToString());
+                            Debugger.Log($"Updated UI for {SecondaryWeaponsComboBox.SelectedItem}");
                         }
                     }
                 }
@@ -653,27 +525,271 @@ namespace WarframeTracker
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file." + ex.ToString());
+                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file." + ex.ToString());
+                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
                 if (DebugMode)
                 {
-                    Debugger.Log("Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred." + Environment.NewLine + "Stack Trace: " + ex.ToString());
+                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
+        }
+
+        private void MeleeWeaponsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region Reset
+            MWDataTxt.Text = "";
+            MWCreditsTxt.Text = "";
+            MWSlot0Txt.Text = "";
+            MWSlot1Txt.Text = "";
+            MWSlot2Txt.Text = "";
+            MWSlot3Txt.Text = "";
+            MWSlot4Txt.Text = "";
+            MWWeaponCompDataTxt.Text = "";
+            MWSlot0Img.BackgroundImage = null;
+            MWSlot1Img.BackgroundImage = null;
+            MWSlot2Img.BackgroundImage = null;
+            MWSlot3Img.BackgroundImage = null;
+            MWSlot4Img.BackgroundImage = null;
+            MWCreditsImg.BackgroundImage = null;
+            MWCreditsTxt.Text = "";
+            MWMarketPriceLbl.Text = "";
+            MWCreditCostLbl.Text = "";
+            MWSkipBuildCostLbl.Text = "";
+            #endregion
+
+            try
+            {
+                foreach (Items.Melee.Root Weapon in Melee_Weapons)
+                {
+                    if (Weapon.Name.ToString() == MeleeWeaponsComboBox.SelectedItem.ToString())
+                    {
+                        //Set main Weapon image
+                        if (Weapon.WikiaThumbnail != null)
+                        {
+                            MWImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
+                            MeleeWeaponContainer.Text = Weapon.Name.ToString();
+                            if (Weapon.SkipBuildTimePrice > 0)
+                            {
+                                MWSkipBuildCostLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
+                                MWSkipBuildCostLbl.Visible = true;
+                            }
+                            else
+                            {
+                                MWSkipBuildCostLbl.Visible = false;
+                            }
+                        }
+
+                        //Set  build cost in credits section
+                        MWCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
+                        MWCreditsTxt.Text = Weapon.BuildPrice.ToString();
+                        toolTip1.SetToolTip(MWCreditsTxt, "Build Cost");
+
+                        if (Weapon.Components != null)
+                        {
+                            for (int i = 0; i < Weapon.Components.Count; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    //Set  component information
+                                    MWSlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
+                                    MWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
+                                    toolTip1.SetToolTip(MWSlot0Txt, Weapon.Components[0].Name);
+                                    toolTip1.SetToolTip(MWSlot0Img, Weapon.Components[0].Name);
+                                }
+                                else if (i == 1)
+                                {
+                                    MWSlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
+                                    MWSlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
+                                    toolTip1.SetToolTip(MWSlot1Txt, Weapon.Components[1].Name);
+                                    toolTip1.SetToolTip(MWSlot1Img, Weapon.Components[1].Name);
+                                }
+                                else if (i == 2)
+                                {
+                                    MWSlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
+                                    MWSlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
+                                    toolTip1.SetToolTip(MWSlot2Txt, Weapon.Components[2].Name);
+                                    toolTip1.SetToolTip(MWSlot2Img, Weapon.Components[2].Name);
+                                }
+                                else if (i == 3)
+                                {
+                                    MWSlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
+                                    MWSlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
+                                    toolTip1.SetToolTip(MWSlot3Txt, Weapon.Components[3].Name);
+                                    toolTip1.SetToolTip(MWSlot3Img, Weapon.Components[3].Name);
+                                }
+                                else if (i == 4)
+                                {
+                                    MWSlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
+                                    MWSlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
+                                    toolTip1.SetToolTip(MWSlot4Txt, Weapon.Components[4].Name);
+                                    toolTip1.SetToolTip(MWSlot4Img, Weapon.Components[4].Name);
+                                }
+                            }
+                        }
+
+                        //Set market cost and build time
+                        if (double.Parse(Weapon.MarketCost.ToString()) > 0)
+                        {
+                            MWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
+                            MWMarketPriceLbl.Visible = true;
+                        }
+                        else
+                        {
+                            MWMarketPriceLbl.Visible = false;
+                        }
+
+                        if (Weapon.BuildTime > 0)
+                        {
+                            MWCreditCostLbl.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
+                            MWCreditCostLbl.Visible = true;
+                        }
+                        else
+                        {
+                            MWCreditCostLbl.Visible = false;
+                        }
+
+                        //Other Weapon Data
+                        MWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Attack Rate: {Weapon.FireRate} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Combo Duration: {Weapon.ComboDuration} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Heavy Attack Damage: {Weapon.HeavyAttackDamage} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Slam Attack Damage: {Weapon.SlamAttack} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Slam Attack Radial Damage: {Weapon.SlamRadialDamage} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Slam Attack Radius: {Weapon.SlamRadius} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Heavy Slam Attack Damage: {Weapon.HeavySlamAttack} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage} {Environment.NewLine}";
+                        MWDataTxt.Text += $"Heavy Slam Attack Radius: {Environment.NewLine}";
+                        MWDataTxt.Text += $"Range: {Weapon.Range}s {Environment.NewLine}";
+
+                        //Export Damage Ammounts
+                        for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
+                        {
+                            MWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                        }
+
+                        //Export component drop data
+                        if (Weapon.Components != null)
+                        {
+                            for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                            {
+                                if (Weapon.Components[i].Drops != null)
+                                {
+                                    for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                                    {
+                                        if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                        {
+                                            MWWeaponCompDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                        }
+                                    }
+
+                                    MWWeaponCompDataTxt.Text += $"----------------------------------------------------------------------{Environment.NewLine}";
+                                }
+                            }
+                        }
+
+                        //Debug Info
+                        if (DebugMode)
+                        {
+                            Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
+                        }
+                    }
+                }
+            }
+            catch (System.IO.DirectoryNotFoundException ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
+            catch (System.IO.IOException ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
         #endregion
 
         #region Data Generation Code
+        /// <summary>
+        /// Returns the damage string for the given inputs
+        /// </summary>
+        /// <param name="DamageId">Damage id</param>
+        /// <param name="ammount">Damage ammount</param>
+        /// <returns></returns>
+        private string GetDamageType(int DamageId, double ammount)
+        {
+            switch (DamageId)
+            {
+                case 0:
+                    return $"Base Physical Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 1:
+                    return $"Impact/Puncture Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 2:
+                    return $"Slash Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 3:
+                    return $"Heat Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 4:
+                    return $"Cold Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 5:
+                    return $"Electricity Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 6:
+                    return $"Toxin Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 7:
+                    return $"Blast Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 8:
+                    return $"Radiation Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 9:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 10:
+                    return $"Magnetic Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 11:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 12:
+                    return $"Corrosive Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 13:
+                    return $"Viral Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 14:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 15:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 16:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 17:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 18:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                case 19:
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                default:
+                    return "Error";
+            }
+        }
+
+        /// <summary>
+        /// Loads the world state into the application
+        /// </summary>
         private void LoadWorldState()
         {
             HttpWebRequest world_state_request = WebManager.GenerateRequest("", "WorldState", "pc");
@@ -784,7 +900,6 @@ namespace WarframeTracker
             #endregion
 
             LoadWorldState();
-            
         }
         #endregion
 
@@ -803,11 +918,6 @@ namespace WarframeTracker
         #region World Cycle Code
 
         #endregion
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            GenerateData();
-        }
 
         #region ContextMenu Code
         private void FindOrderInformation(string item_name, string order_type, bool tradeable)
@@ -848,6 +958,7 @@ namespace WarframeTracker
         {
             FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Blueprint", tradeable);
         }
+
         #endregion
 
         #region Primary Weapons Context Menu Commands
@@ -871,7 +982,5 @@ namespace WarframeTracker
         #endregion
 
         #endregion
-
-        
     }
 }
