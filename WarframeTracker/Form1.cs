@@ -427,7 +427,249 @@ namespace WarframeTracker
 
         private void SecondaryWeaponsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            #region Reset
+            SWWeaponDataTxt.Text = "";
+            SWFoundryCreditsTxt.Text = "";
+            SWSlot0Txt.Text = "";
+            SWSlot1Txt.Text = "";
+            SWSlot2Txt.Text = "";
+            SWSlot3Txt.Text = "";
+            SWSlot4Txt.Text = "";
+            SWComponentDataTxt.Text = "";
+            SWSlot01Img.BackgroundImage = null;
+            SWSlot02Img.BackgroundImage = null;
+            SWSlot03Img.BackgroundImage = null;
+            SWSlot04Img.BackgroundImage = null;
+            SWCreditsImgBox.BackgroundImage = null;
+            SWFoundryCreditsTxt.Text = "";
+            SWMarketPriceLbl.Text = "";
+            SWBuildTimeLbl.Text = "";
+            SWFoundrySkipBuildLbl.Text = "";
+            #endregion
 
+            try
+            {
+                foreach (Items.SecondaryWeapons.Root Weapon in Secondary_Weapons)
+                {
+                    if (Weapon.Name.ToString() == SecondaryWeaponsComboBox.SelectedItem.ToString())
+                    {
+                        //Set main Weapon image
+                        if (Weapon.WikiaThumbnail != null)
+                        {
+                            SecondaryWeaponImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
+                            SecondaryWeaponContainer.Text = Weapon.Name.ToString();
+                            if (Weapon.SkipBuildTimePrice > 0)
+                            {
+                                SWFoundrySkipBuildLbl.Text = "Skip Build Time Cost: " + Weapon.SkipBuildTimePrice.ToString() + " platinum";
+                                SWFoundrySkipBuildLbl.Visible = true;
+                            }
+                            else
+                            {
+                                SWFoundrySkipBuildLbl.Visible = false;
+                            }
+                        }
+
+                        //Set foundry build cost in credits section
+                        SWCreditsImgBox.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
+                        SWFoundryCreditsTxt.Text = Weapon.BuildPrice.ToString();
+                        toolTip1.SetToolTip(SWFoundryCreditsTxt, "Build Cost");
+
+                        if (Weapon.Components != null)
+                        {
+                            for (int i = 0; i < Weapon.Components.Count; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    //Set foundry component information
+                                    SWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
+                                    SWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
+                                    toolTip1.SetToolTip(SWSlot0Txt, Weapon.Components[0].Name);
+                                    toolTip1.SetToolTip(SWFoundrySlot0Img, Weapon.Components[0].Name);
+                                }
+                                else if (i == 1)
+                                {
+                                    SWSlot01Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
+                                    SWSlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
+                                    toolTip1.SetToolTip(SWSlot1Txt, Weapon.Components[1].Name);
+                                    toolTip1.SetToolTip(SWSlot01Img, Weapon.Components[1].Name);
+                                }
+                                else if (i == 2)
+                                {
+                                    SWSlot02Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
+                                    SWSlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
+                                    toolTip1.SetToolTip(SWSlot2Txt, Weapon.Components[2].Name);
+                                    toolTip1.SetToolTip(SWSlot02Img, Weapon.Components[2].Name);
+                                }
+                                else if (i == 3)
+                                {
+                                    SWSlot03Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
+                                    SWSlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
+                                    toolTip1.SetToolTip(SWSlot3Txt, Weapon.Components[3].Name);
+                                    toolTip1.SetToolTip(SWSlot03Img, Weapon.Components[3].Name);
+                                }
+                                else if (i == 4)
+                                {
+                                    SWSlot04Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
+                                    SWSlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
+                                    toolTip1.SetToolTip(SWSlot4Txt, Weapon.Components[4].Name);
+                                    toolTip1.SetToolTip(SWSlot04Img, Weapon.Components[4].Name);
+                                }
+                            }
+                        }
+
+                        //Set market cost and build time
+                        if (Weapon.MarketCost > 0)
+                        {
+                            SWMarketPriceLbl.Text = "Market Price: " + Weapon.MarketCost.ToString() + " Platinum";
+                            SWMarketPriceLbl.Visible = true;
+                        }
+                        else
+                        {
+                            SWMarketPriceLbl.Visible = false;
+                        }
+
+                        if (Weapon.BuildTime > 0)
+                        {
+                            SWBuildTimeLbl.Text = "Build Time: " + (Weapon.BuildTime / 60).ToString() + " Minutes";
+                            SWBuildTimeLbl.Visible = true;
+                        }
+                        else
+                        {
+                            SWBuildTimeLbl.Visible = false;
+                        }
+
+                        //Other Weapon Data
+                        SWWeaponDataTxt.Text += "Cricical Chance: " + Math.Round(Weapon.CriticalChance * 100) + Environment.NewLine;
+                        SWWeaponDataTxt.Text += "Cricical Multiplier: " + Weapon.CriticalMultiplier + Environment.NewLine;
+                        SWWeaponDataTxt.Text += "Proc Chance: " + Math.Round(Weapon.ProcChance * 100) + Environment.NewLine;
+                        SWWeaponDataTxt.Text += "Fire Rate: " + Weapon.FireRate + Environment.NewLine;
+                        SWWeaponDataTxt.Text += "Accuracy: " + Weapon.Accuracy + Environment.NewLine;
+                        SWWeaponDataTxt.Text += "Multishot: " + Weapon.Multishot + Environment.NewLine;
+                        SWWeaponDataTxt.Text += "Reload Time: " + Weapon.ReloadTime + "s" + Environment.NewLine;
+
+                        //Export Damage Ammounts
+                        for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
+                        {
+                            switch (i)
+                            {
+                                case 0:
+                                    SWWeaponDataTxt.Text += "Base Physical Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 1:
+                                    SWWeaponDataTxt.Text += "Impact/Puncture Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 2:
+                                    SWWeaponDataTxt.Text += "Slash Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 3:
+                                    SWWeaponDataTxt.Text += "Heat Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 4:
+                                    SWWeaponDataTxt.Text += "Cold Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 5:
+                                    SWWeaponDataTxt.Text += "Electricity Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 6:
+                                    SWWeaponDataTxt.Text += "Toxin Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 7:
+                                    SWWeaponDataTxt.Text += "Blast Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 8:
+                                    SWWeaponDataTxt.Text += "Radiation Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 9:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 10:
+                                    SWWeaponDataTxt.Text += "Magnetic Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 11:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 12:
+                                    SWWeaponDataTxt.Text += "Corrosive Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 13:
+                                    SWWeaponDataTxt.Text += "Viral Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 14:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 15:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 16:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 17:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 18:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                case 19:
+                                    SWWeaponDataTxt.Text += "??? Damage: " + Math.Round(Weapon.DamagePerShot[i]).ToString() + Environment.NewLine;
+                                    break;
+                                default:
+                                    SWWeaponDataTxt.Text = "Error";
+                                    break;
+                            }
+                        }
+
+                        //Export component drop data
+                        if (Weapon.Components != null)
+                        {
+                            for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                            {
+                                if (Weapon.Components[i].Drops != null)
+                                {
+                                    for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                                    {
+                                        if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                        {
+                                            SWComponentDataTxt.Text +=
+                                            Weapon.Components[i].Drops[c].Type + " Drops from " + Weapon.Components[i].Drops[c].Location + " with a " +
+                                            Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100)).ToString() + " % chance with a rarity class of " +
+                                            Weapon.Components[i].Drops[c].Rarity + Environment.NewLine;
+                                        }
+                                    }
+
+                                    SWComponentDataTxt.Text += "----------------------------------------------------------------------" + Environment.NewLine;
+                                }
+                            }
+                        }
+
+                        //Debug Info
+                        if (DebugMode)
+                        {
+                            Debugger.Log("Updated UI for " + SecondaryWeaponsComboBox.SelectedItem.ToString());
+                        }
+                    }
+                }
+            }
+            catch (System.IO.DirectoryNotFoundException ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log("Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file." + ex.ToString());
+                }
+            }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log("Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file." + ex.ToString());
+                }
+            }
+            catch (System.IO.IOException ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log("Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred." + Environment.NewLine + "Stack Trace: " + ex.ToString());
+                }
+            }
         }
         #endregion
 
