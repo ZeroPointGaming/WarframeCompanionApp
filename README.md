@@ -17,34 +17,19 @@ Screenshot of current running version
 ## APIs we use
 ```c#
 //Official Warframe API Data
-namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.Warframes {}
-namespace WarframeTracker.SerializationWrappers.WarframeAPI.Items.PrimaryWeapons {}
-namespace WarframeTracker.SerializationWrappers.WarframeAPI.WorldState {}
+namespace WarframeTracker.WarframeAPI.Items {}
 
 //Warframe.Market
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.ItemInfo {}
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.ItemOrders {}
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.GetAllItems {}
-namespace WarframeTracker.SerializationWrappers.WarframeMarket.RivenGetAuctions {}
+namespace WarframeTracker.WarframeMarket.ItemInfo {}
+namespace WarframeTracker.WarframeMarket.ItemOrders {}
+namespace WarframeTracker.WarframeMarket.GetAllItems {}
+namespace WarframeTracker.WarframeMarket.RivenGetAuctions {}
 
 //WarframeStats.us
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Arbitration {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.WorldSpace {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Alerts {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.CambionCycle {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Cetus {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.OrbVallis {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Baro {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Invasions {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Fissures {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Syndicate {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.News {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Nightwave {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Sortie {}
-namespace WarframeTracker.SerializationWrappers.WarframeStats.Earth {}
+namespace WarframeTracker.WarframeStats.WorldSpace {}
 
 //OGGTechnologies
-namespace WarframeTracker.SerializationWrappers.OGTech.ValutedItemData {}
+namespace WarframeTracker.OGTech.ValutedItemData {}
 ```
 
 Want to donate to support our project, feel free to do so here: https://www.patreon.com/ecm_gaming
