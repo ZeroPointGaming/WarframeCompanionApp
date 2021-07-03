@@ -17,7 +17,7 @@ namespace WarframeTracker
     /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
     /// [Identified] Equinox frame doesnt update components.
     /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
-    /// [FIXED] Fixed an issue where nullref was thrown when marketcost was null.
+    /// [Identified] Relics expiry time is off
     /// </summary>
 
     public partial class Form1 : Form
