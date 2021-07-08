@@ -401,10 +401,11 @@ namespace WarframeTracker
             // 
             // WarframeTrackerTabControl
             // 
-            this.WarframeTrackerTabControl.Controls.Add(this.MeleeWeaponsTabPage);
-            this.WarframeTrackerTabControl.Controls.Add(this.SecWeaponsTabPage);
-            this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
+            this.WarframeTrackerTabControl.ContextMenuStrip = this.FindOrdersMenu;
             this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.SecWeaponsTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.MeleeWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PetsTabPage);
@@ -421,6 +422,7 @@ namespace WarframeTracker
             // MeleeWeaponsTabPage
             // 
             this.MeleeWeaponsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MeleeWeaponsTabPage.ContextMenuStrip = this.FindOrdersMenu;
             this.MeleeWeaponsTabPage.Controls.Add(this.MeleeWeaponContainer);
             this.MeleeWeaponsTabPage.ForeColor = System.Drawing.Color.White;
             this.MeleeWeaponsTabPage.Location = new System.Drawing.Point(4, 35);
@@ -762,6 +764,7 @@ namespace WarframeTracker
             // SecWeaponsTabPage
             // 
             this.SecWeaponsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.SecWeaponsTabPage.ContextMenuStrip = this.FindOrdersMenu;
             this.SecWeaponsTabPage.Controls.Add(this.SecondaryWeaponContainer);
             this.SecWeaponsTabPage.ForeColor = System.Drawing.Color.White;
             this.SecWeaponsTabPage.Location = new System.Drawing.Point(4, 35);
@@ -1103,6 +1106,7 @@ namespace WarframeTracker
             // PrimWeaponsTabPage
             // 
             this.PrimWeaponsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PrimWeaponsTabPage.ContextMenuStrip = this.FindOrdersMenu;
             this.PrimWeaponsTabPage.Controls.Add(this.PrimaryWeaponContainer);
             this.PrimWeaponsTabPage.ForeColor = System.Drawing.Color.White;
             this.PrimWeaponsTabPage.Location = new System.Drawing.Point(4, 35);

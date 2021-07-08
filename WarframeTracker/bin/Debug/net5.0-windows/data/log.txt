@@ -792,3 +792,42 @@ Updated UI for Gara Prime
 Order URL Name: gara_prime_chassis
 Updated UI for Atlas Prime
 Order URL Name: atlas_prime_blueprint
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Astilla Prime
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Ash Prime
+Updated UI for Astilla Prime
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Ash Prime
+Updated UI for Boar Prime
+Updated UI for Astilla Prime
+Updated UI for Akbolto Prime
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Astilla Prime
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Astilla Prime
+Order URL Name: ash_set
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Astilla Prime
+Order URL Name: astilla_prime_set
+Order URL Name: astilla_prime_barrel
+Order URL Name: astilla_prime_stock
+Order URL Name: astilla_prime_blueprint

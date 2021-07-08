@@ -15,7 +15,6 @@ namespace WarframeTracker
     /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on. (no damage, components or drop data)
     /// [Identified] Necrophage frames dont have images yet.
     /// [Partial-Fixed] Necrophage frames dont contain components, components need to be reset between each changed frame.
-    /// [Fixed] Equinox frame doesnt update components.
     /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
     /// [Identified] Relics expiry time is off in WorldSpace
     /// </summary>
@@ -240,6 +239,8 @@ namespace WarframeTracker
         private void PrimaryWeaponComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region Reset
+            FindOrdersMenu.Items.Clear();
+            WarframeMarketOptions.DropDownItems.Clear();
             PWDataTxt.Text = "";
             PWFoundryCreditsTxt.Text = "";
             PWFoundrySlot0Txt.Text = "";
@@ -266,6 +267,8 @@ namespace WarframeTracker
                 {
                     if ($"{Weapon.Name}" == $"{PrimaryWeaponComboBox.SelectedItem}")
                     {
+                        SelectedItemInformation.activeItemName = Weapon.Name;
+
                         //Set main Weapon image
                         if (Weapon.WikiaThumbnail != null)
                         {
@@ -351,7 +354,7 @@ namespace WarframeTracker
                             PWFoundryBuildTime.Visible = false;
                         }
 
-                        //Other Weapon Data
+                        #region Weapon Data
                         PWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)}{Environment.NewLine}";
                         PWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier}{Environment.NewLine}";
                         PWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)}{Environment.NewLine}";
@@ -365,6 +368,7 @@ namespace WarframeTracker
                         {
                             PWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
                         }
+                        #endregion
 
                         //Export component drop data
                         if (Weapon.Components != null)
@@ -389,6 +393,57 @@ namespace WarframeTracker
                             }
                         }
 
+                        #region Generate Order Menu
+                        if (Weapon.Components != null)
+                        {
+                            if (Weapon.Name.ToLower().Contains("prime"))
+                            {
+                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                                GenerateOrderMenu(Weapon.Name, "Set");
+                            }
+                        }
+                        foreach (Items.PrimaryWeapons.Component Comp in Weapon.Components)
+                        {
+                            switch (Comp.Name)
+                            {
+                                case "Set":
+                                    GenerateOrderMenu(Weapon.Name, "Set");
+                                    break;
+                                case "Blueprint":
+                                    GenerateOrderMenu(Weapon.Name, "Blueprint");
+                                    break;
+                                case "Chassis":
+                                    GenerateOrderMenu(Weapon.Name, "Chassis");
+                                    break;
+                                case "Neuroptics":
+                                    GenerateOrderMenu(Weapon.Name, "Neuroptics");
+                                    break;
+                                case "Systems":
+                                    GenerateOrderMenu(Weapon.Name, "Systems");
+                                    break;
+                                case "Barrel":
+                                    GenerateOrderMenu(Weapon.Name, "Barrel");
+                                    break;
+                                case "Stock":
+                                    GenerateOrderMenu(Weapon.Name, "Stock");
+                                    break;
+                                case "Reciever":
+                                    GenerateOrderMenu(Weapon.Name, "Reciever");
+                                    break;
+                                case "Blade":
+                                    GenerateOrderMenu(Weapon.Name, "Blade");
+                                    break;
+                                case "Hilt":
+                                    GenerateOrderMenu(Weapon.Name, "Hilt");
+                                    break;
+                                case "Head":
+                                    GenerateOrderMenu(Weapon.Name, "Head");
+                                    break;
+                            }
+                        }
+                        #endregion
+                        
                         //Debug Info
                         if (DebugMode)
                         {
@@ -423,6 +478,8 @@ namespace WarframeTracker
         private void SecondaryWeaponsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region Reset
+            FindOrdersMenu.Items.Clear();
+            WarframeMarketOptions.DropDownItems.Clear();
             SWWeaponDataTxt.Text = "";
             SWFoundryCreditsTxt.Text = "";
             SWSlot0Txt.Text = "";
@@ -448,6 +505,8 @@ namespace WarframeTracker
                 {
                     if ($"{Weapon.Name}" == SecondaryWeaponsComboBox.SelectedItem.ToString())
                     {
+                        SelectedItemInformation.activeItemName = Weapon.Name;
+
                         //Set main Weapon image
                         if (Weapon.WikiaThumbnail != null)
                         {
@@ -548,6 +607,57 @@ namespace WarframeTracker
                             SWWeaponDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
                         }
 
+                        #region Generate Order Menu
+                        if (Weapon.Components != null)
+                        {
+                            if (Weapon.Name.ToLower().Contains("prime"))
+                            {
+                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                                GenerateOrderMenu(Weapon.Name, "Set");
+                            }
+                        }
+                        foreach (Items.SecondaryWeapons.Component Comp in Weapon.Components)
+                        {
+                            switch (Comp.Name)
+                            {
+                                case "Set":
+                                    GenerateOrderMenu(Weapon.Name, "Set");
+                                    break;
+                                case "Blueprint":
+                                    GenerateOrderMenu(Weapon.Name, "Blueprint");
+                                    break;
+                                case "Chassis":
+                                    GenerateOrderMenu(Weapon.Name, "Chassis");
+                                    break;
+                                case "Neuroptics":
+                                    GenerateOrderMenu(Weapon.Name, "Neuroptics");
+                                    break;
+                                case "Systems":
+                                    GenerateOrderMenu(Weapon.Name, "Systems");
+                                    break;
+                                case "Barrel":
+                                    GenerateOrderMenu(Weapon.Name, "Barrel");
+                                    break;
+                                case "Stock":
+                                    GenerateOrderMenu(Weapon.Name, "Stock");
+                                    break;
+                                case "Reciever":
+                                    GenerateOrderMenu(Weapon.Name, "Reciever");
+                                    break;
+                                case "Blade":
+                                    GenerateOrderMenu(Weapon.Name, "Blade");
+                                    break;
+                                case "Hilt":
+                                    GenerateOrderMenu(Weapon.Name, "Hilt");
+                                    break;
+                                case "Head":
+                                    GenerateOrderMenu(Weapon.Name, "Head");
+                                    break;
+                            }
+                        }
+                        #endregion
+
                         //Export component drop data
                         if (Weapon.Components != null)
                         {
@@ -602,6 +712,8 @@ namespace WarframeTracker
         private void MeleeWeaponsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region Reset
+            FindOrdersMenu.Items.Clear();
+            WarframeMarketOptions.DropDownItems.Clear();
             MWDataTxt.Text = "";
             MWCreditsTxt.Text = "";
             MWSlot0Txt.Text = "";
@@ -628,6 +740,8 @@ namespace WarframeTracker
                 {
                     if ($"{Weapon.Name}" == MeleeWeaponsComboBox.SelectedItem.ToString())
                     {
+                        SelectedItemInformation.activeItemName = Weapon.Name;
+
                         //Set main Weapon image
                         if (Weapon.WikiaThumbnail != null)
                         {
@@ -713,7 +827,7 @@ namespace WarframeTracker
                             MWCreditCostLbl.Visible = false;
                         }
 
-                        //Other Weapon Data
+                        #region Weapon Data
                         MWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
                         MWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
                         MWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
@@ -734,6 +848,58 @@ namespace WarframeTracker
                         {
                             MWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
                         }
+                        #endregion
+
+                        #region Generate Order Menu
+                        if (Weapon.Components != null)
+                        {
+                            if (Weapon.Name.ToLower().Contains("prime"))
+                            {
+                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                                GenerateOrderMenu(Weapon.Name, "Set");
+                            }
+                        }
+                        foreach (Items.Melee.Component Comp in Weapon.Components)
+                        {
+                            switch (Comp.Name)
+                            {
+                                case "Set":
+                                    GenerateOrderMenu(Weapon.Name, "Set");
+                                    break;
+                                case "Blueprint":
+                                    GenerateOrderMenu(Weapon.Name, "Blueprint");
+                                    break;
+                                case "Chassis":
+                                    GenerateOrderMenu(Weapon.Name, "Chassis");
+                                    break;
+                                case "Neuroptics":
+                                    GenerateOrderMenu(Weapon.Name, "Neuroptics");
+                                    break;
+                                case "Systems":
+                                    GenerateOrderMenu(Weapon.Name, "Systems");
+                                    break;
+                                case "Barrel":
+                                    GenerateOrderMenu(Weapon.Name, "Barrel");
+                                    break;
+                                case "Stock":
+                                    GenerateOrderMenu(Weapon.Name, "Stock");
+                                    break;
+                                case "Reciever":
+                                    GenerateOrderMenu(Weapon.Name, "Reciever");
+                                    break;
+                                case "Blade":
+                                    GenerateOrderMenu(Weapon.Name, "Blade");
+                                    break;
+                                case "Hilt":
+                                    GenerateOrderMenu(Weapon.Name, "Hilt");
+                                    break;
+                                case "Head":
+                                    GenerateOrderMenu(Weapon.Name, "Head");
+                                    break;
+                            }
+                        }
+                        #endregion
 
                         //Export component drop data
                         if (Weapon.Components != null)
@@ -978,16 +1144,9 @@ namespace WarframeTracker
         #region ContextMenu Code
         private void FindOrderInformation(string item_name, string order_type, bool tradeable)
         {
-            if (tradeable)
-            {
-                SelectedItemInformation.activeItemName = $"{item_name}";
-                SelectedItemInformation.activeSearch = $"{order_type}";
-                new OrderSheet().Show();
-            }
-            else
-            {
-                MessageBox.Show("The item you have searched is not a tradeable item.");
-            }
+            SelectedItemInformation.activeItemName = $"{item_name}";
+            SelectedItemInformation.activeSearch = $"{order_type}";
+            new OrderSheet().Show();
         }
 
         #region Warframe Context Menu Commands
@@ -1029,6 +1188,48 @@ namespace WarframeTracker
                     SystemsOrderBtn.Click += FindSystemsMenuItem_Click;
 
                     WarframeMarketOptions.DropDownItems.Add(SystemsOrderBtn);
+                    break;
+                case "Barrel":
+                    ToolStripMenuItem BarrelOrderBtn = new ToolStripMenuItem();
+                    BarrelOrderBtn.Text = $"{item_name} Barrel";
+                    BarrelOrderBtn.Click += FindBarrelMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(BarrelOrderBtn);
+                    break;
+                case "Stock":
+                    ToolStripMenuItem StockOrderBtn = new ToolStripMenuItem();
+                    StockOrderBtn.Text = $"{item_name} Stock";
+                    StockOrderBtn.Click += FindStockMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(StockOrderBtn);
+                    break;
+                case "Reciever":
+                    ToolStripMenuItem RecieverOrderBtn = new ToolStripMenuItem();
+                    RecieverOrderBtn.Text = $"{item_name} Reciever";
+                    RecieverOrderBtn.Click += FindRecieverMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(RecieverOrderBtn);
+                    break;
+                case "Blade":
+                    ToolStripMenuItem BladeOrderBtn = new ToolStripMenuItem();
+                    BladeOrderBtn.Text = $"{item_name} Blade";
+                    BladeOrderBtn.Click += FindBladeMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(BladeOrderBtn);
+                    break;
+                case "Hilt":
+                    ToolStripMenuItem HiltOrderBtn = new ToolStripMenuItem();
+                    HiltOrderBtn.Text = $"{item_name} Hilt";
+                    HiltOrderBtn.Click += FindHiltMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(HiltOrderBtn);
+                    break;
+                case "Head":
+                    ToolStripMenuItem HeadOrderBtn = new ToolStripMenuItem();
+                    HeadOrderBtn.Text = $"{item_name} Head";
+                    HeadOrderBtn.Click += FindHeadMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(HeadOrderBtn);
                     break;
             }
         }
