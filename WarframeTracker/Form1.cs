@@ -440,6 +440,9 @@ namespace WarframeTracker
                                 case "Head":
                                     GenerateOrderMenu(Weapon.Name, "Head");
                                     break;
+                                case "Link":
+                                    GenerateOrderMenu(Weapon.Name, "Link");
+                                    break;
                             }
                         }
                         #endregion
@@ -653,6 +656,9 @@ namespace WarframeTracker
                                     break;
                                 case "Head":
                                     GenerateOrderMenu(Weapon.Name, "Head");
+                                    break;
+                                case "Link":
+                                    GenerateOrderMenu(Weapon.Name, "Link");
                                     break;
                             }
                         }
@@ -896,6 +902,9 @@ namespace WarframeTracker
                                     break;
                                 case "Head":
                                     GenerateOrderMenu(Weapon.Name, "Head");
+                                    break;
+                                case "Link":
+                                    GenerateOrderMenu(Weapon.Name, "Link");
                                     break;
                             }
                         }
@@ -1231,6 +1240,13 @@ namespace WarframeTracker
 
                     WarframeMarketOptions.DropDownItems.Add(HeadOrderBtn);
                     break;
+                case "Link":
+                    ToolStripMenuItem LinkOrderBtn = new ToolStripMenuItem();
+                    LinkOrderBtn.Text = $"{item_name} Link";
+                    LinkOrderBtn.Click += FindHeadMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(LinkOrderBtn);
+                    break;
             }
         }
 
@@ -1287,6 +1303,11 @@ namespace WarframeTracker
         private void FindHeadMenuItem_Click(object sender, EventArgs e)
         {
             FindOrderInformation(SelectedItemInformation.activeItemName, "Head", tradeable);
+        }
+
+        private void FindLinkMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Link", tradeable);
         }
         #endregion
 

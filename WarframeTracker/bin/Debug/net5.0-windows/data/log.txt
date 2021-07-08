@@ -831,3 +831,6 @@ Order URL Name: astilla_prime_set
 Order URL Name: astilla_prime_barrel
 Order URL Name: astilla_prime_stock
 Order URL Name: astilla_prime_blueprint
+Updated UI for Akbolto Prime
+Updated UI for Ankyros Prime
+Order URL Name: ankyros_prime_set
