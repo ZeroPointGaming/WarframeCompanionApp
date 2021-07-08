@@ -188,10 +188,10 @@ namespace WarframeTracker.WarframeStats.WorldSpace
         public bool Active;
 
         [JsonProperty("maximumScore")]
-        public int MaximumScore;
+        public object MaximumScore;
 
         [JsonProperty("currentScore")]
-        public int CurrentScore;
+        public object CurrentScore;
 
         [JsonProperty("smallInterval")]
         public object SmallInterval;
@@ -221,7 +221,7 @@ namespace WarframeTracker.WarframeStats.WorldSpace
         public bool Expired;
 
         [JsonProperty("health")]
-        public int Health;
+        public float Health;
 
         [JsonProperty("interimSteps")]
         public List<InterimStep> InterimSteps;

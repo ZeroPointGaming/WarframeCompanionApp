@@ -73,12 +73,20 @@ namespace WarframeTracker
         //When you change the selection in the warframe listbox, digest api information reguarding the warframe.
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
+
+            #region Resets
+            FindOrdersMenu.Items.Clear();
+            #endregion
+
             try
             {
                 foreach (Items.Warframes.Root frame in Warframes)
                 {
                     if (frame.Name == $"{WarframeComboBox.SelectedItem}")
                     {
+                        SelectedItemInformation.activeItemName = frame.Name;
+
                         //Set static vars
                         activeWarframe = frame.Name.ToString();
                         tradeable = frame.Tradable;
@@ -99,56 +107,108 @@ namespace WarframeTracker
                         if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription; }
 
                         //Warframe Componets, Drop Locations, Chances, Etc
-                        foreach (Items.Warframes.Component comp in frame.Components)
+                        if (frame.Components != null)
                         {
-                            switch (comp.Name)
+                            if (frame.Name.ToLower().Contains("prime"))
                             {
-                                case "Blueprint":
-                                    BPComponentImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                    FrameBPTxtBox.Text = WebManager.GetBlueprintInfo(frame.Name);
-                                    break;
-                                case "Chassis":
-                                    ChassCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                    FrameChassTxtBox.Text = "";
+                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
 
-                                    if (comp.Drops != null)
-                                    {
-                                        FrameChassTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                    }
-                                    else
-                                    {
-                                        FrameChassTxtBox.Text = "Information Missing, Coming Soon!";
-                                    }
-                                    break;
-                                case "Neuroptics":
-                                    NueroCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                    FrameNueroTxtBox.Text = "";
+                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
 
-                                    if (comp.Drops != null)
-                                    {
-                                        FrameNueroTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                    }
-                                    else
-                                    {
-                                        FrameNueroTxtBox.Text = "Information Missing, Coming Soon!";
-                                    }
-                                    break;
-                                case "Systems":
-                                    SysCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                    FrameSysTxtBox.Text = "";
+                                ToolStripMenuItem SetOrderBtn = new ToolStripMenuItem();
+                                SetOrderBtn.Text = $"{frame.Name} Set";
+                                SetOrderBtn.Click += FindBlueprintMenuItem_Click;
 
-                                    if (comp.Drops != null)
-                                    {
-                                        FrameSysTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                    }
-                                    else
-                                    {
-                                        FrameSysTxtBox.Text = "Information Missing, Coming Soon!";
-                                    }
-                                    break;
-                                default:
+                                WarframeMarketOptions.DropDownItems.Add(SetOrderBtn);
+                            }
 
-                                    break;
+                            foreach (Items.Warframes.Component comp in frame.Components)
+                            {
+                                switch (comp.Name)
+                                {
+                                    case "Blueprint":
+                                        BPComponentImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                        FrameBPTxtBox.Text = WebManager.GetBlueprintInfo(frame.Name);
+
+                                        if (frame.Name.ToLower().Contains("prime"))
+                                        {
+                                            ToolStripMenuItem BluePrintOrderBtn = new ToolStripMenuItem();
+                                            BluePrintOrderBtn.Text = $"{frame.Name} Blueprint";
+                                            BluePrintOrderBtn.Click += FindBlueprintMenuItem_Click;
+
+                                            WarframeMarketOptions.DropDownItems.Add(BluePrintOrderBtn);
+                                        }
+                                        break;
+                                    case "Chassis":
+                                        ChassCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                        FrameChassTxtBox.Text = "";
+
+                                        if (comp.Drops != null)
+                                        {
+                                            FrameChassTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
+                                        }
+                                        else
+                                        {
+                                            FrameChassTxtBox.Text = "Information Missing, Coming Soon!";
+                                        }
+
+                                        if (frame.Name.ToLower().Contains("prime"))
+                                        {
+                                            ToolStripMenuItem ChassisOrderBtn = new ToolStripMenuItem();
+                                            ChassisOrderBtn.Text = $"{frame.Name} Chassis";
+                                            ChassisOrderBtn.Click += FindChassisMenuItem_Click;
+
+                                            WarframeMarketOptions.DropDownItems.Add(ChassisOrderBtn);
+                                        }
+                                        break;
+                                    case "Neuroptics":
+                                        NueroCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                        FrameNueroTxtBox.Text = "";
+
+                                        if (comp.Drops != null)
+                                        {
+                                            FrameNueroTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
+                                        }
+                                        else
+                                        {
+                                            FrameNueroTxtBox.Text = "Information Missing, Coming Soon!";
+                                        }
+
+                                        if (frame.Name.ToLower().Contains("prime"))
+                                        {
+                                            ToolStripMenuItem NeuropticsOrderBtn = new ToolStripMenuItem();
+                                            NeuropticsOrderBtn.Text = $"{frame.Name} Neuroptics";
+                                            NeuropticsOrderBtn.Click += FindBlueprintMenuItem_Click;
+
+                                            WarframeMarketOptions.DropDownItems.Add(NeuropticsOrderBtn);
+                                        }
+                                        break;
+                                    case "Systems":
+                                        SysCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                        FrameSysTxtBox.Text = "";
+
+                                        if (comp.Drops != null)
+                                        {
+                                            FrameSysTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
+                                        }
+                                        else
+                                        {
+                                            FrameSysTxtBox.Text = "Information Missing, Coming Soon!";
+                                        }
+
+                                        if (frame.Name.ToLower().Contains("prime"))
+                                        {
+                                            ToolStripMenuItem SystemsOrderBtn = new ToolStripMenuItem();
+                                            SystemsOrderBtn.Text = $"{frame.Name} Systems";
+                                            SystemsOrderBtn.Click += FindBlueprintMenuItem_Click;
+
+                                            WarframeMarketOptions.DropDownItems.Add(SystemsOrderBtn);
+                                        }
+                                        break;
+                                    default:
+
+                                        break;
+                                }
                             }
                         }
 
@@ -936,31 +996,65 @@ namespace WarframeTracker
         }
 
         #region Warframe Context Menu Commands
-        private void findSetOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void GenerateOrderMenu(string item_name, string order_name)
         {
-            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Set", tradeable);
+            if (!item_name.ToLower().Contains("prime")) { }
         }
 
-        private void findNueroOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FindSetOrdersMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Nueroptics", tradeable);
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Set", tradeable);
         }
 
-        private void fiindChassiesOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FindNueropticsMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Chassis", tradeable);
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Nueroptics", tradeable);
         }
 
-        private void findSystemsOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FindChassisMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Systems", tradeable);
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Chassis", tradeable);
         }
 
-        private void findBlueprintOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FindSystemsMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(WarframeComboBox.SelectedItem.ToString(), "Blueprint", tradeable);
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Systems", tradeable);
         }
 
+        private void FindBlueprintMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Blueprint", tradeable);
+        }
+
+        private void FindBarrelMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Barrel", tradeable);
+        }
+
+        private void FindStockMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Stock", tradeable);
+        }
+
+        private void FindRecieverMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Reciever", tradeable);
+        }
+
+        private void FindBladeMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Blade", tradeable);
+        }
+
+        private void FindHiltMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Hilt", tradeable);
+        }
+
+        private void FindHeadMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(SelectedItemInformation.activeItemName, "Head", tradeable);
+        }
         #endregion
 
         #region Primary Weapons Context Menu Commands
