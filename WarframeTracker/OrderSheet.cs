@@ -37,65 +37,78 @@ namespace WarframeTracker
 
             try
             {
-                this.Text = SelectedItemInformation.activeItemName + " Open Orders";
                 SelectedItemInformation.activeItemName = SelectedItemInformation.activeItemName.ToLower().Replace(" ", "_");
+                SelectedItemInformation.activeSearch = SelectedItemInformation.activeSearch.ToLower().Replace(" ", "_");
+                this.Text = $"{SelectedItemInformation.activeItemName} {SelectedItemInformation.activeSearch} Open Orders";
 
                 if (DebugMode)
                 {
-                    Debugger.Log("Order URL Name: " + SelectedItemInformation.activeItemName.ToString());
+                    Debugger.Log($"Order URL Name: {SelectedItemInformation.activeItemName}_{SelectedItemInformation.activeSearch}");
                 }
 
-                HttpWebRequest request = WebManager.GenerateRequest(SelectedItemInformation.activeItemName, "OrderCall");
+                HttpWebRequest request = WebManager.GenerateRequest($"{SelectedItemInformation.activeItemName}_{SelectedItemInformation.activeSearch}", "OrderCall");
                 HttpWebResponse response = WebManager.GenerateResponse(request);
 
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
-                    var ObjText = reader.ReadToEnd();
-                    reader.Close(); reader.Dispose();
-
-                    WarframeMarket.ItemOrders.Root Orders = JsonConvert.DeserializeObject<WarframeMarket.ItemOrders.Root>(ObjText);
-
-                    Orders.Payload.Orders.Sort(delegate (WarframeMarket.ItemOrders.Order x, WarframeMarket.ItemOrders.Order y)
+                    if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        return x.Platinum.CompareTo(y.Platinum);
-                    });
+                        var ObjText = reader.ReadToEnd();
+                        reader.Close(); reader.Dispose();
 
-                    foreach (WarframeMarket.ItemOrders.Order _order in Orders.Payload.Orders)
-                    {
-                        Label new_label = new Label();
-                        new_label.Text = _order.OrderType + " order posted by " + _order.User.IngameName + " who is " + _order.User.Status + " asking price is " + _order.Platinum + " on " + _order.Platform;
-                        new_label.Width = this.Width;
+                        WarframeMarket.ItemOrders.Root Orders = JsonConvert.DeserializeObject<WarframeMarket.ItemOrders.Root>(ObjText);
 
-                        if (new_label.Text.Contains("buy"))
+                        //Sort the order list by platinum cost
+                        Orders.Payload.Orders.Sort(delegate (WarframeMarket.ItemOrders.Order x, WarframeMarket.ItemOrders.Order y)
                         {
-                            if (new_label.Text.ToLower().Contains("offline") & OfflineCheckbox.Checked)
+                            return x.Platinum.CompareTo(y.Platinum);
+                        });
+
+                        foreach (WarframeMarket.ItemOrders.Order _order in Orders.Payload.Orders)
+                        {
+                            TextBox new_label = new TextBox();
+                            new_label.Text = _order.OrderType + " order posted by " + _order.User.IngameName + " who is " + _order.User.Status + " asking price is " + _order.Platinum + " on " + _order.Platform;
+                            new_label.Width = this.Width;
+                            new_label.ReadOnly = true;
+                            new_label.BorderStyle = BorderStyle.None;
+
+                            if (new_label.Text.Contains("buy"))
                             {
-                                flowLayoutPanel1.Controls.Add(new_label);
+                                if (new_label.Text.ToLower().Contains("offline") & OfflineCheckbox.Checked)
+                                {
+                                    flowLayoutPanel1.Controls.Add(new_label);
+                                }
+                                else if (new_label.Text.ToLower().Contains("online") & OnlineCheckbox.Checked)
+                                {
+                                    flowLayoutPanel1.Controls.Add(new_label);
+                                }
+                                else if (new_label.Text.ToLower().Contains("ingame") & InGameCheckbox.Checked)
+                                {
+                                    flowLayoutPanel1.Controls.Add(new_label);
+                                }
                             }
-                            else if (new_label.Text.ToLower().Contains("online") & OnlineCheckbox.Checked)
+                            else if (new_label.Text.Contains("sell"))
                             {
-                                flowLayoutPanel1.Controls.Add(new_label);
-                            }
-                            else if (new_label.Text.ToLower().Contains("ingame") & InGameCheckbox.Checked)
-                            {
-                                flowLayoutPanel1.Controls.Add(new_label);
+                                if (new_label.Text.ToLower().Contains("offline") & OfflineCheckbox.Checked)
+                                {
+                                    flowLayoutPanel2.Controls.Add(new_label);
+                                }
+                                else if (new_label.Text.ToLower().Contains("online") & OnlineCheckbox.Checked)
+                                {
+                                    flowLayoutPanel2.Controls.Add(new_label);
+                                }
+                                else if (new_label.Text.ToLower().Contains("ingame") & InGameCheckbox.Checked)
+                                {
+                                    flowLayoutPanel2.Controls.Add(new_label);
+                                }
                             }
                         }
-                        else if (new_label.Text.Contains("sell"))
-                        {
-                            if (new_label.Text.ToLower().Contains("offline") & OfflineCheckbox.Checked)
-                            {
-                                flowLayoutPanel2.Controls.Add(new_label);
-                            }
-                            else if (new_label.Text.ToLower().Contains("online") & OnlineCheckbox.Checked)
-                            {
-                                flowLayoutPanel2.Controls.Add(new_label);
-                            }
-                            else if (new_label.Text.ToLower().Contains("ingame") & InGameCheckbox.Checked)
-                            {
-                                flowLayoutPanel2.Controls.Add(new_label);
-                            }
-                        }
+
+                        response.Close(); response.Close();
+                    }
+                    else
+                    {
+                        Debugger.Log($"Error loading order list.{Environment.NewLine}Response status code: {response.StatusCode} {Environment.NewLine}Response Payload: {reader.ReadToEnd()}");
                     }
                 }
             }
@@ -114,5 +127,6 @@ namespace WarframeTracker
     public static class SelectedItemInformation
     {
         public static string activeItemName = "";
+        public static string activeSearch = "";
     }
 }

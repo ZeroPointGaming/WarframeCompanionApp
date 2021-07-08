@@ -17,7 +17,8 @@ namespace WarframeTracker
     /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
     /// [Identified] Equinox frame doesnt update components.
     /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
-    /// [Identified] Relics expiry time is off
+    /// [Identified] Relics expiry time is off in WorldSpace
+    /// [Fixed] Selecteditem static class string is not being sanitized after selecting the first
     /// </summary>
 
     public partial class Form1 : Form
@@ -43,6 +44,8 @@ namespace WarframeTracker
         List<Items.ArcMelee.Root> ArcMelee;
         List<Items.Arcanes.Root> Arcanes;
         List<Items.Mods.Root> Mods;
+
+        ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
         #endregion
 
         #region Form Events
@@ -73,10 +76,9 @@ namespace WarframeTracker
         //When you change the selection in the warframe listbox, digest api information reguarding the warframe.
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
-
             #region Resets
             FindOrdersMenu.Items.Clear();
+            WarframeMarketOptions.DropDownItems.Clear();
             #endregion
 
             try
@@ -94,7 +96,7 @@ namespace WarframeTracker
                         //Set main warframe image
                         SelectedWarframeImageBox.BackgroundImage = WebManager.ServiceImage(frame.Name, frame.WikiaThumbnail);
 
-                        //Set Abilities Ino
+                        #region Set Abilities
                         WarframeAbilityGroupbox1.Text = $"{frame.Abilities[0].Name}";
                         WarframeAbilityTextBox1.Text = $"{frame.Abilities[0].Description}";
                         WarframeAbilityGroupbox2.Text = $"{frame.Abilities[1].Name}";
@@ -105,21 +107,16 @@ namespace WarframeTracker
                         WarframeAbilityTextbox4.Text = $"{frame.Abilities[3].Description}";
 
                         if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription; }
+                        #endregion
 
                         //Warframe Componets, Drop Locations, Chances, Etc
                         if (frame.Components != null)
                         {
                             if (frame.Name.ToLower().Contains("prime"))
                             {
-                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
-
                                 FindOrdersMenu.Items.Add(WarframeMarketOptions);
-
-                                ToolStripMenuItem SetOrderBtn = new ToolStripMenuItem();
-                                SetOrderBtn.Text = $"{frame.Name} Set";
-                                SetOrderBtn.Click += FindBlueprintMenuItem_Click;
-
-                                WarframeMarketOptions.DropDownItems.Add(SetOrderBtn);
+                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                                GenerateOrderMenu(frame.Name, "Set");
                             }
 
                             foreach (Items.Warframes.Component comp in frame.Components)
@@ -132,11 +129,7 @@ namespace WarframeTracker
 
                                         if (frame.Name.ToLower().Contains("prime"))
                                         {
-                                            ToolStripMenuItem BluePrintOrderBtn = new ToolStripMenuItem();
-                                            BluePrintOrderBtn.Text = $"{frame.Name} Blueprint";
-                                            BluePrintOrderBtn.Click += FindBlueprintMenuItem_Click;
-
-                                            WarframeMarketOptions.DropDownItems.Add(BluePrintOrderBtn);
+                                            GenerateOrderMenu(frame.Name, "Blueprint");
                                         }
                                         break;
                                     case "Chassis":
@@ -154,11 +147,7 @@ namespace WarframeTracker
 
                                         if (frame.Name.ToLower().Contains("prime"))
                                         {
-                                            ToolStripMenuItem ChassisOrderBtn = new ToolStripMenuItem();
-                                            ChassisOrderBtn.Text = $"{frame.Name} Chassis";
-                                            ChassisOrderBtn.Click += FindChassisMenuItem_Click;
-
-                                            WarframeMarketOptions.DropDownItems.Add(ChassisOrderBtn);
+                                            GenerateOrderMenu(frame.Name, "Chassis");
                                         }
                                         break;
                                     case "Neuroptics":
@@ -176,11 +165,7 @@ namespace WarframeTracker
 
                                         if (frame.Name.ToLower().Contains("prime"))
                                         {
-                                            ToolStripMenuItem NeuropticsOrderBtn = new ToolStripMenuItem();
-                                            NeuropticsOrderBtn.Text = $"{frame.Name} Neuroptics";
-                                            NeuropticsOrderBtn.Click += FindBlueprintMenuItem_Click;
-
-                                            WarframeMarketOptions.DropDownItems.Add(NeuropticsOrderBtn);
+                                            GenerateOrderMenu(frame.Name, "Neuroptics");
                                         }
                                         break;
                                     case "Systems":
@@ -198,11 +183,7 @@ namespace WarframeTracker
 
                                         if (frame.Name.ToLower().Contains("prime"))
                                         {
-                                            ToolStripMenuItem SystemsOrderBtn = new ToolStripMenuItem();
-                                            SystemsOrderBtn.Text = $"{frame.Name} Systems";
-                                            SystemsOrderBtn.Click += FindBlueprintMenuItem_Click;
-
-                                            WarframeMarketOptions.DropDownItems.Add(SystemsOrderBtn);
+                                            GenerateOrderMenu(frame.Name, "Systems");
                                         }
                                         break;
                                     default:
@@ -986,7 +967,8 @@ namespace WarframeTracker
         {
             if (tradeable)
             {
-                SelectedItemInformation.activeItemName = $"{item_name} {order_type}";
+                SelectedItemInformation.activeItemName = $"{item_name}";
+                SelectedItemInformation.activeSearch = $"{order_type}";
                 new OrderSheet().Show();
             }
             else
@@ -998,7 +980,44 @@ namespace WarframeTracker
         #region Warframe Context Menu Commands
         private void GenerateOrderMenu(string item_name, string order_name)
         {
-            if (!item_name.ToLower().Contains("prime")) { }
+            switch (order_name)
+            {
+                case "Set":
+                    ToolStripMenuItem SetOrderBtn = new ToolStripMenuItem();
+                    SetOrderBtn.Text = $"{item_name} Set";
+                    SetOrderBtn.Click += FindSetOrdersMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(SetOrderBtn);
+                    break;
+                case "Blueprint":
+                    ToolStripMenuItem BluePrintOrderBtn = new ToolStripMenuItem();
+                    BluePrintOrderBtn.Text = $"{item_name} Blueprint";
+                    BluePrintOrderBtn.Click += FindBlueprintMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(BluePrintOrderBtn);
+                    break;
+                case "Chassis":
+                    ToolStripMenuItem ChassisOrderBtn = new ToolStripMenuItem();
+                    ChassisOrderBtn.Text = $"{item_name} Chassis";
+                    ChassisOrderBtn.Click += FindChassisMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(ChassisOrderBtn);
+                    break;
+                case "Neuroptics":
+                    ToolStripMenuItem NeuropticsOrderBtn = new ToolStripMenuItem();
+                    NeuropticsOrderBtn.Text = $"{item_name} Neuroptics";
+                    NeuropticsOrderBtn.Click += FindNueropticsMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(NeuropticsOrderBtn);
+                    break;
+                case "Systems":
+                    ToolStripMenuItem SystemsOrderBtn = new ToolStripMenuItem();
+                    SystemsOrderBtn.Text = $"{item_name} Systems";
+                    SystemsOrderBtn.Click += FindSystemsMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(SystemsOrderBtn);
+                    break;
+            }
         }
 
         private void FindSetOrdersMenuItem_Click(object sender, EventArgs e)
