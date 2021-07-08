@@ -778,3 +778,17 @@ Updated UI for Ash Prime
 Order URL Name: ash_prime_set
 Order URL Name: ash_prime_blueprint
 Order URL Name: ash_prime_chassis
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Ash Prime
+Updated UI for Equinox
+Updated UI for Ash Prime
+Updated UI for Banshee Prime
+Updated UI for Excalibur Umbra
+Updated UI for Excalibur Prime
+Updated UI for Gara Prime
+Order URL Name: gara_prime_chassis
+Updated UI for Atlas Prime
+Order URL Name: atlas_prime_blueprint

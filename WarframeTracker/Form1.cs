@@ -14,11 +14,10 @@ namespace WarframeTracker
     /// <summary> ACTIVE BUGS DIRECTORY
     /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on. (no damage, components or drop data)
     /// [Identified] Necrophage frames dont have images yet.
-    /// [Identified] Necrophage frames dont contain components, components need to be reset between each changed frame.
-    /// [Identified] Equinox frame doesnt update components.
+    /// [Partial-Fixed] Necrophage frames dont contain components, components need to be reset between each changed frame.
+    /// [Fixed] Equinox frame doesnt update components.
     /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
     /// [Identified] Relics expiry time is off in WorldSpace
-    /// [Fixed] Selecteditem static class string is not being sanitized after selecting the first
     /// </summary>
 
     public partial class Form1 : Form
@@ -79,6 +78,20 @@ namespace WarframeTracker
             #region Resets
             FindOrdersMenu.Items.Clear();
             WarframeMarketOptions.DropDownItems.Clear();
+            WarframeAbilityGroupbox1.Text = String.Empty;
+            WarframeAbilityGroupbox2.Text = String.Empty;
+            WarframeAbilityGroupbox3.Text = String.Empty;
+            WarframeAbilityGroupbox4.Text = String.Empty;
+            PassiveAbilityTextbox.Text = String.Empty;
+            SelectedWarframeImageBox.BackgroundImage = null;
+            BPComponentImgBox.BackgroundImage = null;
+            ChassCompImgBox.BackgroundImage = null;
+            SysCompImgBox.BackgroundImage = null;
+            NueroCompImgBox.BackgroundImage = null;
+            FrameBPTxtBox.Text = String.Empty;
+            FrameChassTxtBox.Text = String.Empty;
+            FrameNueroTxtBox.Text = String.Empty;
+            FrameSysTxtBox.Text = String.Empty;
             #endregion
 
             try

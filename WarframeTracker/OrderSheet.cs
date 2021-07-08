@@ -39,7 +39,7 @@ namespace WarframeTracker
             {
                 SelectedItemInformation.activeItemName = SelectedItemInformation.activeItemName.ToLower().Replace(" ", "_");
                 SelectedItemInformation.activeSearch = SelectedItemInformation.activeSearch.ToLower().Replace(" ", "_");
-                this.Text = $"{SelectedItemInformation.activeItemName} {SelectedItemInformation.activeSearch} Open Orders";
+                this.Text = $"{SelectedItemInformation.activeItemName}_{SelectedItemInformation.activeSearch} Open Orders";
 
                 if (DebugMode)
                 {
