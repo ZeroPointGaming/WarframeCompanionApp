@@ -1,12 +1,11 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.Windows.Forms;
-using System.IO;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using WarframeTracker.WebInterface;
-using System.Net;
 using System.Drawing;
-using System.Threading;
+using System.IO;
+using System.Net;
+using System.Windows.Forms;
+using WarframeTracker.WebInterface;
 //lzma compression using SevenZip.Compression.LZMA;
 
 namespace WarframeTracker
@@ -21,29 +20,26 @@ namespace WarframeTracker
 
     public partial class Form1 : Form
     {
-        #region Declare Class Instances
+        #region Declare Local Variables
         WTWebClient WebManager = new WTWebClient();
         Debug.Debug Debugger = new Debug.Debug();
-        #endregion
-
-        #region Declare Local Variables
         public string local_Json_directory = Environment.CurrentDirectory.ToString() + "/data/json";
         public string local_media_directory = Environment.CurrentDirectory.ToString() + "/data/img/";
         public bool DebugMode = true;
 
-        List<Items.Warframes.Root> Warframes;
-        List<Items.PrimaryWeapons.Root> Primary_Weapons;
-        List<Items.SecondaryWeapons.Root> Secondary_Weapons;
-        List<Items.Melee.Root> Melee_Weapons;
-        List<Items.Sentinels.Root> Sentinel_List;
-        List<Items.Pets.Root> Pets_List;
-        List<Items.Archwing.Root> Archwings;
-        List<Items.ArcGun.Root> ArchGuns;
-        List<Items.ArcMelee.Root> ArcMelee;
-        List<Items.Arcanes.Root> Arcanes;
-        List<Items.Mods.Root> Mods;
+        private List<Items.Warframes.Root> Warframes;
+        private List<Items.PrimaryWeapons.Root> Primary_Weapons;
+        private List<Items.SecondaryWeapons.Root> Secondary_Weapons;
+        private List<Items.Melee.Root> Melee_Weapons;
+        private List<Items.Sentinels.Root> Sentinel_List;
+        private List<Items.Pets.Root> Pets_List;
+        private List<Items.Archwing.Root> Archwings;
+        private List<Items.ArcGun.Root> ArchGuns;
+        private List<Items.ArcMelee.Root> ArcMelee;
+        private List<Items.Arcanes.Root> Arcanes;
+        private List<Items.Mods.Root> Mods;
 
-        ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
+        private ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
         #endregion
 
         #region Form Events
@@ -69,8 +65,6 @@ namespace WarframeTracker
         #endregion
 
         #region Combobox Event Code
-        public string activeWarframe = "";
-        public bool tradeable = false;
         //When you change the selection in the warframe listbox, digest api information reguarding the warframe.
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -95,122 +89,117 @@ namespace WarframeTracker
 
             try
             {
-                foreach (Items.Warframes.Root frame in Warframes)
+                #region Set Static Variables
+                Items.Warframes.Root frame = GlobalData.WarframeDatabase[$"{WarframeComboBox.SelectedItem}"];
+                GlobalData.activeItemName = frame.Name;
+                #endregion
+
+                #region Set Objct Image
+                SelectedWarframeImageBox.BackgroundImage = WebManager.ServiceImage(frame.Name, frame.WikiaThumbnail);
+                #endregion
+
+                #region Set Abilities
+                WarframeAbilityGroupbox1.Text = $"{frame.Abilities[0].Name}";
+                WarframeAbilityTextBox1.Text = $"{frame.Abilities[0].Description}";
+                WarframeAbilityGroupbox2.Text = $"{frame.Abilities[1].Name}";
+                WarframeAbilityTextbox2.Text = $"{frame.Abilities[1].Description}";
+                WarframeAbilityGroupbox3.Text = $"{frame.Abilities[2].Name}";
+                WarframeAbilityTextbox3.Text = $"{frame.Abilities[2].Description}";
+                WarframeAbilityGroupbox4.Text = $"{frame.Abilities[3].Name}";
+                WarframeAbilityTextbox4.Text = $"{frame.Abilities[3].Description}";
+
+                if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription; }
+                #endregion
+
+                #region Set Warframe Componets, Drop Locations, Chances, Etc
+                if (frame.Components != null)
                 {
-                    if (frame.Name == $"{WarframeComboBox.SelectedItem}")
+                    if (frame.Name.ToLower().Contains("prime"))
                     {
-                        SelectedItemInformation.activeItemName = frame.Name;
+                        FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                        WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                        GenerateOrderMenu(frame.Name, "Set");
+                    }
 
-                        //Set static vars
-                        activeWarframe = frame.Name.ToString();
-                        tradeable = frame.Tradable;
-
-                        //Set main warframe image
-                        SelectedWarframeImageBox.BackgroundImage = WebManager.ServiceImage(frame.Name, frame.WikiaThumbnail);
-
-                        #region Set Abilities
-                        WarframeAbilityGroupbox1.Text = $"{frame.Abilities[0].Name}";
-                        WarframeAbilityTextBox1.Text = $"{frame.Abilities[0].Description}";
-                        WarframeAbilityGroupbox2.Text = $"{frame.Abilities[1].Name}";
-                        WarframeAbilityTextbox2.Text = $"{frame.Abilities[1].Description}";
-                        WarframeAbilityGroupbox3.Text = $"{frame.Abilities[2].Name}";
-                        WarframeAbilityTextbox3.Text = $"{frame.Abilities[2].Description}";
-                        WarframeAbilityGroupbox4.Text = $"{frame.Abilities[3].Name}";
-                        WarframeAbilityTextbox4.Text = $"{frame.Abilities[3].Description}";
-
-                        if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription; }
-                        #endregion
-
-                        //Warframe Componets, Drop Locations, Chances, Etc
-                        if (frame.Components != null)
+                    foreach (Items.Warframes.Component comp in frame.Components)
+                    {
+                        switch (comp.Name)
                         {
-                            if (frame.Name.ToLower().Contains("prime"))
-                            {
-                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
-                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
-                                GenerateOrderMenu(frame.Name, "Set");
-                            }
+                            case "Blueprint":
+                                BPComponentImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                FrameBPTxtBox.Text = WebManager.GetBlueprintInfo(frame.Name);
 
-                            foreach (Items.Warframes.Component comp in frame.Components)
-                            {
-                                switch (comp.Name)
+                                if (frame.Name.ToLower().Contains("prime"))
                                 {
-                                    case "Blueprint":
-                                        BPComponentImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                        FrameBPTxtBox.Text = WebManager.GetBlueprintInfo(frame.Name);
-
-                                        if (frame.Name.ToLower().Contains("prime"))
-                                        {
-                                            GenerateOrderMenu(frame.Name, "Blueprint");
-                                        }
-                                        break;
-                                    case "Chassis":
-                                        ChassCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                        FrameChassTxtBox.Text = "";
-
-                                        if (comp.Drops != null)
-                                        {
-                                            FrameChassTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                        }
-                                        else
-                                        {
-                                            FrameChassTxtBox.Text = "Information Missing, Coming Soon!";
-                                        }
-
-                                        if (frame.Name.ToLower().Contains("prime"))
-                                        {
-                                            GenerateOrderMenu(frame.Name, "Chassis");
-                                        }
-                                        break;
-                                    case "Neuroptics":
-                                        NueroCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                        FrameNueroTxtBox.Text = "";
-
-                                        if (comp.Drops != null)
-                                        {
-                                            FrameNueroTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                        }
-                                        else
-                                        {
-                                            FrameNueroTxtBox.Text = "Information Missing, Coming Soon!";
-                                        }
-
-                                        if (frame.Name.ToLower().Contains("prime"))
-                                        {
-                                            GenerateOrderMenu(frame.Name, "Neuroptics");
-                                        }
-                                        break;
-                                    case "Systems":
-                                        SysCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                        FrameSysTxtBox.Text = "";
-
-                                        if (comp.Drops != null)
-                                        {
-                                            FrameSysTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                        }
-                                        else
-                                        {
-                                            FrameSysTxtBox.Text = "Information Missing, Coming Soon!";
-                                        }
-
-                                        if (frame.Name.ToLower().Contains("prime"))
-                                        {
-                                            GenerateOrderMenu(frame.Name, "Systems");
-                                        }
-                                        break;
-                                    default:
-
-                                        break;
+                                    GenerateOrderMenu(frame.Name, "Blueprint");
                                 }
-                            }
-                        }
+                                break;
+                            case "Chassis":
+                                ChassCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                FrameChassTxtBox.Text = "";
 
-                        //Debug Info
-                        if (DebugMode)
-                        {
-                            Debugger.Log($"Updated UI for {WarframeComboBox.SelectedItem}");
+                                if (comp.Drops != null)
+                                {
+                                    FrameChassTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
+                                }
+                                else
+                                {
+                                    FrameChassTxtBox.Text = "Information Missing, Coming Soon!";
+                                }
+
+                                if (frame.Name.ToLower().Contains("prime"))
+                                {
+                                    GenerateOrderMenu(frame.Name, "Chassis");
+                                }
+                                break;
+                            case "Neuroptics":
+                                NueroCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                FrameNueroTxtBox.Text = "";
+
+                                if (comp.Drops != null)
+                                {
+                                    FrameNueroTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
+                                }
+                                else
+                                {
+                                    FrameNueroTxtBox.Text = "Information Missing, Coming Soon!";
+                                }
+
+                                if (frame.Name.ToLower().Contains("prime"))
+                                {
+                                    GenerateOrderMenu(frame.Name, "Neuroptics");
+                                }
+                                break;
+                            case "Systems":
+                                SysCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
+                                FrameSysTxtBox.Text = "";
+
+                                if (comp.Drops != null)
+                                {
+                                    FrameSysTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
+                                }
+                                else
+                                {
+                                    FrameSysTxtBox.Text = "Information Missing, Coming Soon!";
+                                }
+
+                                if (frame.Name.ToLower().Contains("prime"))
+                                {
+                                    GenerateOrderMenu(frame.Name, "Systems");
+                                }
+                                break;
+                            default:
+
+                                break;
                         }
                     }
+                }
+                #endregion
+
+                //Debug Info
+                if (DebugMode)
+                {
+                    Debugger.Log($"Updated UI for {WarframeComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
@@ -263,196 +252,195 @@ namespace WarframeTracker
 
             try
             {
-                foreach (Items.PrimaryWeapons.Root Weapon in Primary_Weapons)
+                #region Set Static Variables
+                Items.PrimaryWeapons.Root Weapon = GlobalData.PrimaryWeaponDatabase[$"{PrimaryWeaponComboBox.SelectedItem}"];
+                GlobalData.activeItemName = Weapon.Name;
+                #endregion
+
+                #region Set main Weapon image
+                if (Weapon.WikiaThumbnail != null)
                 {
-                    if ($"{Weapon.Name}" == $"{PrimaryWeaponComboBox.SelectedItem}")
+                    PrimaryGunImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
+                    PrimaryWeaponContainer.Text = Weapon.Name.ToString();
+                    if (Weapon.SkipBuildTimePrice > 0)
                     {
-                        SelectedItemInformation.activeItemName = Weapon.Name;
+                        PWFoundrySkipBuildLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
+                        PWFoundrySkipBuildLbl.Visible = true;
+                    }
+                    else
+                    {
+                        PWFoundrySkipBuildLbl.Visible = false;
+                    }
+                }
+                #endregion
 
-                        //Set main Weapon image
-                        if (Weapon.WikiaThumbnail != null)
-                        {
-                            PrimaryGunImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
-                            PrimaryWeaponContainer.Text = Weapon.Name.ToString();
-                            if (Weapon.SkipBuildTimePrice > 0)
-                            {
-                                PWFoundrySkipBuildLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
-                                PWFoundrySkipBuildLbl.Visible = true;
-                            }
-                            else
-                            {
-                                PWFoundrySkipBuildLbl.Visible = false;
-                            }
-                        }
+                #region Set build cost in credits section
+                PWFoundryCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
+                PWFoundryCreditsTxt.Text = $"{Weapon.BuildPrice}";
+                toolTip1.SetToolTip(PWFoundryCreditsTxt, "Build Cost");
+                #endregion
 
-                        //Set  build cost in credits section
-                        PWFoundryCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
-                        PWFoundryCreditsTxt.Text = $"{Weapon.BuildPrice}";
-                        toolTip1.SetToolTip(PWFoundryCreditsTxt, "Build Cost");
-
-                        if (Weapon.Components != null)
+                #region Set Foundry Component Data
+                if (Weapon.Components != null)
+                {
+                    for (int i = 0; i < Weapon.Components.Count; i++)
+                    {
+                        if (i == 0)
                         {
-                            for (int i = 0; i < Weapon.Components.Count; i++)
-                            {
-                                if (i == 0)
-                                {
-                                    //Set  component information
-                                    PWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
-                                    PWFoundrySlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
-                                    toolTip1.SetToolTip(PWFoundrySlot0Txt, Weapon.Components[0].Name);
-                                    toolTip1.SetToolTip(PWFoundrySlot0Img, Weapon.Components[0].Name);
-                                }
-                                else if (i == 1)
-                                {
-                                    PWFoundrySlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
-                                    PWFoundrySlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
-                                    toolTip1.SetToolTip(PWFoundrySlot1Txt, Weapon.Components[1].Name);
-                                    toolTip1.SetToolTip(PWFoundrySlot1Img, Weapon.Components[1].Name);
-                                }
-                                else if (i == 2)
-                                {
-                                    PWFoundrySlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
-                                    PWFoundrySlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
-                                    toolTip1.SetToolTip(PWFoundrySlot2Txt, Weapon.Components[2].Name);
-                                    toolTip1.SetToolTip(PWFoundrySlot2Img, Weapon.Components[2].Name);
-                                }
-                                else if (i == 3)
-                                {
-                                    PWFoundrySlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
-                                    PWFoundrySlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
-                                    toolTip1.SetToolTip(PWFoundrySlot3Txt, Weapon.Components[3].Name);
-                                    toolTip1.SetToolTip(PWFoundrySlot3Img, Weapon.Components[3].Name);
-                                }
-                                else if (i == 4)
-                                {
-                                    PWFoundrySlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
-                                    PWFoundrySlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
-                                    toolTip1.SetToolTip(PWFoundrySlot4Txt, Weapon.Components[4].Name);
-                                    toolTip1.SetToolTip(PWFoundrySlot4Img, Weapon.Components[4].Name);
-                                }
-                            }
+                            //Set  component information
+                            PWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
+                            PWFoundrySlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
+                            toolTip1.SetToolTip(PWFoundrySlot0Txt, Weapon.Components[0].Name);
+                            toolTip1.SetToolTip(PWFoundrySlot0Img, Weapon.Components[0].Name);
                         }
-
-                        //Set market cost and build time
-                        if (Weapon.MarketCost > 0)
+                        else if (i == 1)
                         {
-                            PWFoundryMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
-                            PWFoundryMarketPriceLbl.Visible = true;
+                            PWFoundrySlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
+                            PWFoundrySlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
+                            toolTip1.SetToolTip(PWFoundrySlot1Txt, Weapon.Components[1].Name);
+                            toolTip1.SetToolTip(PWFoundrySlot1Img, Weapon.Components[1].Name);
                         }
-                        else
+                        else if (i == 2)
                         {
-                            PWFoundryMarketPriceLbl.Visible = false;
+                            PWFoundrySlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
+                            PWFoundrySlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
+                            toolTip1.SetToolTip(PWFoundrySlot2Txt, Weapon.Components[2].Name);
+                            toolTip1.SetToolTip(PWFoundrySlot2Img, Weapon.Components[2].Name);
                         }
-
-                        if (Weapon.BuildTime > 0)
+                        else if (i == 3)
                         {
-                            PWFoundryBuildTime.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
-                            PWFoundryBuildTime.Visible = true;
+                            PWFoundrySlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
+                            PWFoundrySlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
+                            toolTip1.SetToolTip(PWFoundrySlot3Txt, Weapon.Components[3].Name);
+                            toolTip1.SetToolTip(PWFoundrySlot3Img, Weapon.Components[3].Name);
                         }
-                        else
+                        else if (i == 4)
                         {
-                            PWFoundryBuildTime.Visible = false;
-                        }
-
-                        #region Weapon Data
-                        PWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)}{Environment.NewLine}";
-                        PWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier}{Environment.NewLine}";
-                        PWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)}{Environment.NewLine}";
-                        PWDataTxt.Text += $"Fire Rate: {Weapon.FireRate}{Environment.NewLine}";
-                        PWDataTxt.Text += $"Accuracy: {Weapon.Accuracy}{Environment.NewLine}";
-                        PWDataTxt.Text += $"Multishot: {Weapon.Multishot}{Environment.NewLine}";
-                        PWDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s{Environment.NewLine}";
-
-                        //Export Damage Ammounts
-                        for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
-                        {
-                            PWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
-                        }
-                        #endregion
-
-                        //Export component drop data
-                        if (Weapon.Components != null)
-                        {
-                            for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
-                            {
-                                if (Weapon.Components[i].Drops != null)
-                                {
-                                    for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
-                                    {
-                                        if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
-                                        {
-                                            PWCompDataTxt.Text +=
-                                            Weapon.Components[i].Drops[c].Type + " Drops from " + Weapon.Components[i].Drops[c].Location + " with a " +
-                                            Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100)).ToString() + " % chance with a rarity class of " +
-                                            Weapon.Components[i].Drops[c].Rarity + Environment.NewLine;
-                                        }
-                                    }
-
-                                    PWCompDataTxt.Text += "----------------------------------------------------------------------" + Environment.NewLine;
-                                }
-                            }
-                        }
-
-                        #region Generate Order Menu
-                        if (Weapon.Components != null)
-                        {
-                            if (Weapon.Name.ToLower().Contains("prime"))
-                            {
-                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
-                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
-                                GenerateOrderMenu(Weapon.Name, "Set");
-                            }
-                        }
-                        foreach (Items.PrimaryWeapons.Component Comp in Weapon.Components)
-                        {
-                            switch (Comp.Name)
-                            {
-                                case "Set":
-                                    GenerateOrderMenu(Weapon.Name, "Set");
-                                    break;
-                                case "Blueprint":
-                                    GenerateOrderMenu(Weapon.Name, "Blueprint");
-                                    break;
-                                case "Chassis":
-                                    GenerateOrderMenu(Weapon.Name, "Chassis");
-                                    break;
-                                case "Neuroptics":
-                                    GenerateOrderMenu(Weapon.Name, "Neuroptics");
-                                    break;
-                                case "Systems":
-                                    GenerateOrderMenu(Weapon.Name, "Systems");
-                                    break;
-                                case "Barrel":
-                                    GenerateOrderMenu(Weapon.Name, "Barrel");
-                                    break;
-                                case "Stock":
-                                    GenerateOrderMenu(Weapon.Name, "Stock");
-                                    break;
-                                case "Reciever":
-                                    GenerateOrderMenu(Weapon.Name, "Reciever");
-                                    break;
-                                case "Blade":
-                                    GenerateOrderMenu(Weapon.Name, "Blade");
-                                    break;
-                                case "Hilt":
-                                    GenerateOrderMenu(Weapon.Name, "Hilt");
-                                    break;
-                                case "Head":
-                                    GenerateOrderMenu(Weapon.Name, "Head");
-                                    break;
-                                case "Link":
-                                    GenerateOrderMenu(Weapon.Name, "Link");
-                                    break;
-                            }
-                        }
-                        #endregion
-                        
-                        //Debug Info
-                        if (DebugMode)
-                        {
-                            Debugger.Log($"Updated UI for {PrimaryWeaponComboBox.SelectedItem}");
+                            PWFoundrySlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
+                            PWFoundrySlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
+                            toolTip1.SetToolTip(PWFoundrySlot4Txt, Weapon.Components[4].Name);
+                            toolTip1.SetToolTip(PWFoundrySlot4Img, Weapon.Components[4].Name);
                         }
                     }
+                }
+                #endregion
+
+                #region Set Market Cost & Build Time
+                if (Weapon.MarketCost > 0)
+                {
+                    PWFoundryMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
+                    PWFoundryMarketPriceLbl.Visible = true;
+                }
+                else
+                {
+                    PWFoundryMarketPriceLbl.Visible = false;
+                }
+
+                if (Weapon.BuildTime > 0)
+                {
+                    PWFoundryBuildTime.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
+                    PWFoundryBuildTime.Visible = true;
+                }
+                else
+                {
+                    PWFoundryBuildTime.Visible = false;
+                }
+                #endregion
+
+                #region Weapon Data
+                PWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)}{Environment.NewLine}";
+                PWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier}{Environment.NewLine}";
+                PWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)}{Environment.NewLine}";
+                PWDataTxt.Text += $"Fire Rate: {Weapon.FireRate}{Environment.NewLine}";
+                PWDataTxt.Text += $"Accuracy: {Weapon.Accuracy}{Environment.NewLine}";
+                PWDataTxt.Text += $"Multishot: {Weapon.Multishot}{Environment.NewLine}";
+                PWDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s{Environment.NewLine}";
+
+                //Export Damage Ammounts
+                for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
+                {
+                    PWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                }
+                #endregion
+
+                #region Component Data & Order Menu
+                if (Weapon.Components != null)
+                {
+                    for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                    {
+                        if (Weapon.Components[i].Drops != null)
+                        {
+                            for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                            {
+                                if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                {
+                                    PWCompDataTxt.Text +=
+                                    Weapon.Components[i].Drops[c].Type + " Drops from " + Weapon.Components[i].Drops[c].Location + " with a " +
+                                    Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100)).ToString() + " % chance with a rarity class of " +
+                                    Weapon.Components[i].Drops[c].Rarity + Environment.NewLine;
+                                }
+                            }
+
+                            PWCompDataTxt.Text += "----------------------------------------------------------------------" + Environment.NewLine;
+                        }
+                    }
+
+                    if (Weapon.Name.ToLower().Contains("prime"))
+                    {
+                        FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                        WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                        GenerateOrderMenu(Weapon.Name, "Set");
+                    }
+
+                    foreach (Items.PrimaryWeapons.Component Comp in Weapon.Components)
+                    {
+                        switch (Comp.Name)
+                        {
+                            case "Set":
+                                GenerateOrderMenu(Weapon.Name, "Set");
+                                break;
+                            case "Blueprint":
+                                GenerateOrderMenu(Weapon.Name, "Blueprint");
+                                break;
+                            case "Chassis":
+                                GenerateOrderMenu(Weapon.Name, "Chassis");
+                                break;
+                            case "Neuroptics":
+                                GenerateOrderMenu(Weapon.Name, "Neuroptics");
+                                break;
+                            case "Systems":
+                                GenerateOrderMenu(Weapon.Name, "Systems");
+                                break;
+                            case "Barrel":
+                                GenerateOrderMenu(Weapon.Name, "Barrel");
+                                break;
+                            case "Stock":
+                                GenerateOrderMenu(Weapon.Name, "Stock");
+                                break;
+                            case "Reciever":
+                                GenerateOrderMenu(Weapon.Name, "Reciever");
+                                break;
+                            case "Blade":
+                                GenerateOrderMenu(Weapon.Name, "Blade");
+                                break;
+                            case "Hilt":
+                                GenerateOrderMenu(Weapon.Name, "Hilt");
+                                break;
+                            case "Head":
+                                GenerateOrderMenu(Weapon.Name, "Head");
+                                break;
+                            case "Link":
+                                GenerateOrderMenu(Weapon.Name, "Link");
+                                break;
+                        }
+                    }
+                }
+                #endregion
+
+                //Debug Info
+                if (DebugMode)
+                {
+                    Debugger.Log($"Updated UI for {PrimaryWeaponComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
@@ -504,192 +492,195 @@ namespace WarframeTracker
 
             try
             {
-                foreach (Items.SecondaryWeapons.Root Weapon in Secondary_Weapons)
+                #region Set Static Variables
+                Items.SecondaryWeapons.Root Weapon = GlobalData.SecondaryWeaponDatabase[$"{SecondaryWeaponsComboBox.SelectedItem}"];
+                GlobalData.activeItemName = Weapon.Name;
+                #endregion
+
+                #region Set main Weapon image
+                if (Weapon.WikiaThumbnail != null)
                 {
-                    if ($"{Weapon.Name}" == SecondaryWeaponsComboBox.SelectedItem.ToString())
+                    SecondaryWeaponImageBox.BackgroundImage = WebManager.ServiceImage($"{Weapon.Name}", Weapon.WikiaThumbnail);
+                    SecondaryWeaponContainer.Text = $"{Weapon.Name}";
+                    if (Weapon.SkipBuildTimePrice > 0)
                     {
-                        SelectedItemInformation.activeItemName = Weapon.Name;
+                        SWFoundrySkipBuildLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
+                        SWFoundrySkipBuildLbl.Visible = true;
+                    }
+                    else
+                    {
+                        SWFoundrySkipBuildLbl.Visible = false;
+                    }
+                }
+                #endregion
 
-                        //Set main Weapon image
-                        if (Weapon.WikiaThumbnail != null)
+                #region Set build cost in credits section
+                SWCreditsImgBox.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
+                SWFoundryCreditsTxt.Text = Weapon.BuildPrice.ToString();
+                toolTip1.SetToolTip(SWFoundryCreditsTxt, "Build Cost");
+                #endregion
+
+                #region Set Foundry Component Data
+                if (Weapon.Components != null)
+                {
+                    for (int i = 0; i < Weapon.Components.Count; i++)
+                    {
+                        if (i == 0)
                         {
-                            SecondaryWeaponImageBox.BackgroundImage = WebManager.ServiceImage($"{Weapon.Name}", Weapon.WikiaThumbnail);
-                            SecondaryWeaponContainer.Text = $"{Weapon.Name}";
-                            if (Weapon.SkipBuildTimePrice > 0)
-                            {
-                                SWFoundrySkipBuildLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
-                                SWFoundrySkipBuildLbl.Visible = true;
-                            }
-                            else
-                            {
-                                SWFoundrySkipBuildLbl.Visible = false;
-                            }
+                            //Set  component information
+                            SWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
+                            SWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
+                            toolTip1.SetToolTip(SWSlot0Txt, Weapon.Components[0].Name);
+                            toolTip1.SetToolTip(SWFoundrySlot0Img, Weapon.Components[0].Name);
                         }
-
-                        //Set  build cost in credits section
-                        SWCreditsImgBox.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
-                        SWFoundryCreditsTxt.Text = Weapon.BuildPrice.ToString();
-                        toolTip1.SetToolTip(SWFoundryCreditsTxt, "Build Cost");
-
-                        if (Weapon.Components != null)
+                        else if (i == 1)
                         {
-                            for (int i = 0; i < Weapon.Components.Count; i++)
-                            {
-                                if (i == 0)
-                                {
-                                    //Set  component information
-                                    SWFoundrySlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
-                                    SWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
-                                    toolTip1.SetToolTip(SWSlot0Txt, Weapon.Components[0].Name);
-                                    toolTip1.SetToolTip(SWFoundrySlot0Img, Weapon.Components[0].Name);
-                                }
-                                else if (i == 1)
-                                {
-                                    SWSlot01Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
-                                    SWSlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
-                                    toolTip1.SetToolTip(SWSlot1Txt, Weapon.Components[1].Name);
-                                    toolTip1.SetToolTip(SWSlot01Img, Weapon.Components[1].Name);
-                                }
-                                else if (i == 2)
-                                {
-                                    SWSlot02Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
-                                    SWSlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
-                                    toolTip1.SetToolTip(SWSlot2Txt, Weapon.Components[2].Name);
-                                    toolTip1.SetToolTip(SWSlot02Img, Weapon.Components[2].Name);
-                                }
-                                else if (i == 3)
-                                {
-                                    SWSlot03Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
-                                    SWSlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
-                                    toolTip1.SetToolTip(SWSlot3Txt, Weapon.Components[3].Name);
-                                    toolTip1.SetToolTip(SWSlot03Img, Weapon.Components[3].Name);
-                                }
-                                else if (i == 4)
-                                {
-                                    SWSlot04Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
-                                    SWSlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
-                                    toolTip1.SetToolTip(SWSlot4Txt, Weapon.Components[4].Name);
-                                    toolTip1.SetToolTip(SWSlot04Img, Weapon.Components[4].Name);
-                                }
-                            }
+                            SWSlot01Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
+                            SWSlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
+                            toolTip1.SetToolTip(SWSlot1Txt, Weapon.Components[1].Name);
+                            toolTip1.SetToolTip(SWSlot01Img, Weapon.Components[1].Name);
                         }
-
-                        //Set market cost and build time
-                        if (Weapon.MarketCost != null)
+                        else if (i == 2)
                         {
-                            SWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
-                            SWMarketPriceLbl.Visible = true;
+                            SWSlot02Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
+                            SWSlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
+                            toolTip1.SetToolTip(SWSlot2Txt, Weapon.Components[2].Name);
+                            toolTip1.SetToolTip(SWSlot02Img, Weapon.Components[2].Name);
                         }
-                        else
+                        else if (i == 3)
                         {
-                            SWMarketPriceLbl.Visible = false;
+                            SWSlot03Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
+                            SWSlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
+                            toolTip1.SetToolTip(SWSlot3Txt, Weapon.Components[3].Name);
+                            toolTip1.SetToolTip(SWSlot03Img, Weapon.Components[3].Name);
                         }
-
-                        if (Weapon.BuildTime > 0)
+                        else if (i == 4)
                         {
-                            SWBuildTimeLbl.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
-                            SWBuildTimeLbl.Visible = true;
-                        }
-                        else
-                        {
-                            SWBuildTimeLbl.Visible = false;
-                        }
-
-                        //Other Weapon Data
-                        SWWeaponDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
-                        SWWeaponDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
-                        SWWeaponDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
-                        SWWeaponDataTxt.Text += $"Fire Rate: {Weapon.FireRate} {Environment.NewLine}";
-                        SWWeaponDataTxt.Text += $"Accuracy: {Weapon.Accuracy} {Environment.NewLine}";
-                        SWWeaponDataTxt.Text += $"Multishot: {Weapon.Multishot} {Environment.NewLine}";
-                        SWWeaponDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s {Environment.NewLine}";
-
-                        //Export Damage Ammounts
-                        for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
-                        {
-                            SWWeaponDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
-                        }
-
-                        #region Generate Order Menu
-                        if (Weapon.Components != null)
-                        {
-                            if (Weapon.Name.ToLower().Contains("prime"))
-                            {
-                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
-                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
-                                GenerateOrderMenu(Weapon.Name, "Set");
-                            }
-                        }
-                        foreach (Items.SecondaryWeapons.Component Comp in Weapon.Components)
-                        {
-                            switch (Comp.Name)
-                            {
-                                case "Set":
-                                    GenerateOrderMenu(Weapon.Name, "Set");
-                                    break;
-                                case "Blueprint":
-                                    GenerateOrderMenu(Weapon.Name, "Blueprint");
-                                    break;
-                                case "Chassis":
-                                    GenerateOrderMenu(Weapon.Name, "Chassis");
-                                    break;
-                                case "Neuroptics":
-                                    GenerateOrderMenu(Weapon.Name, "Neuroptics");
-                                    break;
-                                case "Systems":
-                                    GenerateOrderMenu(Weapon.Name, "Systems");
-                                    break;
-                                case "Barrel":
-                                    GenerateOrderMenu(Weapon.Name, "Barrel");
-                                    break;
-                                case "Stock":
-                                    GenerateOrderMenu(Weapon.Name, "Stock");
-                                    break;
-                                case "Reciever":
-                                    GenerateOrderMenu(Weapon.Name, "Reciever");
-                                    break;
-                                case "Blade":
-                                    GenerateOrderMenu(Weapon.Name, "Blade");
-                                    break;
-                                case "Hilt":
-                                    GenerateOrderMenu(Weapon.Name, "Hilt");
-                                    break;
-                                case "Head":
-                                    GenerateOrderMenu(Weapon.Name, "Head");
-                                    break;
-                                case "Link":
-                                    GenerateOrderMenu(Weapon.Name, "Link");
-                                    break;
-                            }
-                        }
-                        #endregion
-
-                        //Export component drop data
-                        if (Weapon.Components != null)
-                        {
-                            for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
-                            {
-                                if (Weapon.Components[i].Drops != null)
-                                {
-                                    for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
-                                    {
-                                        if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
-                                        {
-                                            SWComponentDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
-                                        }
-                                    }
-
-                                    SWComponentDataTxt.Text += $"---------------------------------------------------------------------{Environment.NewLine}";
-                                }
-                            }
-                        }
-
-                        //Debug Info
-                        if (DebugMode)
-                        {
-                            Debugger.Log($"Updated UI for {SecondaryWeaponsComboBox.SelectedItem}");
+                            SWSlot04Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
+                            SWSlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
+                            toolTip1.SetToolTip(SWSlot4Txt, Weapon.Components[4].Name);
+                            toolTip1.SetToolTip(SWSlot04Img, Weapon.Components[4].Name);
                         }
                     }
+                }
+                #endregion
+
+                #region Export Component Drop Data
+                if (Weapon.Components != null)
+                {
+                    for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                    {
+                        if (Weapon.Components[i].Drops != null)
+                        {
+                            for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                            {
+                                if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                {
+                                    SWComponentDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                }
+                            }
+
+                            SWComponentDataTxt.Text += $"---------------------------------------------------------------------{Environment.NewLine}";
+                        }
+                    }
+                }
+                #endregion
+
+                #region Generate Order Menu
+                if (Weapon.Components != null)
+                {
+                    if (Weapon.Name.ToLower().Contains("prime"))
+                    {
+                        FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                        WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                        GenerateOrderMenu(Weapon.Name, "Set");
+                    }
+
+                    foreach (Items.SecondaryWeapons.Component Comp in Weapon.Components)
+                    {
+                        switch (Comp.Name)
+                        {
+                            case "Set":
+                                GenerateOrderMenu(Weapon.Name, "Set");
+                                break;
+                            case "Blueprint":
+                                GenerateOrderMenu(Weapon.Name, "Blueprint");
+                                break;
+                            case "Chassis":
+                                GenerateOrderMenu(Weapon.Name, "Chassis");
+                                break;
+                            case "Neuroptics":
+                                GenerateOrderMenu(Weapon.Name, "Neuroptics");
+                                break;
+                            case "Systems":
+                                GenerateOrderMenu(Weapon.Name, "Systems");
+                                break;
+                            case "Barrel":
+                                GenerateOrderMenu(Weapon.Name, "Barrel");
+                                break;
+                            case "Stock":
+                                GenerateOrderMenu(Weapon.Name, "Stock");
+                                break;
+                            case "Reciever":
+                                GenerateOrderMenu(Weapon.Name, "Reciever");
+                                break;
+                            case "Blade":
+                                GenerateOrderMenu(Weapon.Name, "Blade");
+                                break;
+                            case "Hilt":
+                                GenerateOrderMenu(Weapon.Name, "Hilt");
+                                break;
+                            case "Head":
+                                GenerateOrderMenu(Weapon.Name, "Head");
+                                break;
+                            case "Link":
+                                GenerateOrderMenu(Weapon.Name, "Link");
+                                break;
+                        }
+                    }
+                }
+                #endregion
+
+                #region Set Weapon Data
+                SWWeaponDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Fire Rate: {Weapon.FireRate} {Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Accuracy: {Weapon.Accuracy} {Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Multishot: {Weapon.Multishot} {Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s {Environment.NewLine}";
+
+                //Export Damage Ammounts
+                for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
+                {
+                    SWWeaponDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                }
+
+                if (Weapon.MarketCost != null)
+                {
+                    SWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
+                    SWMarketPriceLbl.Visible = true;
+                }
+                else
+                {
+                    SWMarketPriceLbl.Visible = false;
+                }
+
+                if (Weapon.BuildTime > 0)
+                {
+                    SWBuildTimeLbl.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
+                    SWBuildTimeLbl.Visible = true;
+                }
+                else
+                {
+                    SWBuildTimeLbl.Visible = false;
+                }
+                #endregion
+
+                //Debug Info
+                if (DebugMode)
+                {
+                    Debugger.Log($"Updated UI for {SecondaryWeaponsComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
@@ -742,200 +733,202 @@ namespace WarframeTracker
 
             try
             {
-                foreach (Items.Melee.Root Weapon in Melee_Weapons)
+                #region Set Static Variables
+                Items.Melee.Root Weapon = GlobalData.MeleeWeaponDatabase[$"{MeleeWeaponsComboBox.SelectedItem}"];
+                GlobalData.activeItemName = Weapon.Name;
+                #endregion
+
+                #region Set main Weapon image
+                if (Weapon.WikiaThumbnail != null)
                 {
-                    if ($"{Weapon.Name}" == MeleeWeaponsComboBox.SelectedItem.ToString())
+                    MWImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
+                    MeleeWeaponContainer.Text = Weapon.Name.ToString();
+                    if (Weapon.SkipBuildTimePrice > 0)
                     {
-                        SelectedItemInformation.activeItemName = Weapon.Name;
+                        MWSkipBuildCostLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
+                        MWSkipBuildCostLbl.Visible = true;
+                    }
+                    else
+                    {
+                        MWSkipBuildCostLbl.Visible = false;
+                    }
+                }
+                #endregion
 
-                        //Set main Weapon image
-                        if (Weapon.WikiaThumbnail != null)
+                #region Set  build cost in credits section
+                MWCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
+                MWCreditsTxt.Text = Weapon.BuildPrice.ToString();
+                toolTip1.SetToolTip(MWCreditsTxt, "Build Cost");
+                #endregion
+
+                #region Set Foundry Component Data
+                if (Weapon.Components != null)
+                {
+                    for (int i = 0; i < Weapon.Components.Count; i++)
+                    {
+                        if (i == 0)
                         {
-                            MWImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
-                            MeleeWeaponContainer.Text = Weapon.Name.ToString();
-                            if (Weapon.SkipBuildTimePrice > 0)
-                            {
-                                MWSkipBuildCostLbl.Text = $"Skip Build Time Cost: {Weapon.SkipBuildTimePrice} platinum";
-                                MWSkipBuildCostLbl.Visible = true;
-                            }
-                            else
-                            {
-                                MWSkipBuildCostLbl.Visible = false;
-                            }
+                            //Set  component information
+                            MWSlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
+                            MWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
+                            toolTip1.SetToolTip(MWSlot0Txt, Weapon.Components[0].Name);
+                            toolTip1.SetToolTip(MWSlot0Img, Weapon.Components[0].Name);
                         }
-
-                        //Set  build cost in credits section
-                        MWCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
-                        MWCreditsTxt.Text = Weapon.BuildPrice.ToString();
-                        toolTip1.SetToolTip(MWCreditsTxt, "Build Cost");
-
-                        if (Weapon.Components != null)
+                        else if (i == 1)
                         {
-                            for (int i = 0; i < Weapon.Components.Count; i++)
-                            {
-                                if (i == 0)
-                                {
-                                    //Set  component information
-                                    MWSlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
-                                    MWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
-                                    toolTip1.SetToolTip(MWSlot0Txt, Weapon.Components[0].Name);
-                                    toolTip1.SetToolTip(MWSlot0Img, Weapon.Components[0].Name);
-                                }
-                                else if (i == 1)
-                                {
-                                    MWSlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
-                                    MWSlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
-                                    toolTip1.SetToolTip(MWSlot1Txt, Weapon.Components[1].Name);
-                                    toolTip1.SetToolTip(MWSlot1Img, Weapon.Components[1].Name);
-                                }
-                                else if (i == 2)
-                                {
-                                    MWSlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
-                                    MWSlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
-                                    toolTip1.SetToolTip(MWSlot2Txt, Weapon.Components[2].Name);
-                                    toolTip1.SetToolTip(MWSlot2Img, Weapon.Components[2].Name);
-                                }
-                                else if (i == 3)
-                                {
-                                    MWSlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
-                                    MWSlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
-                                    toolTip1.SetToolTip(MWSlot3Txt, Weapon.Components[3].Name);
-                                    toolTip1.SetToolTip(MWSlot3Img, Weapon.Components[3].Name);
-                                }
-                                else if (i == 4)
-                                {
-                                    MWSlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
-                                    MWSlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
-                                    toolTip1.SetToolTip(MWSlot4Txt, Weapon.Components[4].Name);
-                                    toolTip1.SetToolTip(MWSlot4Img, Weapon.Components[4].Name);
-                                }
-                            }
+                            MWSlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
+                            MWSlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
+                            toolTip1.SetToolTip(MWSlot1Txt, Weapon.Components[1].Name);
+                            toolTip1.SetToolTip(MWSlot1Img, Weapon.Components[1].Name);
                         }
-
-                        //Set market cost and build time
-                        if (Weapon.MarketCost != null)
+                        else if (i == 2)
                         {
-                            MWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
-                            MWMarketPriceLbl.Visible = true;
+                            MWSlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
+                            MWSlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
+                            toolTip1.SetToolTip(MWSlot2Txt, Weapon.Components[2].Name);
+                            toolTip1.SetToolTip(MWSlot2Img, Weapon.Components[2].Name);
                         }
-                        else
+                        else if (i == 3)
                         {
-                            MWMarketPriceLbl.Visible = false;
+                            MWSlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
+                            MWSlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
+                            toolTip1.SetToolTip(MWSlot3Txt, Weapon.Components[3].Name);
+                            toolTip1.SetToolTip(MWSlot3Img, Weapon.Components[3].Name);
                         }
-
-                        if (Weapon.BuildTime > 0)
+                        else if (i == 4)
                         {
-                            MWCreditCostLbl.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
-                            MWCreditCostLbl.Visible = true;
-                        }
-                        else
-                        {
-                            MWCreditCostLbl.Visible = false;
-                        }
-
-                        #region Weapon Data
-                        MWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Attack Rate: {Weapon.FireRate} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Combo Duration: {Weapon.ComboDuration} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Heavy Attack Damage: {Weapon.HeavyAttackDamage} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Slam Attack Damage: {Weapon.SlamAttack} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Slam Attack Radial Damage: {Weapon.SlamRadialDamage} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Slam Attack Radius: {Weapon.SlamRadius} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Heavy Slam Attack Damage: {Weapon.HeavySlamAttack} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage} {Environment.NewLine}";
-                        MWDataTxt.Text += $"Heavy Slam Attack Radius: {Weapon.HeavySlamRadius}{Environment.NewLine}";
-                        MWDataTxt.Text += $"Range: {Weapon.Range}s {Environment.NewLine}";
-                        MWDataTxt.Text += $"-----------------------------------------------------";
-
-                        //Export Damage Ammounts
-                        for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
-                        {
-                            MWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
-                        }
-                        #endregion
-
-                        #region Generate Order Menu
-                        if (Weapon.Components != null)
-                        {
-                            if (Weapon.Name.ToLower().Contains("prime"))
-                            {
-                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
-                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
-                                GenerateOrderMenu(Weapon.Name, "Set");
-                            }
-                        }
-                        foreach (Items.Melee.Component Comp in Weapon.Components)
-                        {
-                            switch (Comp.Name)
-                            {
-                                case "Set":
-                                    GenerateOrderMenu(Weapon.Name, "Set");
-                                    break;
-                                case "Blueprint":
-                                    GenerateOrderMenu(Weapon.Name, "Blueprint");
-                                    break;
-                                case "Chassis":
-                                    GenerateOrderMenu(Weapon.Name, "Chassis");
-                                    break;
-                                case "Neuroptics":
-                                    GenerateOrderMenu(Weapon.Name, "Neuroptics");
-                                    break;
-                                case "Systems":
-                                    GenerateOrderMenu(Weapon.Name, "Systems");
-                                    break;
-                                case "Barrel":
-                                    GenerateOrderMenu(Weapon.Name, "Barrel");
-                                    break;
-                                case "Stock":
-                                    GenerateOrderMenu(Weapon.Name, "Stock");
-                                    break;
-                                case "Reciever":
-                                    GenerateOrderMenu(Weapon.Name, "Reciever");
-                                    break;
-                                case "Blade":
-                                    GenerateOrderMenu(Weapon.Name, "Blade");
-                                    break;
-                                case "Hilt":
-                                    GenerateOrderMenu(Weapon.Name, "Hilt");
-                                    break;
-                                case "Head":
-                                    GenerateOrderMenu(Weapon.Name, "Head");
-                                    break;
-                                case "Link":
-                                    GenerateOrderMenu(Weapon.Name, "Link");
-                                    break;
-                            }
-                        }
-                        #endregion
-
-                        //Export component drop data
-                        if (Weapon.Components != null)
-                        {
-                            for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
-                            {
-                                if (Weapon.Components[i].Drops != null)
-                                {
-                                    for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
-                                    {
-                                        if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
-                                        {
-                                            MWWeaponCompDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
-                                        }
-                                    }
-
-                                    MWWeaponCompDataTxt.Text += $"----------------------------------------------------------------------{Environment.NewLine}";
-                                }
-                            }
-                        }
-
-                        //Debug Info
-                        if (DebugMode)
-                        {
-                            Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
+                            MWSlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
+                            MWSlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
+                            toolTip1.SetToolTip(MWSlot4Txt, Weapon.Components[4].Name);
+                            toolTip1.SetToolTip(MWSlot4Img, Weapon.Components[4].Name);
                         }
                     }
+                }
+                #endregion
+
+                #region Set Weapon Data
+                if (Weapon.MarketCost != null)
+                {
+                    MWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
+                    MWMarketPriceLbl.Visible = true;
+                }
+                else
+                {
+                    MWMarketPriceLbl.Visible = false;
+                }
+
+                if (Weapon.BuildTime > 0)
+                {
+                    MWCreditCostLbl.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
+                    MWCreditCostLbl.Visible = true;
+                }
+                else
+                {
+                    MWCreditCostLbl.Visible = false;
+                }
+
+                MWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
+                MWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
+                MWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
+                MWDataTxt.Text += $"Attack Rate: {Weapon.FireRate} {Environment.NewLine}";
+                MWDataTxt.Text += $"Combo Duration: {Weapon.ComboDuration} {Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Attack Damage: {Weapon.HeavyAttackDamage} {Environment.NewLine}";
+                MWDataTxt.Text += $"Slam Attack Damage: {Weapon.SlamAttack} {Environment.NewLine}";
+                MWDataTxt.Text += $"Slam Attack Radial Damage: {Weapon.SlamRadialDamage} {Environment.NewLine}";
+                MWDataTxt.Text += $"Slam Attack Radius: {Weapon.SlamRadius} {Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Slam Attack Damage: {Weapon.HeavySlamAttack} {Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage} {Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Slam Attack Radius: {Weapon.HeavySlamRadius}{Environment.NewLine}";
+                MWDataTxt.Text += $"Range: {Weapon.Range}s {Environment.NewLine}";
+                MWDataTxt.Text += $"-----------------------------------------------------";
+
+                //Export Damage Ammounts
+                for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
+                {
+                    MWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                }
+                #endregion
+
+                #region Generate Order Menu
+                if (Weapon.Components != null)
+                {
+                    if (Weapon.Name.ToLower().Contains("prime"))
+                    {
+                        FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                        WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                        GenerateOrderMenu(Weapon.Name, "Set");
+                    }
+
+                    foreach (Items.Melee.Component Comp in Weapon.Components)
+                    {
+                        switch (Comp.Name)
+                        {
+                            case "Set":
+                                GenerateOrderMenu(Weapon.Name, "Set");
+                                break;
+                            case "Blueprint":
+                                GenerateOrderMenu(Weapon.Name, "Blueprint");
+                                break;
+                            case "Chassis":
+                                GenerateOrderMenu(Weapon.Name, "Chassis");
+                                break;
+                            case "Neuroptics":
+                                GenerateOrderMenu(Weapon.Name, "Neuroptics");
+                                break;
+                            case "Systems":
+                                GenerateOrderMenu(Weapon.Name, "Systems");
+                                break;
+                            case "Barrel":
+                                GenerateOrderMenu(Weapon.Name, "Barrel");
+                                break;
+                            case "Stock":
+                                GenerateOrderMenu(Weapon.Name, "Stock");
+                                break;
+                            case "Reciever":
+                                GenerateOrderMenu(Weapon.Name, "Reciever");
+                                break;
+                            case "Blade":
+                                GenerateOrderMenu(Weapon.Name, "Blade");
+                                break;
+                            case "Hilt":
+                                GenerateOrderMenu(Weapon.Name, "Hilt");
+                                break;
+                            case "Head":
+                                GenerateOrderMenu(Weapon.Name, "Head");
+                                break;
+                            case "Link":
+                                GenerateOrderMenu(Weapon.Name, "Link");
+                                break;
+                        }
+                    }
+                }
+                #endregion
+
+                #region Export component drop data
+                if (Weapon.Components != null)
+                {
+                    for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                    {
+                        if (Weapon.Components[i].Drops != null)
+                        {
+                            for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                            {
+                                if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                {
+                                    MWWeaponCompDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                }
+                            }
+
+                            MWWeaponCompDataTxt.Text += $"----------------------------------------------------------------------{Environment.NewLine}";
+                        }
+                    }
+                }
+                #endregion
+
+                //Debug Info
+                if (DebugMode)
+                {
+                    Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
@@ -1020,9 +1013,24 @@ namespace WarframeTracker
 
         /// <summary>
         /// Loads the world state into the application
+        /// [NOT FINISHED]
         /// </summary>
         private void LoadWorldState()
         {
+            #region Resets
+            CycleTimersInfoBox.Text = String.Empty;
+            SortieInfoBox.Text = String.Empty;
+            NightwaveInfoBox.Text = String.Empty;
+            ArbitrationInfoBox.Text = String.Empty;
+            FissureInfoBox.Text = String.Empty;
+            SyndicateInfoBox.Text = String.Empty;
+            BaroInfoBox.Text = String.Empty;
+            DailyInfoBox.Text = String.Empty;
+            OstronInfoBox.Text = String.Empty;
+            SolarisInfoBox.Text = String.Empty;
+            EntratiInfoBox.Text = String.Empty;
+            #endregion
+
             HttpWebRequest world_state_request = WebManager.GenerateRequest("", "WorldState", "pc");
             HttpWebResponse world_state_response = WebManager.GenerateResponse(world_state_request);
 
@@ -1068,11 +1076,13 @@ namespace WarframeTracker
                 NightwaveInfoBox.Text += ($"{WorldInformation.Nightwave.ActiveChallenges[i].Desc} for {WorldInformation.Nightwave.ActiveChallenges[i].Reputation} points. Expires on {WorldInformation.Nightwave.ActiveChallenges[i].Expiry}" + Environment.NewLine);
             }
 
-            SyndicateInfoBox.Text = $"";
+            //SyndicateGroupBox.Text = $"{}";
             for (int i = 0; i < WorldInformation.SyndicateMissions.Count; i++)
             {
-                SyndicateInfoBox.Text += ($"" + Environment.NewLine);
+                //SyndicateInfoBox.Text += ($"{WorldInformation.SyndicateMissions[i].Syndicate}" + Environment.NewLine);
             }
+
+            //TODO Sort bounties into their respective boxes?
             #endregion
         }
 
@@ -1089,44 +1099,87 @@ namespace WarframeTracker
             #endregion
 
             #region IO Operations
-            Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
-            Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
-            Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
-            Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json"));
-            Sentinel_List = JsonConvert.DeserializeObject<List<Items.Sentinels.Root>>(File.ReadAllText(local_Json_directory + "/Sentinels.json"));
-            Pets_List = JsonConvert.DeserializeObject<List<Items.Pets.Root>>(File.ReadAllText(local_Json_directory + "/Pets.json"));
-            Archwings = JsonConvert.DeserializeObject<List<Items.Archwing.Root>>(File.ReadAllText(local_Json_directory + "/Archwing.json"));
-            ArchGuns = JsonConvert.DeserializeObject<List<Items.ArcGun.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Gun.json"));
-            ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json"));
-            Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json"));
-            Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json"));
+            try
+            {
+                Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
+                Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
+                Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
+                Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json"));
+                Sentinel_List = JsonConvert.DeserializeObject<List<Items.Sentinels.Root>>(File.ReadAllText(local_Json_directory + "/Sentinels.json"));
+                Pets_List = JsonConvert.DeserializeObject<List<Items.Pets.Root>>(File.ReadAllText(local_Json_directory + "/Pets.json"));
+                Archwings = JsonConvert.DeserializeObject<List<Items.Archwing.Root>>(File.ReadAllText(local_Json_directory + "/Archwing.json"));
+                ArchGuns = JsonConvert.DeserializeObject<List<Items.ArcGun.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Gun.json"));
+                ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json"));
+                Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json"));
+                Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json"));
+            }
+            catch (Exception ex)
+            {
+                Debugger.Log($"Error loading hadcoded json data {Environment.NewLine}Stack Trace: {ex}");
+            }
             #endregion
 
             #region Loop Items Into Comboboxes
-            foreach (Items.Warframes.Root frame in Warframes)
+            if (Warframes.Count > 0)
             {
-                WarframeComboBox.Items.Add(frame.Name.ToString());
-            }
-
-            foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
-            {
-                if (Primary_Weapon.ProductCategory != "SentinelWeapons")
+                foreach (Items.Warframes.Root frame in Warframes)
                 {
-                    PrimaryWeaponComboBox.Items.Add(Primary_Weapon.Name.ToString());
+                    WarframeComboBox.Items.Add(frame.Name.ToString());
+                    GlobalData.WarframeDatabase.Add(frame.Name, frame);
                 }
             }
-
-            foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
+            
+            if (Primary_Weapons.Count > 0)
             {
-                if (Secondary_Weapon.ProductCategory != "SentinelWeapons")
+                foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
                 {
-                    SecondaryWeaponsComboBox.Items.Add(Secondary_Weapon.Name.ToString());
+                    GlobalData.PrimaryWeaponDatabase.Add(Primary_Weapon.Name, Primary_Weapon);
+
+                    if (Primary_Weapon.ProductCategory != "SentinelWeapons")
+                    {
+                        PrimaryWeaponComboBox.Items.Add(Primary_Weapon.Name.ToString());
+                    }
                 }
             }
-
-            foreach (Items.Melee.Root Melee_Weapon in Melee_Weapons)
+            
+            if (Secondary_Weapons.Count > 0)
             {
-                MeleeWeaponsComboBox.Items.Add(Melee_Weapon.Name.ToString());
+                foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
+                {
+                    GlobalData.SecondaryWeaponDatabase.Add(Secondary_Weapon.Name, Secondary_Weapon);
+
+                    if (Secondary_Weapon.ProductCategory != "SentinelWeapons")
+                    {
+                        SecondaryWeaponsComboBox.Items.Add(Secondary_Weapon.Name.ToString());
+                    }
+                }
+            }
+            
+            if (Melee_Weapons.Count > 0)
+            {
+                foreach (Items.Melee.Root Melee_Weapon in Melee_Weapons)
+                {
+                    GlobalData.MeleeWeaponDatabase.Add(Melee_Weapon.Name, Melee_Weapon);
+                    MeleeWeaponsComboBox.Items.Add(Melee_Weapon.Name.ToString());
+                }
+            }
+            
+            if (Pets_List.Count > 0)
+            {
+                foreach (Items.Pets.Root Pet in Pets_List)
+                {
+                    GlobalData.PetsDatabase.Add(Pet.Name, Pet);
+                    CompanionsComboBox.Items.Add(Pet.Name);
+                }
+            }
+            
+            if (Pets_List.Count > 0)
+            {
+                foreach (Items.Sentinels.Root Sentinel in Sentinel_List)
+                {
+                    GlobalData.SentinelsDatabase.Add(Sentinel.Name, Sentinel);
+                    CompanionsComboBox.Items.Add(Sentinel.Name);
+                }
             }
             #endregion
 
@@ -1146,19 +1199,14 @@ namespace WarframeTracker
 
         #endregion
 
-        #region World Cycle Code
-
-        #endregion
-
         #region ContextMenu Code
         private void FindOrderInformation(string item_name, string order_type, bool tradeable)
         {
-            SelectedItemInformation.activeItemName = $"{item_name}";
-            SelectedItemInformation.activeSearch = $"{order_type}";
+            GlobalData.activeItemName = $"{item_name}";
+            GlobalData.activeSearch = $"{order_type}";
             new OrderSheet().Show();
         }
 
-        #region Warframe Context Menu Commands
         private void GenerateOrderMenu(string item_name, string order_name)
         {
             switch (order_name)
@@ -1250,87 +1298,85 @@ namespace WarframeTracker
             }
         }
 
+        #region Context Menu Commands
         private void FindSetOrdersMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Set", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Set", true);
         }
 
         private void FindNueropticsMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Nueroptics", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Nueroptics", true);
         }
 
         private void FindChassisMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Chassis", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Chassis", true);
         }
 
         private void FindSystemsMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Systems", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Systems", true);
         }
 
         private void FindBlueprintMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Blueprint", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Blueprint", true);
         }
 
         private void FindBarrelMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Barrel", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Barrel", true);
         }
 
         private void FindStockMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Stock", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Stock", true);
         }
 
         private void FindRecieverMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Reciever", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Reciever", true);
         }
 
         private void FindBladeMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Blade", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Blade", true);
         }
 
         private void FindHiltMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Hilt", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Hilt", true);
         }
 
         private void FindHeadMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Head", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Head", true);
         }
 
         private void FindLinkMenuItem_Click(object sender, EventArgs e)
         {
-            FindOrderInformation(SelectedItemInformation.activeItemName, "Link", tradeable);
+            FindOrderInformation(GlobalData.activeItemName, "Link", true);
         }
         #endregion
-
-        #region Primary Weapons Context Menu Commands
-
         #endregion
+    }
 
-        #region Secondary Weapons Context Menu Commands
+    public static class GlobalData
+    {
+        public static string activeItemName = "";
+        public static string activeSearch = "";
 
-        #endregion
-
-        #region Melee Weapons Context Menu Commands
-
-        #endregion
-
-        #region Companions Context Menu Commands
-
-        #endregion
-
-        #region World Cycle Context Menu
-
-        #endregion
-
-        #endregion
+        public static Dictionary<String, Items.Warframes.Root> WarframeDatabase = new Dictionary<string, Items.Warframes.Root>();
+        public static Dictionary<String, Items.PrimaryWeapons.Root> PrimaryWeaponDatabase = new Dictionary<string, Items.PrimaryWeapons.Root>();
+        public static Dictionary<String, Items.SecondaryWeapons.Root> SecondaryWeaponDatabase = new Dictionary<string, Items.SecondaryWeapons.Root>();
+        public static Dictionary<String, Items.Melee.Root> MeleeWeaponDatabase = new Dictionary<string, Items.Melee.Root>();
+        public static Dictionary<String, Items.Sentinels.Root> SentinelsDatabase = new Dictionary<string, Items.Sentinels.Root>();
+        public static Dictionary<String, Items.Pets.Root> PetsDatabase = new Dictionary<string, Items.Pets.Root>();
+        public static Dictionary<String, Items.Archwing.Root> ArchwingDatabase = new Dictionary<string, Items.Archwing.Root>();
+        public static Dictionary<String, Items.ArcGun.Root> ArcGunDatabase = new Dictionary<string, Items.ArcGun.Root>();
+        public static Dictionary<String, Items.ArcMelee.Root> ArcMeleeDatabase = new Dictionary<string, Items.ArcMelee.Root>();
+        public static Dictionary<String, Items.Arcanes.Root> ArcaneDatabase = new Dictionary<string, Items.Arcanes.Root>();
+        public static Dictionary<String, Items.Mods.Root> ModDatabase = new Dictionary<string, Items.Mods.Root>();
     }
 }

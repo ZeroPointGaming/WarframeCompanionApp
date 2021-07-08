@@ -37,16 +37,16 @@ namespace WarframeTracker
 
             try
             {
-                SelectedItemInformation.activeItemName = SelectedItemInformation.activeItemName.ToLower().Replace(" ", "_");
-                SelectedItemInformation.activeSearch = SelectedItemInformation.activeSearch.ToLower().Replace(" ", "_");
-                this.Text = $"{SelectedItemInformation.activeItemName}_{SelectedItemInformation.activeSearch} Open Orders";
+                GlobalData.activeItemName = GlobalData.activeItemName.ToLower().Replace(" ", "_");
+                GlobalData.activeSearch = GlobalData.activeSearch.ToLower().Replace(" ", "_");
+                this.Text = $"{GlobalData.activeItemName}_{GlobalData.activeSearch} Open Orders";
 
                 if (DebugMode)
                 {
-                    Debugger.Log($"Order URL Name: {SelectedItemInformation.activeItemName}_{SelectedItemInformation.activeSearch}");
+                    Debugger.Log($"Order URL Name: {GlobalData.activeItemName}_{GlobalData.activeSearch}");
                 }
 
-                HttpWebRequest request = WebManager.GenerateRequest($"{SelectedItemInformation.activeItemName}_{SelectedItemInformation.activeSearch}", "OrderCall");
+                HttpWebRequest request = WebManager.GenerateRequest($"{GlobalData.activeItemName}_{GlobalData.activeSearch}", "OrderCall");
                 HttpWebResponse response = WebManager.GenerateResponse(request);
 
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
@@ -122,11 +122,5 @@ namespace WarframeTracker
         {
             RefereshOrders();
         }
-    }
-
-    public static class SelectedItemInformation
-    {
-        public static string activeItemName = "";
-        public static string activeSearch = "";
     }
 }
