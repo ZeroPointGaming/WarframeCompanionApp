@@ -18,6 +18,10 @@ namespace WarframeTracker
     /// [Identified] Relics expiry time is off in WorldSpace
     /// </summary>
 
+    /// <summary> TODO List
+    /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
+    /// </summary>
+
     public partial class Form1 : Form
     {
         #region Declare Local Variables
@@ -1357,6 +1361,11 @@ namespace WarframeTracker
         private void FindLinkMenuItem_Click(object sender, EventArgs e)
         {
             FindOrderInformation(GlobalData.activeItemName, "Link", true);
+        }
+
+        private void RefreshDataMenuItem_Click(object sender, EventArgs e)
+        {
+            GenerateData();
         }
         #endregion
         #endregion
