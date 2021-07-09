@@ -50,6 +50,16 @@ namespace WarframeTracker.WebInterface
                 case "WorldState":
                     HttpWebRequest world_state_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}");
                     return world_state_request;
+
+                case "Drops":
+                    HttpWebRequest drops_request = (HttpWebRequest)WebRequest.Create($"http://drops.warframestat.us/data/all.json");
+                    return drops_request;
+                #endregion
+
+                #region Vault Data Requests
+                case "VaultData":
+                    HttpWebRequest vault_data_request = (HttpWebRequest)WebRequest.Create($"http://www.oggtechnologies.com/api/ducatsorplat/v2/MainItemData.json");
+                    return vault_data_request;
                 #endregion
 
                 default:

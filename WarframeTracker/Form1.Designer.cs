@@ -494,11 +494,13 @@ namespace WarframeTracker
             // CompanionsComboBox
             // 
             this.CompanionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CompanionsComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CompanionsComboBox.FormattingEnabled = true;
-            this.CompanionsComboBox.Location = new System.Drawing.Point(6, 22);
+            this.CompanionsComboBox.Location = new System.Drawing.Point(6, 19);
             this.CompanionsComboBox.Name = "CompanionsComboBox";
-            this.CompanionsComboBox.Size = new System.Drawing.Size(174, 23);
+            this.CompanionsComboBox.Size = new System.Drawing.Size(206, 29);
             this.CompanionsComboBox.TabIndex = 6;
+            this.CompanionsComboBox.SelectedIndexChanged += new System.EventHandler(this.CompanionsComboBox_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -554,7 +556,7 @@ namespace WarframeTracker
             this.groupBox22.Size = new System.Drawing.Size(1010, 260);
             this.groupBox22.TabIndex = 2;
             this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Warframe Components";
+            this.groupBox22.Text = "Companion Components";
             // 
             // label6
             // 
@@ -681,7 +683,7 @@ namespace WarframeTracker
             this.CompanionImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CompanionImageBox.Location = new System.Drawing.Point(6, 51);
             this.CompanionImageBox.Name = "CompanionImageBox";
-            this.CompanionImageBox.Size = new System.Drawing.Size(395, 292);
+            this.CompanionImageBox.Size = new System.Drawing.Size(407, 292);
             this.CompanionImageBox.TabIndex = 0;
             this.CompanionImageBox.TabStop = false;
             // 

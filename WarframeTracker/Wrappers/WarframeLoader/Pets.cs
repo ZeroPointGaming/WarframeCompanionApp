@@ -163,5 +163,4 @@ namespace WarframeTracker.Items.Pets
         public List<Component> Components;
     }
 
-
 }
