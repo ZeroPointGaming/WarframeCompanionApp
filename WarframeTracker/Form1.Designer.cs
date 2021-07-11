@@ -40,31 +40,18 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl = new MetroFramework.Controls.MetroTabControl();
             this.PetsTabPage = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.ComponentDropsContainer = new System.Windows.Forms.GroupBox();
+            this.CopmpanionDropsTxt = new System.Windows.Forms.TextBox();
+            this.CompanionComponentContainer = new System.Windows.Forms.GroupBox();
+            this.CompanionComponentTxt = new System.Windows.Forms.TextBox();
+            this.CompanionStatsContainer = new System.Windows.Forms.GroupBox();
+            this.CompanionStatsTxt = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.CompanionsComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox29 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox30 = new System.Windows.Forms.PictureBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox31 = new System.Windows.Forms.PictureBox();
             this.CompanionImageBox = new System.Windows.Forms.PictureBox();
-            this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.CompanionDescriptionContainer = new System.Windows.Forms.GroupBox();
+            this.CompanionDescriptionTxt = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.WarframeTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -267,17 +254,11 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.SuspendLayout();
             this.PetsTabPage.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.groupBox21.SuspendLayout();
-            this.groupBox22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).BeginInit();
+            this.ComponentDropsContainer.SuspendLayout();
+            this.CompanionComponentContainer.SuspendLayout();
+            this.CompanionStatsContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).BeginInit();
-            this.groupBox23.SuspendLayout();
-            this.groupBox24.SuspendLayout();
-            this.groupBox25.SuspendLayout();
-            this.groupBox26.SuspendLayout();
+            this.CompanionDescriptionContainer.SuspendLayout();
             this.WarframeTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -473,15 +454,13 @@ namespace WarframeTracker
             // groupBox7
             // 
             this.groupBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox7.Controls.Add(this.ComponentDropsContainer);
+            this.groupBox7.Controls.Add(this.CompanionComponentContainer);
+            this.groupBox7.Controls.Add(this.CompanionStatsContainer);
             this.groupBox7.Controls.Add(this.CompanionsComboBox);
             this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.groupBox21);
-            this.groupBox7.Controls.Add(this.groupBox22);
             this.groupBox7.Controls.Add(this.CompanionImageBox);
-            this.groupBox7.Controls.Add(this.groupBox23);
-            this.groupBox7.Controls.Add(this.groupBox24);
-            this.groupBox7.Controls.Add(this.groupBox25);
-            this.groupBox7.Controls.Add(this.groupBox26);
+            this.groupBox7.Controls.Add(this.CompanionDescriptionContainer);
             this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox7.ForeColor = System.Drawing.Color.White;
             this.groupBox7.Location = new System.Drawing.Point(8, 6);
@@ -490,6 +469,94 @@ namespace WarframeTracker
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Sentinels And Pets Data";
+            // 
+            // ComponentDropsContainer
+            // 
+            this.ComponentDropsContainer.BackColor = System.Drawing.Color.Transparent;
+            this.ComponentDropsContainer.Controls.Add(this.CopmpanionDropsTxt);
+            this.ComponentDropsContainer.ForeColor = System.Drawing.Color.White;
+            this.ComponentDropsContainer.Location = new System.Drawing.Point(680, 19);
+            this.ComponentDropsContainer.Name = "ComponentDropsContainer";
+            this.ComponentDropsContainer.Size = new System.Drawing.Size(749, 625);
+            this.ComponentDropsContainer.TabIndex = 9;
+            this.ComponentDropsContainer.TabStop = false;
+            this.ComponentDropsContainer.Text = "Drops Data";
+            // 
+            // CopmpanionDropsTxt
+            // 
+            this.CopmpanionDropsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CopmpanionDropsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CopmpanionDropsTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CopmpanionDropsTxt.ForeColor = System.Drawing.Color.White;
+            this.CopmpanionDropsTxt.Location = new System.Drawing.Point(3, 19);
+            this.CopmpanionDropsTxt.Multiline = true;
+            this.CopmpanionDropsTxt.Name = "CopmpanionDropsTxt";
+            this.CopmpanionDropsTxt.ReadOnly = true;
+            this.CopmpanionDropsTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.CopmpanionDropsTxt.Size = new System.Drawing.Size(743, 603);
+            this.CopmpanionDropsTxt.TabIndex = 1;
+            // 
+            // CompanionComponentContainer
+            // 
+            this.CompanionComponentContainer.BackColor = System.Drawing.Color.Transparent;
+            this.CompanionComponentContainer.Controls.Add(this.CompanionComponentTxt);
+            this.CompanionComponentContainer.ForeColor = System.Drawing.Color.White;
+            this.CompanionComponentContainer.Location = new System.Drawing.Point(419, 19);
+            this.CompanionComponentContainer.Name = "CompanionComponentContainer";
+            this.CompanionComponentContainer.Size = new System.Drawing.Size(255, 326);
+            this.CompanionComponentContainer.TabIndex = 8;
+            this.CompanionComponentContainer.TabStop = false;
+            this.CompanionComponentContainer.Text = "petComponents";
+            // 
+            // CompanionComponentTxt
+            // 
+            this.CompanionComponentTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CompanionComponentTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CompanionComponentTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanionComponentTxt.ForeColor = System.Drawing.Color.White;
+            this.CompanionComponentTxt.Location = new System.Drawing.Point(3, 19);
+            this.CompanionComponentTxt.Multiline = true;
+            this.CompanionComponentTxt.Name = "CompanionComponentTxt";
+            this.CompanionComponentTxt.ReadOnly = true;
+            this.CompanionComponentTxt.Size = new System.Drawing.Size(249, 304);
+            this.CompanionComponentTxt.TabIndex = 1;
+            // 
+            // CompanionStatsContainer
+            // 
+            this.CompanionStatsContainer.BackColor = System.Drawing.Color.Transparent;
+            this.CompanionStatsContainer.Controls.Add(this.CompanionStatsTxt);
+            this.CompanionStatsContainer.Controls.Add(this.textBox2);
+            this.CompanionStatsContainer.ForeColor = System.Drawing.Color.White;
+            this.CompanionStatsContainer.Location = new System.Drawing.Point(6, 474);
+            this.CompanionStatsContainer.Name = "CompanionStatsContainer";
+            this.CompanionStatsContainer.Size = new System.Drawing.Size(407, 170);
+            this.CompanionStatsContainer.TabIndex = 7;
+            this.CompanionStatsContainer.TabStop = false;
+            this.CompanionStatsContainer.Text = "petStats";
+            // 
+            // CompanionStatsTxt
+            // 
+            this.CompanionStatsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CompanionStatsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CompanionStatsTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanionStatsTxt.ForeColor = System.Drawing.Color.White;
+            this.CompanionStatsTxt.Location = new System.Drawing.Point(3, 19);
+            this.CompanionStatsTxt.Multiline = true;
+            this.CompanionStatsTxt.Name = "CompanionStatsTxt";
+            this.CompanionStatsTxt.ReadOnly = true;
+            this.CompanionStatsTxt.Size = new System.Drawing.Size(401, 148);
+            this.CompanionStatsTxt.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(6, 16);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(383, 70);
+            this.textBox2.TabIndex = 0;
             // 
             // CompanionsComboBox
             // 
@@ -512,168 +579,6 @@ namespace WarframeTracker
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // groupBox21
-            // 
-            this.groupBox21.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox21.Controls.Add(this.textBox1);
-            this.groupBox21.ForeColor = System.Drawing.Color.White;
-            this.groupBox21.Location = new System.Drawing.Point(6, 741);
-            this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(395, 92);
-            this.groupBox21.TabIndex = 2;
-            this.groupBox21.TabStop = false;
-            this.groupBox21.Text = "Passive Ability";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(6, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(383, 70);
-            this.textBox1.TabIndex = 0;
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox22.Controls.Add(this.label6);
-            this.groupBox22.Controls.Add(this.label7);
-            this.groupBox22.Controls.Add(this.textBox2);
-            this.groupBox22.Controls.Add(this.textBox3);
-            this.groupBox22.Controls.Add(this.textBox4);
-            this.groupBox22.Controls.Add(this.pictureBox19);
-            this.groupBox22.Controls.Add(this.pictureBox29);
-            this.groupBox22.Controls.Add(this.label8);
-            this.groupBox22.Controls.Add(this.pictureBox30);
-            this.groupBox22.Controls.Add(this.textBox5);
-            this.groupBox22.Controls.Add(this.label11);
-            this.groupBox22.Controls.Add(this.pictureBox31);
-            this.groupBox22.ForeColor = System.Drawing.Color.White;
-            this.groupBox22.Location = new System.Drawing.Point(419, 15);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(1010, 260);
-            this.groupBox22.TabIndex = 2;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Companion Components";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(487, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 15);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Systems";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(487, 138);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 15);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Chassis";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(572, 160);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(324, 79);
-            this.textBox2.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(572, 39);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(324, 79);
-            this.textBox3.TabIndex = 3;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(123, 160);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(324, 79);
-            this.textBox4.TabIndex = 2;
-            // 
-            // pictureBox19
-            // 
-            this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox19.Location = new System.Drawing.Point(466, 160);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(100, 79);
-            this.pictureBox19.TabIndex = 0;
-            this.pictureBox19.TabStop = false;
-            // 
-            // pictureBox29
-            // 
-            this.pictureBox29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox29.Location = new System.Drawing.Point(466, 39);
-            this.pictureBox29.Name = "pictureBox29";
-            this.pictureBox29.Size = new System.Drawing.Size(100, 79);
-            this.pictureBox29.TabIndex = 0;
-            this.pictureBox29.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(35, 138);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 15);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Nueroptics";
-            // 
-            // pictureBox30
-            // 
-            this.pictureBox30.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox30.Location = new System.Drawing.Point(17, 160);
-            this.pictureBox30.Name = "pictureBox30";
-            this.pictureBox30.Size = new System.Drawing.Size(100, 79);
-            this.pictureBox30.TabIndex = 0;
-            this.pictureBox30.TabStop = false;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.ForeColor = System.Drawing.Color.White;
-            this.textBox5.Location = new System.Drawing.Point(123, 39);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(324, 79);
-            this.textBox5.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(35, 19);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 15);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Blueprint";
-            // 
-            // pictureBox31
-            // 
-            this.pictureBox31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox31.Location = new System.Drawing.Point(17, 39);
-            this.pictureBox31.Name = "pictureBox31";
-            this.pictureBox31.Size = new System.Drawing.Size(100, 79);
-            this.pictureBox31.TabIndex = 0;
-            this.pictureBox31.TabStop = false;
-            // 
             // CompanionImageBox
             // 
             this.CompanionImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -681,92 +586,37 @@ namespace WarframeTracker
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CompanionImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CompanionImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CompanionImageBox.Location = new System.Drawing.Point(6, 51);
+            this.CompanionImageBox.Location = new System.Drawing.Point(6, 53);
             this.CompanionImageBox.Name = "CompanionImageBox";
             this.CompanionImageBox.Size = new System.Drawing.Size(407, 292);
             this.CompanionImageBox.TabIndex = 0;
             this.CompanionImageBox.TabStop = false;
             // 
-            // groupBox23
+            // CompanionDescriptionContainer
             // 
-            this.groupBox23.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox23.Controls.Add(this.textBox6);
-            this.groupBox23.ForeColor = System.Drawing.Color.White;
-            this.groupBox23.Location = new System.Drawing.Point(6, 643);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(395, 92);
-            this.groupBox23.TabIndex = 2;
-            this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "abilityName";
+            this.CompanionDescriptionContainer.BackColor = System.Drawing.Color.Transparent;
+            this.CompanionDescriptionContainer.Controls.Add(this.CompanionDescriptionTxt);
+            this.CompanionDescriptionContainer.Controls.Add(this.textBox9);
+            this.CompanionDescriptionContainer.ForeColor = System.Drawing.Color.White;
+            this.CompanionDescriptionContainer.Location = new System.Drawing.Point(6, 349);
+            this.CompanionDescriptionContainer.Name = "CompanionDescriptionContainer";
+            this.CompanionDescriptionContainer.Size = new System.Drawing.Size(407, 119);
+            this.CompanionDescriptionContainer.TabIndex = 1;
+            this.CompanionDescriptionContainer.TabStop = false;
+            this.CompanionDescriptionContainer.Text = "petDescription";
             // 
-            // textBox6
+            // CompanionDescriptionTxt
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.ForeColor = System.Drawing.Color.White;
-            this.textBox6.Location = new System.Drawing.Point(6, 16);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(383, 70);
-            this.textBox6.TabIndex = 0;
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox24.Controls.Add(this.textBox7);
-            this.groupBox24.ForeColor = System.Drawing.Color.White;
-            this.groupBox24.Location = new System.Drawing.Point(6, 545);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(395, 92);
-            this.groupBox24.TabIndex = 2;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "abilityName";
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.ForeColor = System.Drawing.Color.White;
-            this.textBox7.Location = new System.Drawing.Point(6, 16);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(383, 70);
-            this.textBox7.TabIndex = 0;
-            // 
-            // groupBox25
-            // 
-            this.groupBox25.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox25.Controls.Add(this.textBox8);
-            this.groupBox25.ForeColor = System.Drawing.Color.White;
-            this.groupBox25.Location = new System.Drawing.Point(6, 447);
-            this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(395, 92);
-            this.groupBox25.TabIndex = 2;
-            this.groupBox25.TabStop = false;
-            this.groupBox25.Text = "abilityName";
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.ForeColor = System.Drawing.Color.White;
-            this.textBox8.Location = new System.Drawing.Point(6, 16);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(383, 70);
-            this.textBox8.TabIndex = 0;
-            // 
-            // groupBox26
-            // 
-            this.groupBox26.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox26.Controls.Add(this.textBox9);
-            this.groupBox26.ForeColor = System.Drawing.Color.White;
-            this.groupBox26.Location = new System.Drawing.Point(6, 349);
-            this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(395, 92);
-            this.groupBox26.TabIndex = 1;
-            this.groupBox26.TabStop = false;
-            this.groupBox26.Text = "abilityName";
+            this.CompanionDescriptionTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CompanionDescriptionTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CompanionDescriptionTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanionDescriptionTxt.ForeColor = System.Drawing.Color.White;
+            this.CompanionDescriptionTxt.Location = new System.Drawing.Point(3, 19);
+            this.CompanionDescriptionTxt.Multiline = true;
+            this.CompanionDescriptionTxt.Name = "CompanionDescriptionTxt";
+            this.CompanionDescriptionTxt.ReadOnly = true;
+            this.CompanionDescriptionTxt.Size = new System.Drawing.Size(401, 97);
+            this.CompanionDescriptionTxt.TabIndex = 1;
             // 
             // textBox9
             // 
@@ -2928,23 +2778,15 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.ResumeLayout(false);
             this.PetsTabPage.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
-            this.groupBox21.ResumeLayout(false);
-            this.groupBox21.PerformLayout();
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).EndInit();
+            this.ComponentDropsContainer.ResumeLayout(false);
+            this.ComponentDropsContainer.PerformLayout();
+            this.CompanionComponentContainer.ResumeLayout(false);
+            this.CompanionComponentContainer.PerformLayout();
+            this.CompanionStatsContainer.ResumeLayout(false);
+            this.CompanionStatsContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).EndInit();
-            this.groupBox23.ResumeLayout(false);
-            this.groupBox23.PerformLayout();
-            this.groupBox24.ResumeLayout(false);
-            this.groupBox24.PerformLayout();
-            this.groupBox25.ResumeLayout(false);
-            this.groupBox25.PerformLayout();
-            this.groupBox26.ResumeLayout(false);
-            this.groupBox26.PerformLayout();
+            this.CompanionDescriptionContainer.ResumeLayout(false);
+            this.CompanionDescriptionContainer.PerformLayout();
             this.WarframeTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -3315,30 +3157,17 @@ namespace WarframeTracker
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox CompanionsComboBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.PictureBox pictureBox19;
-        private System.Windows.Forms.PictureBox pictureBox29;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox30;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.PictureBox pictureBox31;
         private System.Windows.Forms.PictureBox CompanionImageBox;
-        private System.Windows.Forms.GroupBox groupBox23;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.GroupBox groupBox24;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.GroupBox groupBox25;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.GroupBox groupBox26;
+        private System.Windows.Forms.GroupBox CompanionDescriptionContainer;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox CompanionDescriptionTxt;
+        private System.Windows.Forms.GroupBox CompanionStatsContainer;
+        private System.Windows.Forms.TextBox CompanionStatsTxt;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox CompanionComponentContainer;
+        private System.Windows.Forms.TextBox CompanionComponentTxt;
+        private System.Windows.Forms.GroupBox ComponentDropsContainer;
+        private System.Windows.Forms.TextBox CopmpanionDropsTxt;
     }
 }
 

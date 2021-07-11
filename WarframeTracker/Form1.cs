@@ -69,6 +69,7 @@ namespace WarframeTracker
             PrimaryWeaponComboBox.SelectedIndex = 0;
             SecondaryWeaponsComboBox.SelectedIndex = 0;
             MeleeWeaponsComboBox.SelectedIndex = 0;
+            CompanionsComboBox.SelectedIndex = 0;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -967,15 +968,27 @@ namespace WarframeTracker
             }
         }
 
-        //Construction
         private void CompanionsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region Resets
-
+            FindOrdersMenu.Items.Clear();
+            WarframeMarketOptions.DropDownItems.Clear();
+            CompanionImageBox.BackgroundImage = null;
+            CompanionDescriptionTxt.Text = String.Empty;
+            CompanionComponentTxt.Text = String.Empty;
+            CompanionStatsTxt.Text = String.Empty;
+            CompanionStatsContainer.Text = "companion_name";
+            CompanionDescriptionContainer.Text = "companion_name";
+            CompanionComponentContainer.Text = "companion_name";
+            CompanionComponentContainer.Visible = true;
+            CompanionDescriptionContainer.Visible = true;
+            CompanionStatsContainer.Visible = true;
+            ComponentDropsContainer.Visible = true;
+            CopmpanionDropsTxt.Text = String.Empty;
             #endregion
+
             try
             {
-                #region Set Static Variables
                 if (GlobalData.PetsDatabase.ContainsKey($"{CompanionsComboBox.SelectedItem}"))
                 {
                     #region Process Pets
@@ -988,13 +1001,82 @@ namespace WarframeTracker
                         CompanionImageBox.BackgroundImage = Image.FromFile($"{local_media_directory}{Pet.ImageName}");
                         #endregion
 
-                        #region Set build cost in credits section
-                        //CompanionCreditsImg.BackgroundImage = Image.FromFile(local_media_directory + "credits.png");
-                        //CompanionCreditsTxt.Text = Weapon.BuildPrice.ToString();
-                        //toolTip1.SetToolTip(CompanionCreditsTxt, "Build Cost");
+                        #region Set Companion Description
+                        CompanionDescriptionContainer.Text = $"{Pet.Name} Description";
+                        CompanionDescriptionTxt.Text = Pet.Description;
                         #endregion
 
-                        //Pet.Description
+                        #region Set Companion Stats
+                        CompanionStatsContainer.Text = $"{Pet.Name} Stats";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Health: {Pet.Health}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Shield: {Pet.Shield}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Armor: {Pet.Armor}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Stamina: {Pet.Stamina}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Power: {Pet.Power}{Environment.NewLine}";
+                        #endregion
+
+                        #region Set Component Data
+                        CompanionComponentContainer.Text = $"{Pet.Name} Compnent Data";
+
+                        if (Pet.Components != null)
+                        {
+                            for (int i = 0; i < Pet.Components.Count; i++)
+                            {
+                                CompanionComponentTxt.Text += $"{Pet.Components[i].Name} x{Pet.Components[i].ItemCount}{Environment.NewLine}";
+
+                                if (Pet.Components[i].Drops != null)
+                                {
+                                    for (int x = 0; x < Pet.Components[i].Drops.Count; x++)
+                                    {
+                                        if (!Pet.Components[i].Drops[x].Type.ToLower().Contains("forma"))
+                                        {
+                                            CopmpanionDropsTxt.Text += $"{Pet.Components[i].Drops[x].Type} drops from {Pet.Components[i].Drops[x].Location} with a {Math.Round((double)Pet.Components[i].Drops[x].Chance * double.Parse("100"))}% chance with a rarity class of {Pet.Components[i].Drops[x].Rarity}.{Environment.NewLine}";
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    ComponentDropsContainer.Visible = false;
+                                }
+                            }
+
+                            #region Generate Order Menu
+                            if (Pet.Name.ToLower().Contains("prime"))
+                            {
+                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                                GenerateOrderMenu(Pet.Name, "Set");
+                            }
+
+                            for (int x = 0; x < Pet.Components.Count; x++)
+                            {
+                                switch (Pet.Components[x].Name)
+                                {
+                                    case "Set":
+                                        GenerateOrderMenu(Pet.Name, "Set");
+                                        break;
+                                    case "Carapace":
+                                        GenerateOrderMenu(Pet.Name, "Carapace");
+                                        break;
+                                    case "Cerebrum":
+                                        GenerateOrderMenu(Pet.Name, "Cerebrum");
+                                        break;
+                                    case "Systems":
+                                        GenerateOrderMenu(Pet.Name, "Systems");
+                                        break;
+                                    case "Blueprint":
+                                        GenerateOrderMenu(Pet.Name, "Blueprint");
+                                        break;
+                                }
+                            }
+                            #endregion
+                        }
+                        else
+                        {
+                            CompanionComponentContainer.Visible = false;
+                            ComponentDropsContainer.Visible = false;
+                        }
+                        #endregion
                     }
                     #endregion
                 }
@@ -1004,178 +1086,96 @@ namespace WarframeTracker
                     Items.Sentinels.Root Pet = GlobalData.SentinelsDatabase[$"{CompanionsComboBox.SelectedItem}"];
                     GlobalData.activeItemName = Pet.Name;
 
-                    #endregion
-                }
-                #endregion
-
-                #region Set Foundry Component Data
-                if (Weapon.Components != null)
-                {
-                    for (int i = 0; i < Weapon.Components.Count; i++)
+                    if (Pet.ImageName != null)
                     {
-                        if (i == 0)
-                        {
-                            //Set  component information
-                            MWSlot0Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[0].ImageName);
-                            MWSlot0Txt.Text = Weapon.Components[0].ItemCount.ToString();
-                            toolTip1.SetToolTip(MWSlot0Txt, Weapon.Components[0].Name);
-                            toolTip1.SetToolTip(MWSlot0Img, Weapon.Components[0].Name);
-                        }
-                        else if (i == 1)
-                        {
-                            MWSlot1Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[1].ImageName);
-                            MWSlot1Txt.Text = Weapon.Components[1].ItemCount.ToString();
-                            toolTip1.SetToolTip(MWSlot1Txt, Weapon.Components[1].Name);
-                            toolTip1.SetToolTip(MWSlot1Img, Weapon.Components[1].Name);
-                        }
-                        else if (i == 2)
-                        {
-                            MWSlot2Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[2].ImageName);
-                            MWSlot2Txt.Text = Weapon.Components[2].ItemCount.ToString();
-                            toolTip1.SetToolTip(MWSlot2Txt, Weapon.Components[2].Name);
-                            toolTip1.SetToolTip(MWSlot2Img, Weapon.Components[2].Name);
-                        }
-                        else if (i == 3)
-                        {
-                            MWSlot3Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[3].ImageName);
-                            MWSlot3Txt.Text = Weapon.Components[3].ItemCount.ToString();
-                            toolTip1.SetToolTip(MWSlot3Txt, Weapon.Components[3].Name);
-                            toolTip1.SetToolTip(MWSlot3Img, Weapon.Components[3].Name);
-                        }
-                        else if (i == 4)
-                        {
-                            MWSlot4Img.BackgroundImage = Image.FromFile(local_media_directory + Weapon.Components[4].ImageName);
-                            MWSlot4Txt.Text = Weapon.Components[4].ItemCount.ToString();
-                            toolTip1.SetToolTip(MWSlot4Txt, Weapon.Components[4].Name);
-                            toolTip1.SetToolTip(MWSlot4Img, Weapon.Components[4].Name);
-                        }
-                    }
-                }
-                #endregion
+                        #region Set Image 
+                        CompanionImageBox.BackgroundImage = Image.FromFile($"{local_media_directory}{Pet.ImageName}");
+                        #endregion
 
-                #region Set Weapon Data
-                if (Weapon.MarketCost != null)
-                {
-                    MWMarketPriceLbl.Text = $"Market Price: {Weapon.MarketCost} Platinum";
-                    MWMarketPriceLbl.Visible = true;
-                }
-                else
-                {
-                    MWMarketPriceLbl.Visible = false;
-                }
+                        #region Set Companion Description
+                        CompanionDescriptionContainer.Text = $"{Pet.Name} Description";
+                        CompanionDescriptionTxt.Text = Pet.Description;
+                        #endregion
 
-                if (Weapon.BuildTime > 0)
-                {
-                    MWCreditCostLbl.Text = $"Build Time: {Weapon.BuildTime / 60} Minutes";
-                    MWCreditCostLbl.Visible = true;
-                }
-                else
-                {
-                    MWCreditCostLbl.Visible = false;
-                }
+                        #region Set Companion Stats
+                        CompanionStatsContainer.Text = $"{Pet.Name} Stats";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Health: {Pet.Health}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Shield: {Pet.Shield}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Armor: {Pet.Armor}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Stamina: {Pet.Stamina}{Environment.NewLine}";
+                        CompanionStatsTxt.Text += $"{Pet.Name} Base Power: {Pet.Power}{Environment.NewLine}";
+                        #endregion
 
-                MWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
-                MWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
-                MWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
-                MWDataTxt.Text += $"Attack Rate: {Weapon.FireRate} {Environment.NewLine}";
-                MWDataTxt.Text += $"Combo Duration: {Weapon.ComboDuration} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Attack Damage: {Weapon.HeavyAttackDamage} {Environment.NewLine}";
-                MWDataTxt.Text += $"Slam Attack Damage: {Weapon.SlamAttack} {Environment.NewLine}";
-                MWDataTxt.Text += $"Slam Attack Radial Damage: {Weapon.SlamRadialDamage} {Environment.NewLine}";
-                MWDataTxt.Text += $"Slam Attack Radius: {Weapon.SlamRadius} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Slam Attack Damage: {Weapon.HeavySlamAttack} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Slam Attack Radius: {Weapon.HeavySlamRadius}{Environment.NewLine}";
-                MWDataTxt.Text += $"Range: {Weapon.Range}s {Environment.NewLine}";
-                MWDataTxt.Text += $"-----------------------------------------------------";
+                        #region Set Component Data
+                        CompanionComponentContainer.Text = $"{Pet.Name} Compnent Data";
 
-                //Export Damage Ammounts
-                for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
-                {
-                    MWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
-                }
-                #endregion
-
-                #region Generate Order Menu
-                if (Weapon.Components != null)
-                {
-                    if (Weapon.Name.ToLower().Contains("prime"))
-                    {
-                        FindOrdersMenu.Items.Add(WarframeMarketOptions);
-                        WarframeMarketOptions.Text = $"Warframe.Market Orders";
-                        GenerateOrderMenu(Weapon.Name, "Set");
-                    }
-
-                    foreach (Items.Melee.Component Comp in Weapon.Components)
-                    {
-                        switch (Comp.Name)
+                        if (Pet.Components != null)
                         {
-                            case "Set":
-                                GenerateOrderMenu(Weapon.Name, "Set");
-                                break;
-                            case "Blueprint":
-                                GenerateOrderMenu(Weapon.Name, "Blueprint");
-                                break;
-                            case "Chassis":
-                                GenerateOrderMenu(Weapon.Name, "Chassis");
-                                break;
-                            case "Neuroptics":
-                                GenerateOrderMenu(Weapon.Name, "Neuroptics");
-                                break;
-                            case "Systems":
-                                GenerateOrderMenu(Weapon.Name, "Systems");
-                                break;
-                            case "Barrel":
-                                GenerateOrderMenu(Weapon.Name, "Barrel");
-                                break;
-                            case "Stock":
-                                GenerateOrderMenu(Weapon.Name, "Stock");
-                                break;
-                            case "Reciever":
-                                GenerateOrderMenu(Weapon.Name, "Reciever");
-                                break;
-                            case "Blade":
-                                GenerateOrderMenu(Weapon.Name, "Blade");
-                                break;
-                            case "Hilt":
-                                GenerateOrderMenu(Weapon.Name, "Hilt");
-                                break;
-                            case "Head":
-                                GenerateOrderMenu(Weapon.Name, "Head");
-                                break;
-                            case "Link":
-                                GenerateOrderMenu(Weapon.Name, "Link");
-                                break;
-                        }
-                    }
-                }
-                #endregion
-
-                #region Export component drop data
-                if (Weapon.Components != null)
-                {
-                    for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
-                    {
-                        if (Weapon.Components[i].Drops != null)
-                        {
-                            for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                            for (int i = 0; i < Pet.Components.Count; i++)
                             {
-                                if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                CompanionComponentTxt.Text += $"{Pet.Components[i].Name} x{Pet.Components[i].ItemCount}{Environment.NewLine}";
+
+                                if (Pet.Components[i].Drops != null)
                                 {
-                                    MWWeaponCompDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                    for (int x = 0; x < Pet.Components[i].Drops.Count; x++)
+                                    {
+                                        if (!Pet.Components[i].Drops[x].Type.ToLower().Contains("forma"))
+                                        {
+                                            CopmpanionDropsTxt.Text += $"{Pet.Components[i].Drops[x].Type} drops from {Pet.Components[i].Drops[x].Location} with a {Math.Round((double)Pet.Components[i].Drops[x].Chance * double.Parse("100"))}% chance with a rarity class of {Pet.Components[i].Drops[x].Rarity}.{Environment.NewLine}";
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    ComponentDropsContainer.Visible = false;
                                 }
                             }
+                        }
+                        else
+                        {
+                            CompanionComponentContainer.Visible = false;
+                            ComponentDropsContainer.Visible = false;
+                        }
+                        #endregion
 
-                            MWWeaponCompDataTxt.Text += $"----------------------------------------------------------------------{Environment.NewLine}";
+                        #region Generate Order Menu
+                        if (Pet.Name.ToLower().Contains("prime"))
+                        {
+                            FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                            WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                            GenerateOrderMenu(Pet.Name, "Set");
+                        }
+
+                        for (int x = 0; x < Pet.Components.Count; x++)
+                        {
+                            switch (Pet.Components[x].Name)
+                            {
+                                case "Set":
+                                    GenerateOrderMenu(Pet.Name, "Set");
+                                    break;
+                                case "Carapace":
+                                    GenerateOrderMenu(Pet.Name, "Carapace");
+                                    break;
+                                case "Cerebrum":
+                                    GenerateOrderMenu(Pet.Name, "Cerebrum");
+                                    break;
+                                case "Systems":
+                                    GenerateOrderMenu(Pet.Name, "Systems");
+                                    break;
+                                case "Blueprint":
+                                    GenerateOrderMenu(Pet.Name, "Blueprint");
+                                    break;
+                            }
+                        }
+
+                        #endregion
+                        //Debug Info
+                        if (DebugMode)
+                        {
+                            Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
                         }
                     }
-                }
-                #endregion
-
-                //Debug Info
-                if (DebugMode)
-                {
-                    Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
+                    #endregion
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
@@ -1538,9 +1538,23 @@ namespace WarframeTracker
                 case "Link":
                     ToolStripMenuItem LinkOrderBtn = new ToolStripMenuItem();
                     LinkOrderBtn.Text = $"{item_name} Link";
-                    LinkOrderBtn.Click += FindHeadMenuItem_Click;
+                    LinkOrderBtn.Click += FindLinkMenuItem_Click;
 
                     WarframeMarketOptions.DropDownItems.Add(LinkOrderBtn);
+                    break;
+                case "Carapace":
+                    ToolStripMenuItem CarapaceOrderBtn = new ToolStripMenuItem();
+                    CarapaceOrderBtn.Text = $"{item_name} Carapace";
+                    CarapaceOrderBtn.Click += FindCarapaceMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(CarapaceOrderBtn);
+                    break;
+                case "Cerebrum":
+                    ToolStripMenuItem CerebrumOrderBtn = new ToolStripMenuItem();
+                    CerebrumOrderBtn.Text = $"{item_name} Cerebrum";
+                    CerebrumOrderBtn.Click += FindCerebrumMenuItem_Click;
+
+                    WarframeMarketOptions.DropDownItems.Add(CerebrumOrderBtn);
                     break;
             }
         }
@@ -1608,6 +1622,16 @@ namespace WarframeTracker
         private void FindLinkMenuItem_Click(object sender, EventArgs e)
         {
             FindOrderInformation(GlobalData.activeItemName, "Link", true);
+        }
+
+        private void FindCarapaceMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(GlobalData.activeItemName, "Carapace", true);
+        }
+
+        private void FindCerebrumMenuItem_Click(object sender, EventArgs e)
+        {
+            FindOrderInformation(GlobalData.activeItemName, "Cerebrum", true);
         }
 
         private void RefreshDataMenuItem_Click(object sender, EventArgs e)
