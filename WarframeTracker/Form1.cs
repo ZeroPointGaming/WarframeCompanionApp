@@ -79,7 +79,6 @@ namespace WarframeTracker
         #endregion
 
         #region Combobox Event Code
-        //When you change the selection in the warframe listbox, digest api information reguarding the warframe.
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region Resets

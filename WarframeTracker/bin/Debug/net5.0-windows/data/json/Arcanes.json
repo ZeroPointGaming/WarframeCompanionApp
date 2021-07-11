@@ -9,127 +9,115 @@
     "tradable": false,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Grace",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Energize",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Barrier",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Avenger",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Arachne",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -196,7 +184,7 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Barrier",
+        "type": "Arcane Energize",
         "chance": 0.05,
         "rarity": "Rare"
       },
@@ -208,14 +196,8 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Energize",
+        "type": "Arcane Barrier",
         "chance": 0.05,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Ultimatum",
-        "chance": 0.0529,
         "rarity": "Rare"
       },
       {
@@ -226,84 +208,90 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
+        "type": "Arcane Ultimatum",
+        "chance": 0.0529,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Gantulyst (Capture)",
         "type": "Arcane Pulse",
         "chance": 0.0529,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -316,12 +304,6 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Victory",
-        "chance": 0.0602,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Healing",
         "chance": 0.0602,
         "rarity": "Rare"
@@ -334,66 +316,42 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
+        "type": "Arcane Victory",
+        "chance": 0.0602,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Deflection",
         "chance": 0.0602,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Agility",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Deflection",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Phantasm",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Eruption",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Velocity",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -405,49 +363,49 @@
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.069,
         "rarity": "Rare"
@@ -460,13 +418,13 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Acceleration",
+        "type": "Arcane Phantasm",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Phantasm",
+        "type": "Arcane Agility",
         "chance": 0.0925,
         "rarity": "Rare"
       },
@@ -478,91 +436,55 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Tempo",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Consequence",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Momentum",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Ice",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Nullifier",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Warmth",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Gantulyst",
-        "type": "Arcane Acceleration",
-        "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Gantulyst",
         "type": "Arcane Phantasm",
+        "chance": 0.102,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Gantulyst",
+        "type": "Arcane Agility",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
@@ -574,91 +496,91 @@
       },
       {
         "location": "Eidolon Gantulyst",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Avenger",
-        "chance": 0.1124,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Fury",
+        "chance": 0.1124,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst (Capture)",
+        "type": "Arcane Avenger",
         "chance": 0.1124,
         "rarity": "Uncommon"
       },
@@ -682,13 +604,13 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
@@ -700,14 +622,8 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1205,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Rage",
-        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -717,9 +633,9 @@
         "rarity": "Uncommon"
       },
       {
-        "location": "Eidolon Hydrolyst",
+        "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Rage",
-        "chance": 0.1376,
+        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -731,6 +647,12 @@
       {
         "location": "Eidolon Hydrolyst",
         "type": "Arcane Arachne",
+        "chance": 0.1376,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst",
+        "type": "Arcane Rage",
         "chance": 0.1376,
         "rarity": "Uncommon"
       },
@@ -754,13 +676,13 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -772,7 +694,7 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -832,6 +754,30 @@
       }
     ],
     "patchlogs": [
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.3",
+        "date": "2021-07-09T15:07:34Z",
+        "url": "https://forums.warframe.com/topic/1270868-sisters-of-parvos-hotfix-3053%C2%A0%C2%A0/",
+        "additions": "",
+        "changes": "",
+        "fixes": "In Update 30.5, a restriction was added to the Exodia Contagion Arcane for Zaws, where it can only activate once while you remain in the air. To use Contagion again you must touch the ground."
+      },
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.1",
+        "date": "2021-07-06T21:24:17Z",
+        "url": "https://forums.warframe.com/topic/1269937-sisters-of-parvos-hotfix-3051/",
+        "additions": "",
+        "changes": "Removed mentions of Arcane Adapter Blueprints in Tehsin’s Steel Honors store ",
+        "fixes": "Fixed PHs appearing in Arcane Adapter."
+      },
+      {
+        "name": "Update 30.5: Sisters of Parvos",
+        "date": "2021-07-06T15:02:09Z",
+        "url": "https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/",
+        "additions": "",
+        "changes": "Acolytes will now drop 1 of 6 New Arcanes on death!\nPrimary and Secondary Weapon Arcanes\nBlood Rush’s maximum value is being lowered.This changes the achievability of consistent Red Crits from just one Mod (on most Melee weapons, some High-Critical exceptions), and now additional help will be needed via Mods, Arcanes, or Warframe abilities to achieve consistent Red Crits.\nnamely, the Steel Path. You’ll be able to get the Arcane Slot Unlockers from Steel Path Honors, whereas the Arcanes themselves drop from Acolytes in the Steel Path! The spawn frequency of Acolytes is also being increased, meaning you’ll get more Steel Essence, as well as more chances for the Arcane you want. All Acolytes will drop them!\nThere are 6 Arcanes (3 Primary, 3 Secondary) that you’ll be able to rank up and put to put into the new Slots:",
+        "fixes": "Fixed buff notification for Arcane Energize and Grace showing up as a cooldown instead of an upgrade duration. It now appears as a debuff."
+      },
       {
         "name": "Gara Prime: Hotfix 30.3.5",
         "date": "2021-06-10T19:47:41Z",
@@ -1914,127 +1860,115 @@
     "tradable": false,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Grace",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Energize",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Barrier",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Avenger",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Arachne",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -2101,7 +2035,7 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Barrier",
+        "type": "Arcane Energize",
         "chance": 0.05,
         "rarity": "Rare"
       },
@@ -2113,14 +2047,8 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Energize",
+        "type": "Arcane Barrier",
         "chance": 0.05,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Ultimatum",
-        "chance": 0.0529,
         "rarity": "Rare"
       },
       {
@@ -2131,84 +2059,90 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
+        "type": "Arcane Ultimatum",
+        "chance": 0.0529,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Gantulyst (Capture)",
         "type": "Arcane Pulse",
         "chance": 0.0529,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -2221,12 +2155,6 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Victory",
-        "chance": 0.0602,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Healing",
         "chance": 0.0602,
         "rarity": "Rare"
@@ -2239,66 +2167,42 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
+        "type": "Arcane Victory",
+        "chance": 0.0602,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Deflection",
         "chance": 0.0602,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Agility",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Deflection",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Phantasm",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Eruption",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Velocity",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -2310,49 +2214,49 @@
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.069,
         "rarity": "Rare"
@@ -2365,13 +2269,13 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Acceleration",
+        "type": "Arcane Phantasm",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Phantasm",
+        "type": "Arcane Agility",
         "chance": 0.0925,
         "rarity": "Rare"
       },
@@ -2383,91 +2287,55 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Tempo",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Consequence",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Momentum",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Ice",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Nullifier",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Warmth",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Gantulyst",
-        "type": "Arcane Acceleration",
-        "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Gantulyst",
         "type": "Arcane Phantasm",
+        "chance": 0.102,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Gantulyst",
+        "type": "Arcane Agility",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
@@ -2479,91 +2347,91 @@
       },
       {
         "location": "Eidolon Gantulyst",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Avenger",
-        "chance": 0.1124,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Fury",
+        "chance": 0.1124,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst (Capture)",
+        "type": "Arcane Avenger",
         "chance": 0.1124,
         "rarity": "Uncommon"
       },
@@ -2587,13 +2455,13 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
@@ -2605,14 +2473,8 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1205,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Rage",
-        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -2622,9 +2484,9 @@
         "rarity": "Uncommon"
       },
       {
-        "location": "Eidolon Hydrolyst",
+        "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Rage",
-        "chance": 0.1376,
+        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -2636,6 +2498,12 @@
       {
         "location": "Eidolon Hydrolyst",
         "type": "Arcane Arachne",
+        "chance": 0.1376,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst",
+        "type": "Arcane Rage",
         "chance": 0.1376,
         "rarity": "Uncommon"
       },
@@ -2659,13 +2527,13 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -2677,7 +2545,7 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -2737,6 +2605,30 @@
       }
     ],
     "patchlogs": [
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.3",
+        "date": "2021-07-09T15:07:34Z",
+        "url": "https://forums.warframe.com/topic/1270868-sisters-of-parvos-hotfix-3053%C2%A0%C2%A0/",
+        "additions": "",
+        "changes": "",
+        "fixes": "In Update 30.5, a restriction was added to the Exodia Contagion Arcane for Zaws, where it can only activate once while you remain in the air. To use Contagion again you must touch the ground."
+      },
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.1",
+        "date": "2021-07-06T21:24:17Z",
+        "url": "https://forums.warframe.com/topic/1269937-sisters-of-parvos-hotfix-3051/",
+        "additions": "",
+        "changes": "Removed mentions of Arcane Adapter Blueprints in Tehsin’s Steel Honors store ",
+        "fixes": "Fixed PHs appearing in Arcane Adapter."
+      },
+      {
+        "name": "Update 30.5: Sisters of Parvos",
+        "date": "2021-07-06T15:02:09Z",
+        "url": "https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/",
+        "additions": "",
+        "changes": "Acolytes will now drop 1 of 6 New Arcanes on death!\nPrimary and Secondary Weapon Arcanes\nBlood Rush’s maximum value is being lowered.This changes the achievability of consistent Red Crits from just one Mod (on most Melee weapons, some High-Critical exceptions), and now additional help will be needed via Mods, Arcanes, or Warframe abilities to achieve consistent Red Crits.\nnamely, the Steel Path. You’ll be able to get the Arcane Slot Unlockers from Steel Path Honors, whereas the Arcanes themselves drop from Acolytes in the Steel Path! The spawn frequency of Acolytes is also being increased, meaning you’ll get more Steel Essence, as well as more chances for the Arcane you want. All Acolytes will drop them!\nThere are 6 Arcanes (3 Primary, 3 Secondary) that you’ll be able to rank up and put to put into the new Slots:",
+        "fixes": "Fixed buff notification for Arcane Energize and Grace showing up as a cooldown instead of an upgrade duration. It now appears as a debuff."
+      },
       {
         "name": "Gara Prime: Hotfix 30.3.5",
         "date": "2021-06-10T19:47:41Z",
@@ -3819,127 +3711,115 @@
     "tradable": false,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Grace",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Energize",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Barrier",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Avenger",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Arachne",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -4006,7 +3886,7 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Barrier",
+        "type": "Arcane Energize",
         "chance": 0.05,
         "rarity": "Rare"
       },
@@ -4018,14 +3898,8 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Energize",
+        "type": "Arcane Barrier",
         "chance": 0.05,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Ultimatum",
-        "chance": 0.0529,
         "rarity": "Rare"
       },
       {
@@ -4036,84 +3910,90 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
+        "type": "Arcane Ultimatum",
+        "chance": 0.0529,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Gantulyst (Capture)",
         "type": "Arcane Pulse",
         "chance": 0.0529,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -4126,12 +4006,6 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Victory",
-        "chance": 0.0602,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Healing",
         "chance": 0.0602,
         "rarity": "Rare"
@@ -4144,66 +4018,42 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
+        "type": "Arcane Victory",
+        "chance": 0.0602,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Deflection",
         "chance": 0.0602,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Agility",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Deflection",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Phantasm",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Eruption",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Velocity",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -4215,49 +4065,49 @@
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.069,
         "rarity": "Rare"
@@ -4270,13 +4120,13 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Acceleration",
+        "type": "Arcane Phantasm",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Phantasm",
+        "type": "Arcane Agility",
         "chance": 0.0925,
         "rarity": "Rare"
       },
@@ -4288,91 +4138,55 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Tempo",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Consequence",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Momentum",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Ice",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Nullifier",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Warmth",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Gantulyst",
-        "type": "Arcane Acceleration",
-        "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Gantulyst",
         "type": "Arcane Phantasm",
+        "chance": 0.102,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Gantulyst",
+        "type": "Arcane Agility",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
@@ -4384,91 +4198,91 @@
       },
       {
         "location": "Eidolon Gantulyst",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Avenger",
-        "chance": 0.1124,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Fury",
+        "chance": 0.1124,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst (Capture)",
+        "type": "Arcane Avenger",
         "chance": 0.1124,
         "rarity": "Uncommon"
       },
@@ -4492,13 +4306,13 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
@@ -4510,14 +4324,8 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1205,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Rage",
-        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -4527,9 +4335,9 @@
         "rarity": "Uncommon"
       },
       {
-        "location": "Eidolon Hydrolyst",
+        "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Rage",
-        "chance": 0.1376,
+        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -4541,6 +4349,12 @@
       {
         "location": "Eidolon Hydrolyst",
         "type": "Arcane Arachne",
+        "chance": 0.1376,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst",
+        "type": "Arcane Rage",
         "chance": 0.1376,
         "rarity": "Uncommon"
       },
@@ -4564,13 +4378,13 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -4582,7 +4396,7 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -4642,6 +4456,30 @@
       }
     ],
     "patchlogs": [
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.3",
+        "date": "2021-07-09T15:07:34Z",
+        "url": "https://forums.warframe.com/topic/1270868-sisters-of-parvos-hotfix-3053%C2%A0%C2%A0/",
+        "additions": "",
+        "changes": "",
+        "fixes": "In Update 30.5, a restriction was added to the Exodia Contagion Arcane for Zaws, where it can only activate once while you remain in the air. To use Contagion again you must touch the ground."
+      },
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.1",
+        "date": "2021-07-06T21:24:17Z",
+        "url": "https://forums.warframe.com/topic/1269937-sisters-of-parvos-hotfix-3051/",
+        "additions": "",
+        "changes": "Removed mentions of Arcane Adapter Blueprints in Tehsin’s Steel Honors store ",
+        "fixes": "Fixed PHs appearing in Arcane Adapter."
+      },
+      {
+        "name": "Update 30.5: Sisters of Parvos",
+        "date": "2021-07-06T15:02:09Z",
+        "url": "https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/",
+        "additions": "",
+        "changes": "Acolytes will now drop 1 of 6 New Arcanes on death!\nPrimary and Secondary Weapon Arcanes\nBlood Rush’s maximum value is being lowered.This changes the achievability of consistent Red Crits from just one Mod (on most Melee weapons, some High-Critical exceptions), and now additional help will be needed via Mods, Arcanes, or Warframe abilities to achieve consistent Red Crits.\nnamely, the Steel Path. You’ll be able to get the Arcane Slot Unlockers from Steel Path Honors, whereas the Arcanes themselves drop from Acolytes in the Steel Path! The spawn frequency of Acolytes is also being increased, meaning you’ll get more Steel Essence, as well as more chances for the Arcane you want. All Acolytes will drop them!\nThere are 6 Arcanes (3 Primary, 3 Secondary) that you’ll be able to rank up and put to put into the new Slots:",
+        "fixes": "Fixed buff notification for Arcane Energize and Grace showing up as a cooldown instead of an upgrade duration. It now appears as a debuff."
+      },
       {
         "name": "Gara Prime: Hotfix 30.3.5",
         "date": "2021-06-10T19:47:41Z",
@@ -5724,127 +5562,115 @@
     "tradable": false,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Grace",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Energize",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Barrier",
         "chance": 0.0141,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0333,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Avenger",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Arachne",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0345,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -5911,7 +5737,7 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Barrier",
+        "type": "Arcane Energize",
         "chance": 0.05,
         "rarity": "Rare"
       },
@@ -5923,14 +5749,8 @@
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Energize",
+        "type": "Arcane Barrier",
         "chance": 0.05,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Ultimatum",
-        "chance": 0.0529,
         "rarity": "Rare"
       },
       {
@@ -5941,84 +5761,90 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
+        "type": "Arcane Ultimatum",
+        "chance": 0.0529,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Gantulyst (Capture)",
         "type": "Arcane Pulse",
         "chance": 0.0529,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -6031,12 +5857,6 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Victory",
-        "chance": 0.0602,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Healing",
         "chance": 0.0602,
         "rarity": "Rare"
@@ -6049,66 +5869,42 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
+        "type": "Arcane Victory",
+        "chance": 0.0602,
+        "rarity": "Rare"
+      },
+      {
+        "location": "Eidolon Teralyst (Capture)",
         "type": "Arcane Deflection",
         "chance": 0.0602,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0667,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Agility",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Deflection",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Phantasm",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Eruption",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Velocity",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -6120,49 +5916,49 @@
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.069,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.069,
         "rarity": "Rare"
@@ -6175,13 +5971,13 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Acceleration",
+        "type": "Arcane Phantasm",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Phantasm",
+        "type": "Arcane Agility",
         "chance": 0.0925,
         "rarity": "Rare"
       },
@@ -6193,91 +5989,55 @@
       },
       {
         "location": "Eidolon Gantulyst (Capture)",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.0925,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Tempo",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Consequence",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Momentum",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Ice",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Nullifier",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Warmth",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Gantulyst",
-        "type": "Arcane Acceleration",
-        "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Gantulyst",
         "type": "Arcane Phantasm",
+        "chance": 0.102,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Gantulyst",
+        "type": "Arcane Agility",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
@@ -6289,91 +6049,91 @@
       },
       {
         "location": "Eidolon Gantulyst",
-        "type": "Arcane Agility",
+        "type": "Arcane Acceleration",
         "chance": 0.102,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Avenger",
-        "chance": 0.1124,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Fury",
+        "chance": 0.1124,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst (Capture)",
+        "type": "Arcane Avenger",
         "chance": 0.1124,
         "rarity": "Uncommon"
       },
@@ -6397,13 +6157,13 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1205,
         "rarity": "Uncommon"
       },
@@ -6415,14 +6175,8 @@
       },
       {
         "location": "Eidolon Teralyst (Capture)",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1205,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Eidolon Hydrolyst (Capture)",
-        "type": "Arcane Rage",
-        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -6432,9 +6186,9 @@
         "rarity": "Uncommon"
       },
       {
-        "location": "Eidolon Hydrolyst",
+        "location": "Eidolon Hydrolyst (Capture)",
         "type": "Arcane Rage",
-        "chance": 0.1376,
+        "chance": 0.1274,
         "rarity": "Uncommon"
       },
       {
@@ -6446,6 +6200,12 @@
       {
         "location": "Eidolon Hydrolyst",
         "type": "Arcane Arachne",
+        "chance": 0.1376,
+        "rarity": "Uncommon"
+      },
+      {
+        "location": "Eidolon Hydrolyst",
+        "type": "Arcane Rage",
         "chance": 0.1376,
         "rarity": "Uncommon"
       },
@@ -6469,13 +6229,13 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Ice",
+        "type": "Arcane Warmth",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Consequence",
+        "type": "Arcane Ice",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -6487,7 +6247,7 @@
       },
       {
         "location": "Eidolon Teralyst",
-        "type": "Arcane Warmth",
+        "type": "Arcane Consequence",
         "chance": 0.1495,
         "rarity": "Uncommon"
       },
@@ -6547,6 +6307,30 @@
       }
     ],
     "patchlogs": [
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.3",
+        "date": "2021-07-09T15:07:34Z",
+        "url": "https://forums.warframe.com/topic/1270868-sisters-of-parvos-hotfix-3053%C2%A0%C2%A0/",
+        "additions": "",
+        "changes": "",
+        "fixes": "In Update 30.5, a restriction was added to the Exodia Contagion Arcane for Zaws, where it can only activate once while you remain in the air. To use Contagion again you must touch the ground."
+      },
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.1",
+        "date": "2021-07-06T21:24:17Z",
+        "url": "https://forums.warframe.com/topic/1269937-sisters-of-parvos-hotfix-3051/",
+        "additions": "",
+        "changes": "Removed mentions of Arcane Adapter Blueprints in Tehsin’s Steel Honors store ",
+        "fixes": "Fixed PHs appearing in Arcane Adapter."
+      },
+      {
+        "name": "Update 30.5: Sisters of Parvos",
+        "date": "2021-07-06T15:02:09Z",
+        "url": "https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/",
+        "additions": "",
+        "changes": "Acolytes will now drop 1 of 6 New Arcanes on death!\nPrimary and Secondary Weapon Arcanes\nBlood Rush’s maximum value is being lowered.This changes the achievability of consistent Red Crits from just one Mod (on most Melee weapons, some High-Critical exceptions), and now additional help will be needed via Mods, Arcanes, or Warframe abilities to achieve consistent Red Crits.\nnamely, the Steel Path. You’ll be able to get the Arcane Slot Unlockers from Steel Path Honors, whereas the Arcanes themselves drop from Acolytes in the Steel Path! The spawn frequency of Acolytes is also being increased, meaning you’ll get more Steel Essence, as well as more chances for the Arcane you want. All Acolytes will drop them!\nThere are 6 Arcanes (3 Primary, 3 Secondary) that you’ll be able to rank up and put to put into the new Slots:",
+        "fixes": "Fixed buff notification for Arcane Energize and Grace showing up as a cooldown instead of an upgrade duration. It now appears as a debuff."
+      },
       {
         "name": "Gara Prime: Hotfix 30.3.5",
         "date": "2021-06-10T19:47:41Z",
@@ -7649,13 +7433,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Acceleration",
         "chance": 0.069,
         "rarity": "Rare"
@@ -7722,13 +7506,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Aegis",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -7789,19 +7573,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Agility",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Agility",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -7860,19 +7638,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Arachne",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Arachne",
         "chance": 0.0333,
         "rarity": "Rare"
@@ -7939,19 +7711,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Avenger",
-        "chance": 0.0333,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Avenger",
         "chance": 0.0333,
         "rarity": "Rare"
@@ -8010,13 +7776,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Awakening",
         "chance": 0.069,
         "rarity": "Rare"
@@ -8084,7 +7850,7 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Barrier",
         "chance": 0.0141,
         "rarity": "Rare"
@@ -8276,25 +8042,19 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Consequence",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Consequence",
         "chance": 0.1034,
         "rarity": "Uncommon"
@@ -8389,7 +8149,7 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -8401,13 +8161,7 @@
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Deflection",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Deflection",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -8458,22 +8212,22 @@
     "rarity": "Legendary",
     "levelStats": [
       {
-        "stats": [ "On Energy Pickup:10% chance to replenish Energy to nearby allies" ]
+        "stats": [ "On Energy Pickup:10% chance to replenish 25 Energy to allies within 5m15s cooldown" ]
       },
       {
-        "stats": [ "On Energy Pickup:20% chance to replenish Energy to nearby allies" ]
+        "stats": [ "On Energy Pickup:20% chance to replenish 50 Energy to allies within 6m15s cooldown" ]
       },
       {
-        "stats": [ "On Energy Pickup:30% chance to replenish Energy to nearby allies" ]
+        "stats": [ "On Energy Pickup:30% chance to replenish 75 Energy to allies within 7m15s cooldown" ]
       },
       {
-        "stats": [ "On Energy Pickup:40% chance to replenish Energy to nearby allies+1 Arcane Revive" ]
+        "stats": [ "On Energy Pickup:40% chance to replenish 100 Energy to allies within 10m15s cooldown+1 Arcane Revive" ]
       },
       {
-        "stats": [ "On Energy Pickup:50% chance to replenish Energy to nearby allies+1 Arcane Revive" ]
+        "stats": [ "On Energy Pickup:50% chance to replenish 125 Energy to allies within 12m15s cooldown+1 Arcane Revive" ]
       },
       {
-        "stats": [ "On Energy Pickup:60% chance to replenish Energy to nearby allies+1 Arcane Revive" ]
+        "stats": [ "On Energy Pickup:60% chance to replenish 150 Energy to allies within 15m15s cooldown+1 Arcane Revive" ]
       }
     ],
     "type": "Arcane",
@@ -8482,7 +8236,7 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Energize",
         "chance": 0.0141,
         "rarity": "Rare"
@@ -8495,6 +8249,14 @@
       }
     ],
     "patchlogs": [
+      {
+        "name": "Update 30.5: Sisters of Parvos",
+        "date": "2021-07-06T15:02:09Z",
+        "url": "https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/",
+        "additions": "",
+        "changes": "",
+        "fixes": "Fixed buff notification for Arcane Energize and Grace showing up as a cooldown instead of an upgrade duration. It now appears as a debuff."
+      },
       {
         "name": "Warframe Revised: Update 27.2.0",
         "date": "2020-03-05T15:32:32Z",
@@ -8535,19 +8297,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Eruption",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Eruption",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -8606,13 +8362,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -8680,13 +8436,13 @@
     "tradable": false,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Fury",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -8754,7 +8510,7 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Grace",
         "chance": 0.0141,
         "rarity": "Rare"
@@ -8807,13 +8563,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Guardian",
         "chance": 0.069,
         "rarity": "Rare"
@@ -8872,7 +8628,7 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -8884,7 +8640,7 @@
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Healing",
         "chance": 0.069,
         "rarity": "Rare"
@@ -8930,25 +8686,19 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Ice",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Ice",
         "chance": 0.1034,
         "rarity": "Uncommon"
@@ -9034,25 +8784,19 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Momentum",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Momentum",
         "chance": 0.1034,
         "rarity": "Uncommon"
@@ -9126,25 +8870,19 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Nullifier",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Nullifier",
         "chance": 0.1034,
         "rarity": "Uncommon"
@@ -9203,19 +8941,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Phantasm",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Phantasm",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -9344,13 +9076,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Precision",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -9476,22 +9208,22 @@
     "rarity": "Rare",
     "levelStats": [
       {
-        "stats": [ "On Health Pickup:10% chance to restore 50 Health to allies within 10m" ]
+        "stats": [ "On Health Pickup:10% chance to restore 50 Health to allies within 10m15s cooldown" ]
       },
       {
-        "stats": [ "On Health Pickup:20% chance to restore 100 Health to allies within 12m" ]
+        "stats": [ "On Health Pickup:20% chance to restore 100 Health to allies within 12m15s cooldown" ]
       },
       {
-        "stats": [ "On Health Pickup:30% chance to restore 200 Health to allies within 15m" ]
+        "stats": [ "On Health Pickup:30% chance to restore 200 Health to allies within 15m15s cooldown" ]
       },
       {
-        "stats": [ "On Health Pickup:40% chance to restore 300 Health to allies within 18m" ]
+        "stats": [ "On Health Pickup:40% chance to restore 300 Health to allies within 18m15s cooldown" ]
       },
       {
-        "stats": [ "On Health Pickup:50% chance to restore 400 Health to allies within 20m" ]
+        "stats": [ "On Health Pickup:50% chance to restore 400 Health to allies within 20m15s cooldown" ]
       },
       {
-        "stats": [ "On Health Pickup:60% chance to restore 500 Health to allies within 25m" ]
+        "stats": [ "On Health Pickup:60% chance to restore 500 Health to allies within 25m15s cooldown" ]
       }
     ],
     "type": "Arcane",
@@ -9500,13 +9232,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Pulse",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -9599,13 +9331,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Rage",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -9672,7 +9404,7 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -9690,7 +9422,7 @@
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Resistance",
         "chance": 0.069,
         "rarity": "Rare"
@@ -9782,13 +9514,13 @@
     "tradable": false,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Strike",
         "chance": 0.069,
         "rarity": "Rare"
@@ -9822,22 +9554,22 @@
     "name": "Arcane Survival",
     "levelStats": [
       {
-        "stats": [ "On Predeath:10% chance for -25% Bleedout Rate for 10s" ]
+        "stats": [ "On Predeath:10% chance for -25% Bleedout Rate for |DURATION|s" ]
       },
       {
-        "stats": [ "On Predeath:20% chance for -50% Bleedout Rate for 20s" ]
+        "stats": [ "On Predeath:20% chance for -50% Bleedout Rate for |DURATION|s" ]
       },
       {
-        "stats": [ "On Predeath:30% chance for -75% Bleedout Rate for 30s" ]
+        "stats": [ "On Predeath:30% chance for -75% Bleedout Rate for |DURATION|s" ]
       },
       {
-        "stats": [ "On Predeath:40% chance for -100% Bleedout Rate for 40s+1 Arcane Revive" ]
+        "stats": [ "On Predeath:40% chance for -100% Bleedout Rate for |DURATION|s+1 Arcane Revive" ]
       },
       {
-        "stats": [ "On Predeath:50% chance for -125% Bleedout Rate for 50s+1 Arcane Revive" ]
+        "stats": [ "On Predeath:50% chance for -125% Bleedout Rate for |DURATION|s+1 Arcane Revive" ]
       },
       {
-        "stats": [ "On Predeath:60% chance for -150% Bleedout Rate for 60s+1 Arcane Revive" ]
+        "stats": [ "On Predeath:60% chance for -150% Bleedout Rate for |DURATION|s+1 Arcane Revive" ]
       }
     ],
     "type": "Arcane",
@@ -9956,25 +9688,19 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Tempo",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Tempo",
         "chance": 0.1034,
         "rarity": "Uncommon"
@@ -10033,13 +9759,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Trickery",
         "chance": 0.069,
         "rarity": "Rare"
@@ -10131,13 +9857,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0282,
         "rarity": "Rare"
       },
       {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Ultimatum",
         "chance": 0.0345,
         "rarity": "Rare"
@@ -10199,19 +9925,13 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0563,
         "rarity": "Rare"
       },
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
-        "type": "Arcane Velocity",
-        "chance": 0.0667,
-        "rarity": "Rare"
-      },
-      {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Velocity",
         "chance": 0.0667,
         "rarity": "Rare"
@@ -10279,7 +9999,7 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Veil/Erato (Skirmish), Rotation C",
+        "location": "Veil/Erato (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.0563,
         "rarity": "Rare"
@@ -10291,7 +10011,7 @@
         "rarity": "Rare"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Victory",
         "chance": 0.069,
         "rarity": "Rare"
@@ -10345,25 +10065,19 @@
     "tradable": true,
     "drops": [
       {
-        "location": "Pluto/Khufu Envoy (Skirmish), Rotation C",
+        "location": "Pluto/Khufu Envoy (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1,
         "rarity": "Uncommon"
       },
       {
-        "location": "Pluto/Peregrine Axis (Skirmish), Rotation C",
-        "type": "Arcane Warmth",
-        "chance": 0.1,
-        "rarity": "Uncommon"
-      },
-      {
-        "location": "Neptune/Mammon's Prospect (Skirmish), Rotation C",
+        "location": "Neptune/Mammon's Prospect (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
         "rarity": "Uncommon"
       },
       {
-        "location": "Venus/Vesper Strait (Skirmish), Rotation C",
+        "location": "Venus/Vesper Strait (Orphix), Rotation C",
         "type": "Arcane Warmth",
         "chance": 0.1034,
         "rarity": "Uncommon"
@@ -10448,6 +10162,14 @@
     "category": "Arcanes",
     "tradable": false,
     "patchlogs": [
+      {
+        "name": "Sisters of Parvos: Hotfix 30.5.3",
+        "date": "2021-07-09T15:07:34Z",
+        "url": "https://forums.warframe.com/topic/1270868-sisters-of-parvos-hotfix-3053%C2%A0%C2%A0/",
+        "additions": "",
+        "changes": "",
+        "fixes": "In Update 30.5, a restriction was added to the Exodia Contagion Arcane for Zaws, where it can only activate once while you remain in the air. To use Contagion again you must touch the ground."
+      },
       {
         "name": "Update 29.5: Deimos Arcana",
         "date": "2020-11-19T23:39:27Z",
@@ -12161,6 +11883,14 @@
       }
     ],
     "patchlogs": [
+      {
+        "name": "Update 30.5: Sisters of Parvos",
+        "date": "2021-07-06T15:02:09Z",
+        "url": "https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/",
+        "additions": "",
+        "changes": "",
+        "fixes": "Fixed the Residual Boils FX missing range circle on low graphics default. "
+      },
       {
         "name": "Update 29.5: Deimos Arcana",
         "date": "2020-11-19T23:39:27Z",

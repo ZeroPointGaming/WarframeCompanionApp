@@ -324,6 +324,12 @@
             "rarity": "Rare"
           },
           {
+            "location": "Gyre Roller Sentry",
+            "type": "Tellurium",
+            "chance": 0.0018,
+            "rarity": "Rare"
+          },
+          {
             "location": "Gyre Supressor",
             "type": "Tellurium",
             "chance": 0.0018,
@@ -583,6 +589,14 @@
     "category": "Arch-Melee",
     "tradable": false,
     "patchlogs": [
+      {
+        "name": "Update 30.5: Sisters of Parvos",
+        "date": "2021-07-06T15:02:09Z",
+        "url": "https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/",
+        "additions": "Added custom spin whoosh sounds and updated animations for the Kaszas Arch-Melee weapon. ",
+        "changes": "",
+        "fixes": ""
+      },
       {
         "name": "Hotfix 18.8.2",
         "date": "2016-04-13T18:53:32Z",
@@ -6870,7 +6884,7 @@
         "omegaAttenuation": 1.38,
         "blockingAngle": 50,
         "comboDuration": 5,
-        "followThrough": 0.89999998,
+        "followThrough": 0.80000001,
         "range": 1.25,
         "slamAttack": 405,
         "slamRadialDamage": 135,
@@ -6962,7 +6976,6 @@
         "damageTypes": {},
         "marketCost": 125,
         "polarities": [  ],
-        "stancePolarity": "Vazarin",
         "tags": [ "Grineer" ],
         "type": "Fist",
         "wikiaThumbnail": "https://static.wikia.nocookie.net/warframe/images/2/23/Furax.png/revision/latest?cb=20130426080553",
@@ -8331,6 +8344,12 @@
           },
           {
             "location": "Gyre Gokstad Pilot",
+            "type": "Rubedo-Lined Barrel",
+            "chance": 0.0026,
+            "rarity": "Rare"
+          },
+          {
+            "location": "Gyre Roller Sentry",
             "type": "Rubedo-Lined Barrel",
             "chance": 0.0026,
             "rarity": "Rare"
