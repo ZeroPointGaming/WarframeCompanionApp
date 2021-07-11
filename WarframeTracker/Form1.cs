@@ -25,7 +25,6 @@ namespace WarframeTracker
     /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
     /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
     /// Context menu check to see if item is vaulted.
-    /// [Important] Update warframe data for sisters of pavos update
     /// 
     /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
     /// </summary>
@@ -1431,6 +1430,60 @@ namespace WarframeTracker
 
             LoadWorldState();
         }
+
+        /// <summary>
+        /// Fetch and store the vaulted data
+        /// </summary>
+        private void FetchVaultData()
+        {
+            try
+            {
+                #region Resets
+                GlobalData.VaultData = new OGTech.ValutedItemData.Root();
+                #endregion
+
+                HttpWebRequest vault_data_request = WebManager.GenerateRequest("", "VaultData", "pc");
+                HttpWebResponse vault_data_response = WebManager.GenerateResponse(vault_data_request);
+
+                StreamReader reader = new StreamReader(vault_data_response.GetResponseStream());
+                GlobalData.VaultData = JsonConvert.DeserializeObject<OGTech.ValutedItemData.Root>(reader.ReadToEnd());
+                reader.Close(); reader.Dispose(); vault_data_response.Close(); vault_data_response.Dispose();
+            }
+            catch (Exception ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log($"Error fetching vault data.{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Fetch and store the drops data
+        /// </summary>
+        private void FetchDropsData()
+        {
+            try
+            {
+                #region Resets
+                GlobalData.DropsData = new WarframeStats.DropData.Root();
+                #endregion
+
+                HttpWebRequest drop_data_request = WebManager.GenerateRequest("", "Drops", "pc");
+                HttpWebResponse drop_data_response = WebManager.GenerateResponse(drop_data_request);
+
+                StreamReader reader = new StreamReader(drop_data_response.GetResponseStream());
+                GlobalData.DropsData = JsonConvert.DeserializeObject<WarframeStats.DropData.Root>(reader.ReadToEnd());
+                reader.Close(); reader.Dispose(); drop_data_response.Close(); drop_data_response.Dispose();
+            }
+            catch (Exception ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log($"Error fetching drops data.{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
+        }
         #endregion
 
         #region Settings Code
@@ -1562,6 +1615,7 @@ namespace WarframeTracker
         {
 
         }
+
         #region Context Menu Commands
         private void FindSetOrdersMenuItem_Click(object sender, EventArgs e)
         {
@@ -1643,15 +1697,15 @@ namespace WarframeTracker
             GetVaultInformation(GlobalData.activeItemName);
         }
         #endregion
-
         #endregion        
     }
 
     public static class GlobalData
     {
-        public static string activeItemName = "";
-        public static string activeSearch = "";
+        public static string activeItemName = String.Empty;
+        public static string activeSearch = String.Empty;
 
+        #region Item Databases
         public static Dictionary<String, Items.Warframes.Root> WarframeDatabase = new Dictionary<string, Items.Warframes.Root>();
         public static Dictionary<String, Items.PrimaryWeapons.Root> PrimaryWeaponDatabase = new Dictionary<string, Items.PrimaryWeapons.Root>();
         public static Dictionary<String, Items.SecondaryWeapons.Root> SecondaryWeaponDatabase = new Dictionary<string, Items.SecondaryWeapons.Root>();
@@ -1663,5 +1717,9 @@ namespace WarframeTracker
         public static Dictionary<String, Items.ArcMelee.Root> ArcMeleeDatabase = new Dictionary<string, Items.ArcMelee.Root>();
         public static Dictionary<String, Items.Arcanes.Root> ArcaneDatabase = new Dictionary<string, Items.Arcanes.Root>();
         public static Dictionary<String, Items.Mods.Root> ModDatabase = new Dictionary<string, Items.Mods.Root>();
+        #endregion
+
+        public static OGTech.ValutedItemData.Root VaultData = new OGTech.ValutedItemData.Root();
+        public static WarframeStats.DropData.Root DropsData = new WarframeStats.DropData.Root();
     }
 }
