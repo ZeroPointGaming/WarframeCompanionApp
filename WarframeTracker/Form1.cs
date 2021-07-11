@@ -25,6 +25,7 @@ namespace WarframeTracker
     /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
     /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
     /// Context menu check to see if item is vaulted.
+    /// add riven disposition to weapons (OmegaAttenuation)
     /// 
     /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
     /// </summary>
@@ -78,6 +79,11 @@ namespace WarframeTracker
         #endregion
 
         #region Combobox Event Code
+        private void CheckVaultBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(GetVaultInformation(GlobalData.activeItemName));
+        }
+
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region Resets
@@ -128,6 +134,10 @@ namespace WarframeTracker
                 {
                     if (frame.Name.ToLower().Contains("prime"))
                     {
+                        ToolStripMenuItem CheckVaultBtn = new ToolStripMenuItem();
+                        CheckVaultBtn.Text = $"{frame.Name} Vault Status";
+                        CheckVaultBtn.Click += CheckVaultBtn_Click;
+                        FindOrdersMenu.Items.Add(CheckVaultBtn);
                         FindOrdersMenu.Items.Add(WarframeMarketOptions);
                         WarframeMarketOptions.Text = $"Warframe.Market Orders";
                         GenerateOrderMenu(frame.Name, "Set");
@@ -1611,9 +1621,39 @@ namespace WarframeTracker
             }
         }
 
-        private void GetVaultInformation(string item_name)
+        private string GetVaultInformation(string item_name)
         {
+            if (GlobalData.VaultData.Data != null)
+            {
+                for (int i = 0; i < GlobalData.VaultData.Data.Count; i++)
+                {
+                    if (GlobalData.VaultData.Data[i].Name == item_name && GlobalData.VaultData.Data[i].Vaulted)
+                    {
+                        return $"{item_name} was last vaulted on {GlobalData.VaultData.Data[i].VaultedDate} and was last released on {GlobalData.VaultData.Data[i].ReleaseDate}";
+                    }
+                }
+            }
+            else
+            {
+                FetchVaultData();
 
+                for (int i = 0; i < GlobalData.VaultData.Data.Count; i++)
+                {
+                    if (GlobalData.VaultData.Data[i].Name == item_name && GlobalData.VaultData.Data[i].Vaulted)
+                    {
+                        return $"{item_name} was last vaulted on {GlobalData.VaultData.Data[i].VaultedDate} and was last released on {GlobalData.VaultData.Data[i].ReleaseDate}";
+                    }
+                }
+            }
+
+            return $"{item_name} is not currently vaulted";
+        }
+
+        private string GetDropData(string item_name)
+        {
+            string isVaulted = "drops";
+
+            return $"";
         }
 
         #region Context Menu Commands
