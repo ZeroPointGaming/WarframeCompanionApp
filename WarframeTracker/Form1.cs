@@ -20,17 +20,15 @@ namespace WarframeTracker
 
     /// <summary> TODO List
     /// Come up with a plan for the build guides and crafting guides pages.
-    /// Design and build the settings page and settings file for the application (Theme Control, Platform Control, Other Settings)
     /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
     /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
     /// add riven disposition to weapons (OmegaAttenuation)
-    /// Rebuild context menu system with one single function witht the new single function method.
     /// 
     /// Future: Rivens integration
     /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
     /// Future Futre: Integrate apis into a twitch bot so warframe streamers can have a ton of chat commands to check out stuff such as prices or drop info or even primevault info
     /// </summary>
-    
+
 
     public partial class Form1 : Form
     {
@@ -1493,7 +1491,413 @@ namespace WarframeTracker
         #endregion
 
         #region Settings Code
+        private void UpdateBackgroundColor(Color new_color)
+        {
+            #region GroupBoxes
+            groupBox1.BackColor = new_color;
+            groupBox2.BackColor = new_color;
+            groupBox3.BackColor = new_color;
+            groupBox4.BackColor = new_color;
+            groupBox5.BackColor = new_color;
+            groupBox6.BackColor = new_color;
+            groupBox7.BackColor = new_color;
+            groupBox8.BackColor = new_color;
+            groupBox9.BackColor = new_color;
+            groupBox10.BackColor = new_color;
+            groupBox11.BackColor = new_color;
+            groupBox12.BackColor = new_color;
+            groupBox13.BackColor = new_color;
+            groupBox14.BackColor = new_color;
+            groupBox15.BackColor = new_color;
+            groupBox16.BackColor = new_color;
+            groupBox17.BackColor = new_color;
+            groupBox18.BackColor = new_color;
+            groupBox19.BackColor = new_color;
+            groupBox20.BackColor = new_color;
+            WarframeAbilityGroupbox1.BackColor = new_color;
+            WarframeAbilityGroupbox2.BackColor = new_color;
+            WarframeAbilityGroupbox3.BackColor = new_color;
+            WarframeAbilityGroupbox4.BackColor = new_color;
+            CompanionComponentContainer.BackColor = new_color;
+            CompanionDescriptionContainer.BackColor = new_color;
+            CompanionStatsContainer.BackColor = new_color;
+            ComponentDropsContainer.BackColor = new_color;
+            MeleeWeaponContainer.BackColor = new_color;
+            MeleeWeaponContainer.BackColor = new_color;
+            NightwaveChalContainer.BackColor = new_color;
+            PrimaryWeaponContainer.BackColor = new_color;
+            PWComponentContainer.BackColor = new_color;
+            PWWeaponDmgContainer.BackColor = new_color;
+            SecondaryWeaponContainer.BackColor = new_color;
+            #endregion
 
+            #region TabPages
+            SettingsTabPage.BackColor = new_color;
+            WarframeTabPage.BackColor = new_color;
+            CraftingGuidesTabPage.BackColor = new_color;
+            MeleeWeaponsTabPage.BackColor = new_color;
+            PetsTabPage.BackColor = new_color;
+            PrimWeaponsTabPage.BackColor = new_color;
+            SecWeaponsTabPage.BackColor = new_color;
+            WorldStatePage.BackColor = new_color;
+            BuildGuidesPage.BackColor = new_color;
+            #endregion
+
+            #region Labels
+            label1.BackColor = new_color;
+            label10.BackColor = new_color;
+            label2.BackColor = new_color;
+            label3.BackColor = new_color;
+            label4.BackColor = new_color;
+            label5.BackColor = new_color;
+            label6.BackColor = new_color;
+            label7.BackColor = new_color;
+            label8.BackColor = new_color;
+            label9.BackColor = new_color;
+            AuraSlotLabel.BackColor = new_color;
+            ExilusSlotLabel.BackColor = new_color;
+            ModSlot01Label.BackColor = new_color;
+            ModSlot02Label.BackColor = new_color;
+            ModSlot03Label.BackColor = new_color;
+            ModSlot04Label.BackColor = new_color;
+            ModSlot05Label.BackColor = new_color;
+            ModSlot06Label.BackColor = new_color;
+            ModSlot07Label.BackColor = new_color;
+            ModSlot08Label.BackColor = new_color;
+            SpecialExilusSlotLabel.BackColor = new_color;
+            SpecialModSlot01Label.BackColor = new_color;
+            SpecialModSlot02Label.BackColor = new_color;
+            SpecialModSlot03Label.BackColor = new_color;
+            SpecialModSlot04Label.BackColor = new_color;
+            SpecialModSlot05Label.BackColor = new_color;
+            SpecialModSlot06Label.BackColor = new_color;
+            SpecialModSlot7Label.BackColor = new_color;
+            SpecialModSlot8Label.BackColor = new_color;
+            #endregion
+
+            #region TextBoxes
+            MWSlot0Txt.BackColor = new_color;
+            MWSlot1Txt.BackColor = new_color;
+            MWSlot2Txt.BackColor = new_color;
+            MWSlot3Txt.BackColor = new_color;
+            MWSlot4Txt.BackColor = new_color;
+            PWFoundrySlot0Txt.BackColor = new_color;
+            PWFoundrySlot1Txt.BackColor = new_color;
+            PWFoundrySlot2Txt.BackColor = new_color;
+            PWFoundrySlot3Txt.BackColor = new_color;
+            PWFoundrySlot4Txt.BackColor = new_color;
+            SWSlot1Txt.BackColor = new_color;
+            SWSlot2Txt.BackColor = new_color;
+            SWSlot3Txt.BackColor = new_color;
+            SWSlot4Txt.BackColor = new_color;
+            CompanionComponentTxt.BackColor = new_color;
+            CompanionDescriptionTxt.BackColor = new_color; 
+            CompanionStatsTxt.BackColor = new_color;
+            CopmpanionDropsTxt.BackColor = new_color;
+            FrameBPTxtBox.BackColor = new_color;
+            FrameChassTxtBox.BackColor = new_color;
+            FrameNueroTxtBox.BackColor = new_color;
+            FrameSysTxtBox.BackColor = new_color;
+            MWCreditsTxt.BackColor = new_color;
+            MWDataTxt.BackColor = new_color;
+            MWSlot0Txt.BackColor = new_color;
+            MWSlot1Txt.BackColor = new_color;
+            MWSlot2Txt.BackColor = new_color;
+            MWSlot3Txt.BackColor = new_color;
+            MWSlot4Txt.BackColor = new_color;
+            MWWeaponCompDataTxt.BackColor = new_color;
+            PWCompDataTxt.BackColor = new_color;
+            PWDataTxt.BackColor = new_color;
+            PWFoundryCreditsTxt.BackColor = new_color;
+            PWFoundrySlot0Txt.BackColor = new_color;
+            PWFoundrySlot1Txt.BackColor = new_color;
+            PWFoundrySlot2Txt.BackColor = new_color;
+            PWFoundrySlot3Txt.BackColor = new_color;
+            PWFoundrySlot4Txt.BackColor = new_color;
+            SWComponentDataTxt.BackColor = new_color;
+            SWFoundryCreditsTxt.BackColor = new_color;
+            SWSlot0Txt.BackColor = new_color;
+            SWSlot1Txt.BackColor = new_color;
+            SWSlot2Txt.BackColor = new_color;
+            SWSlot3Txt.BackColor = new_color;
+            SWSlot4Txt.BackColor = new_color;
+            SWWeaponDataTxt.BackColor = new_color;
+            NightwaveInfoBox.BackColor = new_color;
+            OstronInfoBox.BackColor = new_color;
+            SolarisInfoBox.BackColor = new_color;
+            SortieInfoBox.BackColor = new_color;
+            SyndicateInfoBox.BackColor = new_color;
+            ArbitrationInfoBox.BackColor = new_color;
+            BaroInfoBox.BackColor = new_color;
+            CycleTimersInfoBox.BackColor = new_color;
+            DailyInfoBox.BackColor = new_color;
+            FissureInfoBox.BackColor = new_color;
+            EntratiInfoBox.BackColor = new_color;
+            WarframeAbilityTextBox1.BackColor = new_color;
+            WarframeAbilityTextbox2.BackColor = new_color;
+            WarframeAbilityTextbox3.BackColor = new_color;
+            WarframeAbilityTextbox4.BackColor = new_color;
+            PassiveAbilityTextbox.BackColor = new_color;
+            #endregion
+
+            #region ImageBoxes
+            MWSlot0Img.BackColor = new_color;
+            MWSlot1Img.BackColor = new_color;
+            MWSlot2Img.BackColor = new_color;
+            MWSlot3Img.BackColor = new_color;
+            MWSlot4Img.BackColor = new_color;
+            PWFoundrySlot1Img.BackColor = new_color;
+            PWFoundrySlot2Img.BackColor = new_color;
+            PWFoundrySlot3Img.BackColor = new_color;
+            PWFoundrySlot4Img.BackColor = new_color;
+            PWFoundrySlot0Img.BackColor = new_color;
+            SWFoundrySlot0Img.BackColor = new_color;
+            SWSlot01Img.BackColor = new_color;
+            SWSlot02Img.BackColor = new_color;
+            SWSlot03Img.BackColor = new_color;
+            SWSlot04Img.BackColor = new_color;
+            pictureBox1.BackColor = new_color;
+            pictureBox2.BackColor = new_color;
+            pictureBox3.BackColor = new_color;
+            pictureBox4.BackColor = new_color;
+            pictureBox5.BackColor = new_color;
+            pictureBox6.BackColor = new_color;
+            pictureBox7.BackColor = new_color;
+            pictureBox8.BackColor = new_color;
+            pictureBox9.BackColor = new_color;
+            pictureBox10.BackColor = new_color;
+            pictureBox11.BackColor = new_color;
+            pictureBox12.BackColor = new_color;
+            pictureBox13.BackColor = new_color;
+            pictureBox14.BackColor = new_color;
+            pictureBox15.BackColor = new_color;
+            pictureBox16.BackColor = new_color;
+            pictureBox17.BackColor = new_color;
+            pictureBox18.BackColor = new_color;
+            pictureBox21.BackColor = new_color;
+            pictureBox20.BackColor = new_color;
+            pictureBox22.BackColor = new_color;
+            pictureBox23.BackColor = new_color;
+            pictureBox24.BackColor = new_color;
+            pictureBox25.BackColor = new_color;
+            pictureBox26.BackColor = new_color;
+            pictureBox27.BackColor = new_color;
+            pictureBox28.BackColor = new_color;
+            #endregion
+        }
+
+        private void UpdateForeColor(Color new_color)
+        {
+            #region GroupBoxes
+            groupBox1.ForeColor = new_color;
+            groupBox2.ForeColor = new_color;
+            groupBox3.ForeColor = new_color;
+            groupBox4.ForeColor = new_color;
+            groupBox5.ForeColor = new_color;
+            groupBox6.ForeColor = new_color;
+            groupBox7.ForeColor = new_color;
+            groupBox8.ForeColor = new_color;
+            groupBox9.ForeColor = new_color;
+            groupBox10.ForeColor = new_color;
+            groupBox11.ForeColor = new_color;
+            groupBox12.ForeColor = new_color;
+            groupBox13.ForeColor = new_color;
+            groupBox14.ForeColor = new_color;
+            groupBox15.ForeColor = new_color;
+            groupBox16.ForeColor = new_color;
+            groupBox17.ForeColor = new_color;
+            groupBox18.ForeColor = new_color;
+            groupBox19.ForeColor = new_color;
+            groupBox20.ForeColor = new_color;
+            WarframeAbilityGroupbox1.ForeColor = new_color;
+            WarframeAbilityGroupbox2.ForeColor = new_color;
+            WarframeAbilityGroupbox3.ForeColor = new_color;
+            WarframeAbilityGroupbox4.ForeColor = new_color;
+            CompanionComponentContainer.ForeColor = new_color;
+            CompanionDescriptionContainer.ForeColor = new_color;
+            CompanionStatsContainer.ForeColor = new_color;
+            ComponentDropsContainer.ForeColor = new_color;
+            MeleeWeaponContainer.ForeColor = new_color;
+            MeleeWeaponContainer.ForeColor = new_color;
+            NightwaveChalContainer.ForeColor = new_color;
+            PrimaryWeaponContainer.ForeColor = new_color;
+            PWComponentContainer.ForeColor = new_color;
+            PWWeaponDmgContainer.ForeColor = new_color;
+            SecondaryWeaponContainer.ForeColor = new_color;
+            #endregion
+
+            #region TabPages
+            SettingsTabPage.ForeColor = new_color;
+            WarframeTabPage.ForeColor = new_color;
+            CraftingGuidesTabPage.ForeColor = new_color;
+            MeleeWeaponsTabPage.ForeColor = new_color;
+            PetsTabPage.ForeColor = new_color;
+            PrimWeaponsTabPage.ForeColor = new_color;
+            SecWeaponsTabPage.ForeColor = new_color;
+            WorldStatePage.ForeColor = new_color;
+            BuildGuidesPage.ForeColor = new_color;
+            #endregion
+
+            #region Labels
+            label1.ForeColor = new_color;
+            label10.ForeColor = new_color;
+            label2.ForeColor = new_color;
+            label3.ForeColor = new_color;
+            label4.ForeColor = new_color;
+            label5.ForeColor = new_color;
+            label6.ForeColor = new_color;
+            label7.ForeColor = new_color;
+            label8.ForeColor = new_color;
+            label9.ForeColor = new_color;
+            AuraSlotLabel.ForeColor = new_color;
+            ExilusSlotLabel.ForeColor = new_color;
+            ModSlot01Label.ForeColor = new_color;
+            ModSlot02Label.ForeColor = new_color;
+            ModSlot03Label.ForeColor = new_color;
+            ModSlot04Label.ForeColor = new_color;
+            ModSlot05Label.ForeColor = new_color;
+            ModSlot06Label.ForeColor = new_color;
+            ModSlot07Label.ForeColor = new_color;
+            ModSlot08Label.ForeColor = new_color;
+            SpecialExilusSlotLabel.ForeColor = new_color;
+            SpecialModSlot01Label.ForeColor = new_color;
+            SpecialModSlot02Label.ForeColor = new_color;
+            SpecialModSlot03Label.ForeColor = new_color;
+            SpecialModSlot04Label.ForeColor = new_color;
+            SpecialModSlot05Label.ForeColor = new_color;
+            SpecialModSlot06Label.ForeColor = new_color;
+            SpecialModSlot7Label.ForeColor = new_color;
+            SpecialModSlot8Label.ForeColor = new_color;
+            #endregion
+
+            #region TextBoxes
+            MWSlot0Txt.ForeColor = new_color;
+            MWSlot1Txt.ForeColor = new_color;
+            MWSlot2Txt.ForeColor = new_color;
+            MWSlot3Txt.ForeColor = new_color;
+            MWSlot4Txt.ForeColor = new_color;
+            PWFoundrySlot0Txt.ForeColor = new_color;
+            PWFoundrySlot1Txt.ForeColor = new_color;
+            PWFoundrySlot2Txt.ForeColor = new_color;
+            PWFoundrySlot3Txt.ForeColor = new_color;
+            PWFoundrySlot4Txt.ForeColor = new_color;
+            SWSlot1Txt.ForeColor = new_color;
+            SWSlot2Txt.ForeColor = new_color;
+            SWSlot3Txt.ForeColor = new_color;
+            SWSlot4Txt.ForeColor = new_color;
+            CompanionComponentTxt.ForeColor = new_color;
+            CompanionDescriptionTxt.ForeColor = new_color;
+            CompanionStatsTxt.ForeColor = new_color;
+            CopmpanionDropsTxt.ForeColor = new_color;
+            FrameBPTxtBox.ForeColor = new_color;
+            FrameChassTxtBox.ForeColor = new_color;
+            FrameNueroTxtBox.ForeColor = new_color;
+            FrameSysTxtBox.ForeColor = new_color;
+            MWCreditsTxt.ForeColor = new_color;
+            MWDataTxt.ForeColor = new_color;
+            MWSlot0Txt.ForeColor = new_color;
+            MWSlot1Txt.ForeColor = new_color;
+            MWSlot2Txt.ForeColor = new_color;
+            MWSlot3Txt.ForeColor = new_color;
+            MWSlot4Txt.ForeColor = new_color;
+            MWWeaponCompDataTxt.ForeColor = new_color;
+            PWCompDataTxt.ForeColor = new_color;
+            PWDataTxt.ForeColor = new_color;
+            PWFoundryCreditsTxt.ForeColor = new_color;
+            PWFoundrySlot0Txt.ForeColor = new_color;
+            PWFoundrySlot1Txt.ForeColor = new_color;
+            PWFoundrySlot2Txt.ForeColor = new_color;
+            PWFoundrySlot3Txt.ForeColor = new_color;
+            PWFoundrySlot4Txt.ForeColor = new_color;
+            SWComponentDataTxt.ForeColor = new_color;
+            SWFoundryCreditsTxt.ForeColor = new_color;
+            SWSlot0Txt.ForeColor = new_color;
+            SWSlot1Txt.ForeColor = new_color;
+            SWSlot2Txt.ForeColor = new_color;
+            SWSlot3Txt.ForeColor = new_color;
+            SWSlot4Txt.ForeColor = new_color;
+            SWWeaponDataTxt.ForeColor = new_color;
+            NightwaveInfoBox.ForeColor = new_color;
+            OstronInfoBox.ForeColor = new_color;
+            SolarisInfoBox.ForeColor = new_color;
+            SortieInfoBox.ForeColor = new_color;
+            SyndicateInfoBox.ForeColor = new_color;
+            ArbitrationInfoBox.ForeColor = new_color;
+            BaroInfoBox.ForeColor = new_color;
+            CycleTimersInfoBox.ForeColor = new_color;
+            DailyInfoBox.ForeColor = new_color;
+            FissureInfoBox.ForeColor = new_color;
+            EntratiInfoBox.ForeColor = new_color;
+            WarframeAbilityTextBox1.ForeColor = new_color;
+            WarframeAbilityTextbox2.ForeColor = new_color;
+            WarframeAbilityTextbox3.ForeColor = new_color;
+            WarframeAbilityTextbox4.ForeColor = new_color;
+            PassiveAbilityTextbox.ForeColor = new_color;
+            #endregion
+
+            #region ImageBoxes
+            MWSlot0Img.ForeColor = new_color;
+            MWSlot1Img.ForeColor = new_color;
+            MWSlot2Img.ForeColor = new_color;
+            MWSlot3Img.ForeColor = new_color;
+            MWSlot4Img.ForeColor = new_color;
+            PWFoundrySlot1Img.ForeColor = new_color;
+            PWFoundrySlot2Img.ForeColor = new_color;
+            PWFoundrySlot3Img.ForeColor = new_color;
+            PWFoundrySlot4Img.ForeColor = new_color;
+            PWFoundrySlot0Img.ForeColor = new_color;
+            SWFoundrySlot0Img.ForeColor = new_color;
+            SWSlot01Img.ForeColor = new_color;
+            SWSlot02Img.ForeColor = new_color;
+            SWSlot03Img.ForeColor = new_color;
+            SWSlot04Img.ForeColor = new_color;
+            pictureBox1.ForeColor = new_color;
+            pictureBox2.ForeColor = new_color;
+            pictureBox3.ForeColor = new_color;
+            pictureBox4.ForeColor = new_color;
+            pictureBox5.ForeColor = new_color;
+            pictureBox6.ForeColor = new_color;
+            pictureBox7.ForeColor = new_color;
+            pictureBox8.ForeColor = new_color;
+            pictureBox9.ForeColor = new_color;
+            pictureBox10.ForeColor = new_color;
+            pictureBox11.ForeColor = new_color;
+            pictureBox12.ForeColor = new_color;
+            pictureBox13.ForeColor = new_color;
+            pictureBox14.ForeColor = new_color;
+            pictureBox15.ForeColor = new_color;
+            pictureBox16.ForeColor = new_color;
+            pictureBox17.ForeColor = new_color;
+            pictureBox18.ForeColor = new_color;
+            pictureBox21.ForeColor = new_color;
+            pictureBox20.ForeColor = new_color;
+            pictureBox22.ForeColor = new_color;
+            pictureBox23.ForeColor = new_color;
+            pictureBox24.ForeColor = new_color;
+            pictureBox25.ForeColor = new_color;
+            pictureBox26.ForeColor = new_color;
+            pictureBox27.ForeColor = new_color;
+            pictureBox28.ForeColor = new_color;
+            #endregion
+        }
+
+        private void SwitchPlatformCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.platform = $"{SwitchPlatformComboBox.SelectedItem}";
+            Properties.Settings.Default.Save();
+        }
+
+        private void ThemeBackgroundColorBtn_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+            UpdateBackgroundColor(colorDialog1.Color);
+        }
+
+        private void ThemeForegroundColorBtn_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+            UpdateForeColor(colorDialog1.Color);
+        }
         #endregion
 
         #region Build Guides Code
@@ -1647,8 +2051,6 @@ namespace WarframeTracker
 
         private string GetDropData(string item_name)
         {
-            string isVaulted = "drops";
-
             return $"";
         }
 
@@ -1719,7 +2121,8 @@ namespace WarframeTracker
                 GenerateData();
             }
         }
-        #endregion        
+
+        #endregion
     }
 
     public static class GlobalData

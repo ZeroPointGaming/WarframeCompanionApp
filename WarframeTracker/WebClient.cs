@@ -48,7 +48,7 @@ namespace WarframeTracker.WebInterface
 
                 #region Warframestatus.us Requests
                 case "WorldState":
-                    HttpWebRequest world_state_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{platform}");
+                    HttpWebRequest world_state_request = (HttpWebRequest)WebRequest.Create($"https://api.warframestat.us/{Properties.Settings.Default.platform}");
                     return world_state_request;
 
                 case "Drops":

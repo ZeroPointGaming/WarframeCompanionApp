@@ -38,6 +38,13 @@ namespace WarframeTracker
             this.findSystemsOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findBlueprintOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WarframeTrackerTabControl = new MetroFramework.Controls.MetroTabControl();
+            this.SettingsTabPage = new System.Windows.Forms.TabPage();
+            this.ThemeForegroundColorBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ThemeBackgroundColorBtn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SwitchPlatformComboBox = new System.Windows.Forms.ComboBox();
             this.PetsTabPage = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.ComponentDropsContainer = new System.Windows.Forms.GroupBox();
@@ -248,10 +255,11 @@ namespace WarframeTracker
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.CraftingGuidesTabPage = new System.Windows.Forms.TabPage();
-            this.SettingsTabPage = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.FindOrdersMenu.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
+            this.SettingsTabPage.SuspendLayout();
             this.PetsTabPage.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.ComponentDropsContainer.SuspendLayout();
@@ -423,6 +431,7 @@ namespace WarframeTracker
             // WarframeTrackerTabControl
             // 
             this.WarframeTrackerTabControl.ContextMenuStrip = this.FindOrdersMenu;
+            this.WarframeTrackerTabControl.Controls.Add(this.SettingsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PetsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
@@ -431,7 +440,6 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
             this.WarframeTrackerTabControl.Controls.Add(this.CraftingGuidesTabPage);
-            this.WarframeTrackerTabControl.Controls.Add(this.SettingsTabPage);
             this.WarframeTrackerTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WarframeTrackerTabControl.Location = new System.Drawing.Point(0, 0);
             this.WarframeTrackerTabControl.Name = "WarframeTrackerTabControl";
@@ -439,6 +447,86 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.SelectedIndex = 0;
             this.WarframeTrackerTabControl.Size = new System.Drawing.Size(1459, 900);
             this.WarframeTrackerTabControl.TabIndex = 6;
+            // 
+            // SettingsTabPage
+            // 
+            this.SettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.SettingsTabPage.Controls.Add(this.ThemeForegroundColorBtn);
+            this.SettingsTabPage.Controls.Add(this.label8);
+            this.SettingsTabPage.Controls.Add(this.ThemeBackgroundColorBtn);
+            this.SettingsTabPage.Controls.Add(this.label7);
+            this.SettingsTabPage.Controls.Add(this.label6);
+            this.SettingsTabPage.Controls.Add(this.SwitchPlatformComboBox);
+            this.SettingsTabPage.ForeColor = System.Drawing.Color.White;
+            this.SettingsTabPage.Location = new System.Drawing.Point(4, 35);
+            this.SettingsTabPage.Name = "SettingsTabPage";
+            this.SettingsTabPage.Size = new System.Drawing.Size(1451, 861);
+            this.SettingsTabPage.TabIndex = 5;
+            this.SettingsTabPage.Text = "Settings";
+            // 
+            // ThemeForegroundColorBtn
+            // 
+            this.ThemeForegroundColorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ThemeForegroundColorBtn.Location = new System.Drawing.Point(200, 105);
+            this.ThemeForegroundColorBtn.Name = "ThemeForegroundColorBtn";
+            this.ThemeForegroundColorBtn.Size = new System.Drawing.Size(128, 26);
+            this.ThemeForegroundColorBtn.TabIndex = 5;
+            this.ThemeForegroundColorBtn.Text = "Theme Text Color";
+            this.ThemeForegroundColorBtn.UseVisualStyleBackColor = true;
+            this.ThemeForegroundColorBtn.Click += new System.EventHandler(this.ThemeForegroundColorBtn_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 111);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(143, 15);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Change Theme Text Color";
+            // 
+            // ThemeBackgroundColorBtn
+            // 
+            this.ThemeBackgroundColorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ThemeBackgroundColorBtn.Location = new System.Drawing.Point(200, 70);
+            this.ThemeBackgroundColorBtn.Name = "ThemeBackgroundColorBtn";
+            this.ThemeBackgroundColorBtn.Size = new System.Drawing.Size(128, 26);
+            this.ThemeBackgroundColorBtn.TabIndex = 3;
+            this.ThemeBackgroundColorBtn.Text = "Theme Background";
+            this.ThemeBackgroundColorBtn.UseVisualStyleBackColor = true;
+            this.ThemeBackgroundColorBtn.Click += new System.EventHandler(this.ThemeBackgroundColorBtn_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 76);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(186, 15);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Change Theme Background Color";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 15);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Platform";
+            // 
+            // SwitchPlatformComboBox
+            // 
+            this.SwitchPlatformComboBox.FormattingEnabled = true;
+            this.SwitchPlatformComboBox.Items.AddRange(new object[] {
+            "pc",
+            "ps4",
+            "xb1",
+            "swi"});
+            this.SwitchPlatformComboBox.Location = new System.Drawing.Point(67, 18);
+            this.SwitchPlatformComboBox.Name = "SwitchPlatformComboBox";
+            this.SwitchPlatformComboBox.Size = new System.Drawing.Size(121, 23);
+            this.SwitchPlatformComboBox.TabIndex = 0;
+            this.SwitchPlatformComboBox.Text = "pc";
+            this.SwitchPlatformComboBox.SelectedIndexChanged += new System.EventHandler(this.SwitchPlatformCombobox_SelectedIndexChanged);
             // 
             // PetsTabPage
             // 
@@ -2755,16 +2843,6 @@ namespace WarframeTracker
             this.CraftingGuidesTabPage.TabIndex = 6;
             this.CraftingGuidesTabPage.Text = "Crafting Guides";
             // 
-            // SettingsTabPage
-            // 
-            this.SettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.SettingsTabPage.ForeColor = System.Drawing.Color.White;
-            this.SettingsTabPage.Location = new System.Drawing.Point(4, 35);
-            this.SettingsTabPage.Name = "SettingsTabPage";
-            this.SettingsTabPage.Size = new System.Drawing.Size(1451, 861);
-            this.SettingsTabPage.TabIndex = 5;
-            this.SettingsTabPage.Text = "Settings";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2776,6 +2854,8 @@ namespace WarframeTracker
             this.Load += new System.EventHandler(this.Form1_Load);
             this.FindOrdersMenu.ResumeLayout(false);
             this.WarframeTrackerTabControl.ResumeLayout(false);
+            this.SettingsTabPage.ResumeLayout(false);
+            this.SettingsTabPage.PerformLayout();
             this.PetsTabPage.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.ComponentDropsContainer.ResumeLayout(false);
@@ -3168,6 +3248,13 @@ namespace WarframeTracker
         private System.Windows.Forms.TextBox CompanionComponentTxt;
         private System.Windows.Forms.GroupBox ComponentDropsContainer;
         private System.Windows.Forms.TextBox CopmpanionDropsTxt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox SwitchPlatformComboBox;
+        private System.Windows.Forms.Button ThemeBackgroundColorBtn;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button ThemeForegroundColorBtn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 
