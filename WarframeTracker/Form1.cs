@@ -19,15 +19,16 @@ namespace WarframeTracker
     /// </summary>
 
     /// <summary> TODO List
-    /// Build and finish Pets and Sentinels page.
     /// Come up with a plan for the build guides and crafting guides pages.
     /// Design and build the settings page and settings file for the application (Theme Control, Platform Control, Other Settings)
     /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
     /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
-    /// Context menu check to see if item is vaulted.
     /// add riven disposition to weapons (OmegaAttenuation)
+    /// Rebuild context menu system with one single function witht the new single function method.
     /// 
+    /// Future: Rivens integration
     /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
+    /// Future Futre: Integrate apis into a twitch bot so warframe streamers can have a ton of chat commands to check out stuff such as prices or drop info or even primevault info
     /// </summary>
     
 
@@ -79,11 +80,6 @@ namespace WarframeTracker
         #endregion
 
         #region Combobox Event Code
-        private void CheckVaultBtn_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(GetVaultInformation(GlobalData.activeItemName));
-        }
-
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region Resets
@@ -136,7 +132,7 @@ namespace WarframeTracker
                     {
                         ToolStripMenuItem CheckVaultBtn = new ToolStripMenuItem();
                         CheckVaultBtn.Text = $"{frame.Name} Vault Status";
-                        CheckVaultBtn.Click += CheckVaultBtn_Click;
+                        CheckVaultBtn.Click += GetContextMenuFunction;
                         FindOrdersMenu.Items.Add(CheckVaultBtn);
                         FindOrdersMenu.Items.Add(WarframeMarketOptions);
                         WarframeMarketOptions.Text = $"Warframe.Market Orders";
@@ -1523,98 +1519,98 @@ namespace WarframeTracker
                 case "Set":
                     ToolStripMenuItem SetOrderBtn = new ToolStripMenuItem();
                     SetOrderBtn.Text = $"{item_name} Set";
-                    SetOrderBtn.Click += FindSetOrdersMenuItem_Click;
+                    SetOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(SetOrderBtn);
                     break;
                 case "Blueprint":
                     ToolStripMenuItem BluePrintOrderBtn = new ToolStripMenuItem();
                     BluePrintOrderBtn.Text = $"{item_name} Blueprint";
-                    BluePrintOrderBtn.Click += FindBlueprintMenuItem_Click;
+                    BluePrintOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(BluePrintOrderBtn);
                     break;
                 case "Chassis":
                     ToolStripMenuItem ChassisOrderBtn = new ToolStripMenuItem();
                     ChassisOrderBtn.Text = $"{item_name} Chassis";
-                    ChassisOrderBtn.Click += FindChassisMenuItem_Click;
+                    ChassisOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(ChassisOrderBtn);
                     break;
                 case "Neuroptics":
                     ToolStripMenuItem NeuropticsOrderBtn = new ToolStripMenuItem();
                     NeuropticsOrderBtn.Text = $"{item_name} Neuroptics";
-                    NeuropticsOrderBtn.Click += FindNueropticsMenuItem_Click;
+                    NeuropticsOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(NeuropticsOrderBtn);
                     break;
                 case "Systems":
                     ToolStripMenuItem SystemsOrderBtn = new ToolStripMenuItem();
                     SystemsOrderBtn.Text = $"{item_name} Systems";
-                    SystemsOrderBtn.Click += FindSystemsMenuItem_Click;
+                    SystemsOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(SystemsOrderBtn);
                     break;
                 case "Barrel":
                     ToolStripMenuItem BarrelOrderBtn = new ToolStripMenuItem();
                     BarrelOrderBtn.Text = $"{item_name} Barrel";
-                    BarrelOrderBtn.Click += FindBarrelMenuItem_Click;
+                    BarrelOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(BarrelOrderBtn);
                     break;
                 case "Stock":
                     ToolStripMenuItem StockOrderBtn = new ToolStripMenuItem();
                     StockOrderBtn.Text = $"{item_name} Stock";
-                    StockOrderBtn.Click += FindStockMenuItem_Click;
+                    StockOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(StockOrderBtn);
                     break;
                 case "Reciever":
                     ToolStripMenuItem RecieverOrderBtn = new ToolStripMenuItem();
                     RecieverOrderBtn.Text = $"{item_name} Reciever";
-                    RecieverOrderBtn.Click += FindRecieverMenuItem_Click;
+                    RecieverOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(RecieverOrderBtn);
                     break;
                 case "Blade":
                     ToolStripMenuItem BladeOrderBtn = new ToolStripMenuItem();
                     BladeOrderBtn.Text = $"{item_name} Blade";
-                    BladeOrderBtn.Click += FindBladeMenuItem_Click;
+                    BladeOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(BladeOrderBtn);
                     break;
                 case "Hilt":
                     ToolStripMenuItem HiltOrderBtn = new ToolStripMenuItem();
                     HiltOrderBtn.Text = $"{item_name} Hilt";
-                    HiltOrderBtn.Click += FindHiltMenuItem_Click;
+                    HiltOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(HiltOrderBtn);
                     break;
                 case "Head":
                     ToolStripMenuItem HeadOrderBtn = new ToolStripMenuItem();
                     HeadOrderBtn.Text = $"{item_name} Head";
-                    HeadOrderBtn.Click += FindHeadMenuItem_Click;
+                    HeadOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(HeadOrderBtn);
                     break;
                 case "Link":
                     ToolStripMenuItem LinkOrderBtn = new ToolStripMenuItem();
                     LinkOrderBtn.Text = $"{item_name} Link";
-                    LinkOrderBtn.Click += FindLinkMenuItem_Click;
+                    LinkOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(LinkOrderBtn);
                     break;
                 case "Carapace":
                     ToolStripMenuItem CarapaceOrderBtn = new ToolStripMenuItem();
                     CarapaceOrderBtn.Text = $"{item_name} Carapace";
-                    CarapaceOrderBtn.Click += FindCarapaceMenuItem_Click;
+                    CarapaceOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(CarapaceOrderBtn);
                     break;
                 case "Cerebrum":
                     ToolStripMenuItem CerebrumOrderBtn = new ToolStripMenuItem();
                     CerebrumOrderBtn.Text = $"{item_name} Cerebrum";
-                    CerebrumOrderBtn.Click += FindCerebrumMenuItem_Click;
+                    CerebrumOrderBtn.Click += GetContextMenuFunction;
 
                     WarframeMarketOptions.DropDownItems.Add(CerebrumOrderBtn);
                     break;
@@ -1656,87 +1652,73 @@ namespace WarframeTracker
             return $"";
         }
 
-        #region Context Menu Commands
-        private void FindSetOrdersMenuItem_Click(object sender, EventArgs e)
+        private void GetContextMenuFunction(object sender, EventArgs e)
         {
-            FindOrderInformation(GlobalData.activeItemName, "Set", true);
+            if (sender.ToString().Contains("Vault Status"))
+            {
+                MessageBox.Show(GetVaultInformation(GlobalData.activeItemName));
+            }
+            else if (sender.ToString().Contains("Set"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Set", true);
+            }
+            else if (sender.ToString().Contains("Nueroptics"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Nueroptics", true);
+            }
+            else if (sender.ToString().Contains("Chassis"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Chassis", true);
+            }
+            else if (sender.ToString().Contains("Systems"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Systems", true);
+            }
+            else if (sender.ToString().Contains("Blueprint"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Blueprint", true);
+            }
+            else if (sender.ToString().Contains("Barrel"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Barrel", true);
+            }
+            else if (sender.ToString().Contains("Stock"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Stock", true);
+            }
+            else if (sender.ToString().Contains("Reciever"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Reciever", true);
+            }
+            else if (sender.ToString().Contains("Blade"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Blade", true);
+            }
+            else if (sender.ToString().Contains("Hilt"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Hilt", true);
+            }
+            else if (sender.ToString().Contains("Head"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Head", true);
+            }
+            else if (sender.ToString().Contains("Link"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Link", true);
+            }
+            else if (sender.ToString().Contains("Carapace"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Carapace", true);
+            }
+            else if (sender.ToString().Contains("Cerebrum"))
+            {
+                FindOrderInformation(GlobalData.activeItemName, "Cerebrum", true);
+            }
+            else if (sender.ToString().Contains("Refresh"))
+            {
+                GenerateData();
+            }
         }
-
-        private void FindNueropticsMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Nueroptics", true);
-        }
-
-        private void FindChassisMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Chassis", true);
-        }
-
-        private void FindSystemsMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Systems", true);
-        }
-
-        private void FindBlueprintMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Blueprint", true);
-        }
-
-        private void FindBarrelMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Barrel", true);
-        }
-
-        private void FindStockMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Stock", true);
-        }
-
-        private void FindRecieverMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Reciever", true);
-        }
-
-        private void FindBladeMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Blade", true);
-        }
-
-        private void FindHiltMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Hilt", true);
-        }
-
-        private void FindHeadMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Head", true);
-        }
-
-        private void FindLinkMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Link", true);
-        }
-
-        private void FindCarapaceMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Carapace", true);
-        }
-
-        private void FindCerebrumMenuItem_Click(object sender, EventArgs e)
-        {
-            FindOrderInformation(GlobalData.activeItemName, "Cerebrum", true);
-        }
-
-        private void RefreshDataMenuItem_Click(object sender, EventArgs e)
-        {
-            GenerateData();
-        }
-
-        private void GetVaultStatusMenuItem_Click(object sender, EventArgs e)
-        {
-            GetVaultInformation(GlobalData.activeItemName);
-        }
-        #endregion
         #endregion        
     }
 
