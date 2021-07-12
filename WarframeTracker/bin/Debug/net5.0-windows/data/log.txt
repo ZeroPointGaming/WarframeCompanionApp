@@ -1331,3 +1331,7 @@ Updated UI for Acceltra
 Updated UI for Acrid
 Updated UI for Ack & Brunt
 Updated UI for Ash Prime
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
