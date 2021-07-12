@@ -26,7 +26,7 @@ namespace WarframeTracker
     /// 
     /// Future: Rivens integration
     /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
-    /// Future Futre: Integrate apis into a twitch bot so warframe streamers can have a ton of chat commands to check out stuff such as prices or drop info or even primevault info
+    /// Future: Integrate apis into a twitch bot so warframe streamers can have a ton of chat commands to check out stuff such as prices or drop info or even primevault info
     /// </summary>
 
 
@@ -69,6 +69,12 @@ namespace WarframeTracker
             SecondaryWeaponsComboBox.SelectedIndex = 0;
             MeleeWeaponsComboBox.SelectedIndex = 0;
             CompanionsComboBox.SelectedIndex = 0;
+
+            List<string> DropList = SearchPrimeRelicItems("Ash Prime Blueprint");
+            for (int i = 0; i < DropList.Count;i++)
+            {
+                MessageBox.Show(DropList[i].ToString());
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -2049,9 +2055,69 @@ namespace WarframeTracker
             return $"{item_name} is not currently vaulted";
         }
 
+        private List<string> SearchPrimeRelicItems(string item_name)
+        {
+            List<string> drop_info = new List<string>();
+
+            try
+            {
+                if (GlobalData.DropsData.Relics != null)
+                {
+                    for (int i = 0; i < GlobalData.DropsData.Relics.Count; i++)
+                    {
+                        foreach (WarframeStats.DropData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
+                        {
+                            if (Reward.ItemName.Contains(item_name))
+                            {
+                                drop_info.Add($"{Reward.ItemName} drops from {GlobalData.DropsData.Relics[i].RelicName} with a {Reward.Chance}% chance.");
+                            }
+                        }
+                    }
+
+                    return drop_info;
+                }
+                else
+                {
+                    FetchDropsData();
+
+                    for (int i = 0; i < GlobalData.DropsData.Relics.Count; i++)
+                    {
+                        foreach (WarframeStats.DropData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
+                        {
+                            if (Reward.ItemName.Contains(item_name))
+                            {
+                                drop_info.Add($"{Reward.ItemName} drops from {GlobalData.DropsData.Relics[i].Tier} {GlobalData.DropsData.Relics[i].RelicName} {GlobalData.DropsData.Relics[i].State} with a {Reward.Chance}% chance.");
+                            }
+                        }
+                    }
+
+                    return drop_info;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log($"Error searching for prime relic items. {Environment.NewLine}Stack Trace: {ex}");
+                }
+
+                return drop_info;
+            }
+        }
+
         private string GetDropData(string item_name)
         {
-            return $"";
+            if (GlobalData.DropsData.Relics != null)
+            {
+
+                return $"";
+            }
+            else
+            {
+                FetchDropsData();
+
+                return $"";
+            }
         }
 
         private void GetContextMenuFunction(object sender, EventArgs e)
@@ -2121,7 +2187,6 @@ namespace WarframeTracker
                 GenerateData();
             }
         }
-
         #endregion
     }
 

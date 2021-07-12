@@ -19,7 +19,7 @@ namespace WarframeTracker.WarframeStats.DropData
         public string Rarity;
 
         [JsonProperty("chance")]
-        public int Chance;
+        public double Chance;
 
         [JsonProperty("stage")]
         public string Stage;
@@ -5926,10 +5926,25 @@ namespace WarframeTracker.WarframeStats.DropData
         public string State;
 
         [JsonProperty("rewards")]
-        public List<object> Rewards;
+        public List<Reward> Rewards;
 
         [JsonProperty("_id")]
         public string Id;
+    }
+
+    public class Reward
+    {
+        [JsonProperty("_id")]
+        public string ID;
+
+        [JsonProperty("itemName")]
+        public string ItemName;
+
+        [JsonProperty("rarity")]
+        public string Rarity;
+
+        [JsonProperty("chance")]
+        public double Chance;
     }
 
     public class TransientReward
@@ -5953,19 +5968,19 @@ namespace WarframeTracker.WarframeStats.DropData
         public string EnemyName;
 
         [JsonProperty("enemyModDropChance")]
-        public double EnemyModDropChance;
+        public object EnemyModDropChance;
 
         [JsonProperty("rarity")]
         public string Rarity;
 
         [JsonProperty("chance")]
-        public double Chance;
+        public object Chance;
 
         [JsonProperty("enemyItemDropChance")]
-        public double EnemyItemDropChance;
+        public object EnemyItemDropChance;
 
         [JsonProperty("enemyBlueprintDropChance")]
-        public double EnemyBlueprintDropChance;
+        public object EnemyBlueprintDropChance;
     }
 
     public class ModLocation
@@ -5992,7 +6007,7 @@ namespace WarframeTracker.WarframeStats.DropData
         public string Rarity;
 
         [JsonProperty("chance")]
-        public double Chance;
+        public object Chance;
     }
 
     public class EnemyModTable
