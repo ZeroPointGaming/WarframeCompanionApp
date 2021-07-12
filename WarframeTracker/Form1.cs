@@ -11,11 +11,15 @@ using WarframeTracker.WebInterface;
 namespace WarframeTracker
 {
     /// <summary> ACTIVE BUGS DIRECTORY
-    /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on. (no damage, components or drop data)
-    /// [Identified] Necrophage frames dont have images yet.
     /// [Partial-Fixed] Necrophage frames dont contain components, components need to be reset between each changed frame.
     /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
     /// [Identified] Relics expiry time is off in WorldSpace
+    /// </summary>
+
+    /// <summary> THINGS THAT ARENT BUGS BUT NEED FIXING
+    /// [Identified] Banshee has no component drop data.
+    /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on. (no damage, components or drop data)
+    /// [Identified] Necrophage frames dont have images yet.
     /// </summary>
 
     /// <summary> TODO List
@@ -23,12 +27,12 @@ namespace WarframeTracker
     /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
     /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
     /// add riven disposition to weapons (OmegaAttenuation)
+    /// All non prime warframes have an empty blueprint information, this needs to be handled in a seperate way.
     /// 
     /// Future: Rivens integration
     /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
     /// Future: Integrate apis into a twitch bot so warframe streamers can have a ton of chat commands to check out stuff such as prices or drop info or even primevault info
     /// </summary>
-
 
     public partial class Form1 : Form
     {
@@ -37,7 +41,6 @@ namespace WarframeTracker
         Debug.Debug Debugger = new Debug.Debug();
         public string local_Json_directory = Environment.CurrentDirectory.ToString() + "/data/json";
         public string local_media_directory = Environment.CurrentDirectory.ToString() + "/data/img/";
-        public bool DebugMode = true;
 
         private List<Items.Warframes.Root> Warframes;
         private List<Items.PrimaryWeapons.Root> Primary_Weapons;
@@ -52,6 +55,8 @@ namespace WarframeTracker
         private List<Items.Mods.Root> Mods;
 
         private ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
+
+        private string line_seperator = $"---------------------------------------------------------------{Environment.NewLine}";
         #endregion
 
         #region Form Events
@@ -69,12 +74,6 @@ namespace WarframeTracker
             SecondaryWeaponsComboBox.SelectedIndex = 0;
             MeleeWeaponsComboBox.SelectedIndex = 0;
             CompanionsComboBox.SelectedIndex = 0;
-
-            List<string> DropList = SearchPrimeRelicItems("Ash Prime Blueprint");
-            for (int i = 0; i < DropList.Count;i++)
-            {
-                MessageBox.Show(DropList[i].ToString());
-            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -99,10 +98,8 @@ namespace WarframeTracker
             ChassCompImgBox.BackgroundImage = null;
             SysCompImgBox.BackgroundImage = null;
             NueroCompImgBox.BackgroundImage = null;
-            FrameBPTxtBox.Text = String.Empty;
-            FrameChassTxtBox.Text = String.Empty;
-            FrameNueroTxtBox.Text = String.Empty;
-            FrameSysTxtBox.Text = String.Empty;
+            WarframeComponentContainer.Text = String.Empty;
+            WarframeComponentTxt.Text = String.Empty;
             #endregion
 
             try
@@ -110,6 +107,7 @@ namespace WarframeTracker
                 #region Set Static Variables
                 Items.Warframes.Root frame = GlobalData.WarframeDatabase[$"{WarframeComboBox.SelectedItem}"];
                 GlobalData.activeItemName = frame.Name;
+                WarframeComponentContainer.Text = $"{frame.Name} Components";
                 #endregion
 
                 #region Set Objct Image
@@ -149,65 +147,118 @@ namespace WarframeTracker
                         {
                             case "Blueprint":
                                 BPComponentImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                FrameBPTxtBox.Text = WebManager.GetBlueprintInfo(frame.Name);
 
                                 if (frame.Name.ToLower().Contains("prime"))
                                 {
                                     GenerateOrderMenu(frame.Name, "Blueprint");
+
+                                    if (comp.Drops != null)
+                                    {
+                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Blueprint");
+                                        for (int i = 0; i < RelicLocations.Count; i++)
+                                        {
+                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
+                                        }
+                                        WarframeComponentTxt.Text += line_seperator;
+                                    }
+                                }
+                                else
+                                {
+                                    if (comp.Drops != null)
+                                    {
+                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
+                                    }
+                                    else
+                                    {
+                                        WarframeComponentTxt.Text += $"Blueprint Information Missing, Coming Soon!{Environment.NewLine}";
+                                    }
                                 }
                                 break;
                             case "Chassis":
                                 ChassCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                FrameChassTxtBox.Text = "";
-
-                                if (comp.Drops != null)
-                                {
-                                    FrameChassTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                }
-                                else
-                                {
-                                    FrameChassTxtBox.Text = "Information Missing, Coming Soon!";
-                                }
 
                                 if (frame.Name.ToLower().Contains("prime"))
                                 {
                                     GenerateOrderMenu(frame.Name, "Chassis");
+
+                                    if (comp.Drops != null)
+                                    {
+                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Chassis");
+                                        for (int i = 0; i < RelicLocations.Count; i++)
+                                        {
+                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
+                                        }
+                                        WarframeComponentTxt.Text += line_seperator;
+                                    }
+                                }
+                                else
+                                {
+                                    if (comp.Drops != null)
+                                    {
+                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
+                                    }
+                                    else
+                                    {
+                                        WarframeComponentTxt.Text += $"Chassis Information Missing, Coming Soon!{Environment.NewLine}";
+                                    }
                                 }
                                 break;
                             case "Neuroptics":
                                 NueroCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                FrameNueroTxtBox.Text = "";
-
-                                if (comp.Drops != null)
-                                {
-                                    FrameNueroTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                }
-                                else
-                                {
-                                    FrameNueroTxtBox.Text = "Information Missing, Coming Soon!";
-                                }
 
                                 if (frame.Name.ToLower().Contains("prime"))
                                 {
                                     GenerateOrderMenu(frame.Name, "Neuroptics");
+
+                                    if (comp.Drops != null)
+                                    {
+                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Neuroptics");
+                                        for (int i = 0; i < RelicLocations.Count; i++)
+                                        {
+                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
+                                        }
+                                        WarframeComponentTxt.Text += line_seperator;
+                                    }
+                                }
+                                else
+                                {
+                                    if (comp.Drops != null)
+                                    {
+                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
+                                    }
+                                    else
+                                    {
+                                        WarframeComponentTxt.Text += $"Neuroptics Information Missing, Coming Soon!{Environment.NewLine}";
+                                    }
                                 }
                                 break;
                             case "Systems":
                                 SysCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-                                FrameSysTxtBox.Text = "";
-
-                                if (comp.Drops != null)
-                                {
-                                    FrameSysTxtBox.Text = $"{comp.Description} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}";
-                                }
-                                else
-                                {
-                                    FrameSysTxtBox.Text = "Information Missing, Coming Soon!";
-                                }
 
                                 if (frame.Name.ToLower().Contains("prime"))
                                 {
                                     GenerateOrderMenu(frame.Name, "Systems");
+
+                                    if (comp.Drops != null)
+                                    {
+                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Systems");
+                                        for (int i = 0; i < RelicLocations.Count; i++)
+                                        {
+                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
+                                        }
+                                        WarframeComponentTxt.Text += line_seperator;
+                                    }
+                                }
+                                else
+                                {
+                                    if (comp.Drops != null)
+                                    {
+                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
+                                    }
+                                    else
+                                    {
+                                        WarframeComponentTxt.Text += $"Systems Information Missing, Coming Soon!{Environment.NewLine}";
+                                    }
                                 }
                                 break;
                             default:
@@ -219,28 +270,28 @@ namespace WarframeTracker
                 #endregion
 
                 //Debug Info
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Updated UI for {WarframeComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
@@ -403,7 +454,7 @@ namespace WarframeTracker
                                 }
                             }
 
-                            PWCompDataTxt.Text += "----------------------------------------------------------------------" + Environment.NewLine;
+                            PWCompDataTxt.Text += line_seperator;
                         }
                     }
 
@@ -460,28 +511,28 @@ namespace WarframeTracker
                 #endregion
 
                 //Debug Info
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Updated UI for {PrimaryWeaponComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
@@ -602,7 +653,7 @@ namespace WarframeTracker
                                 }
                             }
 
-                            SWComponentDataTxt.Text += $"---------------------------------------------------------------------{Environment.NewLine}";
+                            SWComponentDataTxt.Text += line_seperator;
                         }
                     }
                 }
@@ -700,28 +751,28 @@ namespace WarframeTracker
                 #endregion
 
                 //Debug Info
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Updated UI for {SecondaryWeaponsComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
@@ -941,35 +992,35 @@ namespace WarframeTracker
                                 }
                             }
 
-                            MWWeaponCompDataTxt.Text += $"----------------------------------------------------------------------{Environment.NewLine}";
+                            MWWeaponCompDataTxt.Text += line_seperator;
                         }
                     }
                 }
                 #endregion
 
                 //Debug Info
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
                 }
             }
             catch (System.IO.DirectoryNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
@@ -1178,7 +1229,7 @@ namespace WarframeTracker
 
                         #endregion
                         //Debug Info
-                        if (DebugMode)
+                        if (Properties.Settings.Default.debug_mode)
                         {
                             Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
                         }
@@ -1188,21 +1239,21 @@ namespace WarframeTracker
             }
             catch (System.IO.DirectoryNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.FileNotFoundException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
             catch (System.IO.IOException ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
                 }
@@ -1461,7 +1512,7 @@ namespace WarframeTracker
             }
             catch (Exception ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Error fetching vault data.{Environment.NewLine}Stack Trace: {ex}");
                 }
@@ -1488,7 +1539,7 @@ namespace WarframeTracker
             }
             catch (Exception ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Error fetching drops data.{Environment.NewLine}Stack Trace: {ex}");
                 }
@@ -1501,7 +1552,7 @@ namespace WarframeTracker
         {
             #region GroupBoxes
             groupBox1.BackColor = new_color;
-            groupBox2.BackColor = new_color;
+            WarframeComponentContainer.BackColor = new_color;
             groupBox3.BackColor = new_color;
             groupBox4.BackColor = new_color;
             groupBox5.BackColor = new_color;
@@ -1600,10 +1651,7 @@ namespace WarframeTracker
             CompanionDescriptionTxt.BackColor = new_color; 
             CompanionStatsTxt.BackColor = new_color;
             CopmpanionDropsTxt.BackColor = new_color;
-            FrameBPTxtBox.BackColor = new_color;
-            FrameChassTxtBox.BackColor = new_color;
-            FrameNueroTxtBox.BackColor = new_color;
-            FrameSysTxtBox.BackColor = new_color;
+            WarframeComponentTxt.BackColor = new_color;
             MWCreditsTxt.BackColor = new_color;
             MWDataTxt.BackColor = new_color;
             MWSlot0Txt.BackColor = new_color;
@@ -1696,7 +1744,7 @@ namespace WarframeTracker
         {
             #region GroupBoxes
             groupBox1.ForeColor = new_color;
-            groupBox2.ForeColor = new_color;
+            WarframeComponentContainer.ForeColor = new_color;
             groupBox3.ForeColor = new_color;
             groupBox4.ForeColor = new_color;
             groupBox5.ForeColor = new_color;
@@ -1795,10 +1843,7 @@ namespace WarframeTracker
             CompanionDescriptionTxt.ForeColor = new_color;
             CompanionStatsTxt.ForeColor = new_color;
             CopmpanionDropsTxt.ForeColor = new_color;
-            FrameBPTxtBox.ForeColor = new_color;
-            FrameChassTxtBox.ForeColor = new_color;
-            FrameNueroTxtBox.ForeColor = new_color;
-            FrameSysTxtBox.ForeColor = new_color;
+            WarframeComponentTxt.ForeColor = new_color;
             MWCreditsTxt.ForeColor = new_color;
             MWDataTxt.ForeColor = new_color;
             MWSlot0Txt.ForeColor = new_color;
@@ -2069,7 +2114,7 @@ namespace WarframeTracker
                         {
                             if (Reward.ItemName.Contains(item_name))
                             {
-                                drop_info.Add($"{Reward.ItemName} drops from {GlobalData.DropsData.Relics[i].RelicName} with a {Reward.Chance}% chance.");
+                                drop_info.Add($"{Reward.ItemName} drops from {GlobalData.DropsData.Relics[i].Tier} {GlobalData.DropsData.Relics[i].RelicName} {GlobalData.DropsData.Relics[i].State} with a {Reward.Chance}% chance.");
                             }
                         }
                     }
@@ -2096,7 +2141,7 @@ namespace WarframeTracker
             }
             catch (Exception ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
                     Debugger.Log($"Error searching for prime relic items. {Environment.NewLine}Stack Trace: {ex}");
                 }

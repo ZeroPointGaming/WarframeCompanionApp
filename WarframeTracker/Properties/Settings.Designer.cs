@@ -34,5 +34,17 @@ namespace WarframeTracker.Properties {
                 this["platform"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool debug_mode {
+            get {
+                return ((bool)(this["debug_mode"]));
+            }
+            set {
+                this["debug_mode"] = value;
+            }
+        }
     }
 }

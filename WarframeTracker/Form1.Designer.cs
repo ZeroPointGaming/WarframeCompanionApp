@@ -38,56 +38,31 @@ namespace WarframeTracker
             this.findSystemsOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findBlueprintOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WarframeTrackerTabControl = new MetroFramework.Controls.MetroTabControl();
-            this.SettingsTabPage = new System.Windows.Forms.TabPage();
-            this.ThemeForegroundColorBtn = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ThemeBackgroundColorBtn = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.SwitchPlatformComboBox = new System.Windows.Forms.ComboBox();
-            this.PetsTabPage = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.ComponentDropsContainer = new System.Windows.Forms.GroupBox();
-            this.CopmpanionDropsTxt = new System.Windows.Forms.TextBox();
-            this.CompanionComponentContainer = new System.Windows.Forms.GroupBox();
-            this.CompanionComponentTxt = new System.Windows.Forms.TextBox();
-            this.CompanionStatsContainer = new System.Windows.Forms.GroupBox();
-            this.CompanionStatsTxt = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.CompanionsComboBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.CompanionImageBox = new System.Windows.Forms.PictureBox();
-            this.CompanionDescriptionContainer = new System.Windows.Forms.GroupBox();
-            this.CompanionDescriptionTxt = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.WarframeTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.WarframeComponentContainer = new System.Windows.Forms.GroupBox();
+            this.WarframeComponentTxt = new System.Windows.Forms.TextBox();
             this.WarframeComboBox = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.PassiveAbilityTextbox = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.FrameChassTxtBox = new System.Windows.Forms.TextBox();
-            this.FrameSysTxtBox = new System.Windows.Forms.TextBox();
-            this.FrameNueroTxtBox = new System.Windows.Forms.TextBox();
-            this.ChassCompImgBox = new System.Windows.Forms.PictureBox();
-            this.SysCompImgBox = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.NueroCompImgBox = new System.Windows.Forms.PictureBox();
-            this.FrameBPTxtBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BPComponentImgBox = new System.Windows.Forms.PictureBox();
+            this.ChassCompImgBox = new System.Windows.Forms.PictureBox();
             this.SelectedWarframeImageBox = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SysCompImgBox = new System.Windows.Forms.PictureBox();
             this.WarframeAbilityGroupbox4 = new System.Windows.Forms.GroupBox();
             this.WarframeAbilityTextbox4 = new System.Windows.Forms.TextBox();
             this.WarframeAbilityGroupbox3 = new System.Windows.Forms.GroupBox();
             this.WarframeAbilityTextbox3 = new System.Windows.Forms.TextBox();
+            this.NueroCompImgBox = new System.Windows.Forms.PictureBox();
             this.WarframeAbilityGroupbox2 = new System.Windows.Forms.GroupBox();
             this.WarframeAbilityTextbox2 = new System.Windows.Forms.TextBox();
             this.WarframeAbilityGroupbox1 = new System.Windows.Forms.GroupBox();
             this.WarframeAbilityTextBox1 = new System.Windows.Forms.TextBox();
+            this.BPComponentImgBox = new System.Windows.Forms.PictureBox();
             this.PrimWeaponsTabPage = new System.Windows.Forms.TabPage();
             this.PrimaryWeaponContainer = new System.Windows.Forms.GroupBox();
             this.PWComponentContainer = new System.Windows.Forms.GroupBox();
@@ -181,6 +156,21 @@ namespace WarframeTracker
             this.MWCreditsImg = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.MWImageBox = new System.Windows.Forms.PictureBox();
+            this.PetsTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.ComponentDropsContainer = new System.Windows.Forms.GroupBox();
+            this.CopmpanionDropsTxt = new System.Windows.Forms.TextBox();
+            this.CompanionComponentContainer = new System.Windows.Forms.GroupBox();
+            this.CompanionComponentTxt = new System.Windows.Forms.TextBox();
+            this.CompanionStatsContainer = new System.Windows.Forms.GroupBox();
+            this.CompanionStatsTxt = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CompanionsComboBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.CompanionImageBox = new System.Windows.Forms.PictureBox();
+            this.CompanionDescriptionContainer = new System.Windows.Forms.GroupBox();
+            this.CompanionDescriptionTxt = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.WorldStatePage = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.SyndicateInfoBox = new System.Windows.Forms.TextBox();
@@ -254,32 +244,31 @@ namespace WarframeTracker
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.SettingsTabPage = new System.Windows.Forms.TabPage();
+            this.ThemeForegroundColorBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ThemeBackgroundColorBtn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SwitchPlatformComboBox = new System.Windows.Forms.ComboBox();
             this.CraftingGuidesTabPage = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.FindOrdersMenu.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
-            this.SettingsTabPage.SuspendLayout();
-            this.PetsTabPage.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.ComponentDropsContainer.SuspendLayout();
-            this.CompanionComponentContainer.SuspendLayout();
-            this.CompanionStatsContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).BeginInit();
-            this.CompanionDescriptionContainer.SuspendLayout();
             this.WarframeTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.WarframeComponentContainer.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChassCompImgBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SysCompImgBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NueroCompImgBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BPComponentImgBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedWarframeImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SysCompImgBox)).BeginInit();
             this.WarframeAbilityGroupbox4.SuspendLayout();
             this.WarframeAbilityGroupbox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NueroCompImgBox)).BeginInit();
             this.WarframeAbilityGroupbox2.SuspendLayout();
             this.WarframeAbilityGroupbox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BPComponentImgBox)).BeginInit();
             this.PrimWeaponsTabPage.SuspendLayout();
             this.PrimaryWeaponContainer.SuspendLayout();
             this.PWComponentContainer.SuspendLayout();
@@ -334,6 +323,13 @@ namespace WarframeTracker
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MWCreditsImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MWImageBox)).BeginInit();
+            this.PetsTabPage.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.ComponentDropsContainer.SuspendLayout();
+            this.CompanionComponentContainer.SuspendLayout();
+            this.CompanionStatsContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).BeginInit();
+            this.CompanionDescriptionContainer.SuspendLayout();
             this.WorldStatePage.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -377,6 +373,7 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.SettingsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // FindOrdersMenu
@@ -431,14 +428,14 @@ namespace WarframeTracker
             // WarframeTrackerTabControl
             // 
             this.WarframeTrackerTabControl.ContextMenuStrip = this.FindOrdersMenu;
-            this.WarframeTrackerTabControl.Controls.Add(this.SettingsTabPage);
-            this.WarframeTrackerTabControl.Controls.Add(this.PetsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.WarframeTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.PrimWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.SecWeaponsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.MeleeWeaponsTabPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.PetsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.WorldStatePage);
             this.WarframeTrackerTabControl.Controls.Add(this.BuildGuidesPage);
+            this.WarframeTrackerTabControl.Controls.Add(this.SettingsTabPage);
             this.WarframeTrackerTabControl.Controls.Add(this.CraftingGuidesTabPage);
             this.WarframeTrackerTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WarframeTrackerTabControl.Location = new System.Drawing.Point(0, 0);
@@ -447,275 +444,6 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.SelectedIndex = 0;
             this.WarframeTrackerTabControl.Size = new System.Drawing.Size(1459, 900);
             this.WarframeTrackerTabControl.TabIndex = 6;
-            // 
-            // SettingsTabPage
-            // 
-            this.SettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.SettingsTabPage.Controls.Add(this.ThemeForegroundColorBtn);
-            this.SettingsTabPage.Controls.Add(this.label8);
-            this.SettingsTabPage.Controls.Add(this.ThemeBackgroundColorBtn);
-            this.SettingsTabPage.Controls.Add(this.label7);
-            this.SettingsTabPage.Controls.Add(this.label6);
-            this.SettingsTabPage.Controls.Add(this.SwitchPlatformComboBox);
-            this.SettingsTabPage.ForeColor = System.Drawing.Color.White;
-            this.SettingsTabPage.Location = new System.Drawing.Point(4, 35);
-            this.SettingsTabPage.Name = "SettingsTabPage";
-            this.SettingsTabPage.Size = new System.Drawing.Size(1451, 861);
-            this.SettingsTabPage.TabIndex = 5;
-            this.SettingsTabPage.Text = "Settings";
-            // 
-            // ThemeForegroundColorBtn
-            // 
-            this.ThemeForegroundColorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ThemeForegroundColorBtn.Location = new System.Drawing.Point(200, 105);
-            this.ThemeForegroundColorBtn.Name = "ThemeForegroundColorBtn";
-            this.ThemeForegroundColorBtn.Size = new System.Drawing.Size(128, 26);
-            this.ThemeForegroundColorBtn.TabIndex = 5;
-            this.ThemeForegroundColorBtn.Text = "Theme Text Color";
-            this.ThemeForegroundColorBtn.UseVisualStyleBackColor = true;
-            this.ThemeForegroundColorBtn.Click += new System.EventHandler(this.ThemeForegroundColorBtn_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 111);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(143, 15);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Change Theme Text Color";
-            // 
-            // ThemeBackgroundColorBtn
-            // 
-            this.ThemeBackgroundColorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ThemeBackgroundColorBtn.Location = new System.Drawing.Point(200, 70);
-            this.ThemeBackgroundColorBtn.Name = "ThemeBackgroundColorBtn";
-            this.ThemeBackgroundColorBtn.Size = new System.Drawing.Size(128, 26);
-            this.ThemeBackgroundColorBtn.TabIndex = 3;
-            this.ThemeBackgroundColorBtn.Text = "Theme Background";
-            this.ThemeBackgroundColorBtn.UseVisualStyleBackColor = true;
-            this.ThemeBackgroundColorBtn.Click += new System.EventHandler(this.ThemeBackgroundColorBtn_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 76);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(186, 15);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Change Theme Background Color";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 15);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Platform";
-            // 
-            // SwitchPlatformComboBox
-            // 
-            this.SwitchPlatformComboBox.FormattingEnabled = true;
-            this.SwitchPlatformComboBox.Items.AddRange(new object[] {
-            "pc",
-            "ps4",
-            "xb1",
-            "swi"});
-            this.SwitchPlatformComboBox.Location = new System.Drawing.Point(67, 18);
-            this.SwitchPlatformComboBox.Name = "SwitchPlatformComboBox";
-            this.SwitchPlatformComboBox.Size = new System.Drawing.Size(121, 23);
-            this.SwitchPlatformComboBox.TabIndex = 0;
-            this.SwitchPlatformComboBox.Text = "pc";
-            this.SwitchPlatformComboBox.SelectedIndexChanged += new System.EventHandler(this.SwitchPlatformCombobox_SelectedIndexChanged);
-            // 
-            // PetsTabPage
-            // 
-            this.PetsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.PetsTabPage.Controls.Add(this.groupBox7);
-            this.PetsTabPage.ForeColor = System.Drawing.Color.White;
-            this.PetsTabPage.Location = new System.Drawing.Point(4, 35);
-            this.PetsTabPage.Name = "PetsTabPage";
-            this.PetsTabPage.Size = new System.Drawing.Size(1451, 861);
-            this.PetsTabPage.TabIndex = 4;
-            this.PetsTabPage.Text = "Pets / Sentinels";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBox7.Controls.Add(this.ComponentDropsContainer);
-            this.groupBox7.Controls.Add(this.CompanionComponentContainer);
-            this.groupBox7.Controls.Add(this.CompanionStatsContainer);
-            this.groupBox7.Controls.Add(this.CompanionsComboBox);
-            this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.CompanionImageBox);
-            this.groupBox7.Controls.Add(this.CompanionDescriptionContainer);
-            this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox7.ForeColor = System.Drawing.Color.White;
-            this.groupBox7.Location = new System.Drawing.Point(8, 6);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1435, 848);
-            this.groupBox7.TabIndex = 5;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Sentinels And Pets Data";
-            // 
-            // ComponentDropsContainer
-            // 
-            this.ComponentDropsContainer.BackColor = System.Drawing.Color.Transparent;
-            this.ComponentDropsContainer.Controls.Add(this.CopmpanionDropsTxt);
-            this.ComponentDropsContainer.ForeColor = System.Drawing.Color.White;
-            this.ComponentDropsContainer.Location = new System.Drawing.Point(680, 19);
-            this.ComponentDropsContainer.Name = "ComponentDropsContainer";
-            this.ComponentDropsContainer.Size = new System.Drawing.Size(749, 625);
-            this.ComponentDropsContainer.TabIndex = 9;
-            this.ComponentDropsContainer.TabStop = false;
-            this.ComponentDropsContainer.Text = "Drops Data";
-            // 
-            // CopmpanionDropsTxt
-            // 
-            this.CopmpanionDropsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.CopmpanionDropsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CopmpanionDropsTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CopmpanionDropsTxt.ForeColor = System.Drawing.Color.White;
-            this.CopmpanionDropsTxt.Location = new System.Drawing.Point(3, 19);
-            this.CopmpanionDropsTxt.Multiline = true;
-            this.CopmpanionDropsTxt.Name = "CopmpanionDropsTxt";
-            this.CopmpanionDropsTxt.ReadOnly = true;
-            this.CopmpanionDropsTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.CopmpanionDropsTxt.Size = new System.Drawing.Size(743, 603);
-            this.CopmpanionDropsTxt.TabIndex = 1;
-            // 
-            // CompanionComponentContainer
-            // 
-            this.CompanionComponentContainer.BackColor = System.Drawing.Color.Transparent;
-            this.CompanionComponentContainer.Controls.Add(this.CompanionComponentTxt);
-            this.CompanionComponentContainer.ForeColor = System.Drawing.Color.White;
-            this.CompanionComponentContainer.Location = new System.Drawing.Point(419, 19);
-            this.CompanionComponentContainer.Name = "CompanionComponentContainer";
-            this.CompanionComponentContainer.Size = new System.Drawing.Size(255, 326);
-            this.CompanionComponentContainer.TabIndex = 8;
-            this.CompanionComponentContainer.TabStop = false;
-            this.CompanionComponentContainer.Text = "petComponents";
-            // 
-            // CompanionComponentTxt
-            // 
-            this.CompanionComponentTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.CompanionComponentTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CompanionComponentTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CompanionComponentTxt.ForeColor = System.Drawing.Color.White;
-            this.CompanionComponentTxt.Location = new System.Drawing.Point(3, 19);
-            this.CompanionComponentTxt.Multiline = true;
-            this.CompanionComponentTxt.Name = "CompanionComponentTxt";
-            this.CompanionComponentTxt.ReadOnly = true;
-            this.CompanionComponentTxt.Size = new System.Drawing.Size(249, 304);
-            this.CompanionComponentTxt.TabIndex = 1;
-            // 
-            // CompanionStatsContainer
-            // 
-            this.CompanionStatsContainer.BackColor = System.Drawing.Color.Transparent;
-            this.CompanionStatsContainer.Controls.Add(this.CompanionStatsTxt);
-            this.CompanionStatsContainer.Controls.Add(this.textBox2);
-            this.CompanionStatsContainer.ForeColor = System.Drawing.Color.White;
-            this.CompanionStatsContainer.Location = new System.Drawing.Point(6, 474);
-            this.CompanionStatsContainer.Name = "CompanionStatsContainer";
-            this.CompanionStatsContainer.Size = new System.Drawing.Size(407, 170);
-            this.CompanionStatsContainer.TabIndex = 7;
-            this.CompanionStatsContainer.TabStop = false;
-            this.CompanionStatsContainer.Text = "petStats";
-            // 
-            // CompanionStatsTxt
-            // 
-            this.CompanionStatsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.CompanionStatsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CompanionStatsTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CompanionStatsTxt.ForeColor = System.Drawing.Color.White;
-            this.CompanionStatsTxt.Location = new System.Drawing.Point(3, 19);
-            this.CompanionStatsTxt.Multiline = true;
-            this.CompanionStatsTxt.Name = "CompanionStatsTxt";
-            this.CompanionStatsTxt.ReadOnly = true;
-            this.CompanionStatsTxt.Size = new System.Drawing.Size(401, 148);
-            this.CompanionStatsTxt.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(6, 16);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(383, 70);
-            this.textBox2.TabIndex = 0;
-            // 
-            // CompanionsComboBox
-            // 
-            this.CompanionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CompanionsComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CompanionsComboBox.FormattingEnabled = true;
-            this.CompanionsComboBox.Location = new System.Drawing.Point(6, 19);
-            this.CompanionsComboBox.Name = "CompanionsComboBox";
-            this.CompanionsComboBox.Size = new System.Drawing.Size(206, 29);
-            this.CompanionsComboBox.TabIndex = 6;
-            this.CompanionsComboBox.SelectedIndexChanged += new System.EventHandler(this.CompanionsComboBox_SelectedIndexChanged);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1173, 819);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // CompanionImageBox
-            // 
-            this.CompanionImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CompanionImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CompanionImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CompanionImageBox.Location = new System.Drawing.Point(6, 53);
-            this.CompanionImageBox.Name = "CompanionImageBox";
-            this.CompanionImageBox.Size = new System.Drawing.Size(407, 292);
-            this.CompanionImageBox.TabIndex = 0;
-            this.CompanionImageBox.TabStop = false;
-            // 
-            // CompanionDescriptionContainer
-            // 
-            this.CompanionDescriptionContainer.BackColor = System.Drawing.Color.Transparent;
-            this.CompanionDescriptionContainer.Controls.Add(this.CompanionDescriptionTxt);
-            this.CompanionDescriptionContainer.Controls.Add(this.textBox9);
-            this.CompanionDescriptionContainer.ForeColor = System.Drawing.Color.White;
-            this.CompanionDescriptionContainer.Location = new System.Drawing.Point(6, 349);
-            this.CompanionDescriptionContainer.Name = "CompanionDescriptionContainer";
-            this.CompanionDescriptionContainer.Size = new System.Drawing.Size(407, 119);
-            this.CompanionDescriptionContainer.TabIndex = 1;
-            this.CompanionDescriptionContainer.TabStop = false;
-            this.CompanionDescriptionContainer.Text = "petDescription";
-            // 
-            // CompanionDescriptionTxt
-            // 
-            this.CompanionDescriptionTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.CompanionDescriptionTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CompanionDescriptionTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CompanionDescriptionTxt.ForeColor = System.Drawing.Color.White;
-            this.CompanionDescriptionTxt.Location = new System.Drawing.Point(3, 19);
-            this.CompanionDescriptionTxt.Multiline = true;
-            this.CompanionDescriptionTxt.Name = "CompanionDescriptionTxt";
-            this.CompanionDescriptionTxt.ReadOnly = true;
-            this.CompanionDescriptionTxt.Size = new System.Drawing.Size(401, 97);
-            this.CompanionDescriptionTxt.TabIndex = 1;
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.ForeColor = System.Drawing.Color.White;
-            this.textBox9.Location = new System.Drawing.Point(6, 16);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(383, 70);
-            this.textBox9.TabIndex = 0;
             // 
             // WarframeTabPage
             // 
@@ -732,15 +460,23 @@ namespace WarframeTracker
             // groupBox1
             // 
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.WarframeComponentContainer);
             this.groupBox1.Controls.Add(this.WarframeComboBox);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.ChassCompImgBox);
             this.groupBox1.Controls.Add(this.SelectedWarframeImageBox);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.SysCompImgBox);
             this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox4);
             this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox3);
+            this.groupBox1.Controls.Add(this.NueroCompImgBox);
             this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox2);
             this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox1);
+            this.groupBox1.Controls.Add(this.BPComponentImgBox);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
@@ -749,6 +485,48 @@ namespace WarframeTracker
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Warframe Data";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1164, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Chassis";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(934, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Systems";
+            // 
+            // WarframeComponentContainer
+            // 
+            this.WarframeComponentContainer.Controls.Add(this.WarframeComponentTxt);
+            this.WarframeComponentContainer.ForeColor = System.Drawing.Color.White;
+            this.WarframeComponentContainer.Location = new System.Drawing.Point(447, 140);
+            this.WarframeComponentContainer.Name = "WarframeComponentContainer";
+            this.WarframeComponentContainer.Size = new System.Drawing.Size(817, 693);
+            this.WarframeComponentContainer.TabIndex = 7;
+            this.WarframeComponentContainer.TabStop = false;
+            this.WarframeComponentContainer.Text = "Frame.Name Components";
+            // 
+            // WarframeComponentTxt
+            // 
+            this.WarframeComponentTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.WarframeComponentTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WarframeComponentTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WarframeComponentTxt.ForeColor = System.Drawing.Color.White;
+            this.WarframeComponentTxt.Location = new System.Drawing.Point(3, 19);
+            this.WarframeComponentTxt.Multiline = true;
+            this.WarframeComponentTxt.Name = "WarframeComponentTxt";
+            this.WarframeComponentTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.WarframeComponentTxt.Size = new System.Drawing.Size(811, 671);
+            this.WarframeComponentTxt.TabIndex = 1;
             // 
             // WarframeComboBox
             // 
@@ -763,7 +541,7 @@ namespace WarframeTracker
             // button3
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(1173, 819);
+            this.button3.Location = new System.Drawing.Point(1349, 810);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
@@ -794,144 +572,23 @@ namespace WarframeTracker
             this.PassiveAbilityTextbox.Size = new System.Drawing.Size(383, 70);
             this.PassiveAbilityTextbox.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.FrameChassTxtBox);
-            this.groupBox2.Controls.Add(this.FrameSysTxtBox);
-            this.groupBox2.Controls.Add(this.FrameNueroTxtBox);
-            this.groupBox2.Controls.Add(this.ChassCompImgBox);
-            this.groupBox2.Controls.Add(this.SysCompImgBox);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.NueroCompImgBox);
-            this.groupBox2.Controls.Add(this.FrameBPTxtBox);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.BPComponentImgBox);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(419, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1010, 260);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Warframe Components";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(487, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Systems";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(487, 138);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Chassis";
-            // 
-            // FrameChassTxtBox
-            // 
-            this.FrameChassTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.FrameChassTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FrameChassTxtBox.ForeColor = System.Drawing.Color.White;
-            this.FrameChassTxtBox.Location = new System.Drawing.Point(572, 160);
-            this.FrameChassTxtBox.Multiline = true;
-            this.FrameChassTxtBox.Name = "FrameChassTxtBox";
-            this.FrameChassTxtBox.Size = new System.Drawing.Size(324, 79);
-            this.FrameChassTxtBox.TabIndex = 4;
-            // 
-            // FrameSysTxtBox
-            // 
-            this.FrameSysTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.FrameSysTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FrameSysTxtBox.ForeColor = System.Drawing.Color.White;
-            this.FrameSysTxtBox.Location = new System.Drawing.Point(572, 39);
-            this.FrameSysTxtBox.Multiline = true;
-            this.FrameSysTxtBox.Name = "FrameSysTxtBox";
-            this.FrameSysTxtBox.Size = new System.Drawing.Size(324, 79);
-            this.FrameSysTxtBox.TabIndex = 3;
-            // 
-            // FrameNueroTxtBox
-            // 
-            this.FrameNueroTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.FrameNueroTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FrameNueroTxtBox.ForeColor = System.Drawing.Color.White;
-            this.FrameNueroTxtBox.Location = new System.Drawing.Point(123, 160);
-            this.FrameNueroTxtBox.Multiline = true;
-            this.FrameNueroTxtBox.Name = "FrameNueroTxtBox";
-            this.FrameNueroTxtBox.Size = new System.Drawing.Size(324, 79);
-            this.FrameNueroTxtBox.TabIndex = 2;
-            // 
-            // ChassCompImgBox
-            // 
-            this.ChassCompImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ChassCompImgBox.Location = new System.Drawing.Point(466, 160);
-            this.ChassCompImgBox.Name = "ChassCompImgBox";
-            this.ChassCompImgBox.Size = new System.Drawing.Size(100, 79);
-            this.ChassCompImgBox.TabIndex = 0;
-            this.ChassCompImgBox.TabStop = false;
-            // 
-            // SysCompImgBox
-            // 
-            this.SysCompImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SysCompImgBox.Location = new System.Drawing.Point(466, 39);
-            this.SysCompImgBox.Name = "SysCompImgBox";
-            this.SysCompImgBox.Size = new System.Drawing.Size(100, 79);
-            this.SysCompImgBox.TabIndex = 0;
-            this.SysCompImgBox.TabStop = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 138);
+            this.label2.Location = new System.Drawing.Point(693, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Nueroptics";
             // 
-            // NueroCompImgBox
+            // ChassCompImgBox
             // 
-            this.NueroCompImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.NueroCompImgBox.Location = new System.Drawing.Point(17, 160);
-            this.NueroCompImgBox.Name = "NueroCompImgBox";
-            this.NueroCompImgBox.Size = new System.Drawing.Size(100, 79);
-            this.NueroCompImgBox.TabIndex = 0;
-            this.NueroCompImgBox.TabStop = false;
-            // 
-            // FrameBPTxtBox
-            // 
-            this.FrameBPTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.FrameBPTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FrameBPTxtBox.ForeColor = System.Drawing.Color.White;
-            this.FrameBPTxtBox.Location = new System.Drawing.Point(123, 39);
-            this.FrameBPTxtBox.Multiline = true;
-            this.FrameBPTxtBox.Name = "FrameBPTxtBox";
-            this.FrameBPTxtBox.Size = new System.Drawing.Size(324, 79);
-            this.FrameBPTxtBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Blueprint";
-            // 
-            // BPComponentImgBox
-            // 
-            this.BPComponentImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BPComponentImgBox.Location = new System.Drawing.Point(17, 39);
-            this.BPComponentImgBox.Name = "BPComponentImgBox";
-            this.BPComponentImgBox.Size = new System.Drawing.Size(100, 79);
-            this.BPComponentImgBox.TabIndex = 0;
-            this.BPComponentImgBox.TabStop = false;
+            this.ChassCompImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ChassCompImgBox.Location = new System.Drawing.Point(1142, 43);
+            this.ChassCompImgBox.Name = "ChassCompImgBox";
+            this.ChassCompImgBox.Size = new System.Drawing.Size(89, 69);
+            this.ChassCompImgBox.TabIndex = 0;
+            this.ChassCompImgBox.TabStop = false;
             // 
             // SelectedWarframeImageBox
             // 
@@ -945,6 +602,24 @@ namespace WarframeTracker
             this.SelectedWarframeImageBox.Size = new System.Drawing.Size(215, 321);
             this.SelectedWarframeImageBox.TabIndex = 0;
             this.SelectedWarframeImageBox.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(447, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Blueprint";
+            // 
+            // SysCompImgBox
+            // 
+            this.SysCompImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SysCompImgBox.Location = new System.Drawing.Point(916, 43);
+            this.SysCompImgBox.Name = "SysCompImgBox";
+            this.SysCompImgBox.Size = new System.Drawing.Size(92, 69);
+            this.SysCompImgBox.TabIndex = 0;
+            this.SysCompImgBox.TabStop = false;
             // 
             // WarframeAbilityGroupbox4
             // 
@@ -992,6 +667,15 @@ namespace WarframeTracker
             this.WarframeAbilityTextbox3.Size = new System.Drawing.Size(383, 70);
             this.WarframeAbilityTextbox3.TabIndex = 0;
             // 
+            // NueroCompImgBox
+            // 
+            this.NueroCompImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NueroCompImgBox.Location = new System.Drawing.Point(680, 43);
+            this.NueroCompImgBox.Name = "NueroCompImgBox";
+            this.NueroCompImgBox.Size = new System.Drawing.Size(92, 69);
+            this.NueroCompImgBox.TabIndex = 0;
+            this.NueroCompImgBox.TabStop = false;
+            // 
             // WarframeAbilityGroupbox2
             // 
             this.WarframeAbilityGroupbox2.BackColor = System.Drawing.Color.Transparent;
@@ -1037,6 +721,15 @@ namespace WarframeTracker
             this.WarframeAbilityTextBox1.Name = "WarframeAbilityTextBox1";
             this.WarframeAbilityTextBox1.Size = new System.Drawing.Size(383, 70);
             this.WarframeAbilityTextBox1.TabIndex = 0;
+            // 
+            // BPComponentImgBox
+            // 
+            this.BPComponentImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BPComponentImgBox.Location = new System.Drawing.Point(436, 43);
+            this.BPComponentImgBox.Name = "BPComponentImgBox";
+            this.BPComponentImgBox.Size = new System.Drawing.Size(86, 77);
+            this.BPComponentImgBox.TabIndex = 0;
+            this.BPComponentImgBox.TabStop = false;
             // 
             // PrimWeaponsTabPage
             // 
@@ -2064,6 +1757,195 @@ namespace WarframeTracker
             this.MWImageBox.TabIndex = 3;
             this.MWImageBox.TabStop = false;
             // 
+            // PetsTabPage
+            // 
+            this.PetsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.PetsTabPage.Controls.Add(this.groupBox7);
+            this.PetsTabPage.ForeColor = System.Drawing.Color.White;
+            this.PetsTabPage.Location = new System.Drawing.Point(4, 35);
+            this.PetsTabPage.Name = "PetsTabPage";
+            this.PetsTabPage.Size = new System.Drawing.Size(1451, 861);
+            this.PetsTabPage.TabIndex = 4;
+            this.PetsTabPage.Text = "Pets / Sentinels";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox7.Controls.Add(this.ComponentDropsContainer);
+            this.groupBox7.Controls.Add(this.CompanionComponentContainer);
+            this.groupBox7.Controls.Add(this.CompanionStatsContainer);
+            this.groupBox7.Controls.Add(this.CompanionsComboBox);
+            this.groupBox7.Controls.Add(this.button1);
+            this.groupBox7.Controls.Add(this.CompanionImageBox);
+            this.groupBox7.Controls.Add(this.CompanionDescriptionContainer);
+            this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox7.ForeColor = System.Drawing.Color.White;
+            this.groupBox7.Location = new System.Drawing.Point(8, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(1435, 848);
+            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Sentinels And Pets Data";
+            // 
+            // ComponentDropsContainer
+            // 
+            this.ComponentDropsContainer.BackColor = System.Drawing.Color.Transparent;
+            this.ComponentDropsContainer.Controls.Add(this.CopmpanionDropsTxt);
+            this.ComponentDropsContainer.ForeColor = System.Drawing.Color.White;
+            this.ComponentDropsContainer.Location = new System.Drawing.Point(680, 19);
+            this.ComponentDropsContainer.Name = "ComponentDropsContainer";
+            this.ComponentDropsContainer.Size = new System.Drawing.Size(749, 625);
+            this.ComponentDropsContainer.TabIndex = 9;
+            this.ComponentDropsContainer.TabStop = false;
+            this.ComponentDropsContainer.Text = "Drops Data";
+            // 
+            // CopmpanionDropsTxt
+            // 
+            this.CopmpanionDropsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CopmpanionDropsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CopmpanionDropsTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CopmpanionDropsTxt.ForeColor = System.Drawing.Color.White;
+            this.CopmpanionDropsTxt.Location = new System.Drawing.Point(3, 19);
+            this.CopmpanionDropsTxt.Multiline = true;
+            this.CopmpanionDropsTxt.Name = "CopmpanionDropsTxt";
+            this.CopmpanionDropsTxt.ReadOnly = true;
+            this.CopmpanionDropsTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.CopmpanionDropsTxt.Size = new System.Drawing.Size(743, 603);
+            this.CopmpanionDropsTxt.TabIndex = 1;
+            // 
+            // CompanionComponentContainer
+            // 
+            this.CompanionComponentContainer.BackColor = System.Drawing.Color.Transparent;
+            this.CompanionComponentContainer.Controls.Add(this.CompanionComponentTxt);
+            this.CompanionComponentContainer.ForeColor = System.Drawing.Color.White;
+            this.CompanionComponentContainer.Location = new System.Drawing.Point(419, 19);
+            this.CompanionComponentContainer.Name = "CompanionComponentContainer";
+            this.CompanionComponentContainer.Size = new System.Drawing.Size(255, 326);
+            this.CompanionComponentContainer.TabIndex = 8;
+            this.CompanionComponentContainer.TabStop = false;
+            this.CompanionComponentContainer.Text = "petComponents";
+            // 
+            // CompanionComponentTxt
+            // 
+            this.CompanionComponentTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CompanionComponentTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CompanionComponentTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanionComponentTxt.ForeColor = System.Drawing.Color.White;
+            this.CompanionComponentTxt.Location = new System.Drawing.Point(3, 19);
+            this.CompanionComponentTxt.Multiline = true;
+            this.CompanionComponentTxt.Name = "CompanionComponentTxt";
+            this.CompanionComponentTxt.ReadOnly = true;
+            this.CompanionComponentTxt.Size = new System.Drawing.Size(249, 304);
+            this.CompanionComponentTxt.TabIndex = 1;
+            // 
+            // CompanionStatsContainer
+            // 
+            this.CompanionStatsContainer.BackColor = System.Drawing.Color.Transparent;
+            this.CompanionStatsContainer.Controls.Add(this.CompanionStatsTxt);
+            this.CompanionStatsContainer.Controls.Add(this.textBox2);
+            this.CompanionStatsContainer.ForeColor = System.Drawing.Color.White;
+            this.CompanionStatsContainer.Location = new System.Drawing.Point(6, 474);
+            this.CompanionStatsContainer.Name = "CompanionStatsContainer";
+            this.CompanionStatsContainer.Size = new System.Drawing.Size(407, 170);
+            this.CompanionStatsContainer.TabIndex = 7;
+            this.CompanionStatsContainer.TabStop = false;
+            this.CompanionStatsContainer.Text = "petStats";
+            // 
+            // CompanionStatsTxt
+            // 
+            this.CompanionStatsTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CompanionStatsTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CompanionStatsTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanionStatsTxt.ForeColor = System.Drawing.Color.White;
+            this.CompanionStatsTxt.Location = new System.Drawing.Point(3, 19);
+            this.CompanionStatsTxt.Multiline = true;
+            this.CompanionStatsTxt.Name = "CompanionStatsTxt";
+            this.CompanionStatsTxt.ReadOnly = true;
+            this.CompanionStatsTxt.Size = new System.Drawing.Size(401, 148);
+            this.CompanionStatsTxt.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(6, 16);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(383, 70);
+            this.textBox2.TabIndex = 0;
+            // 
+            // CompanionsComboBox
+            // 
+            this.CompanionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CompanionsComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CompanionsComboBox.FormattingEnabled = true;
+            this.CompanionsComboBox.Location = new System.Drawing.Point(6, 19);
+            this.CompanionsComboBox.Name = "CompanionsComboBox";
+            this.CompanionsComboBox.Size = new System.Drawing.Size(206, 29);
+            this.CompanionsComboBox.TabIndex = 6;
+            this.CompanionsComboBox.SelectedIndexChanged += new System.EventHandler(this.CompanionsComboBox_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(1173, 819);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // CompanionImageBox
+            // 
+            this.CompanionImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CompanionImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CompanionImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CompanionImageBox.Location = new System.Drawing.Point(6, 53);
+            this.CompanionImageBox.Name = "CompanionImageBox";
+            this.CompanionImageBox.Size = new System.Drawing.Size(407, 292);
+            this.CompanionImageBox.TabIndex = 0;
+            this.CompanionImageBox.TabStop = false;
+            // 
+            // CompanionDescriptionContainer
+            // 
+            this.CompanionDescriptionContainer.BackColor = System.Drawing.Color.Transparent;
+            this.CompanionDescriptionContainer.Controls.Add(this.CompanionDescriptionTxt);
+            this.CompanionDescriptionContainer.Controls.Add(this.textBox9);
+            this.CompanionDescriptionContainer.ForeColor = System.Drawing.Color.White;
+            this.CompanionDescriptionContainer.Location = new System.Drawing.Point(6, 349);
+            this.CompanionDescriptionContainer.Name = "CompanionDescriptionContainer";
+            this.CompanionDescriptionContainer.Size = new System.Drawing.Size(407, 119);
+            this.CompanionDescriptionContainer.TabIndex = 1;
+            this.CompanionDescriptionContainer.TabStop = false;
+            this.CompanionDescriptionContainer.Text = "petDescription";
+            // 
+            // CompanionDescriptionTxt
+            // 
+            this.CompanionDescriptionTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CompanionDescriptionTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CompanionDescriptionTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanionDescriptionTxt.ForeColor = System.Drawing.Color.White;
+            this.CompanionDescriptionTxt.Location = new System.Drawing.Point(3, 19);
+            this.CompanionDescriptionTxt.Multiline = true;
+            this.CompanionDescriptionTxt.Name = "CompanionDescriptionTxt";
+            this.CompanionDescriptionTxt.ReadOnly = true;
+            this.CompanionDescriptionTxt.Size = new System.Drawing.Size(401, 97);
+            this.CompanionDescriptionTxt.TabIndex = 1;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.ForeColor = System.Drawing.Color.White;
+            this.textBox9.Location = new System.Drawing.Point(6, 16);
+            this.textBox9.Multiline = true;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(383, 70);
+            this.textBox9.TabIndex = 0;
+            // 
             // WorldStatePage
             // 
             this.WorldStatePage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
@@ -2835,6 +2717,86 @@ namespace WarframeTracker
             this.pictureBox8.TabIndex = 8;
             this.pictureBox8.TabStop = false;
             // 
+            // SettingsTabPage
+            // 
+            this.SettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.SettingsTabPage.Controls.Add(this.ThemeForegroundColorBtn);
+            this.SettingsTabPage.Controls.Add(this.label8);
+            this.SettingsTabPage.Controls.Add(this.ThemeBackgroundColorBtn);
+            this.SettingsTabPage.Controls.Add(this.label7);
+            this.SettingsTabPage.Controls.Add(this.label6);
+            this.SettingsTabPage.Controls.Add(this.SwitchPlatformComboBox);
+            this.SettingsTabPage.ForeColor = System.Drawing.Color.White;
+            this.SettingsTabPage.Location = new System.Drawing.Point(4, 35);
+            this.SettingsTabPage.Name = "SettingsTabPage";
+            this.SettingsTabPage.Size = new System.Drawing.Size(1451, 861);
+            this.SettingsTabPage.TabIndex = 5;
+            this.SettingsTabPage.Text = "Settings";
+            // 
+            // ThemeForegroundColorBtn
+            // 
+            this.ThemeForegroundColorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ThemeForegroundColorBtn.Location = new System.Drawing.Point(200, 105);
+            this.ThemeForegroundColorBtn.Name = "ThemeForegroundColorBtn";
+            this.ThemeForegroundColorBtn.Size = new System.Drawing.Size(128, 26);
+            this.ThemeForegroundColorBtn.TabIndex = 5;
+            this.ThemeForegroundColorBtn.Text = "Theme Text Color";
+            this.ThemeForegroundColorBtn.UseVisualStyleBackColor = true;
+            this.ThemeForegroundColorBtn.Click += new System.EventHandler(this.ThemeForegroundColorBtn_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 111);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(143, 15);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Change Theme Text Color";
+            // 
+            // ThemeBackgroundColorBtn
+            // 
+            this.ThemeBackgroundColorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ThemeBackgroundColorBtn.Location = new System.Drawing.Point(200, 70);
+            this.ThemeBackgroundColorBtn.Name = "ThemeBackgroundColorBtn";
+            this.ThemeBackgroundColorBtn.Size = new System.Drawing.Size(128, 26);
+            this.ThemeBackgroundColorBtn.TabIndex = 3;
+            this.ThemeBackgroundColorBtn.Text = "Theme Background";
+            this.ThemeBackgroundColorBtn.UseVisualStyleBackColor = true;
+            this.ThemeBackgroundColorBtn.Click += new System.EventHandler(this.ThemeBackgroundColorBtn_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 76);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(186, 15);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Change Theme Background Color";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 15);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Platform";
+            // 
+            // SwitchPlatformComboBox
+            // 
+            this.SwitchPlatformComboBox.FormattingEnabled = true;
+            this.SwitchPlatformComboBox.Items.AddRange(new object[] {
+            "pc",
+            "ps4",
+            "xb1",
+            "swi"});
+            this.SwitchPlatformComboBox.Location = new System.Drawing.Point(67, 18);
+            this.SwitchPlatformComboBox.Name = "SwitchPlatformComboBox";
+            this.SwitchPlatformComboBox.Size = new System.Drawing.Size(121, 23);
+            this.SwitchPlatformComboBox.TabIndex = 0;
+            this.SwitchPlatformComboBox.Text = "pc";
+            this.SwitchPlatformComboBox.SelectedIndexChanged += new System.EventHandler(this.SwitchPlatformCombobox_SelectedIndexChanged);
+            // 
             // CraftingGuidesTabPage
             // 
             this.CraftingGuidesTabPage.Location = new System.Drawing.Point(4, 35);
@@ -2854,38 +2816,26 @@ namespace WarframeTracker
             this.Load += new System.EventHandler(this.Form1_Load);
             this.FindOrdersMenu.ResumeLayout(false);
             this.WarframeTrackerTabControl.ResumeLayout(false);
-            this.SettingsTabPage.ResumeLayout(false);
-            this.SettingsTabPage.PerformLayout();
-            this.PetsTabPage.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.ComponentDropsContainer.ResumeLayout(false);
-            this.ComponentDropsContainer.PerformLayout();
-            this.CompanionComponentContainer.ResumeLayout(false);
-            this.CompanionComponentContainer.PerformLayout();
-            this.CompanionStatsContainer.ResumeLayout(false);
-            this.CompanionStatsContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).EndInit();
-            this.CompanionDescriptionContainer.ResumeLayout(false);
-            this.CompanionDescriptionContainer.PerformLayout();
             this.WarframeTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.WarframeComponentContainer.ResumeLayout(false);
+            this.WarframeComponentContainer.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChassCompImgBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SysCompImgBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NueroCompImgBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BPComponentImgBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedWarframeImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SysCompImgBox)).EndInit();
             this.WarframeAbilityGroupbox4.ResumeLayout(false);
             this.WarframeAbilityGroupbox4.PerformLayout();
             this.WarframeAbilityGroupbox3.ResumeLayout(false);
             this.WarframeAbilityGroupbox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NueroCompImgBox)).EndInit();
             this.WarframeAbilityGroupbox2.ResumeLayout(false);
             this.WarframeAbilityGroupbox2.PerformLayout();
             this.WarframeAbilityGroupbox1.ResumeLayout(false);
             this.WarframeAbilityGroupbox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BPComponentImgBox)).EndInit();
             this.PrimWeaponsTabPage.ResumeLayout(false);
             this.PrimaryWeaponContainer.ResumeLayout(false);
             this.PWComponentContainer.ResumeLayout(false);
@@ -2967,6 +2917,17 @@ namespace WarframeTracker
             this.panel20.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MWCreditsImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MWImageBox)).EndInit();
+            this.PetsTabPage.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.ComponentDropsContainer.ResumeLayout(false);
+            this.ComponentDropsContainer.PerformLayout();
+            this.CompanionComponentContainer.ResumeLayout(false);
+            this.CompanionComponentContainer.PerformLayout();
+            this.CompanionStatsContainer.ResumeLayout(false);
+            this.CompanionStatsContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).EndInit();
+            this.CompanionDescriptionContainer.ResumeLayout(false);
+            this.CompanionDescriptionContainer.PerformLayout();
             this.WorldStatePage.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
@@ -3023,6 +2984,8 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.SettingsTabPage.ResumeLayout(false);
+            this.SettingsTabPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3049,7 +3012,6 @@ namespace WarframeTracker
         private System.Windows.Forms.GroupBox WarframeAbilityGroupbox1;
         private System.Windows.Forms.TextBox WarframeAbilityTextBox1;
         private System.Windows.Forms.PictureBox SelectedWarframeImageBox;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox PassiveAbilityTextbox;
         private System.Windows.Forms.GroupBox NightwaveChalContainer;
@@ -3058,10 +3020,6 @@ namespace WarframeTracker
         private System.Windows.Forms.PictureBox ChassCompImgBox;
         private System.Windows.Forms.PictureBox NueroCompImgBox;
         private System.Windows.Forms.PictureBox BPComponentImgBox;
-        private System.Windows.Forms.TextBox FrameSysTxtBox;
-        private System.Windows.Forms.TextBox FrameChassTxtBox;
-        private System.Windows.Forms.TextBox FrameNueroTxtBox;
-        private System.Windows.Forms.TextBox FrameBPTxtBox;
         private System.Windows.Forms.ToolStripMenuItem warframeMarketToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findSetOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findNueroOrdersToolStripMenuItem;
@@ -3255,6 +3213,8 @@ namespace WarframeTracker
         private System.Windows.Forms.Button ThemeForegroundColorBtn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.GroupBox WarframeComponentContainer;
+        private System.Windows.Forms.TextBox WarframeComponentTxt;
     }
 }
 

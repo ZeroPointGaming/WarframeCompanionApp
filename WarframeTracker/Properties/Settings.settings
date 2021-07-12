@@ -5,5 +5,8 @@
     <Setting Name="platform" Type="System.String" Scope="User">
       <Value Profile="(Default)">pc</Value>
     </Setting>
+    <Setting Name="debug_mode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
