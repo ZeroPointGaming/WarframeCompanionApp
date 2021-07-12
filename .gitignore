@@ -1,4 +1,5 @@
 
 WarframeTracker/bin/Debug/*
-.vs/WarframeTracker/v16/.suo
+WarframeTracker/bin/Release/*
+.vs/*
 WarframeTracker/obj/Debug/net5.0-windows/WarframeTracker.csproj.AssemblyReference.cache
