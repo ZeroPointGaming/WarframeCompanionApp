@@ -1556,6 +1556,10 @@ namespace WarframeTracker
         #endregion
 
         #region Settings Code
+        /// <summary>
+        /// Updates the background color for application controls.
+        /// </summary>
+        /// <param name="new_color">Color object input</param>
         private void UpdateBackgroundColor(Color new_color)
         {
             #region GroupBoxes
@@ -1740,6 +1744,10 @@ namespace WarframeTracker
             #endregion
         }
 
+        /// <summary>
+        /// Updates the foreground color for application controls.
+        /// </summary>
+        /// <param name="new_color">Color object input</param>
         private void UpdateForeColor(Color new_color)
         {
             #region GroupBoxes
@@ -1952,6 +1960,12 @@ namespace WarframeTracker
         #endregion
 
         #region ContextMenu Code
+        /// <summary>
+        /// Open the orders form and display open orders for the input item and order type.
+        /// </summary>
+        /// <param name="item_name">Item/Frame Name</param>
+        /// <param name="order_type">Order Type Parameter</param>
+        /// <param name="tradeable">Unused boolean</param>
         private void FindOrderInformation(string item_name, string order_type, bool tradeable)
         {
             GlobalData.activeItemName = $"{item_name}";
@@ -1959,6 +1973,11 @@ namespace WarframeTracker
             new OrderSheet().Show();
         }
 
+        /// <summary>
+        /// Generates the context menu for the orders
+        /// </summary>
+        /// <param name="item_name">Item name</param>
+        /// <param name="order_name">Order type</param>
         private void GenerateOrderMenu(string item_name, string order_name)
         {
             switch (order_name)
@@ -2064,6 +2083,11 @@ namespace WarframeTracker
             }
         }
 
+        /// <summary>
+        /// Checks to see if a specific item is in the vaulted items data.
+        /// </summary>
+        /// <param name="item_name">Item Name</param>
+        /// <returns></returns>
         private string GetVaultInformation(string item_name)
         {
             if (GlobalData.VaultData.Data != null)
@@ -2092,6 +2116,11 @@ namespace WarframeTracker
             return $"{item_name} is not currently vaulted";
         }
 
+        /// <summary>
+        /// Returns a list of prime relic drop info strings given an input item name.
+        /// </summary>
+        /// <param name="item_name"></param>
+        /// <returns></returns>
         private List<string> SearchPrimeRelicItems(string item_name)
         {
             List<string> drop_info = new List<string>();
@@ -2157,6 +2186,11 @@ namespace WarframeTracker
             }
         }
 
+        /// <summary>
+        /// Returns the desired context menu function given the input order type.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GetContextMenuFunction(object sender, EventArgs e)
         {
             if (sender.ToString().Contains("Vault Status"))
