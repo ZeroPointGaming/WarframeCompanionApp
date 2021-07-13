@@ -1410,22 +1410,24 @@ namespace WarframeTracker
             PrimaryWeaponComboBox.Items.Clear();
             MeleeWeaponsComboBox.Items.Clear();
             SecondaryWeaponsComboBox.Items.Clear();
+            CompanionsComboBox.Items.Clear();
             #endregion
 
             #region IO Operations
             try
             {
-                Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json"));
-                Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json"));
-                Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json"));
-                Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json"));
-                Sentinel_List = JsonConvert.DeserializeObject<List<Items.Sentinels.Root>>(File.ReadAllText(local_Json_directory + "/Sentinels.json"));
-                Pets_List = JsonConvert.DeserializeObject<List<Items.Pets.Root>>(File.ReadAllText(local_Json_directory + "/Pets.json"));
-                Archwings = JsonConvert.DeserializeObject<List<Items.Archwing.Root>>(File.ReadAllText(local_Json_directory + "/Archwing.json"));
-                ArchGuns = JsonConvert.DeserializeObject<List<Items.ArcGun.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Gun.json"));
-                ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json"));
-                Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json"));
-                Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json"));
+                if (Warframes.Count < 1) { Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json")); }
+                if (Primary_Weapons.Count < 1) { Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json")); }
+                if (Secondary_Weapons.Count < 1) { Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json")); }
+                if (Melee_Weapons.Count < 1) { Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json")); }
+                if (Sentinel_List.Count < 1) { Sentinel_List = JsonConvert.DeserializeObject<List<Items.Sentinels.Root>>(File.ReadAllText(local_Json_directory + "/Sentinels.json")); }
+                if (Pets_List.Count < 1) { Pets_List = JsonConvert.DeserializeObject<List<Items.Pets.Root>>(File.ReadAllText(local_Json_directory + "/Pets.json")); }
+                if (Archwings.Count < 1) { Archwings = JsonConvert.DeserializeObject<List<Items.Archwing.Root>>(File.ReadAllText(local_Json_directory + "/Archwing.json")); }
+                if (ArchGuns.Count < 1) { ArchGuns = JsonConvert.DeserializeObject<List<Items.ArcGun.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Gun.json")); }
+                if (ArcMelee.Count < 1) { ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json")); }
+                if (Arcanes.Count < 1) { Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json")); }
+                if (Mods.Count < 1) { Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json")); }
+                //if (Enemies.Count < 1) { }
             }
             catch (Exception ex)
             {
@@ -1438,8 +1440,8 @@ namespace WarframeTracker
             {
                 foreach (Items.Warframes.Root frame in Warframes)
                 {
+                    if (!GlobalData.WarframeDatabase.ContainsKey(frame.Name)) { GlobalData.WarframeDatabase.Add(frame.Name, frame); }
                     WarframeComboBox.Items.Add(frame.Name.ToString());
-                    GlobalData.WarframeDatabase.Add(frame.Name, frame);
                 }
             }
             
@@ -1447,7 +1449,7 @@ namespace WarframeTracker
             {
                 foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
                 {
-                    GlobalData.PrimaryWeaponDatabase.Add(Primary_Weapon.Name, Primary_Weapon);
+                    if (!GlobalData.PrimaryWeaponDatabase.ContainsKey(Primary_Weapon.Name)) { GlobalData.PrimaryWeaponDatabase.Add(Primary_Weapon.Name, Primary_Weapon); }
 
                     if (Primary_Weapon.ProductCategory != "SentinelWeapons")
                     {
@@ -1460,7 +1462,7 @@ namespace WarframeTracker
             {
                 foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
                 {
-                    GlobalData.SecondaryWeaponDatabase.Add(Secondary_Weapon.Name, Secondary_Weapon);
+                    if (!GlobalData.SecondaryWeaponDatabase.ContainsKey(Secondary_Weapon.Name)) { GlobalData.SecondaryWeaponDatabase.Add(Secondary_Weapon.Name, Secondary_Weapon); }
 
                     if (Secondary_Weapon.ProductCategory != "SentinelWeapons")
                     {
@@ -1473,7 +1475,7 @@ namespace WarframeTracker
             {
                 foreach (Items.Melee.Root Melee_Weapon in Melee_Weapons)
                 {
-                    GlobalData.MeleeWeaponDatabase.Add(Melee_Weapon.Name, Melee_Weapon);
+                    if (!GlobalData.MeleeWeaponDatabase.ContainsKey(Melee_Weapon.Name)) { GlobalData.MeleeWeaponDatabase.Add(Melee_Weapon.Name, Melee_Weapon); }
                     MeleeWeaponsComboBox.Items.Add(Melee_Weapon.Name.ToString());
                 }
             }
@@ -1482,7 +1484,7 @@ namespace WarframeTracker
             {
                 foreach (Items.Pets.Root Pet in Pets_List)
                 {
-                    GlobalData.PetsDatabase.Add(Pet.Name, Pet);
+                    if (!GlobalData.PetsDatabase.ContainsKey(Pet.Name)) { GlobalData.PetsDatabase.Add(Pet.Name, Pet); }
                     CompanionsComboBox.Items.Add(Pet.Name);
                 }
             }
@@ -1491,7 +1493,7 @@ namespace WarframeTracker
             {
                 foreach (Items.Sentinels.Root Sentinel in Sentinel_List)
                 {
-                    GlobalData.SentinelsDatabase.Add(Sentinel.Name, Sentinel);
+                    if (!GlobalData.SentinelsDatabase.ContainsKey(Sentinel.Name)) { GlobalData.SentinelsDatabase.Add(Sentinel.Name, Sentinel); }
                     CompanionsComboBox.Items.Add(Sentinel.Name);
                 }
             }
@@ -1565,8 +1567,6 @@ namespace WarframeTracker
             #region GroupBoxes
             groupBox1.BackColor = new_color;
             WarframeComponentContainer.BackColor = new_color;
-            groupBox4.BackColor = new_color;
-            groupBox5.BackColor = new_color;
             groupBox6.BackColor = new_color;
             groupBox7.BackColor = new_color;
             groupBox8.BackColor = new_color;
@@ -1599,13 +1599,11 @@ namespace WarframeTracker
             #region TabPages
             SettingsTabPage.BackColor = new_color;
             WarframeTabPage.BackColor = new_color;
-            CraftingGuidesTabPage.BackColor = new_color;
             MeleeWeaponsTabPage.BackColor = new_color;
             PetsTabPage.BackColor = new_color;
             PrimWeaponsTabPage.BackColor = new_color;
             SecWeaponsTabPage.BackColor = new_color;
             WorldStatePage.BackColor = new_color;
-            BuildGuidesPage.BackColor = new_color;
             #endregion
 
             #region Labels
@@ -1619,25 +1617,6 @@ namespace WarframeTracker
             label7.BackColor = new_color;
             label8.BackColor = new_color;
             label9.BackColor = new_color;
-            AuraSlotLabel.BackColor = new_color;
-            ExilusSlotLabel.BackColor = new_color;
-            ModSlot01Label.BackColor = new_color;
-            ModSlot02Label.BackColor = new_color;
-            ModSlot03Label.BackColor = new_color;
-            ModSlot04Label.BackColor = new_color;
-            ModSlot05Label.BackColor = new_color;
-            ModSlot06Label.BackColor = new_color;
-            ModSlot07Label.BackColor = new_color;
-            ModSlot08Label.BackColor = new_color;
-            SpecialExilusSlotLabel.BackColor = new_color;
-            SpecialModSlot01Label.BackColor = new_color;
-            SpecialModSlot02Label.BackColor = new_color;
-            SpecialModSlot03Label.BackColor = new_color;
-            SpecialModSlot04Label.BackColor = new_color;
-            SpecialModSlot05Label.BackColor = new_color;
-            SpecialModSlot06Label.BackColor = new_color;
-            SpecialModSlot7Label.BackColor = new_color;
-            SpecialModSlot8Label.BackColor = new_color;
             #endregion
 
             #region TextBoxes
@@ -1714,33 +1693,6 @@ namespace WarframeTracker
             SWSlot02Img.BackColor = new_color;
             SWSlot03Img.BackColor = new_color;
             SWSlot04Img.BackColor = new_color;
-            pictureBox1.BackColor = new_color;
-            pictureBox2.BackColor = new_color;
-            pictureBox3.BackColor = new_color;
-            pictureBox4.BackColor = new_color;
-            pictureBox5.BackColor = new_color;
-            pictureBox6.BackColor = new_color;
-            pictureBox7.BackColor = new_color;
-            pictureBox8.BackColor = new_color;
-            pictureBox9.BackColor = new_color;
-            pictureBox10.BackColor = new_color;
-            pictureBox11.BackColor = new_color;
-            pictureBox12.BackColor = new_color;
-            pictureBox13.BackColor = new_color;
-            pictureBox14.BackColor = new_color;
-            pictureBox15.BackColor = new_color;
-            pictureBox16.BackColor = new_color;
-            pictureBox17.BackColor = new_color;
-            pictureBox18.BackColor = new_color;
-            pictureBox21.BackColor = new_color;
-            pictureBox20.BackColor = new_color;
-            pictureBox22.BackColor = new_color;
-            pictureBox23.BackColor = new_color;
-            pictureBox24.BackColor = new_color;
-            pictureBox25.BackColor = new_color;
-            pictureBox26.BackColor = new_color;
-            pictureBox27.BackColor = new_color;
-            pictureBox28.BackColor = new_color;
             #endregion
         }
 
@@ -1753,8 +1705,6 @@ namespace WarframeTracker
             #region GroupBoxes
             groupBox1.ForeColor = new_color;
             WarframeComponentContainer.ForeColor = new_color;
-            groupBox4.ForeColor = new_color;
-            groupBox5.ForeColor = new_color;
             groupBox6.ForeColor = new_color;
             groupBox7.ForeColor = new_color;
             groupBox8.ForeColor = new_color;
@@ -1787,13 +1737,11 @@ namespace WarframeTracker
             #region TabPages
             SettingsTabPage.ForeColor = new_color;
             WarframeTabPage.ForeColor = new_color;
-            CraftingGuidesTabPage.ForeColor = new_color;
             MeleeWeaponsTabPage.ForeColor = new_color;
             PetsTabPage.ForeColor = new_color;
             PrimWeaponsTabPage.ForeColor = new_color;
             SecWeaponsTabPage.ForeColor = new_color;
             WorldStatePage.ForeColor = new_color;
-            BuildGuidesPage.ForeColor = new_color;
             #endregion
 
             #region Labels
@@ -1807,25 +1755,6 @@ namespace WarframeTracker
             label7.ForeColor = new_color;
             label8.ForeColor = new_color;
             label9.ForeColor = new_color;
-            AuraSlotLabel.ForeColor = new_color;
-            ExilusSlotLabel.ForeColor = new_color;
-            ModSlot01Label.ForeColor = new_color;
-            ModSlot02Label.ForeColor = new_color;
-            ModSlot03Label.ForeColor = new_color;
-            ModSlot04Label.ForeColor = new_color;
-            ModSlot05Label.ForeColor = new_color;
-            ModSlot06Label.ForeColor = new_color;
-            ModSlot07Label.ForeColor = new_color;
-            ModSlot08Label.ForeColor = new_color;
-            SpecialExilusSlotLabel.ForeColor = new_color;
-            SpecialModSlot01Label.ForeColor = new_color;
-            SpecialModSlot02Label.ForeColor = new_color;
-            SpecialModSlot03Label.ForeColor = new_color;
-            SpecialModSlot04Label.ForeColor = new_color;
-            SpecialModSlot05Label.ForeColor = new_color;
-            SpecialModSlot06Label.ForeColor = new_color;
-            SpecialModSlot7Label.ForeColor = new_color;
-            SpecialModSlot8Label.ForeColor = new_color;
             #endregion
 
             #region TextBoxes
@@ -1902,33 +1831,6 @@ namespace WarframeTracker
             SWSlot02Img.ForeColor = new_color;
             SWSlot03Img.ForeColor = new_color;
             SWSlot04Img.ForeColor = new_color;
-            pictureBox1.ForeColor = new_color;
-            pictureBox2.ForeColor = new_color;
-            pictureBox3.ForeColor = new_color;
-            pictureBox4.ForeColor = new_color;
-            pictureBox5.ForeColor = new_color;
-            pictureBox6.ForeColor = new_color;
-            pictureBox7.ForeColor = new_color;
-            pictureBox8.ForeColor = new_color;
-            pictureBox9.ForeColor = new_color;
-            pictureBox10.ForeColor = new_color;
-            pictureBox11.ForeColor = new_color;
-            pictureBox12.ForeColor = new_color;
-            pictureBox13.ForeColor = new_color;
-            pictureBox14.ForeColor = new_color;
-            pictureBox15.ForeColor = new_color;
-            pictureBox16.ForeColor = new_color;
-            pictureBox17.ForeColor = new_color;
-            pictureBox18.ForeColor = new_color;
-            pictureBox21.ForeColor = new_color;
-            pictureBox20.ForeColor = new_color;
-            pictureBox22.ForeColor = new_color;
-            pictureBox23.ForeColor = new_color;
-            pictureBox24.ForeColor = new_color;
-            pictureBox25.ForeColor = new_color;
-            pictureBox26.ForeColor = new_color;
-            pictureBox27.ForeColor = new_color;
-            pictureBox28.ForeColor = new_color;
             #endregion
         }
 
