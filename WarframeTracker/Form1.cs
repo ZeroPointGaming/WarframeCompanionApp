@@ -42,17 +42,17 @@ namespace WarframeTracker
         public string local_Json_directory = Environment.CurrentDirectory.ToString() + "/data/json";
         public string local_media_directory = Environment.CurrentDirectory.ToString() + "/data/img/";
 
-        private List<Items.Warframes.Root> Warframes;
-        private List<Items.PrimaryWeapons.Root> Primary_Weapons;
-        private List<Items.SecondaryWeapons.Root> Secondary_Weapons;
-        private List<Items.Melee.Root> Melee_Weapons;
-        private List<Items.Sentinels.Root> Sentinel_List;
-        private List<Items.Pets.Root> Pets_List;
-        private List<Items.Archwing.Root> Archwings;
-        private List<Items.ArcGun.Root> ArchGuns;
-        private List<Items.ArcMelee.Root> ArcMelee;
-        private List<Items.Arcanes.Root> Arcanes;
-        private List<Items.Mods.Root> Mods;
+        private List<Items.Warframes.Root> Warframes = new List<Items.Warframes.Root>();
+        private List<Items.PrimaryWeapons.Root> Primary_Weapons = new List<Items.PrimaryWeapons.Root>();
+        private List<Items.SecondaryWeapons.Root> Secondary_Weapons = new List<Items.SecondaryWeapons.Root>();
+        private List<Items.Melee.Root> Melee_Weapons = new List<Items.Melee.Root>();
+        private List<Items.Sentinels.Root> Sentinel_List = new List<Items.Sentinels.Root>();
+        private List<Items.Pets.Root> Pets_List = new List<Items.Pets.Root>();
+        private List<Items.Archwing.Root> Archwings = new List<Items.Archwing.Root>();
+        private List<Items.ArcGun.Root> ArchGuns = new List<Items.ArcGun.Root>();
+        private List<Items.ArcMelee.Root> ArcMelee = new List<Items.ArcMelee.Root>();
+        private List<Items.Arcanes.Root> Arcanes = new List<Items.Arcanes.Root>();
+        private List<Items.Mods.Root> Mods = new List<Items.Mods.Root>();
 
         private ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
 
