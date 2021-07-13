@@ -40,28 +40,20 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl = new MetroFramework.Controls.MetroTabControl();
             this.WarframeTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.WarframeAbilitiesContainer = new System.Windows.Forms.GroupBox();
+            this.WarframeAbilitiesTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.WarframeComponentContainer = new System.Windows.Forms.GroupBox();
             this.WarframeComponentTxt = new System.Windows.Forms.TextBox();
             this.WarframeComboBox = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.PassiveAbilityTextbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ChassCompImgBox = new System.Windows.Forms.PictureBox();
             this.SelectedWarframeImageBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SysCompImgBox = new System.Windows.Forms.PictureBox();
-            this.WarframeAbilityGroupbox4 = new System.Windows.Forms.GroupBox();
-            this.WarframeAbilityTextbox4 = new System.Windows.Forms.TextBox();
-            this.WarframeAbilityGroupbox3 = new System.Windows.Forms.GroupBox();
-            this.WarframeAbilityTextbox3 = new System.Windows.Forms.TextBox();
             this.NueroCompImgBox = new System.Windows.Forms.PictureBox();
-            this.WarframeAbilityGroupbox2 = new System.Windows.Forms.GroupBox();
-            this.WarframeAbilityTextbox2 = new System.Windows.Forms.TextBox();
-            this.WarframeAbilityGroupbox1 = new System.Windows.Forms.GroupBox();
-            this.WarframeAbilityTextBox1 = new System.Windows.Forms.TextBox();
             this.BPComponentImgBox = new System.Windows.Forms.PictureBox();
             this.PrimWeaponsTabPage = new System.Windows.Forms.TabPage();
             this.PrimaryWeaponContainer = new System.Windows.Forms.GroupBox();
@@ -258,16 +250,12 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.SuspendLayout();
             this.WarframeTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.WarframeAbilitiesContainer.SuspendLayout();
             this.WarframeComponentContainer.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChassCompImgBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedWarframeImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SysCompImgBox)).BeginInit();
-            this.WarframeAbilityGroupbox4.SuspendLayout();
-            this.WarframeAbilityGroupbox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NueroCompImgBox)).BeginInit();
-            this.WarframeAbilityGroupbox2.SuspendLayout();
-            this.WarframeAbilityGroupbox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BPComponentImgBox)).BeginInit();
             this.PrimWeaponsTabPage.SuspendLayout();
             this.PrimaryWeaponContainer.SuspendLayout();
@@ -460,22 +448,18 @@ namespace WarframeTracker
             // groupBox1
             // 
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox1.Controls.Add(this.WarframeAbilitiesContainer);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.WarframeComponentContainer);
             this.groupBox1.Controls.Add(this.WarframeComboBox);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.ChassCompImgBox);
             this.groupBox1.Controls.Add(this.SelectedWarframeImageBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.SysCompImgBox);
-            this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox4);
-            this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox3);
             this.groupBox1.Controls.Add(this.NueroCompImgBox);
-            this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox2);
-            this.groupBox1.Controls.Add(this.WarframeAbilityGroupbox1);
             this.groupBox1.Controls.Add(this.BPComponentImgBox);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.ForeColor = System.Drawing.Color.White;
@@ -485,6 +469,31 @@ namespace WarframeTracker
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Warframe Data";
+            // 
+            // WarframeAbilitiesContainer
+            // 
+            this.WarframeAbilitiesContainer.BackColor = System.Drawing.Color.Transparent;
+            this.WarframeAbilitiesContainer.Controls.Add(this.WarframeAbilitiesTxt);
+            this.WarframeAbilitiesContainer.ForeColor = System.Drawing.Color.White;
+            this.WarframeAbilitiesContainer.Location = new System.Drawing.Point(6, 384);
+            this.WarframeAbilitiesContainer.Name = "WarframeAbilitiesContainer";
+            this.WarframeAbilitiesContainer.Size = new System.Drawing.Size(435, 449);
+            this.WarframeAbilitiesContainer.TabIndex = 8;
+            this.WarframeAbilitiesContainer.TabStop = false;
+            this.WarframeAbilitiesContainer.Text = "Warframe Abilities";
+            // 
+            // WarframeAbilitiesTxt
+            // 
+            this.WarframeAbilitiesTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.WarframeAbilitiesTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WarframeAbilitiesTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WarframeAbilitiesTxt.ForeColor = System.Drawing.Color.White;
+            this.WarframeAbilitiesTxt.Location = new System.Drawing.Point(3, 19);
+            this.WarframeAbilitiesTxt.Multiline = true;
+            this.WarframeAbilitiesTxt.Name = "WarframeAbilitiesTxt";
+            this.WarframeAbilitiesTxt.ReadOnly = true;
+            this.WarframeAbilitiesTxt.Size = new System.Drawing.Size(429, 427);
+            this.WarframeAbilitiesTxt.TabIndex = 0;
             // 
             // label3
             // 
@@ -531,10 +540,11 @@ namespace WarframeTracker
             // WarframeComboBox
             // 
             this.WarframeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.WarframeComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WarframeComboBox.FormattingEnabled = true;
             this.WarframeComboBox.Location = new System.Drawing.Point(6, 22);
             this.WarframeComboBox.Name = "WarframeComboBox";
-            this.WarframeComboBox.Size = new System.Drawing.Size(174, 23);
+            this.WarframeComboBox.Size = new System.Drawing.Size(215, 29);
             this.WarframeComboBox.TabIndex = 6;
             this.WarframeComboBox.SelectedIndexChanged += new System.EventHandler(this.WarframeComboBox_SelectedIndexChanged);
             // 
@@ -548,29 +558,6 @@ namespace WarframeTracker
             this.button3.Text = "Refresh";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.PassiveAbilityTextbox);
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(6, 741);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(395, 92);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Passive Ability";
-            // 
-            // PassiveAbilityTextbox
-            // 
-            this.PassiveAbilityTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.PassiveAbilityTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PassiveAbilityTextbox.ForeColor = System.Drawing.Color.White;
-            this.PassiveAbilityTextbox.Location = new System.Drawing.Point(6, 16);
-            this.PassiveAbilityTextbox.Multiline = true;
-            this.PassiveAbilityTextbox.Name = "PassiveAbilityTextbox";
-            this.PassiveAbilityTextbox.Size = new System.Drawing.Size(383, 70);
-            this.PassiveAbilityTextbox.TabIndex = 0;
             // 
             // label2
             // 
@@ -597,7 +584,7 @@ namespace WarframeTracker
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedWarframeImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SelectedWarframeImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SelectedWarframeImageBox.Location = new System.Drawing.Point(186, 22);
+            this.SelectedWarframeImageBox.Location = new System.Drawing.Point(6, 57);
             this.SelectedWarframeImageBox.Name = "SelectedWarframeImageBox";
             this.SelectedWarframeImageBox.Size = new System.Drawing.Size(215, 321);
             this.SelectedWarframeImageBox.TabIndex = 0;
@@ -621,52 +608,6 @@ namespace WarframeTracker
             this.SysCompImgBox.TabIndex = 0;
             this.SysCompImgBox.TabStop = false;
             // 
-            // WarframeAbilityGroupbox4
-            // 
-            this.WarframeAbilityGroupbox4.BackColor = System.Drawing.Color.Transparent;
-            this.WarframeAbilityGroupbox4.Controls.Add(this.WarframeAbilityTextbox4);
-            this.WarframeAbilityGroupbox4.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityGroupbox4.Location = new System.Drawing.Point(6, 643);
-            this.WarframeAbilityGroupbox4.Name = "WarframeAbilityGroupbox4";
-            this.WarframeAbilityGroupbox4.Size = new System.Drawing.Size(395, 92);
-            this.WarframeAbilityGroupbox4.TabIndex = 2;
-            this.WarframeAbilityGroupbox4.TabStop = false;
-            this.WarframeAbilityGroupbox4.Text = "abilityName";
-            // 
-            // WarframeAbilityTextbox4
-            // 
-            this.WarframeAbilityTextbox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.WarframeAbilityTextbox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WarframeAbilityTextbox4.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityTextbox4.Location = new System.Drawing.Point(6, 16);
-            this.WarframeAbilityTextbox4.Multiline = true;
-            this.WarframeAbilityTextbox4.Name = "WarframeAbilityTextbox4";
-            this.WarframeAbilityTextbox4.Size = new System.Drawing.Size(383, 70);
-            this.WarframeAbilityTextbox4.TabIndex = 0;
-            // 
-            // WarframeAbilityGroupbox3
-            // 
-            this.WarframeAbilityGroupbox3.BackColor = System.Drawing.Color.Transparent;
-            this.WarframeAbilityGroupbox3.Controls.Add(this.WarframeAbilityTextbox3);
-            this.WarframeAbilityGroupbox3.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityGroupbox3.Location = new System.Drawing.Point(6, 545);
-            this.WarframeAbilityGroupbox3.Name = "WarframeAbilityGroupbox3";
-            this.WarframeAbilityGroupbox3.Size = new System.Drawing.Size(395, 92);
-            this.WarframeAbilityGroupbox3.TabIndex = 2;
-            this.WarframeAbilityGroupbox3.TabStop = false;
-            this.WarframeAbilityGroupbox3.Text = "abilityName";
-            // 
-            // WarframeAbilityTextbox3
-            // 
-            this.WarframeAbilityTextbox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.WarframeAbilityTextbox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WarframeAbilityTextbox3.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityTextbox3.Location = new System.Drawing.Point(6, 16);
-            this.WarframeAbilityTextbox3.Multiline = true;
-            this.WarframeAbilityTextbox3.Name = "WarframeAbilityTextbox3";
-            this.WarframeAbilityTextbox3.Size = new System.Drawing.Size(383, 70);
-            this.WarframeAbilityTextbox3.TabIndex = 0;
-            // 
             // NueroCompImgBox
             // 
             this.NueroCompImgBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -675,52 +616,6 @@ namespace WarframeTracker
             this.NueroCompImgBox.Size = new System.Drawing.Size(92, 69);
             this.NueroCompImgBox.TabIndex = 0;
             this.NueroCompImgBox.TabStop = false;
-            // 
-            // WarframeAbilityGroupbox2
-            // 
-            this.WarframeAbilityGroupbox2.BackColor = System.Drawing.Color.Transparent;
-            this.WarframeAbilityGroupbox2.Controls.Add(this.WarframeAbilityTextbox2);
-            this.WarframeAbilityGroupbox2.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityGroupbox2.Location = new System.Drawing.Point(6, 447);
-            this.WarframeAbilityGroupbox2.Name = "WarframeAbilityGroupbox2";
-            this.WarframeAbilityGroupbox2.Size = new System.Drawing.Size(395, 92);
-            this.WarframeAbilityGroupbox2.TabIndex = 2;
-            this.WarframeAbilityGroupbox2.TabStop = false;
-            this.WarframeAbilityGroupbox2.Text = "abilityName";
-            // 
-            // WarframeAbilityTextbox2
-            // 
-            this.WarframeAbilityTextbox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.WarframeAbilityTextbox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WarframeAbilityTextbox2.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityTextbox2.Location = new System.Drawing.Point(6, 16);
-            this.WarframeAbilityTextbox2.Multiline = true;
-            this.WarframeAbilityTextbox2.Name = "WarframeAbilityTextbox2";
-            this.WarframeAbilityTextbox2.Size = new System.Drawing.Size(383, 70);
-            this.WarframeAbilityTextbox2.TabIndex = 0;
-            // 
-            // WarframeAbilityGroupbox1
-            // 
-            this.WarframeAbilityGroupbox1.BackColor = System.Drawing.Color.Transparent;
-            this.WarframeAbilityGroupbox1.Controls.Add(this.WarframeAbilityTextBox1);
-            this.WarframeAbilityGroupbox1.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityGroupbox1.Location = new System.Drawing.Point(6, 349);
-            this.WarframeAbilityGroupbox1.Name = "WarframeAbilityGroupbox1";
-            this.WarframeAbilityGroupbox1.Size = new System.Drawing.Size(395, 92);
-            this.WarframeAbilityGroupbox1.TabIndex = 1;
-            this.WarframeAbilityGroupbox1.TabStop = false;
-            this.WarframeAbilityGroupbox1.Text = "abilityName";
-            // 
-            // WarframeAbilityTextBox1
-            // 
-            this.WarframeAbilityTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.WarframeAbilityTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WarframeAbilityTextBox1.ForeColor = System.Drawing.Color.White;
-            this.WarframeAbilityTextBox1.Location = new System.Drawing.Point(6, 16);
-            this.WarframeAbilityTextBox1.Multiline = true;
-            this.WarframeAbilityTextBox1.Name = "WarframeAbilityTextBox1";
-            this.WarframeAbilityTextBox1.Size = new System.Drawing.Size(383, 70);
-            this.WarframeAbilityTextBox1.TabIndex = 0;
             // 
             // BPComponentImgBox
             // 
@@ -2811,6 +2706,7 @@ namespace WarframeTracker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1459, 900);
             this.Controls.Add(this.WarframeTrackerTabControl);
+            this.MinimumSize = new System.Drawing.Size(1475, 939);
             this.Name = "Form1";
             this.Text = "Warframe Tracker";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -2819,22 +2715,14 @@ namespace WarframeTracker
             this.WarframeTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.WarframeAbilitiesContainer.ResumeLayout(false);
+            this.WarframeAbilitiesContainer.PerformLayout();
             this.WarframeComponentContainer.ResumeLayout(false);
             this.WarframeComponentContainer.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChassCompImgBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedWarframeImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SysCompImgBox)).EndInit();
-            this.WarframeAbilityGroupbox4.ResumeLayout(false);
-            this.WarframeAbilityGroupbox4.PerformLayout();
-            this.WarframeAbilityGroupbox3.ResumeLayout(false);
-            this.WarframeAbilityGroupbox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NueroCompImgBox)).EndInit();
-            this.WarframeAbilityGroupbox2.ResumeLayout(false);
-            this.WarframeAbilityGroupbox2.PerformLayout();
-            this.WarframeAbilityGroupbox1.ResumeLayout(false);
-            this.WarframeAbilityGroupbox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BPComponentImgBox)).EndInit();
             this.PrimWeaponsTabPage.ResumeLayout(false);
             this.PrimaryWeaponContainer.ResumeLayout(false);
@@ -3003,17 +2891,7 @@ namespace WarframeTracker
         private System.Windows.Forms.TabPage BuildGuidesPage;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.GroupBox WarframeAbilityGroupbox4;
-        private System.Windows.Forms.TextBox WarframeAbilityTextbox4;
-        private System.Windows.Forms.GroupBox WarframeAbilityGroupbox3;
-        private System.Windows.Forms.TextBox WarframeAbilityTextbox3;
-        private System.Windows.Forms.GroupBox WarframeAbilityGroupbox2;
-        private System.Windows.Forms.TextBox WarframeAbilityTextbox2;
-        private System.Windows.Forms.GroupBox WarframeAbilityGroupbox1;
-        private System.Windows.Forms.TextBox WarframeAbilityTextBox1;
         private System.Windows.Forms.PictureBox SelectedWarframeImageBox;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox PassiveAbilityTextbox;
         private System.Windows.Forms.GroupBox NightwaveChalContainer;
         private System.Windows.Forms.PictureBox SysCompImgBox;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -3215,6 +3093,8 @@ namespace WarframeTracker
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.GroupBox WarframeComponentContainer;
         private System.Windows.Forms.TextBox WarframeComponentTxt;
+        private System.Windows.Forms.GroupBox WarframeAbilitiesContainer;
+        private System.Windows.Forms.TextBox WarframeAbilitiesTxt;
     }
 }
 

@@ -28,6 +28,7 @@ namespace WarframeTracker
     /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
     /// add riven disposition to weapons (OmegaAttenuation)
     /// All non prime warframes have an empty blueprint information, this needs to be handled in a seperate way.
+    /// Add enemies for future damage simulation prediction for weapon builds
     /// 
     /// Future: Rivens integration
     /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
@@ -88,11 +89,7 @@ namespace WarframeTracker
             #region Resets
             FindOrdersMenu.Items.Clear();
             WarframeMarketOptions.DropDownItems.Clear();
-            WarframeAbilityGroupbox1.Text = String.Empty;
-            WarframeAbilityGroupbox2.Text = String.Empty;
-            WarframeAbilityGroupbox3.Text = String.Empty;
-            WarframeAbilityGroupbox4.Text = String.Empty;
-            PassiveAbilityTextbox.Text = String.Empty;
+            WarframeAbilitiesTxt.Text = "";
             SelectedWarframeImageBox.BackgroundImage = null;
             BPComponentImgBox.BackgroundImage = null;
             ChassCompImgBox.BackgroundImage = null;
@@ -115,16 +112,12 @@ namespace WarframeTracker
                 #endregion
 
                 #region Set Abilities
-                WarframeAbilityGroupbox1.Text = $"{frame.Abilities[0].Name}";
-                WarframeAbilityTextBox1.Text = $"{frame.Abilities[0].Description}";
-                WarframeAbilityGroupbox2.Text = $"{frame.Abilities[1].Name}";
-                WarframeAbilityTextbox2.Text = $"{frame.Abilities[1].Description}";
-                WarframeAbilityGroupbox3.Text = $"{frame.Abilities[2].Name}";
-                WarframeAbilityTextbox3.Text = $"{frame.Abilities[2].Description}";
-                WarframeAbilityGroupbox4.Text = $"{frame.Abilities[3].Name}";
-                WarframeAbilityTextbox4.Text = $"{frame.Abilities[3].Description}";
+                for (int i = 0; i < frame.Abilities.Count; i++)
+                {
+                    WarframeAbilitiesTxt.Text += $"{frame.Abilities[i].Name}:{Environment.NewLine}{frame.Abilities[i].Description}{Environment.NewLine}{line_seperator}";
+                }
 
-                if (frame.PassiveDescription != null) { PassiveAbilityTextbox.Text = frame.PassiveDescription; }
+                if (frame.PassiveDescription != null) { WarframeAbilitiesTxt.Text += $"Passive Ability: {frame.PassiveDescription}{Environment.NewLine}"; }
                 #endregion
 
                 #region Set Warframe Componets, Drop Locations, Chances, Etc
@@ -1553,7 +1546,6 @@ namespace WarframeTracker
             #region GroupBoxes
             groupBox1.BackColor = new_color;
             WarframeComponentContainer.BackColor = new_color;
-            groupBox3.BackColor = new_color;
             groupBox4.BackColor = new_color;
             groupBox5.BackColor = new_color;
             groupBox6.BackColor = new_color;
@@ -1571,10 +1563,7 @@ namespace WarframeTracker
             groupBox18.BackColor = new_color;
             groupBox19.BackColor = new_color;
             groupBox20.BackColor = new_color;
-            WarframeAbilityGroupbox1.BackColor = new_color;
-            WarframeAbilityGroupbox2.BackColor = new_color;
-            WarframeAbilityGroupbox3.BackColor = new_color;
-            WarframeAbilityGroupbox4.BackColor = new_color;
+            WarframeAbilitiesContainer.BackColor = new_color;
             CompanionComponentContainer.BackColor = new_color;
             CompanionDescriptionContainer.BackColor = new_color;
             CompanionStatsContainer.BackColor = new_color;
@@ -1687,11 +1676,7 @@ namespace WarframeTracker
             DailyInfoBox.BackColor = new_color;
             FissureInfoBox.BackColor = new_color;
             EntratiInfoBox.BackColor = new_color;
-            WarframeAbilityTextBox1.BackColor = new_color;
-            WarframeAbilityTextbox2.BackColor = new_color;
-            WarframeAbilityTextbox3.BackColor = new_color;
-            WarframeAbilityTextbox4.BackColor = new_color;
-            PassiveAbilityTextbox.BackColor = new_color;
+            WarframeAbilitiesTxt.BackColor = new_color;
             #endregion
 
             #region ImageBoxes
@@ -1745,7 +1730,6 @@ namespace WarframeTracker
             #region GroupBoxes
             groupBox1.ForeColor = new_color;
             WarframeComponentContainer.ForeColor = new_color;
-            groupBox3.ForeColor = new_color;
             groupBox4.ForeColor = new_color;
             groupBox5.ForeColor = new_color;
             groupBox6.ForeColor = new_color;
@@ -1763,10 +1747,7 @@ namespace WarframeTracker
             groupBox18.ForeColor = new_color;
             groupBox19.ForeColor = new_color;
             groupBox20.ForeColor = new_color;
-            WarframeAbilityGroupbox1.ForeColor = new_color;
-            WarframeAbilityGroupbox2.ForeColor = new_color;
-            WarframeAbilityGroupbox3.ForeColor = new_color;
-            WarframeAbilityGroupbox4.ForeColor = new_color;
+            WarframeAbilitiesContainer.ForeColor = new_color;
             CompanionComponentContainer.ForeColor = new_color;
             CompanionDescriptionContainer.ForeColor = new_color;
             CompanionStatsContainer.ForeColor = new_color;
@@ -1879,11 +1860,7 @@ namespace WarframeTracker
             DailyInfoBox.ForeColor = new_color;
             FissureInfoBox.ForeColor = new_color;
             EntratiInfoBox.ForeColor = new_color;
-            WarframeAbilityTextBox1.ForeColor = new_color;
-            WarframeAbilityTextbox2.ForeColor = new_color;
-            WarframeAbilityTextbox3.ForeColor = new_color;
-            WarframeAbilityTextbox4.ForeColor = new_color;
-            PassiveAbilityTextbox.ForeColor = new_color;
+            WarframeAbilitiesTxt.ForeColor = new_color;
             #endregion
 
             #region ImageBoxes
