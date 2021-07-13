@@ -26,7 +26,6 @@ namespace WarframeTracker
     /// Come up with a plan for the build guides and crafting guides pages.
     /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
     /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
-    /// add riven disposition to weapons (OmegaAttenuation)
     /// All non prime warframes have an empty blueprint information, this needs to be handled in a seperate way.
     /// Add enemies for future damage simulation prediction for weapon builds
     /// 
@@ -314,6 +313,8 @@ namespace WarframeTracker
             PWFoundryMarketPriceLbl.Text = "";
             PWFoundryBuildTime.Text = "";
             PWFoundrySkipBuildLbl.Text = "";
+            PWComponentContainer.Visible = true;
+            PWFoundryPanel.Visible = true;
             #endregion
 
             try
@@ -421,18 +422,22 @@ namespace WarframeTracker
                 PWDataTxt.Text += $"Accuracy: {Weapon.Accuracy}{Environment.NewLine}";
                 PWDataTxt.Text += $"Multishot: {Weapon.Multishot}{Environment.NewLine}";
                 PWDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s{Environment.NewLine}";
+                PWDataTxt.Text += $"Riven Disposition: {Weapon.OmegaAttenuation}{Environment.NewLine}";
 
                 //Export Damage Ammounts
                 for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
                 {
-                    PWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                    if (Weapon.DamagePerShot[i] > 0)
+                    {
+                        PWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                    }
                 }
                 #endregion
 
                 #region Component Data & Order Menu
                 if (Weapon.Components != null)
                 {
-                    for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                    for (int i = 0; i < Weapon.Components.Count; i++)
                     {
                         if (Weapon.Components[i].Drops != null)
                         {
@@ -500,6 +505,10 @@ namespace WarframeTracker
                                 break;
                         }
                     }
+                }
+                else
+                {
+                    PWComponentContainer.Visible = false;
                 }
                 #endregion
 
@@ -715,11 +724,14 @@ namespace WarframeTracker
                 SWWeaponDataTxt.Text += $"Accuracy: {Weapon.Accuracy} {Environment.NewLine}";
                 SWWeaponDataTxt.Text += $"Multishot: {Weapon.Multishot} {Environment.NewLine}";
                 SWWeaponDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s {Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Riven Disposition: {Weapon.OmegaAttenuation}{Environment.NewLine}";
 
-                //Export Damage Ammounts
                 for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
                 {
-                    SWWeaponDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                    if (Weapon.DamagePerShot[i] > 0)
+                    {
+                        SWWeaponDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                    }
                 }
 
                 if (Weapon.MarketCost != null)
@@ -906,12 +918,15 @@ namespace WarframeTracker
                 MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage} {Environment.NewLine}";
                 MWDataTxt.Text += $"Heavy Slam Attack Radius: {Weapon.HeavySlamRadius}{Environment.NewLine}";
                 MWDataTxt.Text += $"Range: {Weapon.Range}s {Environment.NewLine}";
+                MWDataTxt.Text += $"Riven Disposition: {Weapon.OmegaAttenuation}{Environment.NewLine}";
                 MWDataTxt.Text += $"-----------------------------------------------------";
 
-                //Export Damage Ammounts
                 for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
                 {
-                    MWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                    if (Weapon.DamagePerShot[i] > 0)
+                    {
+                        MWDataTxt.Text += GetDamageType(i, Weapon.DamagePerShot[i]);
+                    }
                 }
                 #endregion
 
