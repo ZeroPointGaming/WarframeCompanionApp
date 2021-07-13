@@ -23,9 +23,8 @@ namespace WarframeTracker
     /// </summary>
 
     /// <summary> TODO List
-    /// Come up with a plan for the build guides and crafting guides pages.
     /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
-    /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us
+    /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us [Partially Implemented] {Prime Warframes}
     /// All non prime warframes have an empty blueprint information, this needs to be handled in a seperate way.
     /// Add enemies for future damage simulation prediction for weapon builds
     /// 
@@ -162,7 +161,7 @@ namespace WarframeTracker
                                     }
                                     else
                                     {
-                                        WarframeComponentTxt.Text += $"Blueprint Information Missing, Coming Soon!{Environment.NewLine}";
+                                        WarframeComponentTxt.Text += $"{WebManager.GetBlueprintInfo(frame.Name)}{Environment.NewLine}";
                                     }
                                 }
                                 break;
@@ -1321,7 +1320,7 @@ namespace WarframeTracker
                 case 19:
                     return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
                 default:
-                    return "Error";
+                    return "Unknown Damage Type";
             }
         }
 

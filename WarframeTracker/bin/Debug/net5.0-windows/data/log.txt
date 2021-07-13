@@ -1389,3 +1389,46 @@ Updated UI for Acceltra
 Updated UI for Acrid
 Updated UI for Ack & Brunt
 Updated UI for Banshee
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Atlas
+Updated UI for Banshee Prime
+Updated UI for Frost Prime
+Updated UI for Lavos
+Updated UI for Mirage Prime
+Updated UI for Nezha
+Updated UI for Nidus
+Updated UI for Nyx Prime
+Updated UI for Octavia Prime
+Updated UI for Octavia Prime
+Updated UI for Oberon Prime
+Updated UI for Revenant
+Updated UI for Revenant
+Updated UI for Oberon Prime
+Updated UI for Oberon Prime
+Updated UI for Oberon
+Updated UI for Oberon Prime
+Updated UI for Revenant
+Updated UI for Nyx Prime
+Updated UI for Rhino
+Updated UI for Octavia
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Banshee
+Updated UI for Banshee Prime
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Atlas
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Acrid
+Updated UI for Ack & Brunt
+Updated UI for Ash Prime
+Updated UI for Atlas
+Updated UI for Banshee
