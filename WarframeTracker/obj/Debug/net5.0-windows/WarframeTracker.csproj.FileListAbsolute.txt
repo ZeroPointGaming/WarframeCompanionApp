@@ -50,3 +50,4 @@ C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debu
 C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.pdb
 C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.genruntimeconfig.cache
 C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.csproj.AssemblyReference.cache
+C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.WeaponSimulator.resources

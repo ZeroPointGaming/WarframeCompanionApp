@@ -41,16 +41,15 @@ namespace WarframeTracker
         {
             //Initialize the UI Components for the form.
             InitializeComponent();
-            GenerateData();
         }
 
+        /// <summary>
+        /// Initialize the main form and its data when the program is loaded.
+        /// </summary>
         private void Form1_Load(object sender, EventArgs e)
         {
-            WarframeComboBox.SelectedIndex = 0;
-            PrimaryWeaponComboBox.SelectedIndex = 0;
-            SecondaryWeaponsComboBox.SelectedIndex = 0;
-            MeleeWeaponsComboBox.SelectedIndex = 0;
-            CompanionsComboBox.SelectedIndex = 0;
+            LoadInventoryState();
+            GenerateData();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1874,7 +1873,33 @@ namespace WarframeTracker
         /// </summary>
         public void LoadInventoryState()
         {
-            GlobalData.LocalInventory = JsonConvert.DeserializeObject<Dictionary<string, Boolean>>(save_file);
+            try
+            {
+                if (!File.Exists(save_file))
+                {
+                    FileStream FileMaker = File.Create(save_file); FileMaker.Close(); FileMaker.Dispose();
+                    Debugger.Log("Skipping inventory load because file does not exist. Creating inventory file now.");
+                }
+                else
+                {
+                    var _File = File.ReadAllText(save_file);
+                    if (_File.Length > 1)
+                    {
+                        GlobalData.LocalInventory = JsonConvert.DeserializeObject<Dictionary<string, Boolean>>(save_file);
+                    }
+                    else
+                    {
+                        if (Properties.Settings.Default.debug_mode)
+                        {
+                            Debugger.Log("Skipping inventory load because file is empty.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Error loading inventory json data {Environment.NewLine}Stack Trace: {ex}"); }
+            }
         }
         #endregion
 
