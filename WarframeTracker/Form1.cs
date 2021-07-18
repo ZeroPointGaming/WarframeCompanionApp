@@ -1831,18 +1831,32 @@ namespace WarframeTracker
         #endregion
 
         #region Inventory Code
+        public void UpdateInventoryState(string item_name, bool owned)
+        {
+            if (!GlobalData.LocalInventory.ContainsKey(item_name))
+            {
+                GlobalData.LocalInventory.Add(item_name, owned);
+            }
+            else
+            {
+                GlobalData.LocalInventory[item_name] = owned;
+            }
+
+            SaveInventoryState(GlobalData.LocalInventory);
+        }
+
         public void SaveInventoryState(Dictionary<String, Boolean> Save_Data)
         {
             if (!File.Exists(save_file))
             {
                 FileStream FileMaker = File.Create(save_file);
-                var SerializedInventory = JsonConvert.SerializeObject(GlobalData.LocalInventory);
+                var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
                 File.WriteAllText(SerializedInventory, save_file);
                 FileMaker.Close(); FileMaker.Dispose();
             }
             else
             {
-                var SerializedInventory = JsonConvert.SerializeObject(GlobalData.LocalInventory);
+                var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
                 File.WriteAllText(SerializedInventory, save_file);
             }
         }
