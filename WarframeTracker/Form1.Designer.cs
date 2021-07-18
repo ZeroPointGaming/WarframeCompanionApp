@@ -40,6 +40,7 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl = new MetroFramework.Controls.MetroTabControl();
             this.WarframeTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.WarframeOwnedCheckbox = new System.Windows.Forms.CheckBox();
             this.WarframeAbilitiesContainer = new System.Windows.Forms.GroupBox();
             this.WarframeAbilitiesTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -368,6 +369,7 @@ namespace WarframeTracker
             // groupBox1
             // 
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox1.Controls.Add(this.WarframeOwnedCheckbox);
             this.groupBox1.Controls.Add(this.WarframeAbilitiesContainer);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
@@ -388,6 +390,17 @@ namespace WarframeTracker
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Warframe Data";
+            // 
+            // WarframeOwnedCheckbox
+            // 
+            this.WarframeOwnedCheckbox.AutoSize = true;
+            this.WarframeOwnedCheckbox.Location = new System.Drawing.Point(280, 29);
+            this.WarframeOwnedCheckbox.Name = "WarframeOwnedCheckbox";
+            this.WarframeOwnedCheckbox.Size = new System.Drawing.Size(160, 19);
+            this.WarframeOwnedCheckbox.TabIndex = 9;
+            this.WarframeOwnedCheckbox.Text = "_ItemName OwnedStatus";
+            this.WarframeOwnedCheckbox.UseVisualStyleBackColor = true;
+            this.WarframeOwnedCheckbox.CheckedChanged += new System.EventHandler(this.WarframeOwnershipCheckbox_Changed);
             // 
             // WarframeAbilitiesContainer
             // 
@@ -2128,33 +2141,33 @@ namespace WarframeTracker
             this.checkForUpdatesToolStripMenuItem,
             this.visitSourceRepoToolStripMenuItem});
             this.ToolsContextMenu.Name = "ToolsContextMenu";
-            this.ToolsContextMenu.Size = new System.Drawing.Size(181, 114);
+            this.ToolsContextMenu.Size = new System.Drawing.Size(174, 92);
             // 
             // refreshDataToolStripMenuItem
             // 
             this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
-            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.refreshDataToolStripMenuItem.Text = "Refresh Data";
             this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
             // 
             // linkPatreonToolStripMenuItem
             // 
             this.linkPatreonToolStripMenuItem.Name = "linkPatreonToolStripMenuItem";
-            this.linkPatreonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.linkPatreonToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.linkPatreonToolStripMenuItem.Text = "Link Patreon";
             this.linkPatreonToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check For Updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
             // 
             // visitSourceRepoToolStripMenuItem
             // 
             this.visitSourceRepoToolStripMenuItem.Name = "visitSourceRepoToolStripMenuItem";
-            this.visitSourceRepoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.visitSourceRepoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.visitSourceRepoToolStripMenuItem.Text = "Visit Source Repo";
             this.visitSourceRepoToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
             // 
@@ -2474,6 +2487,7 @@ namespace WarframeTracker
         private System.Windows.Forms.ToolStripMenuItem linkPatreonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visitSourceRepoToolStripMenuItem;
+        private System.Windows.Forms.CheckBox WarframeOwnedCheckbox;
     }
 }
 

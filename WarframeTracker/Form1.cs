@@ -61,6 +61,12 @@ namespace WarframeTracker
         #region Combobox Event Code
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            #region Set Static Variables
+            Items.Warframes.Root frame = GlobalData.WarframeDatabase[$"{WarframeComboBox.SelectedItem}"];
+            GlobalData.activeItemName = frame.Name;
+            WarframeComponentContainer.Text = $"{frame.Name} Components";
+            #endregion
+
             #region Resets
             FindOrdersMenu.Items.Clear();
             WarframeMarketOptions.DropDownItems.Clear();
@@ -72,14 +78,31 @@ namespace WarframeTracker
             NueroCompImgBox.BackgroundImage = null;
             WarframeComponentContainer.Text = String.Empty;
             WarframeComponentTxt.Text = String.Empty;
+            WarframeOwnedCheckbox.Text = String.Empty;
+            WarframeOwnedCheckbox.Checked = false;
             #endregion
 
             try
             {
-                #region Set Static Variables
-                Items.Warframes.Root frame = GlobalData.WarframeDatabase[$"{WarframeComboBox.SelectedItem}"];
-                GlobalData.activeItemName = frame.Name;
-                WarframeComponentContainer.Text = $"{frame.Name} Components";
+                #region Set Ownership Checkbox
+                if (GlobalData.LocalInventory.ContainsKey(GlobalData.activeItemName))
+                {
+                    if (GlobalData.LocalInventory[GlobalData.activeItemName])
+                    {
+                        WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
+                        WarframeOwnedCheckbox.Checked = true;
+                    }
+                    else
+                    {
+                        WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                        WarframeOwnedCheckbox.Checked = false;
+                    }
+                }
+                else
+                {
+                    WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    WarframeOwnedCheckbox.Checked = false;
+                }
                 #endregion
 
                 #region Set Objct Image
@@ -1864,7 +1887,7 @@ namespace WarframeTracker
             else
             {
                 var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
-                File.WriteAllText(SerializedInventory, save_file);
+                File.WriteAllText(save_file, SerializedInventory);
             }
         }
 
@@ -1901,6 +1924,22 @@ namespace WarframeTracker
                 if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Error loading inventory json data {Environment.NewLine}Stack Trace: {ex}"); }
             }
         }
+
+        private void WarframeOwnershipCheckbox_Changed(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb.Checked)
+            {
+                WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
+                UpdateInventoryState(GlobalData.activeItemName, cb.Checked);
+            }
+            else
+            {
+                WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                UpdateInventoryState(GlobalData.activeItemName, cb.Checked);
+            }
+        }
+
         #endregion
 
         #region ContextMenu Code

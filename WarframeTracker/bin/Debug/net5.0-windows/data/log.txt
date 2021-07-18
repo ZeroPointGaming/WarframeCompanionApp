@@ -1439,3 +1439,198 @@ Updated UI for Ack & Brunt
 Updated UI for Ash Prime
 Order URL Name: ash_prime_set
 Order URL Name: ash_prime_set
+Skipping inventory load because file does not exist. Creating inventory file now.
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Atlas Prime
+Updated UI for Atlas Prime
+Updated UI for Ash Prime
+Updated UI for Atlas
+Updated UI for Ash
+Updated UI for Banshee Prime
+Updated UI for Equinox
+Updated UI for Equinox Prime
+Updated UI for Excalibur
+Updated UI for Excalibur Prime
+Updated UI for Excalibur Prime
+Updated UI for Harrow
+Updated UI for Loki
+Updated UI for Nova
+Updated UI for Vauban Prime
+Updated UI for Volt
+Updated UI for Zephyr Prime
+Updated UI for Yareli
+Updated UI for Volt
+Updated UI for Vauban
+Updated UI for Valkyr
+Updated UI for Protea
+Updated UI for Rhino
+Updated UI for Oberon
+Updated UI for Nyx
+Updated UI for Nidus
+Updated UI for Nova
+Updated UI for Revenant
+Updated UI for Titania
+Updated UI for Nidus
+Updated UI for Ash
+Updated UI for Atlas
+Updated UI for Baruuk
+Updated UI for Bonewidow
+Updated UI for Chroma
+Updated UI for Ember
+Updated UI for Equinox
+Updated UI for Excalibur
+Updated UI for Frost
+Updated UI for Gara
+Updated UI for Garuda
+Updated UI for Gauss
+Updated UI for Grendel
+Updated UI for Harrow
+Updated UI for Hildryn
+Updated UI for Hydroid
+Updated UI for Inaros
+Updated UI for Ivara
+Updated UI for Khora
+Updated UI for Lavos
+Updated UI for Limbo
+Updated UI for Loki
+Updated UI for Mag
+Updated UI for Mesa
+Updated UI for Mirage
+Updated UI for Nekros
+Updated UI for Nezha
+Updated UI for Nidus
+Updated UI for Zephyr
+Updated UI for Xaku
+Updated UI for Wukong
+Skipping inventory load because file is empty.
+Updated UI for Ash
+Updated UI for Ash Prime
+Skipping inventory load because file is empty.
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Ash
+Skipping inventory load because file is empty.
+Updated UI for Ash
+Updated UI for Atlas
+Updated UI for Ash
+Error loading inventory json data 
+Stack Trace: Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: C. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at WarframeTracker.Form1.LoadInventoryState() in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 1911
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Atlas
+Updated UI for Atlas Prime
+Updated UI for Banshee
+Updated UI for Banshee Prime
+Updated UI for Chroma
+Updated UI for Chroma Prime
+Updated UI for Ember
+Updated UI for Ember Prime
+Updated UI for Equinox
+Updated UI for Equinox Prime
+Updated UI for Excalibur Umbra
+Updated UI for Frost Prime
+Updated UI for Gara
+Updated UI for Gara Prime
+Updated UI for Harrow
+Updated UI for Hydroid
+Updated UI for Hydroid Prime
+Updated UI for Inaros
+Updated UI for Inaros Prime
+Updated UI for Ivara
+Updated UI for Ivara Prime
+Updated UI for Khora
+Updated UI for Limbo
+Updated UI for Limbo Prime
+Updated UI for Limbo
+Updated UI for Khora
+Updated UI for Limbo
+Updated UI for Limbo Prime
+Updated UI for Limbo
+Updated UI for Limbo Prime
+Updated UI for Loki
+Updated UI for Loki Prime
+Updated UI for Mag
+Updated UI for Mesa
+Updated UI for Mesa Prime
+Updated UI for Mirage
+Updated UI for Mirage Prime
+Updated UI for Nekros
+Updated UI for Nekros Prime
+Updated UI for Nezha
+Updated UI for Nidus
+Updated UI for Nova Prime
+Updated UI for Nova
+Updated UI for Nyx
+Updated UI for Oberon
+Updated UI for Oberon Prime
+Updated UI for Octavia
+Updated UI for Octavia Prime
+Updated UI for Revenant
+Updated UI for Rhino
+Updated UI for Rhino
+Updated UI for Rhino Prime
+Updated UI for Saryn
+Updated UI for Saryn Prime
+Updated UI for Titania
+Updated UI for Titania Prime
+Updated UI for Trinity Prime
+Updated UI for Valkyr
+Updated UI for Valkyr
+Updated UI for Valkyr Prime
+Updated UI for Volt
+Updated UI for Volt Prime
+Updated UI for Wisp
+Updated UI for Wukong
+Updated UI for Xaku
+Updated UI for Zephyr
+Updated UI for Zephyr Prime
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Atlas
+Updated UI for Zephyr Prime
+Updated UI for Valkyr
+Error loading inventory json data 
+Stack Trace: Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: C. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at WarframeTracker.Form1.LoadInventoryState() in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 1911
+Updated UI for Ash
+Error loading inventory json data 
+Stack Trace: Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: C. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at WarframeTracker.Form1.LoadInventoryState() in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 1911
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Atlas
