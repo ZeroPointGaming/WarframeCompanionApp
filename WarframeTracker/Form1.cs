@@ -10,36 +10,14 @@ using WarframeTracker.WebInterface;
 
 namespace WarframeTracker
 {
-    /// <summary> ACTIVE BUGS DIRECTORY
-    /// [Partial-Fixed] Necrophage frames dont contain components, components need to be reset between each changed frame.
-    /// [Identified] Prisma Grinlock Primary Weapon page is mostly empty (No components, no drop data)
-    /// [Identified] Relics expiry time is off in WorldSpace
-    /// </summary>
-
-    /// <summary> THINGS THAT ARENT BUGS BUT NEED FIXING
-    /// [Identified] Banshee has no component drop data.
-    /// [Identified] FLUCTUS Weapon has a empty page, need to look into what is going on. (no damage, components or drop data)
-    /// [Identified] Necrophage frames dont have images yet.
-    /// </summary>
-
-    /// <summary> TODO List
-    /// Build a system that allows the user to save what frames/weapons/items they have by checking a box or something. (Inventory System)
-    /// Rebuild the way drop data is looked at, using the new drop data api from warframestat.us [Partially Implemented] {Prime Warframes}
-    /// All non prime warframes have an empty blueprint information, this needs to be handled in a seperate way.
-    /// Add enemies for future damage simulation prediction for weapon builds
-    /// 
-    /// Future: Rivens integration
-    /// Future: Integrate apis into a discord bot so people can parse all of this data into their servers and their uses can run commands such as !drops or !vaulted
-    /// Future: Integrate apis into a twitch bot so warframe streamers can have a ton of chat commands to check out stuff such as prices or drop info or even primevault info
-    /// </summary>
-
     public partial class Form1 : Form
     {
         #region Declare Local Variables
         WTWebClient WebManager = new WTWebClient();
         Debug.Debug Debugger = new Debug.Debug();
-        public string local_Json_directory = Environment.CurrentDirectory.ToString() + "/data/json";
-        public string local_media_directory = Environment.CurrentDirectory.ToString() + "/data/img/";
+        public string local_Json_directory = $"{Environment.CurrentDirectory}/data/json";
+        public string local_media_directory = $"{Environment.CurrentDirectory}/data/img/";
+        public string save_file = $"{Environment.CurrentDirectory}/data/inventory.json";
 
         private List<Items.Warframes.Root> Warframes = new List<Items.Warframes.Root>();
         private List<Items.PrimaryWeapons.Root> Primary_Weapons = new List<Items.PrimaryWeapons.Root>();
@@ -1852,12 +1830,27 @@ namespace WarframeTracker
         }
         #endregion
 
-        #region Build Guides Code
+        #region Inventory Code
+        public void SaveInventoryState(Dictionary<String, Boolean> Save_Data)
+        {
+            if (!File.Exists(save_file))
+            {
+                FileStream FileMaker = File.Create(save_file);
+                var SerializedInventory = JsonConvert.SerializeObject(GlobalData.LocalInventory);
+                File.WriteAllText(SerializedInventory, save_file);
+                FileMaker.Close(); FileMaker.Dispose();
+            }
+            else
+            {
+                var SerializedInventory = JsonConvert.SerializeObject(GlobalData.LocalInventory);
+                File.WriteAllText(SerializedInventory, save_file);
+            }
+        }
 
-        #endregion
-
-        #region Crafting Guides Code
-
+        public void LoadInventoryState()
+        {
+            GlobalData.LocalInventory = JsonConvert.DeserializeObject<Dictionary<string, Boolean>>(save_file);
+        }
         #endregion
 
         #region ContextMenu Code
@@ -2183,5 +2176,7 @@ namespace WarframeTracker
 
         public static OGTech.ValutedItemData.Root VaultData = new OGTech.ValutedItemData.Root();
         public static WarframeStats.DropData.Root DropsData = new WarframeStats.DropData.Root();
+
+        public static Dictionary<String, Boolean> LocalInventory = new Dictionary<String, Boolean>();
     }
 }
