@@ -1849,10 +1849,9 @@ namespace WarframeTracker
         {
             if (!File.Exists(save_file))
             {
-                FileStream FileMaker = File.Create(save_file);
+                FileStream FileMaker = File.Create(save_file); FileMaker.Close(); FileMaker.Dispose();
                 var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
                 File.WriteAllText(SerializedInventory, save_file);
-                FileMaker.Close(); FileMaker.Dispose();
             }
             else
             {
