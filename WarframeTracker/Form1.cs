@@ -1831,6 +1831,11 @@ namespace WarframeTracker
         #endregion
 
         #region Inventory Code
+        /// <summary>
+        /// Update the inventory state with the currently active item and the value of a checkbox or boolean.
+        /// </summary>
+        /// <param name="item_name">Name of the active item</param>
+        /// <param name="owned">Value of the owned checkbox or boolean</param>
         public void UpdateInventoryState(string item_name, bool owned)
         {
             if (!GlobalData.LocalInventory.ContainsKey(item_name))
@@ -1845,6 +1850,10 @@ namespace WarframeTracker
             SaveInventoryState(GlobalData.LocalInventory);
         }
 
+        /// <summary>
+        /// Save an inventory file given a dictionary input.
+        /// </summary>
+        /// <param name="Save_Data">Input Dictionary</param>
         public void SaveInventoryState(Dictionary<String, Boolean> Save_Data)
         {
             if (!File.Exists(save_file))
@@ -1860,6 +1869,9 @@ namespace WarframeTracker
             }
         }
 
+        /// <summary>
+        /// Load the inventory from the file to the global data class.
+        /// </summary>
         public void LoadInventoryState()
         {
             GlobalData.LocalInventory = JsonConvert.DeserializeObject<Dictionary<string, Boolean>>(save_file);
