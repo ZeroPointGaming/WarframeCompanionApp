@@ -50,6 +50,7 @@ namespace WarframeTracker
         {
             LoadInventoryState();
             GenerateData();
+            WarframeComboBox.SelectedIndex = 0;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -79,7 +80,6 @@ namespace WarframeTracker
             WarframeComponentContainer.Text = String.Empty;
             WarframeComponentTxt.Text = String.Empty;
             WarframeOwnedCheckbox.Text = String.Empty;
-            WarframeOwnedCheckbox.Checked = false;
             #endregion
 
             try
@@ -1908,7 +1908,7 @@ namespace WarframeTracker
                     var _File = File.ReadAllText(save_file);
                     if (_File.Length > 1)
                     {
-                        GlobalData.LocalInventory = JsonConvert.DeserializeObject<Dictionary<string, Boolean>>(save_file);
+                        GlobalData.LocalInventory = JsonConvert.DeserializeObject<Dictionary<string, Boolean>>(File.ReadAllText(save_file));
                     }
                     else
                     {
@@ -1927,16 +1927,15 @@ namespace WarframeTracker
 
         private void WarframeOwnershipCheckbox_Changed(object sender, EventArgs e)
         {
-            CheckBox cb = sender as CheckBox;
-            if (cb.Checked)
+            if (WarframeOwnedCheckbox.Checked)
             {
                 WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
-                UpdateInventoryState(GlobalData.activeItemName, cb.Checked);
+                UpdateInventoryState(GlobalData.activeItemName, WarframeOwnedCheckbox.Checked);
             }
             else
             {
                 WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
-                UpdateInventoryState(GlobalData.activeItemName, cb.Checked);
+                UpdateInventoryState(GlobalData.activeItemName, WarframeOwnedCheckbox.Checked);
             }
         }
 

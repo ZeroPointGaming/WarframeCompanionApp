@@ -1634,3 +1634,33 @@ Updated UI for Ash Prime
 Updated UI for Ash
 Updated UI for Ash Prime
 Updated UI for Atlas
+Error loading inventory json data 
+Stack Trace: Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: C. Path '', line 0, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadAndMoveToContent()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at WarframeTracker.Form1.LoadInventoryState() in C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\Form1.cs:line 1911
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Atlas
+Updated UI for Atlas Prime
+Updated UI for Ash Prime
+Updated UI for Atlas Prime
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Ash
+Updated UI for Ash
+Updated UI for Ash Prime
+Updated UI for Hildryn
+Updated UI for Mag Prime
+Updated UI for Revenant
