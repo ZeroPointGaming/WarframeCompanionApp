@@ -199,6 +199,10 @@ namespace WarframeTracker
             this.linkPatreonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitSourceRepoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PWOwnedCheckBox = new System.Windows.Forms.CheckBox();
+            this.SWOwnedCheckBox = new System.Windows.Forms.CheckBox();
+            this.MWOwnedCheckBox = new System.Windows.Forms.CheckBox();
+            this.CompanionOwnedCheckbox = new System.Windows.Forms.CheckBox();
             this.FindOrdersMenu.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
             this.WarframeTabPage.SuspendLayout();
@@ -561,6 +565,7 @@ namespace WarframeTracker
             // 
             // PrimaryWeaponContainer
             // 
+            this.PrimaryWeaponContainer.Controls.Add(this.PWOwnedCheckBox);
             this.PrimaryWeaponContainer.Controls.Add(this.PWComponentContainer);
             this.PrimaryWeaponContainer.Controls.Add(this.PWWeaponDmgContainer);
             this.PrimaryWeaponContainer.Controls.Add(this.PWFoundryPanel);
@@ -903,6 +908,7 @@ namespace WarframeTracker
             // 
             // SecondaryWeaponContainer
             // 
+            this.SecondaryWeaponContainer.Controls.Add(this.SWOwnedCheckBox);
             this.SecondaryWeaponContainer.Controls.Add(this.groupBox17);
             this.SecondaryWeaponContainer.Controls.Add(this.SecondaryWeaponsComboBox);
             this.SecondaryWeaponContainer.Controls.Add(this.groupBox18);
@@ -1245,6 +1251,7 @@ namespace WarframeTracker
             // 
             // MeleeWeaponContainer
             // 
+            this.MeleeWeaponContainer.Controls.Add(this.MWOwnedCheckBox);
             this.MeleeWeaponContainer.Controls.Add(this.groupBox19);
             this.MeleeWeaponContainer.Controls.Add(this.MeleeWeaponsComboBox);
             this.MeleeWeaponContainer.Controls.Add(this.groupBox20);
@@ -1588,6 +1595,7 @@ namespace WarframeTracker
             // groupBox7
             // 
             this.groupBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox7.Controls.Add(this.CompanionOwnedCheckbox);
             this.groupBox7.Controls.Add(this.ComponentDropsContainer);
             this.groupBox7.Controls.Add(this.CompanionComponentContainer);
             this.groupBox7.Controls.Add(this.CompanionStatsContainer);
@@ -2171,6 +2179,50 @@ namespace WarframeTracker
             this.visitSourceRepoToolStripMenuItem.Text = "Visit Source Repo";
             this.visitSourceRepoToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
             // 
+            // PWOwnedCheckBox
+            // 
+            this.PWOwnedCheckBox.AutoSize = true;
+            this.PWOwnedCheckBox.Location = new System.Drawing.Point(304, 33);
+            this.PWOwnedCheckBox.Name = "PWOwnedCheckBox";
+            this.PWOwnedCheckBox.Size = new System.Drawing.Size(160, 19);
+            this.PWOwnedCheckBox.TabIndex = 10;
+            this.PWOwnedCheckBox.Text = "_ItemName OwnedStatus";
+            this.PWOwnedCheckBox.UseVisualStyleBackColor = true;
+            this.PWOwnedCheckBox.CheckedChanged += new System.EventHandler(this.PWOwnershipCheckbox_Changed);
+            // 
+            // SWOwnedCheckBox
+            // 
+            this.SWOwnedCheckBox.AutoSize = true;
+            this.SWOwnedCheckBox.Location = new System.Drawing.Point(304, 26);
+            this.SWOwnedCheckBox.Name = "SWOwnedCheckBox";
+            this.SWOwnedCheckBox.Size = new System.Drawing.Size(160, 19);
+            this.SWOwnedCheckBox.TabIndex = 10;
+            this.SWOwnedCheckBox.Text = "_ItemName OwnedStatus";
+            this.SWOwnedCheckBox.UseVisualStyleBackColor = true;
+            this.SWOwnedCheckBox.CheckedChanged += new System.EventHandler(this.SWOwnershipCheckbox_Changed);
+            // 
+            // MWOwnedCheckBox
+            // 
+            this.MWOwnedCheckBox.AutoSize = true;
+            this.MWOwnedCheckBox.Location = new System.Drawing.Point(301, 29);
+            this.MWOwnedCheckBox.Name = "MWOwnedCheckBox";
+            this.MWOwnedCheckBox.Size = new System.Drawing.Size(160, 19);
+            this.MWOwnedCheckBox.TabIndex = 10;
+            this.MWOwnedCheckBox.Text = "_ItemName OwnedStatus";
+            this.MWOwnedCheckBox.UseVisualStyleBackColor = true;
+            this.MWOwnedCheckBox.CheckedChanged += new System.EventHandler(this.MWOwnershipCheckbox_Changed);
+            // 
+            // CompanionOwnedCheckbox
+            // 
+            this.CompanionOwnedCheckbox.AutoSize = true;
+            this.CompanionOwnedCheckbox.Location = new System.Drawing.Point(253, 26);
+            this.CompanionOwnedCheckbox.Name = "CompanionOwnedCheckbox";
+            this.CompanionOwnedCheckbox.Size = new System.Drawing.Size(160, 19);
+            this.CompanionOwnedCheckbox.TabIndex = 10;
+            this.CompanionOwnedCheckbox.Text = "_ItemName OwnedStatus";
+            this.CompanionOwnedCheckbox.UseVisualStyleBackColor = true;
+            this.CompanionOwnedCheckbox.CheckedChanged += new System.EventHandler(this.CompanionOwnershipCheckbox_Changed);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2198,6 +2250,7 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.BPComponentImgBox)).EndInit();
             this.PrimWeaponsTabPage.ResumeLayout(false);
             this.PrimaryWeaponContainer.ResumeLayout(false);
+            this.PrimaryWeaponContainer.PerformLayout();
             this.PWComponentContainer.ResumeLayout(false);
             this.PWComponentContainer.PerformLayout();
             this.PWWeaponDmgContainer.ResumeLayout(false);
@@ -2225,6 +2278,7 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryGunImageBox)).EndInit();
             this.SecWeaponsTabPage.ResumeLayout(false);
             this.SecondaryWeaponContainer.ResumeLayout(false);
+            this.SecondaryWeaponContainer.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.groupBox18.ResumeLayout(false);
@@ -2252,6 +2306,7 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.SecondaryWeaponImageBox)).EndInit();
             this.MeleeWeaponsTabPage.ResumeLayout(false);
             this.MeleeWeaponContainer.ResumeLayout(false);
+            this.MeleeWeaponContainer.PerformLayout();
             this.groupBox19.ResumeLayout(false);
             this.groupBox19.PerformLayout();
             this.groupBox20.ResumeLayout(false);
@@ -2279,6 +2334,7 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.MWImageBox)).EndInit();
             this.PetsTabPage.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ComponentDropsContainer.ResumeLayout(false);
             this.ComponentDropsContainer.PerformLayout();
             this.CompanionComponentContainer.ResumeLayout(false);
@@ -2488,6 +2544,10 @@ namespace WarframeTracker
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visitSourceRepoToolStripMenuItem;
         private System.Windows.Forms.CheckBox WarframeOwnedCheckbox;
+        private System.Windows.Forms.CheckBox MWOwnedCheckBox;
+        private System.Windows.Forms.CheckBox PWOwnedCheckBox;
+        private System.Windows.Forms.CheckBox SWOwnedCheckBox;
+        private System.Windows.Forms.CheckBox CompanionOwnedCheckbox;
     }
 }
 

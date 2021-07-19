@@ -1664,3 +1664,74 @@ Updated UI for Ash Prime
 Updated UI for Hildryn
 Updated UI for Mag Prime
 Updated UI for Revenant
+Updated UI for Ash
+Updated UI for Amprex
+Updated UI for Astilla Prime
+Updated UI for Cernos
+Updated UI for Ash
+Updated UI for Acceltra
+Updated UI for Ambassador
+Updated UI for Amprex
+Updated UI for Arca Plasmor
+Updated UI for Arca Plasmor
+Updated UI for Amprex
+Updated UI for Argonak
+Updated UI for Astilla Prime
+Updated UI for Boar
+Updated UI for Boar Prime
+Updated UI for Boltor
+Updated UI for Boltor Prime
+Updated UI for Braton
+Updated UI for Cernos
+Updated UI for Cernos Prime
+Updated UI for Corinth Prime
+Updated UI for Dex Sybaris
+Updated UI for Flux Rifle
+Updated UI for Fulmin
+Updated UI for Ignis Wraith
+Updated UI for Kuva Bramma
+Updated UI for Ash
+Updated UI for Kuva Bramma
+Updated UI for Kuva Ogris
+Updated UI for Kuva Bramma
+Updated UI for Kuva Ayanga
+Updated UI for Kuva Bramma
+Updated UI for Kuva Chakkhurr
+Updated UI for Kuva Drakgoon
+Updated UI for Kuva Hek
+Updated UI for Kuva Grattler
+Updated UI for Kuva Hind
+Updated UI for Kuva Karak
+Updated UI for Kuva Kohm
+Updated UI for Kuva Ogris
+Updated UI for Kuva Quartakk
+Updated UI for Kuva Tonkor
+Updated UI for Kuva Zarr
+Updated UI for Kuva Brakk
+Updated UI for Kuva Kraken
+Updated UI for Kuva Nukor
+Updated UI for Kuva Seer
+Updated UI for Kuva Twin Stubbas
+Updated UI for Orthos
+Updated UI for Orthos Prime
+Updated UI for Kuva Shildeg
+Updated UI for Kuva Shildeg
+Updated UI for Kuva Shildeg
+Updated UI for Kuva Shildeg
+Updated UI for Kuva Shildeg
+Updated UI for Kuva Shildeg
+Updated UI for Tipedo
+Updated UI for Silva & Aegis Prime
+Updated UI for Scindo Prime
+Updated UI for Redeemer Prime
+Updated UI for Nami Skyla Prime
+Updated UI for Mk1-Bo
+Updated UI for Mk1-Furax
+Updated UI for Ack & Brunt
+Updated UI for Ankyros
+Updated UI for Bo
+Updated UI for Broken War
+Updated UI for Dakra Prime
+Updated UI for Dark Dagger
+Updated UI for Dark Sword
+Updated UI for Dragon Nikana

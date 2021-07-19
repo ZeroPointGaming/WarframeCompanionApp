@@ -62,28 +62,28 @@ namespace WarframeTracker
         #region Combobox Event Code
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            #region Set Static Variables
-            Items.Warframes.Root frame = GlobalData.WarframeDatabase[$"{WarframeComboBox.SelectedItem}"];
-            GlobalData.activeItemName = frame.Name;
-            WarframeComponentContainer.Text = $"{frame.Name} Components";
-            #endregion
-
-            #region Resets
-            FindOrdersMenu.Items.Clear();
-            WarframeMarketOptions.DropDownItems.Clear();
-            WarframeAbilitiesTxt.Text = "";
-            SelectedWarframeImageBox.BackgroundImage = null;
-            BPComponentImgBox.BackgroundImage = null;
-            ChassCompImgBox.BackgroundImage = null;
-            SysCompImgBox.BackgroundImage = null;
-            NueroCompImgBox.BackgroundImage = null;
-            WarframeComponentContainer.Text = String.Empty;
-            WarframeComponentTxt.Text = String.Empty;
-            WarframeOwnedCheckbox.Text = String.Empty;
-            #endregion
-
             try
             {
+                #region Set Static Variables
+                Items.Warframes.Root frame = GlobalData.WarframeDatabase[$"{WarframeComboBox.SelectedItem}"];
+                GlobalData.activeItemName = frame.Name;
+                WarframeComponentContainer.Text = $"{frame.Name} Components";
+                #endregion
+
+                #region Resets
+                FindOrdersMenu.Items.Clear();
+                WarframeMarketOptions.DropDownItems.Clear();
+                WarframeAbilitiesTxt.Text = "";
+                SelectedWarframeImageBox.BackgroundImage = null;
+                BPComponentImgBox.BackgroundImage = null;
+                ChassCompImgBox.BackgroundImage = null;
+                SysCompImgBox.BackgroundImage = null;
+                NueroCompImgBox.BackgroundImage = null;
+                WarframeComponentContainer.Text = String.Empty;
+                WarframeComponentTxt.Text = String.Empty;
+                WarframeOwnedCheckbox.Text = String.Empty;
+                #endregion
+
                 #region Set Ownership Checkbox
                 if (GlobalData.LocalInventory.ContainsKey(GlobalData.activeItemName))
                 {
@@ -291,36 +291,59 @@ namespace WarframeTracker
 
         private void PrimaryWeaponComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            #region Reset
-            FindOrdersMenu.Items.Clear();
-            WarframeMarketOptions.DropDownItems.Clear();
-            PWDataTxt.Text = "";
-            PWFoundryCreditsTxt.Text = "";
-            PWFoundrySlot0Txt.Text = "";
-            PWFoundrySlot1Txt.Text = "";
-            PWFoundrySlot2Txt.Text = "";
-            PWFoundrySlot3Txt.Text = "";
-            PWFoundrySlot4Txt.Text = "";
-            PWCompDataTxt.Text = "";
-            PWFoundrySlot0Img.BackgroundImage = null;
-            PWFoundrySlot1Img.BackgroundImage = null;
-            PWFoundrySlot2Img.BackgroundImage = null;
-            PWFoundrySlot3Img.BackgroundImage = null;
-            PWFoundrySlot4Img.BackgroundImage = null;
-            PWFoundryCreditsImg.BackgroundImage = null;
-            PWFoundryCreditsTxt.Text = "";
-            PWFoundryMarketPriceLbl.Text = "";
-            PWFoundryBuildTime.Text = "";
-            PWFoundrySkipBuildLbl.Text = "";
-            PWComponentContainer.Visible = true;
-            PWFoundryPanel.Visible = true;
-            #endregion
-
             try
             {
+                #region Reset
+                FindOrdersMenu.Items.Clear();
+                WarframeMarketOptions.DropDownItems.Clear();
+                PWDataTxt.Text = "";
+                PWFoundryCreditsTxt.Text = "";
+                PrimaryGunImageBox.BackgroundImage = null;
+                PWFoundrySlot0Txt.Text = "";
+                PWFoundrySlot1Txt.Text = "";
+                PWFoundrySlot2Txt.Text = "";
+                PWFoundrySlot3Txt.Text = "";
+                PWFoundrySlot4Txt.Text = "";
+                PWCompDataTxt.Text = "";
+                PWFoundrySlot0Img.BackgroundImage = null;
+                PWFoundrySlot1Img.BackgroundImage = null;
+                PWFoundrySlot2Img.BackgroundImage = null;
+                PWFoundrySlot3Img.BackgroundImage = null;
+                PWFoundrySlot4Img.BackgroundImage = null;
+                PWFoundryCreditsImg.BackgroundImage = null;
+                PWFoundryCreditsTxt.Text = "";
+                PWFoundryMarketPriceLbl.Text = "";
+                PWFoundryBuildTime.Text = "";
+                PWFoundrySkipBuildLbl.Text = "";
+                PWComponentContainer.Visible = true;
+                PWFoundryPanel.Visible = true;
+                PWOwnedCheckBox.Text = String.Empty;
+                #endregion
+
                 #region Set Static Variables
                 Items.PrimaryWeapons.Root Weapon = GlobalData.PrimaryWeaponDatabase[$"{PrimaryWeaponComboBox.SelectedItem}"];
                 GlobalData.activeItemName = Weapon.Name;
+                #endregion
+
+                #region Set Ownership Checkbox
+                if (GlobalData.LocalInventory.ContainsKey(GlobalData.activeItemName))
+                {
+                    if (GlobalData.LocalInventory[GlobalData.activeItemName])
+                    {
+                        PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                        PWOwnedCheckBox.Checked = true;
+                    }
+                    else
+                    {
+                        PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                        PWOwnedCheckBox.Checked = false;
+                    }
+                }
+                else
+                {
+                    PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    PWOwnedCheckBox.Checked = false;
+                }
                 #endregion
 
                 #region Set main Weapon image
@@ -542,33 +565,55 @@ namespace WarframeTracker
 
         private void SecondaryWeaponsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            #region Reset
-            FindOrdersMenu.Items.Clear();
-            WarframeMarketOptions.DropDownItems.Clear();
-            SWWeaponDataTxt.Text = "";
-            SWFoundryCreditsTxt.Text = "";
-            SWSlot0Txt.Text = "";
-            SWSlot1Txt.Text = "";
-            SWSlot2Txt.Text = "";
-            SWSlot3Txt.Text = "";
-            SWSlot4Txt.Text = "";
-            SWComponentDataTxt.Text = "";
-            SWSlot01Img.BackgroundImage = null;
-            SWSlot02Img.BackgroundImage = null;
-            SWSlot03Img.BackgroundImage = null;
-            SWSlot04Img.BackgroundImage = null;
-            SWCreditsImgBox.BackgroundImage = null;
-            SWFoundryCreditsTxt.Text = "";
-            SWMarketPriceLbl.Text = "";
-            SWBuildTimeLbl.Text = "";
-            SWFoundrySkipBuildLbl.Text = "";
-            #endregion
-
             try
             {
+                #region Reset
+                FindOrdersMenu.Items.Clear();
+                WarframeMarketOptions.DropDownItems.Clear();
+                SWWeaponDataTxt.Text = "";
+                SWFoundryCreditsTxt.Text = "";
+                SWSlot0Txt.Text = "";
+                SWSlot1Txt.Text = "";
+                SWSlot2Txt.Text = "";
+                SWSlot3Txt.Text = "";
+                SWSlot4Txt.Text = "";
+                SWComponentDataTxt.Text = "";
+                SWSlot01Img.BackgroundImage = null;
+                SWSlot02Img.BackgroundImage = null;
+                SWSlot03Img.BackgroundImage = null;
+                SWSlot04Img.BackgroundImage = null;
+                SWCreditsImgBox.BackgroundImage = null;
+                SWFoundryCreditsTxt.Text = "";
+                SWMarketPriceLbl.Text = "";
+                SWBuildTimeLbl.Text = "";
+                SWFoundrySkipBuildLbl.Text = "";
+                SWOwnedCheckBox.Text = String.Empty;
+                #endregion
+
                 #region Set Static Variables
                 Items.SecondaryWeapons.Root Weapon = GlobalData.SecondaryWeaponDatabase[$"{SecondaryWeaponsComboBox.SelectedItem}"];
                 GlobalData.activeItemName = Weapon.Name;
+                #endregion
+
+                #region Set Ownership Checkbox
+                if (GlobalData.LocalInventory.ContainsKey(GlobalData.activeItemName))
+                {
+                    if (GlobalData.LocalInventory[GlobalData.activeItemName])
+                    {
+                        SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                        SWOwnedCheckBox.Checked = true;
+                    }
+                    else
+                    {
+                        SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                        SWOwnedCheckBox.Checked = false;
+                    }
+                }
+                else
+                {
+                    SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    SWOwnedCheckBox.Checked = false;
+                }
                 #endregion
 
                 #region Set main Weapon image
@@ -785,34 +830,56 @@ namespace WarframeTracker
 
         private void MeleeWeaponsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            #region Reset
-            FindOrdersMenu.Items.Clear();
-            WarframeMarketOptions.DropDownItems.Clear();
-            MWDataTxt.Text = "";
-            MWCreditsTxt.Text = "";
-            MWSlot0Txt.Text = "";
-            MWSlot1Txt.Text = "";
-            MWSlot2Txt.Text = "";
-            MWSlot3Txt.Text = "";
-            MWSlot4Txt.Text = "";
-            MWWeaponCompDataTxt.Text = "";
-            MWSlot0Img.BackgroundImage = null;
-            MWSlot1Img.BackgroundImage = null;
-            MWSlot2Img.BackgroundImage = null;
-            MWSlot3Img.BackgroundImage = null;
-            MWSlot4Img.BackgroundImage = null;
-            MWCreditsImg.BackgroundImage = null;
-            MWCreditsTxt.Text = "";
-            MWMarketPriceLbl.Text = "";
-            MWCreditCostLbl.Text = "";
-            MWSkipBuildCostLbl.Text = "";
-            #endregion
-
             try
             {
+                #region Reset
+                FindOrdersMenu.Items.Clear();
+                WarframeMarketOptions.DropDownItems.Clear();
+                MWDataTxt.Text = String.Empty;
+                MWCreditsTxt.Text = String.Empty;
+                MWSlot0Txt.Text = String.Empty;
+                MWSlot1Txt.Text = String.Empty;
+                MWSlot2Txt.Text = String.Empty;
+                MWSlot3Txt.Text = String.Empty;
+                MWSlot4Txt.Text = String.Empty;
+                MWWeaponCompDataTxt.Text = String.Empty;
+                MWSlot0Img.BackgroundImage = null;
+                MWSlot1Img.BackgroundImage = null;
+                MWSlot2Img.BackgroundImage = null;
+                MWSlot3Img.BackgroundImage = null;
+                MWSlot4Img.BackgroundImage = null;
+                MWCreditsImg.BackgroundImage = null;
+                MWCreditsTxt.Text = String.Empty;
+                MWMarketPriceLbl.Text = String.Empty;
+                MWCreditCostLbl.Text = String.Empty;
+                MWSkipBuildCostLbl.Text = String.Empty;
+                MWOwnedCheckBox.Text = String.Empty;
+                #endregion
+
                 #region Set Static Variables
                 Items.Melee.Root Weapon = GlobalData.MeleeWeaponDatabase[$"{MeleeWeaponsComboBox.SelectedItem}"];
                 GlobalData.activeItemName = Weapon.Name;
+                #endregion
+
+                #region Set Ownership Checkbox
+                if (GlobalData.LocalInventory.ContainsKey(GlobalData.activeItemName))
+                {
+                    if (GlobalData.LocalInventory[GlobalData.activeItemName])
+                    {
+                        MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                        MWOwnedCheckBox.Checked = true;
+                    }
+                    else
+                    {
+                        MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                        MWOwnedCheckBox.Checked = false;
+                    }
+                }
+                else
+                {
+                    MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    MWOwnedCheckBox.Checked = false;
+                }
                 #endregion
 
                 #region Set main Weapon image
@@ -1061,6 +1128,27 @@ namespace WarframeTracker
                     Items.Pets.Root Pet = GlobalData.PetsDatabase[$"{CompanionsComboBox.SelectedItem}"];
                     GlobalData.activeItemName = Pet.Name;
 
+                    #region Set Ownership Checkbox
+                    if (GlobalData.LocalInventory.ContainsKey(GlobalData.activeItemName))
+                    {
+                        if (GlobalData.LocalInventory[GlobalData.activeItemName])
+                        {
+                            CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
+                            CompanionOwnedCheckbox.Checked = true;
+                        }
+                        else
+                        {
+                            CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                            CompanionOwnedCheckbox.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                        CompanionOwnedCheckbox.Checked = false;
+                    }
+                    #endregion
+
                     if (Pet.ImageName != null)
                     {
                         #region Set Image 
@@ -1151,6 +1239,27 @@ namespace WarframeTracker
                     #region Process Sentinels
                     Items.Sentinels.Root Pet = GlobalData.SentinelsDatabase[$"{CompanionsComboBox.SelectedItem}"];
                     GlobalData.activeItemName = Pet.Name;
+
+                    #region Set Ownership Checkbox
+                    if (GlobalData.LocalInventory.ContainsKey(GlobalData.activeItemName))
+                    {
+                        if (GlobalData.LocalInventory[GlobalData.activeItemName])
+                        {
+                            CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
+                            CompanionOwnedCheckbox.Checked = true;
+                        }
+                        else
+                        {
+                            CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                            CompanionOwnedCheckbox.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                        CompanionOwnedCheckbox.Checked = false;
+                    }
+                    #endregion
 
                     if (Pet.ImageName != null)
                     {
@@ -1939,6 +2048,61 @@ namespace WarframeTracker
             }
         }
 
+        private void PWOwnershipCheckbox_Changed(object sender, EventArgs e)
+        {
+            if (PWOwnedCheckBox.Checked)
+            {
+                PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                UpdateInventoryState(GlobalData.activeItemName, PWOwnedCheckBox.Checked);
+            }
+            else
+            {
+                PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                UpdateInventoryState(GlobalData.activeItemName, PWOwnedCheckBox.Checked);
+            }
+        }
+
+        private void SWOwnershipCheckbox_Changed(object sender, EventArgs e)
+        {
+            if (SWOwnedCheckBox.Checked)
+            {
+                SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                UpdateInventoryState(GlobalData.activeItemName, SWOwnedCheckBox.Checked);
+            }
+            else
+            {
+                SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                UpdateInventoryState(GlobalData.activeItemName, SWOwnedCheckBox.Checked);
+            }
+        }
+
+        private void MWOwnershipCheckbox_Changed(object sender, EventArgs e)
+        {
+            if (MWOwnedCheckBox.Checked)
+            {
+                MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                UpdateInventoryState(GlobalData.activeItemName, MWOwnedCheckBox.Checked);
+            }
+            else
+            {
+                MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                UpdateInventoryState(GlobalData.activeItemName, MWOwnedCheckBox.Checked);
+            }
+        }
+
+        private void CompanionOwnershipCheckbox_Changed(object sender, EventArgs e)
+        {
+            if (CompanionOwnedCheckbox.Checked)
+            {
+                CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
+                UpdateInventoryState(GlobalData.activeItemName, CompanionOwnedCheckbox.Checked);
+            }
+            else
+            {
+                CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                UpdateInventoryState(GlobalData.activeItemName, CompanionOwnedCheckbox.Checked);
+            }
+        }
         #endregion
 
         #region ContextMenu Code
