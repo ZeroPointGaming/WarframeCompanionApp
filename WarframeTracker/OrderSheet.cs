@@ -30,6 +30,7 @@ namespace WarframeTracker
             RefereshOrders();
         }
 
+
         private void RefereshOrders()
         {
             flowLayoutPanel1.Controls.Clear();

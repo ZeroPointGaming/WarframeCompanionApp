@@ -6,7 +6,6 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using WarframeTracker.WebInterface;
-//lzma compression using SevenZip.Compression.LZMA;
 
 namespace WarframeTracker
 {
@@ -30,6 +29,10 @@ namespace WarframeTracker
         private List<Items.ArcMelee.Root> ArcMelee = new List<Items.ArcMelee.Root>();
         private List<Items.Arcanes.Root> Arcanes = new List<Items.Arcanes.Root>();
         private List<Items.Mods.Root> Mods = new List<Items.Mods.Root>();
+        private List<Items.Relics.Root> Relics = new List<Items.Relics.Root>();
+        private List<Items.Fish.Root> Fish = new List<Items.Fish.Root>();
+        //private List<Items.Glyph.Root> Glphys = new List<Items.Glyph.Root>();
+        //private List<Items.Resources.Root> Resources = new List<Items.Resources.Root>();
 
         private ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
 
@@ -2424,6 +2427,10 @@ namespace WarframeTracker
         public static Dictionary<String, Items.ArcMelee.Root> ArcMeleeDatabase = new Dictionary<string, Items.ArcMelee.Root>();
         public static Dictionary<String, Items.Arcanes.Root> ArcaneDatabase = new Dictionary<string, Items.Arcanes.Root>();
         public static Dictionary<String, Items.Mods.Root> ModDatabase = new Dictionary<string, Items.Mods.Root>();
+        public static Dictionary<String, Items.Relics.Root> RelicDatabase = new Dictionary<string, Items.Relics.Root>();
+        public static Dictionary<String, Items.Fish.Root> FishDatabase = new Dictionary<string, Items.Fish.Root>();
+        //public static Dictionary<String, Items.Glyph.Root> GlyphDatabase = new Dictionary<string, Items.Glyph.Root>();
+        //public static Dictionary<String, Items.Resources.Root> ResourceDatabase = new Dictionary<string, Items.Resources.Root>();
         #endregion
 
         public static OGTech.ValutedItemData.Root VaultData = new OGTech.ValutedItemData.Root();

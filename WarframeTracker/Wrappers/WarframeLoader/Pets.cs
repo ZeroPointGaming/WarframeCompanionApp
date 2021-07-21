@@ -162,5 +162,4 @@ namespace WarframeTracker.Items.Pets
         [JsonProperty("components")]
         public List<Component> Components;
     }
-
 }
