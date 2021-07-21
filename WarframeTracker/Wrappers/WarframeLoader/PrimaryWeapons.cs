@@ -53,13 +53,13 @@ namespace WarframeTracker.Items.PrimaryWeapons
         public List<Drop> Drops;
 
         [JsonProperty("primeSellingPrice")]
-        public int? PrimeSellingPrice;
+        public int PrimeSellingPrice;
 
         [JsonProperty("ducats")]
-        public int? Ducats;
+        public int Ducats;
 
         [JsonProperty("excludeFromCodex")]
-        public bool? ExcludeFromCodex;
+        public bool ExcludeFromCodex;
 
         [JsonProperty("damagePerShot")]
         public List<double> DamagePerShot;
@@ -68,19 +68,19 @@ namespace WarframeTracker.Items.PrimaryWeapons
         public int? TotalDamage;
 
         [JsonProperty("criticalChance")]
-        public double? CriticalChance;
+        public double CriticalChance;
 
         [JsonProperty("criticalMultiplier")]
-        public double? CriticalMultiplier;
+        public double CriticalMultiplier;
 
         [JsonProperty("procChance")]
-        public double? ProcChance;
+        public double ProcChance;
 
         [JsonProperty("fireRate")]
-        public double? FireRate;
+        public double FireRate;
 
         [JsonProperty("masteryReq")]
-        public int? MasteryReq;
+        public int MasteryReq;
 
         [JsonProperty("productCategory")]
         public string ProductCategory;
@@ -107,16 +107,16 @@ namespace WarframeTracker.Items.PrimaryWeapons
         public double? ReloadTime;
 
         [JsonProperty("multishot")]
-        public int? Multishot;
+        public double Multishot;
 
         [JsonProperty("ammo")]
-        public int? Ammo;
+        public int Ammo;
 
         [JsonProperty("damageTypes")]
         public DamageTypes DamageTypes;
 
         [JsonProperty("marketCost")]
-        public int? MarketCost;
+        public int MarketCost;
 
         [JsonProperty("polarities")]
         public List<string> Polarities;
@@ -134,7 +134,7 @@ namespace WarframeTracker.Items.PrimaryWeapons
         public string WikiaUrl;
 
         [JsonProperty("disposition")]
-        public int? Disposition;
+        public double Disposition;
     }
 
     public class Patchlog
@@ -218,7 +218,7 @@ namespace WarframeTracker.Items.PrimaryWeapons
         public double ReloadTime;
 
         [JsonProperty("multishot")]
-        public int Multishot;
+        public double Multishot;
 
         [JsonProperty("buildPrice")]
         public int BuildPrice;

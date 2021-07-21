@@ -99,7 +99,7 @@ namespace WarframeTracker.Items.SecondaryWeapons
         public double? ReloadTime;
 
         [JsonProperty("multishot")]
-        public int? Multishot;
+        public double Multishot;
 
         [JsonProperty("ammo")]
         public int? Ammo;
@@ -276,7 +276,7 @@ namespace WarframeTracker.Items.SecondaryWeapons
         public double ReloadTime;
 
         [JsonProperty("multishot")]
-        public int Multishot;
+        public double Multishot;
 
         [JsonProperty("buildPrice")]
         public int BuildPrice;

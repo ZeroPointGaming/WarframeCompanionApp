@@ -83,6 +83,7 @@ namespace WarframeTracker
                 SysCompImgBox.BackgroundImage = null;
                 NueroCompImgBox.BackgroundImage = null;
                 WarframeComponentContainer.Text = String.Empty;
+                WarframeComponentContainer.Visible = true;
                 WarframeComponentTxt.Text = String.Empty;
                 WarframeOwnedCheckbox.Text = String.Empty;
                 #endregion
@@ -261,6 +262,11 @@ namespace WarframeTracker
                         }
                     }
                 }
+
+                if (WarframeComponentTxt.TextLength < 3)
+                {
+                    WarframeComponentContainer.Visible = false;
+                }
                 #endregion
 
                 //Debug Info
@@ -350,7 +356,11 @@ namespace WarframeTracker
                 #endregion
 
                 #region Set main Weapon image
-                if (Weapon.WikiaThumbnail != null)
+                if (Weapon.ImageName != null)
+                {
+                    PrimaryGunImageBox.BackgroundImage = Image.FromFile(local_media_directory + Weapon.ImageName);
+                }
+                else if (Weapon.WikiaThumbnail != null)
                 {
                     PrimaryGunImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
                     PrimaryWeaponContainer.Text = Weapon.Name.ToString();
@@ -363,6 +373,10 @@ namespace WarframeTracker
                     {
                         PWFoundrySkipBuildLbl.Visible = false;
                     }
+                }
+                else
+                {
+                    if (Properties.Settings.Default.debug_mode) { Debugger.Log($"No image file exists for {Weapon.Name}"); }
                 }
                 #endregion
 
@@ -440,14 +454,14 @@ namespace WarframeTracker
                 #endregion
 
                 #region Weapon Data
-                PWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)}{Environment.NewLine}";
-                PWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier}{Environment.NewLine}";
-                PWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)}{Environment.NewLine}";
-                PWDataTxt.Text += $"Fire Rate: {Weapon.FireRate}{Environment.NewLine}";
-                PWDataTxt.Text += $"Accuracy: {Weapon.Accuracy}{Environment.NewLine}";
-                PWDataTxt.Text += $"Multishot: {Weapon.Multishot}{Environment.NewLine}";
-                PWDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s{Environment.NewLine}";
-                PWDataTxt.Text += $"Riven Disposition: {Weapon.OmegaAttenuation}{Environment.NewLine}";
+                PWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100, 1)}%{Environment.NewLine}";
+                PWDataTxt.Text += $"Cricical Multiplier: {Math.Round(Weapon.CriticalMultiplier, 2)}x{Environment.NewLine}";
+                PWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100, 2)}%{Environment.NewLine}";
+                PWDataTxt.Text += $"Fire Rate: {Math.Round(Weapon.FireRate, 1)}{Environment.NewLine}";
+                PWDataTxt.Text += $"Accuracy: {Math.Round(Weapon.Accuracy, 1)}{Environment.NewLine}";
+                PWDataTxt.Text += $"Multishot: {Math.Round(Weapon.Multishot, 1)}{Environment.NewLine}";
+                PWDataTxt.Text += $"Reload Time: {Math.Round(Weapon.ReloadTime, 1)}s{Environment.NewLine}";
+                PWDataTxt.Text += $"Riven Disposition: {Math.Round(Weapon.OmegaAttenuation, 2)}x{Environment.NewLine}";
 
                 //Export Damage Ammounts
                 for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
@@ -462,22 +476,45 @@ namespace WarframeTracker
                 #region Component Data & Order Menu
                 if (Weapon.Components != null)
                 {
-                    for (int i = 0; i < Weapon.Components.Count; i++)
+                    if (Weapon.Name.ToLower().Contains("prime"))
                     {
-                        if (Weapon.Components[i].Drops != null)
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}");
+                        for (int r = 0; r < RelicLocations.Count; r++)
                         {
-                            for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
-                            {
-                                if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
-                                {
-                                    PWCompDataTxt.Text +=
-                                    Weapon.Components[i].Drops[c].Type + " Drops from " + Weapon.Components[i].Drops[c].Location + " with a " +
-                                    Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100)).ToString() + " % chance with a rarity class of " +
-                                    Weapon.Components[i].Drops[c].Rarity + Environment.NewLine;
-                                }
-                            }
+                            PWCompDataTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
+                        }
+                        PWCompDataTxt.Text += line_seperator;
+                    }
+                    else
+                    {
+                        //new non prime drop info function
+                        List<String> DropData = SearchNonPrimeItems(Weapon.Name);
+                        for (int d = 0; d < DropData.Count; d++)
+                        {
+                            //PWCompDataTxt.Text += $"{DropData[d]}{Environment.NewLine}";
+                        }
+                        //PWCompDataTxt.Text += line_seperator;
 
-                            PWCompDataTxt.Text += line_seperator;
+
+
+                        //Old drops code from embedded json file remove when nonprime drop function is completed
+                        for (int i = 0; i < Weapon.Components.Count; i++)
+                        {
+                            if (Weapon.Components[i].Drops != null)
+                            {
+                                for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                                {
+                                    if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                    {
+                                        PWCompDataTxt.Text +=
+                                        Weapon.Components[i].Drops[c].Type + " Drops from " + Weapon.Components[i].Drops[c].Location + " with a " +
+                                        Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100)).ToString() + " % chance with a rarity class of " +
+                                        Weapon.Components[i].Drops[c].Rarity + Environment.NewLine;
+                                    }
+                                }
+
+                                PWCompDataTxt.Text += line_seperator;
+                            }
                         }
                     }
 
@@ -620,7 +657,11 @@ namespace WarframeTracker
                 #endregion
 
                 #region Set main Weapon image
-                if (Weapon.WikiaThumbnail != null)
+                if (Weapon.ImageName != null)
+                {
+                    SecondaryWeaponImageBox.BackgroundImage = Image.FromFile(local_media_directory + Weapon.ImageName);
+                }
+                else if (Weapon.WikiaThumbnail != null)
                 {
                     SecondaryWeaponImageBox.BackgroundImage = WebManager.ServiceImage($"{Weapon.Name}", Weapon.WikiaThumbnail);
                     SecondaryWeaponContainer.Text = $"{Weapon.Name}";
@@ -633,6 +674,10 @@ namespace WarframeTracker
                     {
                         SWFoundrySkipBuildLbl.Visible = false;
                     }
+                }
+                else
+                {
+                    if (Properties.Settings.Default.debug_mode) { Debugger.Log($"No image file exists for {Weapon.Name}"); }
                 }
                 #endregion
 
@@ -688,24 +733,38 @@ namespace WarframeTracker
                 #endregion
 
                 #region Export Component Drop Data
-                if (Weapon.Components != null)
+                if (Weapon.Name.ToLower().Contains("prime"))
                 {
-                    for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                    List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}");
+                    for (int r = 0; r < RelicLocations.Count; r++)
                     {
-                        if (Weapon.Components[i].Drops != null)
+                        SWComponentDataTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
+                    }
+                    SWComponentDataTxt.Text += line_seperator;
+                }
+                else
+                {
+                    //OLD METHOD WILL BE REPLACED WITH SearchNonPrimeItems(item_name)
+                    if (Weapon.Components != null)
+                    {
+                        for (int i = 0; i < Weapon.Components.Count; i++)
                         {
-                            for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                            if (Weapon.Components[i].Drops != null)
                             {
-                                if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
                                 {
-                                    SWComponentDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                    if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                    {
+                                        SWComponentDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                    }
                                 }
-                            }
 
-                            SWComponentDataTxt.Text += line_seperator;
+                                SWComponentDataTxt.Text += line_seperator;
+                            }
                         }
                     }
                 }
+                
                 #endregion
 
                 #region Generate Order Menu
@@ -764,14 +823,14 @@ namespace WarframeTracker
                 #endregion
 
                 #region Set Weapon Data
-                SWWeaponDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
-                SWWeaponDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
-                SWWeaponDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
-                SWWeaponDataTxt.Text += $"Fire Rate: {Weapon.FireRate} {Environment.NewLine}";
-                SWWeaponDataTxt.Text += $"Accuracy: {Weapon.Accuracy} {Environment.NewLine}";
-                SWWeaponDataTxt.Text += $"Multishot: {Weapon.Multishot} {Environment.NewLine}";
-                SWWeaponDataTxt.Text += $"Reload Time: {Weapon.ReloadTime}s {Environment.NewLine}";
-                SWWeaponDataTxt.Text += $"Riven Disposition: {Weapon.OmegaAttenuation}{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100, 1)}%{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Cricical Multiplier: {Math.Round(Weapon.CriticalMultiplier, 2)}x{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100, 2)}%{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Fire Rate: {Math.Round(Weapon.FireRate, 1)}{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Accuracy: {Math.Round(Weapon.Accuracy, 1)}{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Multishot: {Math.Round(Weapon.Multishot, 1)}{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Reload Time: {Math.Round(Weapon.ReloadTime, 1)}s{Environment.NewLine}";
+                SWWeaponDataTxt.Text += $"Riven Disposition: {Math.Round(Weapon.OmegaAttenuation, 2)}x{Environment.NewLine}";
 
                 for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
                 {
@@ -857,6 +916,8 @@ namespace WarframeTracker
                 MWCreditCostLbl.Text = String.Empty;
                 MWSkipBuildCostLbl.Text = String.Empty;
                 MWOwnedCheckBox.Text = String.Empty;
+                MWFoundryPanel.Visible = true;
+                MWCompGroupBox.Visible = true;
                 #endregion
 
                 #region Set Static Variables
@@ -886,7 +947,11 @@ namespace WarframeTracker
                 #endregion
 
                 #region Set main Weapon image
-                if (Weapon.WikiaThumbnail != null)
+                if (Weapon.ImageName != null)
+                {
+                    MWImageBox.BackgroundImage = Image.FromFile(local_media_directory + Weapon.ImageName);
+                }
+                else if (Weapon.WikiaThumbnail != null)
                 {
                     MWImageBox.BackgroundImage = WebManager.ServiceImage(Weapon.Name.ToString(), Weapon.WikiaThumbnail);
                     MeleeWeaponContainer.Text = Weapon.Name.ToString();
@@ -899,6 +964,10 @@ namespace WarframeTracker
                     {
                         MWSkipBuildCostLbl.Visible = false;
                     }
+                }
+                else
+                {
+                    if (Properties.Settings.Default.debug_mode) { Debugger.Log($"No image file exists for {Weapon.Name}"); }
                 }
                 #endregion
 
@@ -974,21 +1043,21 @@ namespace WarframeTracker
                     MWCreditCostLbl.Visible = false;
                 }
 
-                MWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100)} {Environment.NewLine}";
-                MWDataTxt.Text += $"Cricical Multiplier: {Weapon.CriticalMultiplier} {Environment.NewLine}";
-                MWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100)} {Environment.NewLine}";
-                MWDataTxt.Text += $"Attack Rate: {Weapon.FireRate} {Environment.NewLine}";
-                MWDataTxt.Text += $"Combo Duration: {Weapon.ComboDuration} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Attack Damage: {Weapon.HeavyAttackDamage} {Environment.NewLine}";
-                MWDataTxt.Text += $"Slam Attack Damage: {Weapon.SlamAttack} {Environment.NewLine}";
-                MWDataTxt.Text += $"Slam Attack Radial Damage: {Weapon.SlamRadialDamage} {Environment.NewLine}";
-                MWDataTxt.Text += $"Slam Attack Radius: {Weapon.SlamRadius} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Slam Attack Damage: {Weapon.HeavySlamAttack} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage} {Environment.NewLine}";
-                MWDataTxt.Text += $"Heavy Slam Attack Radius: {Weapon.HeavySlamRadius}{Environment.NewLine}";
-                MWDataTxt.Text += $"Range: {Weapon.Range}s {Environment.NewLine}";
-                MWDataTxt.Text += $"Riven Disposition: {Weapon.OmegaAttenuation}{Environment.NewLine}";
-                MWDataTxt.Text += $"-----------------------------------------------------";
+                MWDataTxt.Text += $"Cricical Chance: {Math.Round(Weapon.CriticalChance * 100, 1)}%{Environment.NewLine}";
+                MWDataTxt.Text += $"Cricical Multiplier: {Math.Round(Weapon.CriticalMultiplier, 2)}x{Environment.NewLine}";
+                MWDataTxt.Text += $"Proc Chance: {Math.Round(Weapon.ProcChance * 100, 2)}%{Environment.NewLine}";
+                MWDataTxt.Text += $"Attack Rate: {Math.Round(Weapon.FireRate, 1)}{Environment.NewLine}";
+                MWDataTxt.Text += $"Combo Duration: {Weapon.ComboDuration}s{Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Attack Damage: {Weapon.HeavyAttackDamage}{Environment.NewLine}";
+                MWDataTxt.Text += $"Slam Attack Damage: {Weapon.SlamAttack}{Environment.NewLine}";
+                MWDataTxt.Text += $"Slam Attack Radial Damage: {Weapon.SlamRadialDamage}{Environment.NewLine}";
+                MWDataTxt.Text += $"Slam Attack Radius: {Weapon.SlamRadius}m{Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Slam Attack Damage: {Weapon.HeavySlamAttack}{Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Slam Attack Radial Damage: {Weapon.HeavySlamRadialDamage}{Environment.NewLine}";
+                MWDataTxt.Text += $"Heavy Slam Attack Radius: {Weapon.HeavySlamRadius}m{Environment.NewLine}";
+                MWDataTxt.Text += $"Range: {Math.Round(Weapon.Range, 1)}m {Environment.NewLine}";
+                MWDataTxt.Text += $"Riven Disposition: {Math.Round(Weapon.OmegaAttenuation, 2)}x{Environment.NewLine}";
+                MWDataTxt.Text += $"-------------------------------------------------";
 
                 for (int i = 0; i < Weapon.DamagePerShot.Count; i++)
                 {
@@ -1055,23 +1124,47 @@ namespace WarframeTracker
                 #endregion
 
                 #region Export component drop data
-                if (Weapon.Components != null)
+                if (Weapon.Name.ToLower().Contains("prime"))
                 {
-                    for (int i = 0; i < Weapon.Components.Count; i++) ///INDEX WAS OUT OF RANGE EXCEPTION OCCURRED AT LINE 360 
+                    List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}");
+                    for (int r = 0; r < RelicLocations.Count; r++)
                     {
-                        if (Weapon.Components[i].Drops != null)
+                        MWWeaponCompDataTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
+                    }
+                    MWWeaponCompDataTxt.Text += line_seperator;
+                }
+                else
+                {
+                    //OLD METHOD WILL BE REPLACED WITH SearchNonPrimeItems(item_name)
+                    if (Weapon.Components != null)
+                    {
+                        for (int i = 0; i < Weapon.Components.Count; i++)
                         {
-                            for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
+                            if (Weapon.Components[i].Drops != null)
                             {
-                                if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                for (int c = 0; c < Weapon.Components[i].Drops.Count; c++)
                                 {
-                                    MWWeaponCompDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                    if (!Weapon.Components[i].Drops[c].Type.Contains("Forma"))
+                                    {
+                                        MWWeaponCompDataTxt.Text += $"{Weapon.Components[i].Drops[c].Type} Drops from {Weapon.Components[i].Drops[c].Location} with a {Math.Round((double)(Weapon.Components[i].Drops[c].Chance * 100))}% chance with a rarity class of {Weapon.Components[i].Drops[c].Rarity}{Environment.NewLine}";
+                                    }
                                 }
-                            }
 
-                            MWWeaponCompDataTxt.Text += line_seperator;
+                                MWWeaponCompDataTxt.Text += line_seperator;
+                            }
                         }
                     }
+                }
+
+                if (Weapon.Name == "Skana Prime")
+                {
+                    MWWeaponCompDataTxt.Text = "This is a founders only item, it connot be aquired unless your account is founders status.";
+                    MWFoundryPanel.Visible = false;
+                }
+
+                if (MWWeaponCompDataTxt.Text.Length < 2)
+                {
+                    MWCompGroupBox.Visible = false;
                 }
                 #endregion
 
@@ -1152,29 +1245,46 @@ namespace WarframeTracker
                     }
                     #endregion
 
-                    if (Pet.ImageName != null)
+                    if (Pet.ImageName != null) { CompanionImageBox.BackgroundImage = Image.FromFile($"{local_media_directory}{Pet.ImageName}"); }
+                    else { if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Error: No image file exists for {Pet.Name}"); } }
+
+                    #region Set Companion Description
+                    CompanionDescriptionContainer.Text = $"{Pet.Name} Description";
+                    CompanionDescriptionTxt.Text = Pet.Description;
+                    #endregion
+
+                    #region Set Companion Stats
+                    CompanionStatsContainer.Text = $"{Pet.Name} Stats";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Health: {Pet.Health}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Shield: {Pet.Shield}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Armor: {Pet.Armor}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Stamina: {Pet.Stamina}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Power: {Pet.Power}{Environment.NewLine}";
+                    #endregion
+
+                    #region Set Component Data
+                    CompanionComponentContainer.Text = $"{Pet.Name} Compnent Data";
+
+                    if (Pet.Name.ToLower().Contains("prime"))
                     {
-                        #region Set Image 
-                        CompanionImageBox.BackgroundImage = Image.FromFile($"{local_media_directory}{Pet.ImageName}");
-                        #endregion
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{Pet.Name}");
+                        for (int r = 0; r < RelicLocations.Count; r++)
+                        {
+                            CopmpanionDropsTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
+                        }
+                        CopmpanionDropsTxt.Text += line_seperator;
 
-                        #region Set Companion Description
-                        CompanionDescriptionContainer.Text = $"{Pet.Name} Description";
-                        CompanionDescriptionTxt.Text = Pet.Description;
-                        #endregion
-
-                        #region Set Companion Stats
-                        CompanionStatsContainer.Text = $"{Pet.Name} Stats";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Health: {Pet.Health}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Shield: {Pet.Shield}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Armor: {Pet.Armor}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Stamina: {Pet.Stamina}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Power: {Pet.Power}{Environment.NewLine}";
-                        #endregion
-
-                        #region Set Component Data
-                        CompanionComponentContainer.Text = $"{Pet.Name} Compnent Data";
-
+                        if (Pet.Components != null)
+                        {
+                            for (int i = 0; i < Pet.Components.Count; i++)
+                            {
+                                CompanionComponentTxt.Text += $"{Pet.Components[i].Name} x{Pet.Components[i].ItemCount}{Environment.NewLine}";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //OLD METHOD WILL BE REPLACED WITH SearchNonPrimeItems(item_name)
                         if (Pet.Components != null)
                         {
                             for (int i = 0; i < Pet.Components.Count; i++)
@@ -1233,8 +1343,8 @@ namespace WarframeTracker
                             CompanionComponentContainer.Visible = false;
                             ComponentDropsContainer.Visible = false;
                         }
-                        #endregion
                     }
+                    #endregion
                     #endregion
                 }
                 else if (GlobalData.SentinelsDatabase.ContainsKey($"{CompanionsComboBox.SelectedItem}"))
@@ -1264,29 +1374,46 @@ namespace WarframeTracker
                     }
                     #endregion
 
-                    if (Pet.ImageName != null)
+                    if (Pet.ImageName != null) { CompanionImageBox.BackgroundImage = Image.FromFile($"{local_media_directory}{Pet.ImageName}"); }
+                    else { if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Error: No image file exists for {Pet.Name}"); } }
+
+                    #region Set Companion Description
+                    CompanionDescriptionContainer.Text = $"{Pet.Name} Description";
+                    CompanionDescriptionTxt.Text = Pet.Description;
+                    #endregion
+
+                    #region Set Companion Stats
+                    CompanionStatsContainer.Text = $"{Pet.Name} Stats";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Health: {Pet.Health}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Shield: {Pet.Shield}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Armor: {Pet.Armor}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Stamina: {Pet.Stamina}{Environment.NewLine}";
+                    CompanionStatsTxt.Text += $"{Pet.Name} Base Power: {Pet.Power}{Environment.NewLine}";
+                    #endregion
+
+                    #region Set Component Data
+                    CompanionComponentContainer.Text = $"{Pet.Name} Compnent Data";
+
+                    if (Pet.Name.ToLower().Contains("prime"))
                     {
-                        #region Set Image 
-                        CompanionImageBox.BackgroundImage = Image.FromFile($"{local_media_directory}{Pet.ImageName}");
-                        #endregion
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{Pet.Name}");
+                        for (int r = 0; r < RelicLocations.Count; r++)
+                        {
+                            CopmpanionDropsTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
+                        }
+                        CopmpanionDropsTxt.Text += line_seperator;
 
-                        #region Set Companion Description
-                        CompanionDescriptionContainer.Text = $"{Pet.Name} Description";
-                        CompanionDescriptionTxt.Text = Pet.Description;
-                        #endregion
-
-                        #region Set Companion Stats
-                        CompanionStatsContainer.Text = $"{Pet.Name} Stats";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Health: {Pet.Health}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Shield: {Pet.Shield}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Armor: {Pet.Armor}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Stamina: {Pet.Stamina}{Environment.NewLine}";
-                        CompanionStatsTxt.Text += $"{Pet.Name} Base Power: {Pet.Power}{Environment.NewLine}";
-                        #endregion
-
-                        #region Set Component Data
-                        CompanionComponentContainer.Text = $"{Pet.Name} Compnent Data";
-
+                        if (Pet.Components != null)
+                        {
+                            for (int i = 0; i < Pet.Components.Count; i++)
+                            {
+                                CompanionComponentTxt.Text += $"{Pet.Components[i].Name} x{Pet.Components[i].ItemCount}{Environment.NewLine}";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //OLD METHOD WILL BE REPLACED WITH SearchNonPrimeItems(item_name)
                         if (Pet.Components != null)
                         {
                             for (int i = 0; i < Pet.Components.Count; i++)
@@ -1308,50 +1435,81 @@ namespace WarframeTracker
                                     ComponentDropsContainer.Visible = false;
                                 }
                             }
+
+                            #region Generate Order Menu
+                            if (Pet.Name.ToLower().Contains("prime"))
+                            {
+                                FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                                WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                                GenerateOrderMenu(Pet.Name, "Set");
+                            }
+
+                            for (int x = 0; x < Pet.Components.Count; x++)
+                            {
+                                switch (Pet.Components[x].Name)
+                                {
+                                    case "Set":
+                                        GenerateOrderMenu(Pet.Name, "Set");
+                                        break;
+                                    case "Carapace":
+                                        GenerateOrderMenu(Pet.Name, "Carapace");
+                                        break;
+                                    case "Cerebrum":
+                                        GenerateOrderMenu(Pet.Name, "Cerebrum");
+                                        break;
+                                    case "Systems":
+                                        GenerateOrderMenu(Pet.Name, "Systems");
+                                        break;
+                                    case "Blueprint":
+                                        GenerateOrderMenu(Pet.Name, "Blueprint");
+                                        break;
+                                }
+                            }
+                            #endregion
                         }
                         else
                         {
                             CompanionComponentContainer.Visible = false;
                             ComponentDropsContainer.Visible = false;
                         }
-                        #endregion
+                    }
+                    #endregion
 
-                        #region Generate Order Menu
-                        if (Pet.Name.ToLower().Contains("prime"))
-                        {
-                            FindOrdersMenu.Items.Add(WarframeMarketOptions);
-                            WarframeMarketOptions.Text = $"Warframe.Market Orders";
-                            GenerateOrderMenu(Pet.Name, "Set");
-                        }
+                    #region Generate Order Menu
+                    if (Pet.Name.ToLower().Contains("prime"))
+                    {
+                        FindOrdersMenu.Items.Add(WarframeMarketOptions);
+                        WarframeMarketOptions.Text = $"Warframe.Market Orders";
+                        GenerateOrderMenu(Pet.Name, "Set");
+                    }
 
-                        for (int x = 0; x < Pet.Components.Count; x++)
+                    for (int x = 0; x < Pet.Components.Count; x++)
+                    {
+                        switch (Pet.Components[x].Name)
                         {
-                            switch (Pet.Components[x].Name)
-                            {
-                                case "Set":
-                                    GenerateOrderMenu(Pet.Name, "Set");
-                                    break;
-                                case "Carapace":
-                                    GenerateOrderMenu(Pet.Name, "Carapace");
-                                    break;
-                                case "Cerebrum":
-                                    GenerateOrderMenu(Pet.Name, "Cerebrum");
-                                    break;
-                                case "Systems":
-                                    GenerateOrderMenu(Pet.Name, "Systems");
-                                    break;
-                                case "Blueprint":
-                                    GenerateOrderMenu(Pet.Name, "Blueprint");
-                                    break;
-                            }
+                            case "Set":
+                                GenerateOrderMenu(Pet.Name, "Set");
+                                break;
+                            case "Carapace":
+                                GenerateOrderMenu(Pet.Name, "Carapace");
+                                break;
+                            case "Cerebrum":
+                                GenerateOrderMenu(Pet.Name, "Cerebrum");
+                                break;
+                            case "Systems":
+                                GenerateOrderMenu(Pet.Name, "Systems");
+                                break;
+                            case "Blueprint":
+                                GenerateOrderMenu(Pet.Name, "Blueprint");
+                                break;
                         }
+                    }
 
-                        #endregion
-                        //Debug Info
-                        if (Properties.Settings.Default.debug_mode)
-                        {
-                            Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
-                        }
+                    #endregion
+                    //Debug Info
+                    if (Properties.Settings.Default.debug_mode)
+                    {
+                        Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
                     }
                     #endregion
                 }
@@ -1414,11 +1572,11 @@ namespace WarframeTracker
                 case 10:
                     return $"Magnetic Damage: {Math.Round(ammount)} {Environment.NewLine}";
                 case 11:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    return $"Viral Damage: {Math.Round(ammount)} {Environment.NewLine}"; //[11] Pupacyst == 145 || Kompressa == 2 Confirmed from multiple weapons viral
                 case 12:
                     return $"Corrosive Damage: {Math.Round(ammount)} {Environment.NewLine}";
                 case 13:
-                    return $"Viral Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
                 case 14:
                     return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
                 case 15:
@@ -1432,6 +1590,8 @@ namespace WarframeTracker
                 case 19:
                     return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
                 default:
+                    //GAS, BLAST, VOID [Secondary damage types that wont ever return data in this app]
+                    //Inate problem with this system is that the json files dont show weapons secondary attack information like the wiki does.
                     return "Unknown Damage Type";
             }
         }
@@ -1484,15 +1644,7 @@ namespace WarframeTracker
             });
             for (int i = 0; i < WorldInformation.Fissures.Count; i++)
             {
-                var expireTime = (Math.Round(DateTime.Now.Subtract(WorldInformation.Fissures[i].Expiry).TotalMinutes * 10) / 10).ToString().Replace("-", "");
-                if (double.Parse(expireTime) > 60)
-                {
-                    FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {Math.Round(double.Parse(expireTime) / 60)} hours.") + Environment.NewLine;
-                }
-                else
-                {
-                    FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {expireTime} minutes.") + Environment.NewLine;
-                }
+                FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {WorldInformation.Fissures[i].Eta} minutes.") + Environment.NewLine;
             }
 
             NightwaveChalContainer.Text = $"Nightwave Challenges For Season {WorldInformation.Nightwave.Season} Expires on {WorldInformation.Nightwave.Expiry}";
@@ -1610,6 +1762,14 @@ namespace WarframeTracker
             }
             #endregion
 
+            #region Set Combobox Default Indexes
+            WarframeComboBox.SelectedIndex = 0;
+            PrimaryWeaponComboBox.SelectedIndex = 0;
+            SecondaryWeaponsComboBox.SelectedIndex = 0;
+            MeleeWeaponsComboBox.SelectedIndex = 0;
+            CompanionsComboBox.SelectedIndex = 0;
+            #endregion
+
             LoadWorldState();
         }
 
@@ -1691,7 +1851,7 @@ namespace WarframeTracker
             groupBox16.BackColor = new_color;
             groupBox17.BackColor = new_color;
             groupBox18.BackColor = new_color;
-            groupBox19.BackColor = new_color;
+            MWCompGroupBox.BackColor = new_color;
             groupBox20.BackColor = new_color;
             WarframeAbilitiesContainer.BackColor = new_color;
             CompanionComponentContainer.BackColor = new_color;
@@ -1829,7 +1989,7 @@ namespace WarframeTracker
             groupBox16.ForeColor = new_color;
             groupBox17.ForeColor = new_color;
             groupBox18.ForeColor = new_color;
-            groupBox19.ForeColor = new_color;
+            MWCompGroupBox.ForeColor = new_color;
             groupBox20.ForeColor = new_color;
             WarframeAbilitiesContainer.ForeColor = new_color;
             CompanionComponentContainer.ForeColor = new_color;
@@ -2320,21 +2480,17 @@ namespace WarframeTracker
             }
         }
 
-        private string GetDropData(string item_name)
+        /// <summary>
+        /// Returns a list of drop data strings for non prime items
+        /// </summary>
+        private List<string> SearchNonPrimeItems(string item_name)
         {
-            if (GlobalData.DropsData.Relics != null)
-            {
+            List<string> drop_info = new List<string>();
 
-                return $"";
-            }
-            else
-            {
-                FetchDropsData();
 
-                return $"";
-            }
+            return drop_info;
         }
-
+        
         /// <summary>
         /// Returns the desired context menu function given the input order type.
         /// </summary>
@@ -2390,7 +2546,7 @@ namespace WarframeTracker
             {
                 FindOrderInformation(GlobalData.activeItemName, "Head", true);
             }
-            else if (sender.ToString().Contains("Link"))
+            else if (sender.ToString().Contains("Link") && !sender.ToString().Contains("Patreon"))
             {
                 FindOrderInformation(GlobalData.activeItemName, "Link", true);
             }
@@ -2405,6 +2561,18 @@ namespace WarframeTracker
             else if (sender.ToString().Contains("Refresh"))
             {
                 GenerateData();
+            }
+            else if (sender.ToString().Contains("Patreon"))
+            {
+                
+            }
+            else if (sender.ToString().Contains("Update"))
+            {
+                
+            }
+            else if (sender.ToString().Contains("Repo"))
+            {
+                
             }
         }
         #endregion

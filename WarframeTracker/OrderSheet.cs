@@ -16,9 +16,12 @@ namespace WarframeTracker
 {
     public partial class OrderSheet : Form
     {
+        #region Delcare variables
         public bool DebugMode = true;
         Debug.Debug Debugger = new Debug.Debug();
         WTWebClient WebManager = new WTWebClient();
+        private Dictionary<string, string> L_Orders = new Dictionary<string, string>();
+        #endregion
 
         public OrderSheet()
         {
@@ -28,19 +31,49 @@ namespace WarframeTracker
         private void OrderSheet_Load(object sender, EventArgs e)
         {
             RefereshOrders();
+            DebugMode = Properties.Settings.Default.debug_mode;
         }
 
+        private void OrderLabel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox txt = sender as TextBox;
+                string user = txt.Text.Split(" ").FirstOrDefault();
+                Clipboard.SetText(L_Orders[user]);
+
+                if (DebugMode)
+                {
+                    MessageBox.Show($"Updated clipboard information: {L_Orders[user]}");
+                    Debugger.Log($"Updated clipboard information: {L_Orders[user]}");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (DebugMode)
+                {
+                    Debugger.Log($"Error in orderlabel_click function. Stack trace: {ex}");
+                }
+            }
+        }
 
         private void RefereshOrders()
         {
+            #region Reset
             flowLayoutPanel1.Controls.Clear();
             flowLayoutPanel2.Controls.Clear();
+            L_Orders.Clear();
+            #endregion
 
             try
             {
+                #region Clean data
+                string original_item = GlobalData.activeItemName;
+                string original_part = GlobalData.activeSearch;
                 GlobalData.activeItemName = GlobalData.activeItemName.ToLower().Replace(" ", "_");
                 GlobalData.activeSearch = GlobalData.activeSearch.ToLower().Replace(" ", "_");
                 this.Text = $"{GlobalData.activeItemName}_{GlobalData.activeSearch} Open Orders";
+                #endregion
 
                 if (DebugMode)
                 {
@@ -67,13 +100,22 @@ namespace WarframeTracker
 
                         foreach (WarframeMarket.ItemOrders.Order _order in Orders.Payload.Orders)
                         {
+                            #region Generate list of wisper commands for the orders list
+                            if (!L_Orders.ContainsKey(_order.User.IngameName))
+                            {
+                                L_Orders.Add(_order.User.IngameName, $"/w {_order.User.IngameName} i would like to buy {original_item} {original_part} for {_order.Platinum}. Warframe Companion App!");
+                            }
+                            #endregion
+
+                            #region Create a new control and add it to the layout panels
                             TextBox new_label = new TextBox();
-                            new_label.Text = _order.OrderType + " order posted by " + _order.User.IngameName + " who is " + _order.User.Status + " asking price is " + _order.Platinum + " on " + _order.Platform;
+                            new_label.Text = $"{_order.User.IngameName} is {_order.OrderType}ing {original_item} {original_part} and is {_order.User.Status}. Asking price is {_order.Platinum} on {_order.Platform}.";
                             new_label.Width = this.Width;
                             new_label.ReadOnly = true;
                             new_label.BorderStyle = BorderStyle.None;
+                            new_label.Click += OrderLabel_Click;
 
-                            if (new_label.Text.Contains("buy"))
+                            if (new_label.Text.Contains("buying"))
                             {
                                 if (new_label.Text.ToLower().Contains("offline") & OfflineCheckbox.Checked)
                                 {
@@ -88,7 +130,7 @@ namespace WarframeTracker
                                     flowLayoutPanel1.Controls.Add(new_label);
                                 }
                             }
-                            else if (new_label.Text.Contains("sell"))
+                            else if (new_label.Text.Contains("selling"))
                             {
                                 if (new_label.Text.ToLower().Contains("offline") & OfflineCheckbox.Checked)
                                 {
@@ -103,6 +145,7 @@ namespace WarframeTracker
                                     flowLayoutPanel2.Controls.Add(new_label);
                                 }
                             }
+                            #endregion
                         }
 
                         response.Close(); response.Close();
