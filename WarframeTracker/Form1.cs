@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WarframeTracker.WebInterface;
 
@@ -12,8 +14,8 @@ namespace WarframeTracker
     public partial class Form1 : Form
     {
         #region Declare Local Variables
-        WTWebClient WebManager = new WTWebClient();
-        Debug.Debug Debugger = new Debug.Debug();
+        readonly WTWebClient WebManager = new WTWebClient();
+        readonly Debug.Debug Debugger = new Debug.Debug();
         public string local_Json_directory = $"{Environment.CurrentDirectory}/data/json";
         public string local_media_directory = $"{Environment.CurrentDirectory}/data/img/";
         public string save_file = $"{Environment.CurrentDirectory}/data/inventory.json";
@@ -33,6 +35,7 @@ namespace WarframeTracker
         private List<Items.Fish.Root> Fish = new List<Items.Fish.Root>();
         //private List<Items.Glyph.Root> Glphys = new List<Items.Glyph.Root>();
         //private List<Items.Resources.Root> Resources = new List<Items.Resources.Root>();
+        private List<Items.Enemies.Root> Enemies = new List<Items.Enemies.Root>();
 
         private ToolStripMenuItem WarframeMarketOptions = new ToolStripMenuItem();
 
@@ -63,6 +66,25 @@ namespace WarframeTracker
         #endregion
 
         #region Combobox Event Code
+        private void async_DoWork(object sender, DoWorkEventArgs e)
+        {
+            GlobalData.BPData = GetBlueprintData(GlobalData.activeItemName);
+            for (int i = 0; i < GlobalData.BPData.Count; i++)
+            {
+                AppendWarframeCompTxt($"{GlobalData.BPData[i]}{Environment.NewLine}");
+            }
+        }
+
+        private void AppendWarframeCompTxt(string value)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(AppendWarframeCompTxt), new object[] { value });
+                return;
+            }
+            WarframeComponentTxt.Text += value;
+        }
+
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -134,132 +156,27 @@ namespace WarframeTracker
                         FindOrdersMenu.Items.Add(WarframeMarketOptions);
                         WarframeMarketOptions.Text = $"Warframe.Market Orders";
                         GenerateOrderMenu(frame.Name, "Set");
+                        GenerateOrderMenu(frame.Name, "Blueprint");
+                        GenerateOrderMenu(frame.Name, "Chassis");
+                        GenerateOrderMenu(frame.Name, "Systems");
+                        GenerateOrderMenu(frame.Name, "Neuroptics");
                     }
 
-                    foreach (Items.Warframes.Component comp in frame.Components)
+                    if (frame.Name.ToLower().Contains("prime"))
                     {
-                        switch (comp.Name)
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Blueprint");
+                        for (int i = 0; i < RelicLocations.Count; i++)
                         {
-                            case "Blueprint":
-                                BPComponentImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-
-                                if (frame.Name.ToLower().Contains("prime"))
-                                {
-                                    GenerateOrderMenu(frame.Name, "Blueprint");
-
-                                    if (comp.Drops != null)
-                                    {
-                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Blueprint");
-                                        for (int i = 0; i < RelicLocations.Count; i++)
-                                        {
-                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
-                                        }
-                                        WarframeComponentTxt.Text += line_seperator;
-                                    }
-                                }
-                                else
-                                {
-                                    if (comp.Drops != null)
-                                    {
-                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
-                                    }
-                                    else
-                                    {
-                                        WarframeComponentTxt.Text += $"{WebManager.GetBlueprintInfo(frame.Name)}{Environment.NewLine}";
-                                    }
-                                }
-                                break;
-                            case "Chassis":
-                                ChassCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-
-                                if (frame.Name.ToLower().Contains("prime"))
-                                {
-                                    GenerateOrderMenu(frame.Name, "Chassis");
-
-                                    if (comp.Drops != null)
-                                    {
-                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Chassis");
-                                        for (int i = 0; i < RelicLocations.Count; i++)
-                                        {
-                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
-                                        }
-                                        WarframeComponentTxt.Text += line_seperator;
-                                    }
-                                }
-                                else
-                                {
-                                    if (comp.Drops != null)
-                                    {
-                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
-                                    }
-                                    else
-                                    {
-                                        WarframeComponentTxt.Text += $"Chassis Information Missing, Coming Soon!{Environment.NewLine}";
-                                    }
-                                }
-                                break;
-                            case "Neuroptics":
-                                NueroCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-
-                                if (frame.Name.ToLower().Contains("prime"))
-                                {
-                                    GenerateOrderMenu(frame.Name, "Neuroptics");
-
-                                    if (comp.Drops != null)
-                                    {
-                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Neuroptics");
-                                        for (int i = 0; i < RelicLocations.Count; i++)
-                                        {
-                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
-                                        }
-                                        WarframeComponentTxt.Text += line_seperator;
-                                    }
-                                }
-                                else
-                                {
-                                    if (comp.Drops != null)
-                                    {
-                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
-                                    }
-                                    else
-                                    {
-                                        WarframeComponentTxt.Text += $"Neuroptics Information Missing, Coming Soon!{Environment.NewLine}";
-                                    }
-                                }
-                                break;
-                            case "Systems":
-                                SysCompImgBox.BackgroundImage = Image.FromFile(local_media_directory + comp.ImageName);
-
-                                if (frame.Name.ToLower().Contains("prime"))
-                                {
-                                    GenerateOrderMenu(frame.Name, "Systems");
-
-                                    if (comp.Drops != null)
-                                    {
-                                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Systems");
-                                        for (int i = 0; i < RelicLocations.Count; i++)
-                                        {
-                                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
-                                        }
-                                        WarframeComponentTxt.Text += line_seperator;
-                                    }
-                                }
-                                else
-                                {
-                                    if (comp.Drops != null)
-                                    {
-                                        WarframeComponentTxt.Text += $"{frame.Name} {comp.Name} Can be found on: {comp.Drops[0].Location} with a drop chance of {Math.Round((double)comp.Drops[0].Chance * (double)100)}% With a rarity class of {comp.Drops[0].Rarity}{Environment.NewLine}";
-                                    }
-                                    else
-                                    {
-                                        WarframeComponentTxt.Text += $"Systems Information Missing, Coming Soon!{Environment.NewLine}";
-                                    }
-                                }
-                                break;
-                            default:
-
-                                break;
+                            WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
                         }
+                    }
+                    else
+                    {
+                        WarframeComponentTxt.Text += $"{WebManager.GetBlueprintInfo(frame.Name)}{Environment.NewLine}";
+
+                        BackgroundWorker async = new BackgroundWorker();
+                        async.DoWork += async_DoWork;
+                        async.RunWorkerAsync();
                     }
                 }
 
@@ -487,16 +404,6 @@ namespace WarframeTracker
                     }
                     else
                     {
-                        //new non prime drop info function
-                        List<String> DropData = SearchNonPrimeItems(Weapon.Name);
-                        for (int d = 0; d < DropData.Count; d++)
-                        {
-                            //PWCompDataTxt.Text += $"{DropData[d]}{Environment.NewLine}";
-                        }
-                        //PWCompDataTxt.Text += line_seperator;
-
-
-
                         //Old drops code from embedded json file remove when nonprime drop function is completed
                         for (int i = 0; i < Weapon.Components.Count; i++)
                         {
@@ -1690,6 +1597,7 @@ namespace WarframeTracker
                 if (ArcMelee.Count < 1) { ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json")); }
                 if (Arcanes.Count < 1) { Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json")); }
                 if (Mods.Count < 1) { Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json")); }
+                if (Enemies.Count < 1) { Enemies = JsonConvert.DeserializeObject<List<Items.Enemies.Root>>(File.ReadAllText(local_Json_directory + "/Enemy.json")); }
                 //if (Enemies.Count < 1) { }
             }
             catch (Exception ex)
@@ -1760,6 +1668,14 @@ namespace WarframeTracker
                     CompanionsComboBox.Items.Add(Sentinel.Name);
                 }
             }
+
+            if (Enemies.Count > 0)
+            {
+                foreach (Items.Enemies.Root Enemy in Enemies)
+                {
+                    if (!GlobalData.EnemyDatabase.ContainsKey(Enemy.Name)) { GlobalData.EnemyDatabase.Add(Enemy.Name, Enemy); }
+                }
+            }
             #endregion
 
             #region Set Combobox Default Indexes
@@ -1808,14 +1724,14 @@ namespace WarframeTracker
             try
             {
                 #region Resets
-                GlobalData.DropsData = new WarframeStats.DropData.Root();
+                GlobalData.DropsData = new WarframeStats.AllDropsData.Root();
                 #endregion
 
                 HttpWebRequest drop_data_request = WebManager.GenerateRequest("", "Drops", "pc");
                 HttpWebResponse drop_data_response = WebManager.GenerateResponse(drop_data_request);
 
                 StreamReader reader = new StreamReader(drop_data_response.GetResponseStream());
-                GlobalData.DropsData = JsonConvert.DeserializeObject<WarframeStats.DropData.Root>(reader.ReadToEnd());
+                GlobalData.DropsData = JsonConvert.DeserializeObject<WarframeStats.AllDropsData.Root>(reader.ReadToEnd());
                 reader.Close(); reader.Dispose(); drop_data_response.Close(); drop_data_response.Dispose();
             }
             catch (Exception ex)
@@ -2440,7 +2356,7 @@ namespace WarframeTracker
                 {
                     for (int i = 0; i < GlobalData.DropsData.Relics.Count; i++)
                     {
-                        foreach (WarframeStats.DropData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
+                        foreach (WarframeStats.AllDropsData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
                         {
                             if (Reward.ItemName.Contains(item_name))
                             {
@@ -2457,7 +2373,7 @@ namespace WarframeTracker
 
                     for (int i = 0; i < GlobalData.DropsData.Relics.Count; i++)
                     {
-                        foreach (WarframeStats.DropData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
+                        foreach (WarframeStats.AllDropsData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
                         {
                             if (Reward.ItemName.Contains(item_name))
                             {
@@ -2480,17 +2396,91 @@ namespace WarframeTracker
             }
         }
 
-        /// <summary>
-        /// Returns a list of drop data strings for non prime items
-        /// </summary>
-        private List<string> SearchNonPrimeItems(string item_name)
+        private List<string> GetBlueprintData(string item_name)
         {
             List<string> drop_info = new List<string>();
 
+            if (GlobalData.DropsData.MissionRewards == null)
+            {
+                FetchDropsData();
+            }
 
-            return drop_info;
+            try
+            {
+                //Not correctly serializing the planets
+                foreach (var _planet in GlobalData.DropsData.MissionRewards)
+                {
+                    foreach (var _mission in _planet.Value.Keys)
+                    {
+                        try
+                        {
+                            var _rew = JsonConvert.DeserializeObject<WarframeStats.AllDropsData.BasicMission>(_planet.Value[_mission].ToString());
+
+                            foreach (var _reward in _rew.Rewards)
+                            {
+                                if (_reward.ItemName.Contains(item_name))
+                                {
+                                    var mission_name = $"{_planet.Key} {_mission}";
+                                    var local_item_name = _reward.ItemName;
+                                    var drop_chance = _reward.Chance;
+                                    drop_info.Add($"{local_item_name} Drops from {mission_name} with a {drop_chance}% chance.");
+                                }
+                            }
+
+                        }
+                        catch
+                        {
+                            var _rew = JsonConvert.DeserializeObject<WarframeStats.AllDropsData.EndlessMission>(_planet.Value[_mission].ToString());
+
+                            foreach (var _reward in _rew.Rewards.A)
+                            {
+                                if (_reward.ItemName.Contains(item_name))
+                                {
+                                    var mission_name = $"{_planet.Key} {_mission}";
+                                    var local_item_name = _reward.ItemName;
+                                    var drop_chance = _reward.Chance;
+                                    drop_info.Add($"{local_item_name} Drops from {mission_name} with a {drop_chance}% chance.");
+                                }
+                            }
+
+                            foreach (var _reward in _rew.Rewards.B)
+                            {
+                                if (_reward.ItemName.Contains(item_name))
+                                {
+                                    var mission_name = $"{_planet.Key} {_mission}";
+                                    var local_item_name = _reward.ItemName;
+                                    var drop_chance = _reward.Chance;
+                                    drop_info.Add($"{local_item_name} Drops from {mission_name} with a {drop_chance}% chance.");
+                                }
+                            }
+
+                            foreach (var _reward in _rew.Rewards.C)
+                            {
+                                if (_reward.ItemName.Contains(item_name))
+                                {
+                                    var mission_name = $"{_planet.Key} {_mission}";
+                                    var local_item_name = _reward.ItemName;
+                                    var drop_chance = _reward.Chance;
+                                    drop_info.Add($"{local_item_name} Drops from {mission_name} with a {drop_chance}% chance.");
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return drop_info;
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Error in GetBlueprintData->CheckMissionRewards; Stack Trace: {ex}");
+                }
+
+                return drop_info;
+            }
         }
-        
+
         /// <summary>
         /// Returns the desired context menu function given the input order type.
         /// </summary>
@@ -2574,6 +2564,10 @@ namespace WarframeTracker
             {
                 
             }
+            else if (sender.ToString().Contains("Weapon Damage Simulator"))
+            {
+                new WeaponSimulator().Show();
+            }
         }
         #endregion
     }
@@ -2597,13 +2591,16 @@ namespace WarframeTracker
         public static Dictionary<String, Items.Mods.Root> ModDatabase = new Dictionary<string, Items.Mods.Root>();
         public static Dictionary<String, Items.Relics.Root> RelicDatabase = new Dictionary<string, Items.Relics.Root>();
         public static Dictionary<String, Items.Fish.Root> FishDatabase = new Dictionary<string, Items.Fish.Root>();
+        public static Dictionary<String, Items.Enemies.Root> EnemyDatabase = new Dictionary<string, Items.Enemies.Root>();
         //public static Dictionary<String, Items.Glyph.Root> GlyphDatabase = new Dictionary<string, Items.Glyph.Root>();
         //public static Dictionary<String, Items.Resources.Root> ResourceDatabase = new Dictionary<string, Items.Resources.Root>();
         #endregion
 
         public static OGTech.ValutedItemData.Root VaultData = new OGTech.ValutedItemData.Root();
-        public static WarframeStats.DropData.Root DropsData = new WarframeStats.DropData.Root();
+        public static WarframeStats.AllDropsData.Root DropsData = new WarframeStats.AllDropsData.Root();
 
         public static Dictionary<String, Boolean> LocalInventory = new Dictionary<String, Boolean>();
+
+        public static List<String> BPData;
     }
 }
