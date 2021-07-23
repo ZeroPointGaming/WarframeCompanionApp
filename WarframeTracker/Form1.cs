@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,37 +55,69 @@ namespace WarframeTracker
         /// </summary>
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadInventoryState();
-            GenerateData();
-            WarframeComboBox.SelectedIndex = 0;
+            try
+            {
+                LoadInventoryState();
+                GenerateData();
+                WarframeComboBox.SelectedIndex = 0;
+
+                UpdateBackgroundColor(Properties.Settings.Default.background_color);
+                UpdateForeColor(Properties.Settings.Default.foreground_color);
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->MainForm_Load{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             GenerateData();
         }
+
+        //Background worker code for multithreading
+        private void async_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                GlobalData.BPData = GetBlueprintData(GlobalData.activeItemName);
+                for (int i = 0; i < GlobalData.BPData.Count; i++)
+                {
+                    AppendWarframeCompTxt($"{GlobalData.BPData[i]}{Environment.NewLine}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debugger.Log($"Exception in MainForm->async_DoWork{Environment.NewLine}Stack Trace: {ex}");
+            }
+        }
+
+        //Function to update textbox from outside of the main thread.
+        private void AppendWarframeCompTxt(string value)
+        {
+            try
+            {
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action<string>(AppendWarframeCompTxt), new object[] { value });
+                    return;
+                }
+                WarframeComponentTxt.Text += value;
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->AppendWarframeCompTxt{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
+        }
         #endregion
 
         #region Combobox Event Code
-        private void async_DoWork(object sender, DoWorkEventArgs e)
-        {
-            GlobalData.BPData = GetBlueprintData(GlobalData.activeItemName);
-            for (int i = 0; i < GlobalData.BPData.Count; i++)
-            {
-                AppendWarframeCompTxt($"{GlobalData.BPData[i]}{Environment.NewLine}");
-            }
-        }
-
-        private void AppendWarframeCompTxt(string value)
-        {
-            if (InvokeRequired)
-            {
-                this.Invoke(new Action<string>(AppendWarframeCompTxt), new object[] { value });
-                return;
-            }
-            WarframeComponentTxt.Text += value;
-        }
-
         private void WarframeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -185,32 +218,12 @@ namespace WarframeTracker
                     WarframeComponentContainer.Visible = false;
                 }
                 #endregion
-
-                //Debug Info
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Updated UI for {WarframeComboBox.SelectedItem}");
-                }
             }
-            catch (System.IO.DirectoryNotFoundException ex)
+            catch (Exception ex)
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.FileNotFoundException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.IOException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception Ocurred in MainForm->WarframeComboBox_SelectionChanged{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -480,32 +493,12 @@ namespace WarframeTracker
                     PWComponentContainer.Visible = false;
                 }
                 #endregion
-
-                //Debug Info
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Updated UI for {PrimaryWeaponComboBox.SelectedItem}");
-                }
             }
-            catch (System.IO.DirectoryNotFoundException ex)
+            catch (Exception ex)
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.FileNotFoundException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.IOException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->PrimaryWeaponComboBox_SelectionChanged{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -767,32 +760,12 @@ namespace WarframeTracker
                     SWBuildTimeLbl.Visible = false;
                 }
                 #endregion
-
-                //Debug Info
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Updated UI for {SecondaryWeaponsComboBox.SelectedItem}");
-                }
             }
-            catch (System.IO.DirectoryNotFoundException ex)
+            catch (Exception ex)
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.FileNotFoundException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.IOException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->SecondaryWeaponComboBox_SelectionChanged {Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -1074,32 +1047,12 @@ namespace WarframeTracker
                     MWCompGroupBox.Visible = false;
                 }
                 #endregion
-
-                //Debug Info
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Updated UI for {MeleeWeaponsComboBox.SelectedItem}");
-                }
             }
-            catch (System.IO.DirectoryNotFoundException ex)
+            catch (Exception ex)
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.FileNotFoundException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.IOException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->MeleeWeaponComboBox_SelectionChanged{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -1421,25 +1374,11 @@ namespace WarframeTracker
                     #endregion
                 }
             }
-            catch (System.IO.DirectoryNotFoundException ex)
+            catch (Exception ex)
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Warning, Data Directory Not Found! Please verify that the data folder exists in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.FileNotFoundException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning File Missing, Please verify that the data folder exists and has all of the correct files in the same directory as the exe file. {Environment.NewLine}Stack Trace: {ex}");
-                }
-            }
-            catch (System.IO.IOException ex)
-            {
-                if (Properties.Settings.Default.debug_mode)
-                {
-                    Debugger.Log($"Warning, An uncaught IO Exception Occurred. Please send a screenshot of this error window to our github in an issue request and explain what you were doing when the error occurred. {Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->CompanionComboBox_SelectionChanged{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -1454,52 +1393,63 @@ namespace WarframeTracker
         /// <returns></returns>
         private string GetDamageType(int DamageId, double ammount)
         {
-            switch (DamageId)
+            try
             {
-                case 0:
-                    return $"Base Physical Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 1:
-                    return $"Impact/Puncture Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 2:
-                    return $"Slash Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 3:
-                    return $"Heat Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 4:
-                    return $"Cold Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 5:
-                    return $"Electricity Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 6:
-                    return $"Toxin Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 7:
-                    return $"Blast Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 8:
-                    return $"Radiation Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 9:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 10:
-                    return $"Magnetic Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 11:
-                    return $"Viral Damage: {Math.Round(ammount)} {Environment.NewLine}"; //[11] Pupacyst == 145 || Kompressa == 2 Confirmed from multiple weapons viral
-                case 12:
-                    return $"Corrosive Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 13:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 14:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 15:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 16:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 17:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 18:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                case 19:
-                    return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
-                default:
-                    //GAS, BLAST, VOID [Secondary damage types that wont ever return data in this app]
-                    //Inate problem with this system is that the json files dont show weapons secondary attack information like the wiki does.
-                    return "Unknown Damage Type";
+                switch (DamageId)
+                {
+                    case 0:
+                        return $"Base Physical Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 1:
+                        return $"Impact/Puncture Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 2:
+                        return $"Slash Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 3:
+                        return $"Heat Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 4:
+                        return $"Cold Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 5:
+                        return $"Electricity Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 6:
+                        return $"Toxin Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 7:
+                        return $"Blast Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 8:
+                        return $"Radiation Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 9:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 10:
+                        return $"Magnetic Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 11:
+                        return $"Viral Damage: {Math.Round(ammount)} {Environment.NewLine}"; //[11] Pupacyst == 145 || Kompressa == 2 Confirmed from multiple weapons viral
+                    case 12:
+                        return $"Corrosive Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 13:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 14:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 15:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 16:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 17:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 18:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    case 19:
+                        return $"??? Damage: {Math.Round(ammount)} {Environment.NewLine}";
+                    default:
+                        //GAS, BLAST, VOID [Secondary damage types that wont ever return data in this app]
+                        //Inate problem with this system is that the json files dont show weapons secondary attack information like the wiki does.
+                        return "Unknown Damage Type";
+                }
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->GetDamageType{Environment.NewLine}Stack Trace: {ex}");
+                }
+                return String.Empty;
             }
         }
 
@@ -1509,65 +1459,175 @@ namespace WarframeTracker
         /// </summary>
         private void LoadWorldState()
         {
-            #region Resets
-            CycleTimersInfoBox.Text = String.Empty;
-            SortieInfoBox.Text = String.Empty;
-            NightwaveInfoBox.Text = String.Empty;
-            ArbitrationInfoBox.Text = String.Empty;
-            FissureInfoBox.Text = String.Empty;
-            SyndicateInfoBox.Text = String.Empty;
-            BaroInfoBox.Text = String.Empty;
-            DailyInfoBox.Text = String.Empty;
-            OstronInfoBox.Text = String.Empty;
-            SolarisInfoBox.Text = String.Empty;
-            EntratiInfoBox.Text = String.Empty;
-            #endregion
-
-            HttpWebRequest world_state_request = WebManager.GenerateRequest("", "WorldState", "pc");
-            HttpWebResponse world_state_response = WebManager.GenerateResponse(world_state_request);
-
-            StreamReader reader = new StreamReader(world_state_response.GetResponseStream()); 
-            WarframeStats.WorldSpace.Root WorldInformation = JsonConvert.DeserializeObject<WarframeStats.WorldSpace.Root>(reader.ReadToEnd()); 
-            reader.Close(); reader.Dispose(); world_state_response.Close(); world_state_response.Dispose();
-
-            #region Load Data
-            CycleTimersInfoBox.Text += ($"The current earth state is {WorldInformation.EarthCycle.State} time and will change in {WorldInformation.EarthCycle.TimeLeft}." + Environment.NewLine);
-            CycleTimersInfoBox.Text += ($"The current cetus state is {WorldInformation.CetusCycle.State} time and will change in {WorldInformation.CetusCycle.TimeLeft}." + Environment.NewLine);
-            CycleTimersInfoBox.Text += ($"The current orb vallis state is {WorldInformation.VallisCycle.State} and will change in {WorldInformation.VallisCycle.TimeLeft}." + Environment.NewLine);
-            CycleTimersInfoBox.Text += ($"The current state of the cambion drift is {WorldInformation.CambionCycle.Active} and expires in {(Math.Round(DateTime.Now.Subtract(WorldInformation.CambionCycle.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours." + Environment.NewLine);
-
-            BaroInfoBox.Text += ($"{WorldInformation.VoidTrader.Character} arrives at {WorldInformation.VoidTrader.Location} at {WorldInformation.VoidTrader.Expiry}.") + Environment.NewLine;
-            ArbitrationInfoBox.Text += ($"{WorldInformation.Arbitration.Enemy} {WorldInformation.Arbitration.Type} on {WorldInformation.Arbitration.Node} and expires in{(Math.Round(DateTime.Now.Subtract(WorldInformation.Arbitration.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
-
-            SortieInfoBox.Text += ($"Daily sortie is {WorldInformation.Sortie.Faction} {WorldInformation.Sortie.Boss} and expires in{(Math.Round(DateTime.Now.Subtract(WorldInformation.Sortie.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
-            for (int i = 0; i < WorldInformation.Sortie.Variants.Count; i++)
+            try
             {
-                SortieInfoBox.Text += ($"{WorldInformation.Sortie.Variants[i].Modifier} {WorldInformation.Sortie.Variants[i].MissionType} on {WorldInformation.Sortie.Variants[i].Node}" + Environment.NewLine);
+                #region Resets
+                CycleTimersInfoBox.Text = String.Empty;
+                SortieInfoBox.Text = String.Empty;
+                NightwaveInfoBox.Text = String.Empty;
+                ArbitrationInfoBox.Text = String.Empty;
+                FissureInfoBox.Text = String.Empty;
+                QuillsInfoBox.Text = String.Empty;
+                BaroInfoBox.Text = String.Empty;
+                DailyInfoBox.Text = String.Empty;
+                OstronInfoBox.Text = String.Empty;
+                SolarisInfoBox.Text = String.Empty;
+                EntratiInfoBox.Text = String.Empty;
+                NecroaloidBountiesTxt.Text = String.Empty;
+                VentKidsInfoBox.Text = String.Empty;
+                VoxSolarisInfoBox.Text = String.Empty;
+                NecraloidBountiesGroupBox.Visible = true;
+                OstronGroupBox.Visible = true;
+                EntratiGroupBox.Visible = true;
+                SolarisUnitedGroupBox.Visible = true;
+                VentKidsGroupBox.Visible = true;
+                VoxSolarisGroupBox.Visible = true;
+                QuillisGroupBox.Visible = true;
+                #endregion
+
+                HttpWebRequest world_state_request = WebManager.GenerateRequest("", "WorldState", "pc");
+                HttpWebResponse world_state_response = WebManager.GenerateResponse(world_state_request);
+
+                StreamReader reader = new StreamReader(world_state_response.GetResponseStream());
+                WarframeStats.WorldSpace.Root WorldInformation = JsonConvert.DeserializeObject<WarframeStats.WorldSpace.Root>(reader.ReadToEnd());
+                reader.Close(); reader.Dispose(); world_state_response.Close(); world_state_response.Dispose();
+
+                #region Load Data
+                CycleTimersInfoBox.Text += ($"The current earth state is {WorldInformation.EarthCycle.State} time and will change in {WorldInformation.EarthCycle.TimeLeft}." + Environment.NewLine);
+                CycleTimersInfoBox.Text += ($"The current cetus state is {WorldInformation.CetusCycle.State} time and will change in {WorldInformation.CetusCycle.TimeLeft}." + Environment.NewLine);
+                CycleTimersInfoBox.Text += ($"The current orb vallis state is {WorldInformation.VallisCycle.State} and will change in {WorldInformation.VallisCycle.TimeLeft}." + Environment.NewLine);
+                CycleTimersInfoBox.Text += ($"The current state of the cambion drift is {WorldInformation.CambionCycle.Active} and expires in {(Math.Round(DateTime.Now.Subtract(WorldInformation.CambionCycle.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours." + Environment.NewLine);
+
+                BaroInfoBox.Text += ($"{WorldInformation.VoidTrader.Character} arrives at {WorldInformation.VoidTrader.Location} at {WorldInformation.VoidTrader.Expiry}.") + Environment.NewLine;
+                ArbitrationInfoBox.Text += ($"{WorldInformation.Arbitration.Enemy} {WorldInformation.Arbitration.Type} on {WorldInformation.Arbitration.Node} and expires in{(Math.Round(DateTime.Now.Subtract(WorldInformation.Arbitration.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
+
+                SortieInfoBox.Text += ($"Daily sortie is {WorldInformation.Sortie.Faction} {WorldInformation.Sortie.Boss} and expires in{(Math.Round(DateTime.Now.Subtract(WorldInformation.Sortie.Expiry).TotalHours * 10) / 10).ToString().Replace("-", " ")} hours.") + Environment.NewLine;
+                for (int i = 0; i < WorldInformation.Sortie.Variants.Count; i++)
+                {
+                    SortieInfoBox.Text += ($"{WorldInformation.Sortie.Variants[i].Modifier} {WorldInformation.Sortie.Variants[i].MissionType} on {WorldInformation.Sortie.Variants[i].Node}" + Environment.NewLine);
+                }
+
+                WorldInformation.Fissures.Sort(delegate (WarframeStats.WorldSpace.Fissure x, WarframeStats.WorldSpace.Fissure y)
+                {
+                    return x.TierNum.CompareTo(y.TierNum);
+                });
+                for (int i = 0; i < WorldInformation.Fissures.Count; i++)
+                {
+                    FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {WorldInformation.Fissures[i].Eta} minutes.") + Environment.NewLine;
+                }
+
+                NightwaveChalContainer.Text = $"Nightwave Challenges For Season {WorldInformation.Nightwave.Season} Expires on {WorldInformation.Nightwave.Expiry}";
+                for (int i = 0; i < WorldInformation.Nightwave.ActiveChallenges.Count; i++)
+                {
+                    NightwaveInfoBox.Text += ($"{WorldInformation.Nightwave.ActiveChallenges[i].Desc} for {WorldInformation.Nightwave.ActiveChallenges[i].Reputation} points. Expires on {WorldInformation.Nightwave.ActiveChallenges[i].Expiry}" + Environment.NewLine);
+                }
+
+                foreach (var _syn in WorldInformation.SyndicateMissions)
+                {
+                    switch (_syn.Syndicate)
+                    {
+                        case "Ostrons":
+                            foreach (var _job in _syn.Jobs)
+                            {
+                                OstronInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                            }
+                            break;
+                        case "Entrati":
+                            foreach (var _job in _syn.Jobs)
+                            {
+                                EntratiInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                            }
+                            break;
+                        case "Solaris United":
+                            foreach (var _job in _syn.Jobs)
+                            {
+                                SolarisInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                            }
+                            break;
+                        case "Arbiters of Hexis":
+
+                            break;
+                        case "Assassins":
+
+                            break;
+                        case "Cephalon Suda":
+
+                            break;
+                        case "Operations Syndicate":
+
+                            break;
+                        case "Necraloid":
+                            if (_syn.Jobs.Count < 1) { NecraloidBountiesGroupBox.Visible = false; }
+                            foreach (var _job in _syn.Jobs)
+                            {
+                                NecroaloidBountiesTxt.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                            }
+                            break;
+                        case "New Loka":
+
+                            break;
+                        case "Perrin Sequence":
+
+                            break;
+                        case "Quills":
+                            if (_syn.Jobs.Count < 1) { QuillisGroupBox.Visible = false; }
+                            foreach (var _job in _syn.Jobs)
+                            {
+                                QuillsInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                            }
+                            break;
+                        case "RadioLegion2Syndicate":
+
+                            break;
+                        case "RadioLegion3Syndicate":
+
+                            break;
+                        case "RadioLegionIntermission2Syndicate":
+
+                            break;
+                        case "RadioLegionIntermission3Syndicate":
+
+                            break;
+                        case "RadioLegionIntermission4Syndicate":
+
+                            break;
+                        case "RadioLegionIntermissionSyndicate":
+
+                            break;
+                        case "RadioLegionSyndicate":
+
+                            break;
+                        case "Red Veil":
+
+                            break;
+                        case "Steel Meridian":
+                            
+                            break;
+                        case "Vent Kids":
+                            if (_syn.Jobs.Count < 1) { VentKidsGroupBox.Visible = false; }
+                            foreach (var _job in _syn.Jobs)
+                            {
+                                VentKidsInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                            }
+                            break;
+                        case "Vox Solaris":
+                            if (_syn.Jobs.Count < 1) { VoxSolarisGroupBox.Visible = false; }
+                            foreach (var _job in _syn.Jobs)
+                            {
+                                VoxSolarisInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                            }
+                            break;
+                    }
+                }
+                #endregion
             }
-
-            WorldInformation.Fissures.Sort(delegate (WarframeStats.WorldSpace.Fissure x, WarframeStats.WorldSpace.Fissure y)
+            catch (Exception ex)
             {
-                return x.TierNum.CompareTo(y.TierNum);
-            });
-            for (int i = 0; i < WorldInformation.Fissures.Count; i++)
-            {
-                FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {WorldInformation.Fissures[i].Eta} minutes.") + Environment.NewLine;
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->LoadWorldState{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
-
-            NightwaveChalContainer.Text = $"Nightwave Challenges For Season {WorldInformation.Nightwave.Season} Expires on {WorldInformation.Nightwave.Expiry}";
-            for (int i = 0; i < WorldInformation.Nightwave.ActiveChallenges.Count; i++)
-            {
-                NightwaveInfoBox.Text += ($"{WorldInformation.Nightwave.ActiveChallenges[i].Desc} for {WorldInformation.Nightwave.ActiveChallenges[i].Reputation} points. Expires on {WorldInformation.Nightwave.ActiveChallenges[i].Expiry}" + Environment.NewLine);
-            }
-
-            //SyndicateGroupBox.Text = $"{}";
-            for (int i = 0; i < WorldInformation.SyndicateMissions.Count; i++)
-            {
-                //SyndicateInfoBox.Text += ($"{WorldInformation.SyndicateMissions[i].Syndicate}" + Environment.NewLine);
-            }
-
-            //TODO Sort bounties into their respective boxes?
-            #endregion
         }
 
         /// <summary>
@@ -1575,118 +1635,128 @@ namespace WarframeTracker
         /// </summary>
         private void GenerateData()
         {
-            #region Resets
-            WarframeComboBox.Items.Clear();
-            PrimaryWeaponComboBox.Items.Clear();
-            MeleeWeaponsComboBox.Items.Clear();
-            SecondaryWeaponsComboBox.Items.Clear();
-            CompanionsComboBox.Items.Clear();
-            #endregion
-
-            #region IO Operations
             try
             {
-                if (Warframes.Count < 1) { Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json")); }
-                if (Primary_Weapons.Count < 1) { Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json")); }
-                if (Secondary_Weapons.Count < 1) { Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json")); }
-                if (Melee_Weapons.Count < 1) { Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json")); }
-                if (Sentinel_List.Count < 1) { Sentinel_List = JsonConvert.DeserializeObject<List<Items.Sentinels.Root>>(File.ReadAllText(local_Json_directory + "/Sentinels.json")); }
-                if (Pets_List.Count < 1) { Pets_List = JsonConvert.DeserializeObject<List<Items.Pets.Root>>(File.ReadAllText(local_Json_directory + "/Pets.json")); }
-                if (Archwings.Count < 1) { Archwings = JsonConvert.DeserializeObject<List<Items.Archwing.Root>>(File.ReadAllText(local_Json_directory + "/Archwing.json")); }
-                if (ArchGuns.Count < 1) { ArchGuns = JsonConvert.DeserializeObject<List<Items.ArcGun.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Gun.json")); }
-                if (ArcMelee.Count < 1) { ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json")); }
-                if (Arcanes.Count < 1) { Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json")); }
-                if (Mods.Count < 1) { Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json")); }
-                if (Enemies.Count < 1) { Enemies = JsonConvert.DeserializeObject<List<Items.Enemies.Root>>(File.ReadAllText(local_Json_directory + "/Enemy.json")); }
-                //if (Enemies.Count < 1) { }
+                #region Resets
+                WarframeComboBox.Items.Clear();
+                PrimaryWeaponComboBox.Items.Clear();
+                MeleeWeaponsComboBox.Items.Clear();
+                SecondaryWeaponsComboBox.Items.Clear();
+                CompanionsComboBox.Items.Clear();
+                #endregion
+
+                #region IO Operations
+                try
+                {
+                    if (Warframes.Count < 1) { Warframes = JsonConvert.DeserializeObject<List<Items.Warframes.Root>>(File.ReadAllText(local_Json_directory + "/Warframes.json")); }
+                    if (Primary_Weapons.Count < 1) { Primary_Weapons = JsonConvert.DeserializeObject<List<Items.PrimaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Primary.json")); }
+                    if (Secondary_Weapons.Count < 1) { Secondary_Weapons = JsonConvert.DeserializeObject<List<Items.SecondaryWeapons.Root>>(File.ReadAllText(local_Json_directory + "/Secondary.json")); }
+                    if (Melee_Weapons.Count < 1) { Melee_Weapons = JsonConvert.DeserializeObject<List<Items.Melee.Root>>(File.ReadAllText(local_Json_directory + "/Melee.json")); }
+                    if (Sentinel_List.Count < 1) { Sentinel_List = JsonConvert.DeserializeObject<List<Items.Sentinels.Root>>(File.ReadAllText(local_Json_directory + "/Sentinels.json")); }
+                    if (Pets_List.Count < 1) { Pets_List = JsonConvert.DeserializeObject<List<Items.Pets.Root>>(File.ReadAllText(local_Json_directory + "/Pets.json")); }
+                    if (Archwings.Count < 1) { Archwings = JsonConvert.DeserializeObject<List<Items.Archwing.Root>>(File.ReadAllText(local_Json_directory + "/Archwing.json")); }
+                    if (ArchGuns.Count < 1) { ArchGuns = JsonConvert.DeserializeObject<List<Items.ArcGun.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Gun.json")); }
+                    if (ArcMelee.Count < 1) { ArcMelee = JsonConvert.DeserializeObject<List<Items.ArcMelee.Root>>(File.ReadAllText(local_Json_directory + "/Arch-Melee.json")); }
+                    if (Arcanes.Count < 1) { Arcanes = JsonConvert.DeserializeObject<List<Items.Arcanes.Root>>(File.ReadAllText(local_Json_directory + "/Arcanes.json")); }
+                    if (Mods.Count < 1) { Mods = JsonConvert.DeserializeObject<List<Items.Mods.Root>>(File.ReadAllText(local_Json_directory + "/Mods.json")); }
+                    if (Enemies.Count < 1) { Enemies = JsonConvert.DeserializeObject<List<Items.Enemies.Root>>(File.ReadAllText(local_Json_directory + "/Enemy.json")); }
+                    //if (Enemies.Count < 1) { }
+                }
+                catch (Exception ex)
+                {
+                    Debugger.Log($"Error loading hadcoded json data {Environment.NewLine}Stack Trace: {ex}");
+                }
+                #endregion
+
+                #region Loop Items Into Comboboxes
+                if (Warframes.Count > 0)
+                {
+                    foreach (Items.Warframes.Root frame in Warframes)
+                    {
+                        if (!GlobalData.WarframeDatabase.ContainsKey(frame.Name)) { GlobalData.WarframeDatabase.Add(frame.Name, frame); }
+                        WarframeComboBox.Items.Add(frame.Name.ToString());
+                    }
+                }
+
+                if (Primary_Weapons.Count > 0)
+                {
+                    foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
+                    {
+                        if (!GlobalData.PrimaryWeaponDatabase.ContainsKey(Primary_Weapon.Name)) { GlobalData.PrimaryWeaponDatabase.Add(Primary_Weapon.Name, Primary_Weapon); }
+
+                        if (Primary_Weapon.ProductCategory != "SentinelWeapons")
+                        {
+                            PrimaryWeaponComboBox.Items.Add(Primary_Weapon.Name.ToString());
+                        }
+                    }
+                }
+
+                if (Secondary_Weapons.Count > 0)
+                {
+                    foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
+                    {
+                        if (!GlobalData.SecondaryWeaponDatabase.ContainsKey(Secondary_Weapon.Name)) { GlobalData.SecondaryWeaponDatabase.Add(Secondary_Weapon.Name, Secondary_Weapon); }
+
+                        if (Secondary_Weapon.ProductCategory != "SentinelWeapons")
+                        {
+                            SecondaryWeaponsComboBox.Items.Add(Secondary_Weapon.Name.ToString());
+                        }
+                    }
+                }
+
+                if (Melee_Weapons.Count > 0)
+                {
+                    foreach (Items.Melee.Root Melee_Weapon in Melee_Weapons)
+                    {
+                        if (!GlobalData.MeleeWeaponDatabase.ContainsKey(Melee_Weapon.Name)) { GlobalData.MeleeWeaponDatabase.Add(Melee_Weapon.Name, Melee_Weapon); }
+                        MeleeWeaponsComboBox.Items.Add(Melee_Weapon.Name.ToString());
+                    }
+                }
+
+                if (Pets_List.Count > 0)
+                {
+                    foreach (Items.Pets.Root Pet in Pets_List)
+                    {
+                        if (!GlobalData.PetsDatabase.ContainsKey(Pet.Name)) { GlobalData.PetsDatabase.Add(Pet.Name, Pet); }
+                        CompanionsComboBox.Items.Add(Pet.Name);
+                    }
+                }
+
+                if (Pets_List.Count > 0)
+                {
+                    foreach (Items.Sentinels.Root Sentinel in Sentinel_List)
+                    {
+                        if (!GlobalData.SentinelsDatabase.ContainsKey(Sentinel.Name)) { GlobalData.SentinelsDatabase.Add(Sentinel.Name, Sentinel); }
+                        CompanionsComboBox.Items.Add(Sentinel.Name);
+                    }
+                }
+
+                if (Enemies.Count > 0)
+                {
+                    foreach (Items.Enemies.Root Enemy in Enemies)
+                    {
+                        if (!GlobalData.EnemyDatabase.ContainsKey(Enemy.Name)) { GlobalData.EnemyDatabase.Add(Enemy.Name, Enemy); }
+                    }
+                }
+                #endregion
+
+                #region Set Combobox Default Indexes
+                WarframeComboBox.SelectedIndex = 0;
+                PrimaryWeaponComboBox.SelectedIndex = 0;
+                SecondaryWeaponsComboBox.SelectedIndex = 0;
+                MeleeWeaponsComboBox.SelectedIndex = 0;
+                CompanionsComboBox.SelectedIndex = 0;
+                #endregion
+
+                LoadWorldState();
             }
             catch (Exception ex)
             {
-                Debugger.Log($"Error loading hadcoded json data {Environment.NewLine}Stack Trace: {ex}");
-            }
-            #endregion
-
-            #region Loop Items Into Comboboxes
-            if (Warframes.Count > 0)
-            {
-                foreach (Items.Warframes.Root frame in Warframes)
+                if (Properties.Settings.Default.debug_mode)
                 {
-                    if (!GlobalData.WarframeDatabase.ContainsKey(frame.Name)) { GlobalData.WarframeDatabase.Add(frame.Name, frame); }
-                    WarframeComboBox.Items.Add(frame.Name.ToString());
+                    Debugger.Log($"Exception in MainForm->GenerateData{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
-            
-            if (Primary_Weapons.Count > 0)
-            {
-                foreach (Items.PrimaryWeapons.Root Primary_Weapon in Primary_Weapons)
-                {
-                    if (!GlobalData.PrimaryWeaponDatabase.ContainsKey(Primary_Weapon.Name)) { GlobalData.PrimaryWeaponDatabase.Add(Primary_Weapon.Name, Primary_Weapon); }
-
-                    if (Primary_Weapon.ProductCategory != "SentinelWeapons")
-                    {
-                        PrimaryWeaponComboBox.Items.Add(Primary_Weapon.Name.ToString());
-                    }
-                }
-            }
-            
-            if (Secondary_Weapons.Count > 0)
-            {
-                foreach (Items.SecondaryWeapons.Root Secondary_Weapon in Secondary_Weapons)
-                {
-                    if (!GlobalData.SecondaryWeaponDatabase.ContainsKey(Secondary_Weapon.Name)) { GlobalData.SecondaryWeaponDatabase.Add(Secondary_Weapon.Name, Secondary_Weapon); }
-
-                    if (Secondary_Weapon.ProductCategory != "SentinelWeapons")
-                    {
-                        SecondaryWeaponsComboBox.Items.Add(Secondary_Weapon.Name.ToString());
-                    }
-                }
-            }
-            
-            if (Melee_Weapons.Count > 0)
-            {
-                foreach (Items.Melee.Root Melee_Weapon in Melee_Weapons)
-                {
-                    if (!GlobalData.MeleeWeaponDatabase.ContainsKey(Melee_Weapon.Name)) { GlobalData.MeleeWeaponDatabase.Add(Melee_Weapon.Name, Melee_Weapon); }
-                    MeleeWeaponsComboBox.Items.Add(Melee_Weapon.Name.ToString());
-                }
-            }
-            
-            if (Pets_List.Count > 0)
-            {
-                foreach (Items.Pets.Root Pet in Pets_List)
-                {
-                    if (!GlobalData.PetsDatabase.ContainsKey(Pet.Name)) { GlobalData.PetsDatabase.Add(Pet.Name, Pet); }
-                    CompanionsComboBox.Items.Add(Pet.Name);
-                }
-            }
-            
-            if (Pets_List.Count > 0)
-            {
-                foreach (Items.Sentinels.Root Sentinel in Sentinel_List)
-                {
-                    if (!GlobalData.SentinelsDatabase.ContainsKey(Sentinel.Name)) { GlobalData.SentinelsDatabase.Add(Sentinel.Name, Sentinel); }
-                    CompanionsComboBox.Items.Add(Sentinel.Name);
-                }
-            }
-
-            if (Enemies.Count > 0)
-            {
-                foreach (Items.Enemies.Root Enemy in Enemies)
-                {
-                    if (!GlobalData.EnemyDatabase.ContainsKey(Enemy.Name)) { GlobalData.EnemyDatabase.Add(Enemy.Name, Enemy); }
-                }
-            }
-            #endregion
-
-            #region Set Combobox Default Indexes
-            WarframeComboBox.SelectedIndex = 0;
-            PrimaryWeaponComboBox.SelectedIndex = 0;
-            SecondaryWeaponsComboBox.SelectedIndex = 0;
-            MeleeWeaponsComboBox.SelectedIndex = 0;
-            CompanionsComboBox.SelectedIndex = 0;
-            #endregion
-
-            LoadWorldState();
         }
 
         /// <summary>
@@ -1711,7 +1781,7 @@ namespace WarframeTracker
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Error fetching vault data.{Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->FetchVaultData{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -1738,7 +1808,7 @@ namespace WarframeTracker
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Error fetching drops data.{Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->FetchDropsData{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
         }
@@ -1751,136 +1821,158 @@ namespace WarframeTracker
         /// <param name="new_color">Color object input</param>
         private void UpdateBackgroundColor(Color new_color)
         {
-            #region GroupBoxes
-            groupBox1.BackColor = new_color;
-            WarframeComponentContainer.BackColor = new_color;
-            groupBox6.BackColor = new_color;
-            groupBox7.BackColor = new_color;
-            groupBox8.BackColor = new_color;
-            groupBox9.BackColor = new_color;
-            groupBox10.BackColor = new_color;
-            groupBox11.BackColor = new_color;
-            groupBox12.BackColor = new_color;
-            groupBox13.BackColor = new_color;
-            groupBox14.BackColor = new_color;
-            groupBox15.BackColor = new_color;
-            groupBox16.BackColor = new_color;
-            groupBox17.BackColor = new_color;
-            groupBox18.BackColor = new_color;
-            MWCompGroupBox.BackColor = new_color;
-            groupBox20.BackColor = new_color;
-            WarframeAbilitiesContainer.BackColor = new_color;
-            CompanionComponentContainer.BackColor = new_color;
-            CompanionDescriptionContainer.BackColor = new_color;
-            CompanionStatsContainer.BackColor = new_color;
-            ComponentDropsContainer.BackColor = new_color;
-            MeleeWeaponContainer.BackColor = new_color;
-            MeleeWeaponContainer.BackColor = new_color;
-            NightwaveChalContainer.BackColor = new_color;
-            PrimaryWeaponContainer.BackColor = new_color;
-            PWComponentContainer.BackColor = new_color;
-            PWWeaponDmgContainer.BackColor = new_color;
-            SecondaryWeaponContainer.BackColor = new_color;
-            #endregion
+            try
+            {
+                #region GroupBoxes
+                groupBox1.BackColor = new_color;
+                WarframeComponentContainer.BackColor = new_color;
+                groupBox6.BackColor = new_color;
+                groupBox7.BackColor = new_color;
+                groupBox8.BackColor = new_color;
+                groupBox9.BackColor = new_color;
+                groupBox10.BackColor = new_color;
+                //groupBox11.BackColor = new_color; NULl ref
+                //groupBox12.BackColor = new_color;
+                //groupBox13.BackColor = new_color;
+                groupBox14.BackColor = new_color;
+                groupBox15.BackColor = new_color;
+                //groupBox16.BackColor = new_color;
+                groupBox17.BackColor = new_color;
+                groupBox18.BackColor = new_color;
+                MWCompGroupBox.BackColor = new_color;
+                groupBox20.BackColor = new_color;
+                WarframeAbilitiesContainer.BackColor = new_color;
+                CompanionComponentContainer.BackColor = new_color;
+                CompanionDescriptionContainer.BackColor = new_color;
+                CompanionStatsContainer.BackColor = new_color;
+                ComponentDropsContainer.BackColor = new_color;
+                MeleeWeaponContainer.BackColor = new_color;
+                MeleeWeaponContainer.BackColor = new_color;
+                NightwaveChalContainer.BackColor = new_color;
+                PrimaryWeaponContainer.BackColor = new_color;
+                PWComponentContainer.BackColor = new_color;
+                PWWeaponDmgContainer.BackColor = new_color;
+                SecondaryWeaponContainer.BackColor = new_color;
+                OstronGroupBox.BackColor = new_color;
+                EntratiGroupBox.BackColor = new_color;
+                SolarisUnitedGroupBox.BackColor = new_color;
+                VoxSolarisGroupBox.BackColor = new_color;
+                QuillisGroupBox.BackColor = new_color;
+                NecraloidBountiesGroupBox.BackColor = new_color;
+                #endregion
 
-            #region TabPages
-            SettingsTabPage.BackColor = new_color;
-            WarframeTabPage.BackColor = new_color;
-            MeleeWeaponsTabPage.BackColor = new_color;
-            PetsTabPage.BackColor = new_color;
-            PrimWeaponsTabPage.BackColor = new_color;
-            SecWeaponsTabPage.BackColor = new_color;
-            WorldStatePage.BackColor = new_color;
-            #endregion
+                #region TabPages
+                SettingsTabPage.BackColor = new_color;
+                WarframeTabPage.BackColor = new_color;
+                MeleeWeaponsTabPage.BackColor = new_color;
+                PetsTabPage.BackColor = new_color;
+                PrimWeaponsTabPage.BackColor = new_color;
+                SecWeaponsTabPage.BackColor = new_color;
+                WorldStatePage.BackColor = new_color;
+                #endregion
 
-            #region Labels
-            label1.BackColor = new_color;
-            label10.BackColor = new_color;
-            label2.BackColor = new_color;
-            label3.BackColor = new_color;
-            label4.BackColor = new_color;
-            label5.BackColor = new_color;
-            label6.BackColor = new_color;
-            label7.BackColor = new_color;
-            label8.BackColor = new_color;
-            label9.BackColor = new_color;
-            #endregion
+                #region Labels
+                label1.BackColor = new_color;
+                label10.BackColor = new_color;
+                label2.BackColor = new_color;
+                label3.BackColor = new_color;
+                label4.BackColor = new_color;
+                label5.BackColor = new_color;
+                label6.BackColor = new_color;
+                label7.BackColor = new_color;
+                label8.BackColor = new_color;
+                label9.BackColor = new_color;
+                #endregion
 
-            #region TextBoxes
-            MWSlot0Txt.BackColor = new_color;
-            MWSlot1Txt.BackColor = new_color;
-            MWSlot2Txt.BackColor = new_color;
-            MWSlot3Txt.BackColor = new_color;
-            MWSlot4Txt.BackColor = new_color;
-            PWFoundrySlot0Txt.BackColor = new_color;
-            PWFoundrySlot1Txt.BackColor = new_color;
-            PWFoundrySlot2Txt.BackColor = new_color;
-            PWFoundrySlot3Txt.BackColor = new_color;
-            PWFoundrySlot4Txt.BackColor = new_color;
-            SWSlot1Txt.BackColor = new_color;
-            SWSlot2Txt.BackColor = new_color;
-            SWSlot3Txt.BackColor = new_color;
-            SWSlot4Txt.BackColor = new_color;
-            CompanionComponentTxt.BackColor = new_color;
-            CompanionDescriptionTxt.BackColor = new_color; 
-            CompanionStatsTxt.BackColor = new_color;
-            CopmpanionDropsTxt.BackColor = new_color;
-            WarframeComponentTxt.BackColor = new_color;
-            MWCreditsTxt.BackColor = new_color;
-            MWDataTxt.BackColor = new_color;
-            MWSlot0Txt.BackColor = new_color;
-            MWSlot1Txt.BackColor = new_color;
-            MWSlot2Txt.BackColor = new_color;
-            MWSlot3Txt.BackColor = new_color;
-            MWSlot4Txt.BackColor = new_color;
-            MWWeaponCompDataTxt.BackColor = new_color;
-            PWCompDataTxt.BackColor = new_color;
-            PWDataTxt.BackColor = new_color;
-            PWFoundryCreditsTxt.BackColor = new_color;
-            PWFoundrySlot0Txt.BackColor = new_color;
-            PWFoundrySlot1Txt.BackColor = new_color;
-            PWFoundrySlot2Txt.BackColor = new_color;
-            PWFoundrySlot3Txt.BackColor = new_color;
-            PWFoundrySlot4Txt.BackColor = new_color;
-            SWComponentDataTxt.BackColor = new_color;
-            SWFoundryCreditsTxt.BackColor = new_color;
-            SWSlot0Txt.BackColor = new_color;
-            SWSlot1Txt.BackColor = new_color;
-            SWSlot2Txt.BackColor = new_color;
-            SWSlot3Txt.BackColor = new_color;
-            SWSlot4Txt.BackColor = new_color;
-            SWWeaponDataTxt.BackColor = new_color;
-            NightwaveInfoBox.BackColor = new_color;
-            OstronInfoBox.BackColor = new_color;
-            SolarisInfoBox.BackColor = new_color;
-            SortieInfoBox.BackColor = new_color;
-            SyndicateInfoBox.BackColor = new_color;
-            ArbitrationInfoBox.BackColor = new_color;
-            BaroInfoBox.BackColor = new_color;
-            CycleTimersInfoBox.BackColor = new_color;
-            DailyInfoBox.BackColor = new_color;
-            FissureInfoBox.BackColor = new_color;
-            EntratiInfoBox.BackColor = new_color;
-            WarframeAbilitiesTxt.BackColor = new_color;
-            #endregion
+                #region TextBoxes
+                MWSlot0Txt.BackColor = new_color;
+                MWSlot1Txt.BackColor = new_color;
+                MWSlot2Txt.BackColor = new_color;
+                MWSlot3Txt.BackColor = new_color;
+                MWSlot4Txt.BackColor = new_color;
+                PWFoundrySlot0Txt.BackColor = new_color;
+                PWFoundrySlot1Txt.BackColor = new_color;
+                PWFoundrySlot2Txt.BackColor = new_color;
+                PWFoundrySlot3Txt.BackColor = new_color;
+                PWFoundrySlot4Txt.BackColor = new_color;
+                SWSlot1Txt.BackColor = new_color;
+                SWSlot2Txt.BackColor = new_color;
+                SWSlot3Txt.BackColor = new_color;
+                SWSlot4Txt.BackColor = new_color;
+                CompanionComponentTxt.BackColor = new_color;
+                CompanionDescriptionTxt.BackColor = new_color;
+                CompanionStatsTxt.BackColor = new_color;
+                CopmpanionDropsTxt.BackColor = new_color;
+                WarframeComponentTxt.BackColor = new_color;
+                MWCreditsTxt.BackColor = new_color;
+                MWDataTxt.BackColor = new_color;
+                MWSlot0Txt.BackColor = new_color;
+                MWSlot1Txt.BackColor = new_color;
+                MWSlot2Txt.BackColor = new_color;
+                MWSlot3Txt.BackColor = new_color;
+                MWSlot4Txt.BackColor = new_color;
+                MWWeaponCompDataTxt.BackColor = new_color;
+                PWCompDataTxt.BackColor = new_color;
+                PWDataTxt.BackColor = new_color;
+                PWFoundryCreditsTxt.BackColor = new_color;
+                PWFoundrySlot0Txt.BackColor = new_color;
+                PWFoundrySlot1Txt.BackColor = new_color;
+                PWFoundrySlot2Txt.BackColor = new_color;
+                PWFoundrySlot3Txt.BackColor = new_color;
+                PWFoundrySlot4Txt.BackColor = new_color;
+                SWComponentDataTxt.BackColor = new_color;
+                SWFoundryCreditsTxt.BackColor = new_color;
+                SWSlot0Txt.BackColor = new_color;
+                SWSlot1Txt.BackColor = new_color;
+                SWSlot2Txt.BackColor = new_color;
+                SWSlot3Txt.BackColor = new_color;
+                SWSlot4Txt.BackColor = new_color;
+                SWWeaponDataTxt.BackColor = new_color;
+                NightwaveInfoBox.BackColor = new_color;
+                OstronInfoBox.BackColor = new_color;
+                SolarisInfoBox.BackColor = new_color;
+                SortieInfoBox.BackColor = new_color;
+                QuillsInfoBox.BackColor = new_color;
+                ArbitrationInfoBox.BackColor = new_color;
+                BaroInfoBox.BackColor = new_color;
+                CycleTimersInfoBox.BackColor = new_color;
+                DailyInfoBox.BackColor = new_color;
+                FissureInfoBox.BackColor = new_color;
+                EntratiInfoBox.BackColor = new_color;
+                WarframeAbilitiesTxt.BackColor = new_color;
+                NecroaloidBountiesTxt.BackColor = new_color;
+                QuillsInfoBox.BackColor = new_color;
+                VoxSolarisInfoBox.BackColor = new_color;
+                EntratiInfoBox.BackColor = new_color;
+                SolarisInfoBox.BackColor = new_color;
+                OstronInfoBox.BackColor = new_color;
+                #endregion
 
-            #region ImageBoxes
-            MWSlot0Img.BackColor = new_color;
-            MWSlot1Img.BackColor = new_color;
-            MWSlot2Img.BackColor = new_color;
-            MWSlot3Img.BackColor = new_color;
-            MWSlot4Img.BackColor = new_color;
-            PWFoundrySlot1Img.BackColor = new_color;
-            PWFoundrySlot2Img.BackColor = new_color;
-            PWFoundrySlot3Img.BackColor = new_color;
-            PWFoundrySlot4Img.BackColor = new_color;
-            PWFoundrySlot0Img.BackColor = new_color;
-            SWFoundrySlot0Img.BackColor = new_color;
-            SWSlot01Img.BackColor = new_color;
-            SWSlot02Img.BackColor = new_color;
-            SWSlot03Img.BackColor = new_color;
-            SWSlot04Img.BackColor = new_color;
-            #endregion
+                #region ImageBoxes
+                MWSlot0Img.BackColor = new_color;
+                MWSlot1Img.BackColor = new_color;
+                MWSlot2Img.BackColor = new_color;
+                MWSlot3Img.BackColor = new_color;
+                MWSlot4Img.BackColor = new_color;
+                PWFoundrySlot1Img.BackColor = new_color;
+                PWFoundrySlot2Img.BackColor = new_color;
+                PWFoundrySlot3Img.BackColor = new_color;
+                PWFoundrySlot4Img.BackColor = new_color;
+                PWFoundrySlot0Img.BackColor = new_color;
+                SWFoundrySlot0Img.BackColor = new_color;
+                SWSlot01Img.BackColor = new_color;
+                SWSlot02Img.BackColor = new_color;
+                SWSlot03Img.BackColor = new_color;
+                SWSlot04Img.BackColor = new_color;
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm-UpdateBackgroundColor{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
 
         /// <summary>
@@ -1889,154 +1981,210 @@ namespace WarframeTracker
         /// <param name="new_color">Color object input</param>
         private void UpdateForeColor(Color new_color)
         {
-            #region GroupBoxes
-            groupBox1.ForeColor = new_color;
-            WarframeComponentContainer.ForeColor = new_color;
-            groupBox6.ForeColor = new_color;
-            groupBox7.ForeColor = new_color;
-            groupBox8.ForeColor = new_color;
-            groupBox9.ForeColor = new_color;
-            groupBox10.ForeColor = new_color;
-            groupBox11.ForeColor = new_color;
-            groupBox12.ForeColor = new_color;
-            groupBox13.ForeColor = new_color;
-            groupBox14.ForeColor = new_color;
-            groupBox15.ForeColor = new_color;
-            groupBox16.ForeColor = new_color;
-            groupBox17.ForeColor = new_color;
-            groupBox18.ForeColor = new_color;
-            MWCompGroupBox.ForeColor = new_color;
-            groupBox20.ForeColor = new_color;
-            WarframeAbilitiesContainer.ForeColor = new_color;
-            CompanionComponentContainer.ForeColor = new_color;
-            CompanionDescriptionContainer.ForeColor = new_color;
-            CompanionStatsContainer.ForeColor = new_color;
-            ComponentDropsContainer.ForeColor = new_color;
-            MeleeWeaponContainer.ForeColor = new_color;
-            MeleeWeaponContainer.ForeColor = new_color;
-            NightwaveChalContainer.ForeColor = new_color;
-            PrimaryWeaponContainer.ForeColor = new_color;
-            PWComponentContainer.ForeColor = new_color;
-            PWWeaponDmgContainer.ForeColor = new_color;
-            SecondaryWeaponContainer.ForeColor = new_color;
-            #endregion
+            try
+            {
+                #region GroupBoxes
+                groupBox1.ForeColor = new_color;
+                WarframeComponentContainer.ForeColor = new_color;
+                groupBox6.ForeColor = new_color;
+                groupBox7.ForeColor = new_color;
+                groupBox8.ForeColor = new_color;
+                groupBox9.ForeColor = new_color;
+                groupBox10.ForeColor = new_color;
+                //groupBox11.ForeColor = new_color;
+                //groupBox12.ForeColor = new_color;
+                //groupBox13.ForeColor = new_color;
+                groupBox14.ForeColor = new_color;
+                groupBox15.ForeColor = new_color;
+                //groupBox16.ForeColor = new_color;
+                groupBox17.ForeColor = new_color;
+                groupBox18.ForeColor = new_color;
+                MWCompGroupBox.ForeColor = new_color;
+                groupBox20.ForeColor = new_color;
+                WarframeAbilitiesContainer.ForeColor = new_color;
+                CompanionComponentContainer.ForeColor = new_color;
+                CompanionDescriptionContainer.ForeColor = new_color;
+                CompanionStatsContainer.ForeColor = new_color;
+                ComponentDropsContainer.ForeColor = new_color;
+                MeleeWeaponContainer.ForeColor = new_color;
+                MeleeWeaponContainer.ForeColor = new_color;
+                NightwaveChalContainer.ForeColor = new_color;
+                PrimaryWeaponContainer.ForeColor = new_color;
+                PWComponentContainer.ForeColor = new_color;
+                PWWeaponDmgContainer.ForeColor = new_color;
+                SecondaryWeaponContainer.ForeColor = new_color;
+                OstronGroupBox.ForeColor = new_color;
+                EntratiGroupBox.ForeColor = new_color;                
+                SolarisUnitedGroupBox.ForeColor = new_color;
+                VoxSolarisGroupBox.ForeColor = new_color;                
+                QuillisGroupBox.ForeColor = new_color;
+                NecraloidBountiesGroupBox.ForeColor = new_color;
+                #endregion
 
-            #region TabPages
-            SettingsTabPage.ForeColor = new_color;
-            WarframeTabPage.ForeColor = new_color;
-            MeleeWeaponsTabPage.ForeColor = new_color;
-            PetsTabPage.ForeColor = new_color;
-            PrimWeaponsTabPage.ForeColor = new_color;
-            SecWeaponsTabPage.ForeColor = new_color;
-            WorldStatePage.ForeColor = new_color;
-            #endregion
+                #region TabPages
+                SettingsTabPage.ForeColor = new_color;
+                WarframeTabPage.ForeColor = new_color;
+                MeleeWeaponsTabPage.ForeColor = new_color;
+                PetsTabPage.ForeColor = new_color;
+                PrimWeaponsTabPage.ForeColor = new_color;
+                SecWeaponsTabPage.ForeColor = new_color;
+                WorldStatePage.ForeColor = new_color;
+                #endregion
 
-            #region Labels
-            label1.ForeColor = new_color;
-            label10.ForeColor = new_color;
-            label2.ForeColor = new_color;
-            label3.ForeColor = new_color;
-            label4.ForeColor = new_color;
-            label5.ForeColor = new_color;
-            label6.ForeColor = new_color;
-            label7.ForeColor = new_color;
-            label8.ForeColor = new_color;
-            label9.ForeColor = new_color;
-            #endregion
+                #region Labels
+                label1.ForeColor = new_color;
+                label10.ForeColor = new_color;
+                label2.ForeColor = new_color;
+                label3.ForeColor = new_color;
+                label4.ForeColor = new_color;
+                label5.ForeColor = new_color;
+                label6.ForeColor = new_color;
+                label7.ForeColor = new_color;
+                label8.ForeColor = new_color;
+                label9.ForeColor = new_color;
+                #endregion
 
-            #region TextBoxes
-            MWSlot0Txt.ForeColor = new_color;
-            MWSlot1Txt.ForeColor = new_color;
-            MWSlot2Txt.ForeColor = new_color;
-            MWSlot3Txt.ForeColor = new_color;
-            MWSlot4Txt.ForeColor = new_color;
-            PWFoundrySlot0Txt.ForeColor = new_color;
-            PWFoundrySlot1Txt.ForeColor = new_color;
-            PWFoundrySlot2Txt.ForeColor = new_color;
-            PWFoundrySlot3Txt.ForeColor = new_color;
-            PWFoundrySlot4Txt.ForeColor = new_color;
-            SWSlot1Txt.ForeColor = new_color;
-            SWSlot2Txt.ForeColor = new_color;
-            SWSlot3Txt.ForeColor = new_color;
-            SWSlot4Txt.ForeColor = new_color;
-            CompanionComponentTxt.ForeColor = new_color;
-            CompanionDescriptionTxt.ForeColor = new_color;
-            CompanionStatsTxt.ForeColor = new_color;
-            CopmpanionDropsTxt.ForeColor = new_color;
-            WarframeComponentTxt.ForeColor = new_color;
-            MWCreditsTxt.ForeColor = new_color;
-            MWDataTxt.ForeColor = new_color;
-            MWSlot0Txt.ForeColor = new_color;
-            MWSlot1Txt.ForeColor = new_color;
-            MWSlot2Txt.ForeColor = new_color;
-            MWSlot3Txt.ForeColor = new_color;
-            MWSlot4Txt.ForeColor = new_color;
-            MWWeaponCompDataTxt.ForeColor = new_color;
-            PWCompDataTxt.ForeColor = new_color;
-            PWDataTxt.ForeColor = new_color;
-            PWFoundryCreditsTxt.ForeColor = new_color;
-            PWFoundrySlot0Txt.ForeColor = new_color;
-            PWFoundrySlot1Txt.ForeColor = new_color;
-            PWFoundrySlot2Txt.ForeColor = new_color;
-            PWFoundrySlot3Txt.ForeColor = new_color;
-            PWFoundrySlot4Txt.ForeColor = new_color;
-            SWComponentDataTxt.ForeColor = new_color;
-            SWFoundryCreditsTxt.ForeColor = new_color;
-            SWSlot0Txt.ForeColor = new_color;
-            SWSlot1Txt.ForeColor = new_color;
-            SWSlot2Txt.ForeColor = new_color;
-            SWSlot3Txt.ForeColor = new_color;
-            SWSlot4Txt.ForeColor = new_color;
-            SWWeaponDataTxt.ForeColor = new_color;
-            NightwaveInfoBox.ForeColor = new_color;
-            OstronInfoBox.ForeColor = new_color;
-            SolarisInfoBox.ForeColor = new_color;
-            SortieInfoBox.ForeColor = new_color;
-            SyndicateInfoBox.ForeColor = new_color;
-            ArbitrationInfoBox.ForeColor = new_color;
-            BaroInfoBox.ForeColor = new_color;
-            CycleTimersInfoBox.ForeColor = new_color;
-            DailyInfoBox.ForeColor = new_color;
-            FissureInfoBox.ForeColor = new_color;
-            EntratiInfoBox.ForeColor = new_color;
-            WarframeAbilitiesTxt.ForeColor = new_color;
-            #endregion
+                #region TextBoxes
+                MWSlot0Txt.ForeColor = new_color;
+                MWSlot1Txt.ForeColor = new_color;
+                MWSlot2Txt.ForeColor = new_color;
+                MWSlot3Txt.ForeColor = new_color;
+                MWSlot4Txt.ForeColor = new_color;
+                PWFoundrySlot0Txt.ForeColor = new_color;
+                PWFoundrySlot1Txt.ForeColor = new_color;
+                PWFoundrySlot2Txt.ForeColor = new_color;
+                PWFoundrySlot3Txt.ForeColor = new_color;
+                PWFoundrySlot4Txt.ForeColor = new_color;
+                SWSlot1Txt.ForeColor = new_color;
+                SWSlot2Txt.ForeColor = new_color;
+                SWSlot3Txt.ForeColor = new_color;
+                SWSlot4Txt.ForeColor = new_color;
+                CompanionComponentTxt.ForeColor = new_color;
+                CompanionDescriptionTxt.ForeColor = new_color;
+                CompanionStatsTxt.ForeColor = new_color;
+                CopmpanionDropsTxt.ForeColor = new_color;
+                WarframeComponentTxt.ForeColor = new_color;
+                MWCreditsTxt.ForeColor = new_color;
+                MWDataTxt.ForeColor = new_color;
+                MWSlot0Txt.ForeColor = new_color;
+                MWSlot1Txt.ForeColor = new_color;
+                MWSlot2Txt.ForeColor = new_color;
+                MWSlot3Txt.ForeColor = new_color;
+                MWSlot4Txt.ForeColor = new_color;
+                MWWeaponCompDataTxt.ForeColor = new_color;
+                PWCompDataTxt.ForeColor = new_color;
+                PWDataTxt.ForeColor = new_color;
+                PWFoundryCreditsTxt.ForeColor = new_color;
+                PWFoundrySlot0Txt.ForeColor = new_color;
+                PWFoundrySlot1Txt.ForeColor = new_color;
+                PWFoundrySlot2Txt.ForeColor = new_color;
+                PWFoundrySlot3Txt.ForeColor = new_color;
+                PWFoundrySlot4Txt.ForeColor = new_color;
+                SWComponentDataTxt.ForeColor = new_color;
+                SWFoundryCreditsTxt.ForeColor = new_color;
+                SWSlot0Txt.ForeColor = new_color;
+                SWSlot1Txt.ForeColor = new_color;
+                SWSlot2Txt.ForeColor = new_color;
+                SWSlot3Txt.ForeColor = new_color;
+                SWSlot4Txt.ForeColor = new_color;
+                SWWeaponDataTxt.ForeColor = new_color;
+                NightwaveInfoBox.ForeColor = new_color;
+                OstronInfoBox.ForeColor = new_color;
+                SolarisInfoBox.ForeColor = new_color;
+                SortieInfoBox.ForeColor = new_color;
+                QuillsInfoBox.ForeColor = new_color;
+                ArbitrationInfoBox.ForeColor = new_color;
+                BaroInfoBox.ForeColor = new_color;
+                CycleTimersInfoBox.ForeColor = new_color;
+                DailyInfoBox.ForeColor = new_color;
+                FissureInfoBox.ForeColor = new_color;
+                EntratiInfoBox.ForeColor = new_color;
+                WarframeAbilitiesTxt.ForeColor = new_color;
+                NecroaloidBountiesTxt.ForeColor = new_color;
+                QuillsInfoBox.ForeColor = new_color;
+                VoxSolarisInfoBox.ForeColor = new_color;
+                EntratiInfoBox.ForeColor = new_color;
+                SolarisInfoBox.ForeColor = new_color;
+                OstronInfoBox.ForeColor = new_color;
+                #endregion
 
-            #region ImageBoxes
-            MWSlot0Img.ForeColor = new_color;
-            MWSlot1Img.ForeColor = new_color;
-            MWSlot2Img.ForeColor = new_color;
-            MWSlot3Img.ForeColor = new_color;
-            MWSlot4Img.ForeColor = new_color;
-            PWFoundrySlot1Img.ForeColor = new_color;
-            PWFoundrySlot2Img.ForeColor = new_color;
-            PWFoundrySlot3Img.ForeColor = new_color;
-            PWFoundrySlot4Img.ForeColor = new_color;
-            PWFoundrySlot0Img.ForeColor = new_color;
-            SWFoundrySlot0Img.ForeColor = new_color;
-            SWSlot01Img.ForeColor = new_color;
-            SWSlot02Img.ForeColor = new_color;
-            SWSlot03Img.ForeColor = new_color;
-            SWSlot04Img.ForeColor = new_color;
-            #endregion
+                #region ImageBoxes
+                MWSlot0Img.ForeColor = new_color;
+                MWSlot1Img.ForeColor = new_color;
+                MWSlot2Img.ForeColor = new_color;
+                MWSlot3Img.ForeColor = new_color;
+                MWSlot4Img.ForeColor = new_color;
+                PWFoundrySlot1Img.ForeColor = new_color;
+                PWFoundrySlot2Img.ForeColor = new_color;
+                PWFoundrySlot3Img.ForeColor = new_color;
+                PWFoundrySlot4Img.ForeColor = new_color;
+                PWFoundrySlot0Img.ForeColor = new_color;
+                SWFoundrySlot0Img.ForeColor = new_color;
+                SWSlot01Img.ForeColor = new_color;
+                SWSlot02Img.ForeColor = new_color;
+                SWSlot03Img.ForeColor = new_color;
+                SWSlot04Img.ForeColor = new_color;
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->UpdateForeColor{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
 
         private void SwitchPlatformCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.platform = $"{SwitchPlatformComboBox.SelectedItem}";
-            Properties.Settings.Default.Save();
+            try
+            {
+                Properties.Settings.Default.platform = $"{SwitchPlatformComboBox.SelectedItem}";
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->SwitchPlatformComboBox_SelectionChanged{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
 
         private void ThemeBackgroundColorBtn_Click(object sender, EventArgs e)
         {
-            colorDialog1.ShowDialog();
-            UpdateBackgroundColor(colorDialog1.Color);
+            try
+            {
+                colorDialog1.ShowDialog();
+                Properties.Settings.Default.background_color = colorDialog1.Color;
+                Properties.Settings.Default.Save();
+                UpdateBackgroundColor(Properties.Settings.Default.background_color);
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->ThemeBackgroundColorButton_Click{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
 
         private void ThemeForegroundColorBtn_Click(object sender, EventArgs e)
         {
-            colorDialog1.ShowDialog();
-            UpdateForeColor(colorDialog1.Color);
+            try
+            {
+                colorDialog1.ShowDialog();
+                Properties.Settings.Default.foreground_color = colorDialog1.Color;
+                Properties.Settings.Default.Save();
+                UpdateForeColor(Properties.Settings.Default.foreground_color);
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->ThemeForegroundColorBtn_Click{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
         #endregion
 
@@ -2048,16 +2196,26 @@ namespace WarframeTracker
         /// <param name="owned">Value of the owned checkbox or boolean</param>
         public void UpdateInventoryState(string item_name, bool owned)
         {
-            if (!GlobalData.LocalInventory.ContainsKey(item_name))
+            try
             {
-                GlobalData.LocalInventory.Add(item_name, owned);
-            }
-            else
-            {
-                GlobalData.LocalInventory[item_name] = owned;
-            }
+                if (!GlobalData.LocalInventory.ContainsKey(item_name))
+                {
+                    GlobalData.LocalInventory.Add(item_name, owned);
+                }
+                else
+                {
+                    GlobalData.LocalInventory[item_name] = owned;
+                }
 
-            SaveInventoryState(GlobalData.LocalInventory);
+                SaveInventoryState(GlobalData.LocalInventory);
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->UpdateInventoryState{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
 
         /// <summary>
@@ -2066,16 +2224,26 @@ namespace WarframeTracker
         /// <param name="Save_Data">Input Dictionary</param>
         public void SaveInventoryState(Dictionary<String, Boolean> Save_Data)
         {
-            if (!File.Exists(save_file))
+            try
             {
-                FileStream FileMaker = File.Create(save_file); FileMaker.Close(); FileMaker.Dispose();
-                var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
-                File.WriteAllText(SerializedInventory, save_file);
+                if (!File.Exists(save_file))
+                {
+                    FileStream FileMaker = File.Create(save_file); FileMaker.Close(); FileMaker.Dispose();
+                    var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
+                    File.WriteAllText(SerializedInventory, save_file);
+                }
+                else
+                {
+                    var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
+                    File.WriteAllText(save_file, SerializedInventory);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var SerializedInventory = JsonConvert.SerializeObject(Save_Data);
-                File.WriteAllText(save_file, SerializedInventory);
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->SaveInventoryState{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
 
@@ -2109,77 +2277,127 @@ namespace WarframeTracker
             }
             catch (Exception ex)
             {
-                if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Error loading inventory json data {Environment.NewLine}Stack Trace: {ex}"); }
+                if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Exception in MainForm->LoadInventoryState{Environment.NewLine}Stack Trace: {ex}"); }
             }
         }
 
         private void WarframeOwnershipCheckbox_Changed(object sender, EventArgs e)
         {
-            if (WarframeOwnedCheckbox.Checked)
+            try
             {
-                WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
-                UpdateInventoryState(GlobalData.activeItemName, WarframeOwnedCheckbox.Checked);
+                if (WarframeOwnedCheckbox.Checked)
+                {
+                    WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
+                    UpdateInventoryState(GlobalData.activeItemName, WarframeOwnedCheckbox.Checked);
+                }
+                else
+                {
+                    WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    UpdateInventoryState(GlobalData.activeItemName, WarframeOwnedCheckbox.Checked);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                WarframeOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
-                UpdateInventoryState(GlobalData.activeItemName, WarframeOwnedCheckbox.Checked);
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->WarframeOwnershipCheckbox_Changed{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
 
         private void PWOwnershipCheckbox_Changed(object sender, EventArgs e)
         {
-            if (PWOwnedCheckBox.Checked)
+            try
             {
-                PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
-                UpdateInventoryState(GlobalData.activeItemName, PWOwnedCheckBox.Checked);
+                if (PWOwnedCheckBox.Checked)
+                {
+                    PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                    UpdateInventoryState(GlobalData.activeItemName, PWOwnedCheckBox.Checked);
+                }
+                else
+                {
+                    PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    UpdateInventoryState(GlobalData.activeItemName, PWOwnedCheckBox.Checked);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                PWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
-                UpdateInventoryState(GlobalData.activeItemName, PWOwnedCheckBox.Checked);
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->PWOwnershipCheckbox_Changed{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
 
         private void SWOwnershipCheckbox_Changed(object sender, EventArgs e)
         {
-            if (SWOwnedCheckBox.Checked)
+            try
             {
-                SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
-                UpdateInventoryState(GlobalData.activeItemName, SWOwnedCheckBox.Checked);
+                if (SWOwnedCheckBox.Checked)
+                {
+                    SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                    UpdateInventoryState(GlobalData.activeItemName, SWOwnedCheckBox.Checked);
+                }
+                else
+                {
+                    SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    UpdateInventoryState(GlobalData.activeItemName, SWOwnedCheckBox.Checked);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                SWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
-                UpdateInventoryState(GlobalData.activeItemName, SWOwnedCheckBox.Checked);
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->SWOwnershipCheckbox_Changed{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
 
         private void MWOwnershipCheckbox_Changed(object sender, EventArgs e)
         {
-            if (MWOwnedCheckBox.Checked)
+            try
             {
-                MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
-                UpdateInventoryState(GlobalData.activeItemName, MWOwnedCheckBox.Checked);
+                if (MWOwnedCheckBox.Checked)
+                {
+                    MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} Owned";
+                    UpdateInventoryState(GlobalData.activeItemName, MWOwnedCheckBox.Checked);
+                }
+                else
+                {
+                    MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    UpdateInventoryState(GlobalData.activeItemName, MWOwnedCheckBox.Checked);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MWOwnedCheckBox.Text = $"{GlobalData.activeItemName} UnOwned";
-                UpdateInventoryState(GlobalData.activeItemName, MWOwnedCheckBox.Checked);
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->MWOwnershipCheckbox_Changed{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
 
         private void CompanionOwnershipCheckbox_Changed(object sender, EventArgs e)
         {
-            if (CompanionOwnedCheckbox.Checked)
+            try
             {
-                CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
-                UpdateInventoryState(GlobalData.activeItemName, CompanionOwnedCheckbox.Checked);
+                if (CompanionOwnedCheckbox.Checked)
+                {
+                    CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} Owned";
+                    UpdateInventoryState(GlobalData.activeItemName, CompanionOwnedCheckbox.Checked);
+                }
+                else
+                {
+                    CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
+                    UpdateInventoryState(GlobalData.activeItemName, CompanionOwnedCheckbox.Checked);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                CompanionOwnedCheckbox.Text = $"{GlobalData.activeItemName} UnOwned";
-                UpdateInventoryState(GlobalData.activeItemName, CompanionOwnedCheckbox.Checked);
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->CompanionOwnershipCheckbox_Changed{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
         #endregion
@@ -2193,9 +2411,19 @@ namespace WarframeTracker
         /// <param name="tradeable">Unused boolean</param>
         private void FindOrderInformation(string item_name, string order_type, bool tradeable)
         {
-            GlobalData.activeItemName = $"{item_name}";
-            GlobalData.activeSearch = $"{order_type}";
-            new OrderSheet().Show();
+            try
+            {
+                GlobalData.activeItemName = $"{item_name}";
+                GlobalData.activeSearch = $"{order_type}";
+                new OrderSheet().Show();
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->FindOrderInformation{Environment.NewLine}Stack Trace: {ex}");
+                }
+            }
         }
 
         /// <summary>
@@ -2205,106 +2433,116 @@ namespace WarframeTracker
         /// <param name="order_name">Order type</param>
         private void GenerateOrderMenu(string item_name, string order_name)
         {
-            switch (order_name)
+            try
             {
-                case "Set":
-                    ToolStripMenuItem SetOrderBtn = new ToolStripMenuItem();
-                    SetOrderBtn.Text = $"{item_name} Set";
-                    SetOrderBtn.Click += GetContextMenuFunction;
+                switch (order_name)
+                {
+                    case "Set":
+                        ToolStripMenuItem SetOrderBtn = new ToolStripMenuItem();
+                        SetOrderBtn.Text = $"{item_name} Set";
+                        SetOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(SetOrderBtn);
-                    break;
-                case "Blueprint":
-                    ToolStripMenuItem BluePrintOrderBtn = new ToolStripMenuItem();
-                    BluePrintOrderBtn.Text = $"{item_name} Blueprint";
-                    BluePrintOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(SetOrderBtn);
+                        break;
+                    case "Blueprint":
+                        ToolStripMenuItem BluePrintOrderBtn = new ToolStripMenuItem();
+                        BluePrintOrderBtn.Text = $"{item_name} Blueprint";
+                        BluePrintOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(BluePrintOrderBtn);
-                    break;
-                case "Chassis":
-                    ToolStripMenuItem ChassisOrderBtn = new ToolStripMenuItem();
-                    ChassisOrderBtn.Text = $"{item_name} Chassis";
-                    ChassisOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(BluePrintOrderBtn);
+                        break;
+                    case "Chassis":
+                        ToolStripMenuItem ChassisOrderBtn = new ToolStripMenuItem();
+                        ChassisOrderBtn.Text = $"{item_name} Chassis";
+                        ChassisOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(ChassisOrderBtn);
-                    break;
-                case "Neuroptics":
-                    ToolStripMenuItem NeuropticsOrderBtn = new ToolStripMenuItem();
-                    NeuropticsOrderBtn.Text = $"{item_name} Neuroptics";
-                    NeuropticsOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(ChassisOrderBtn);
+                        break;
+                    case "Neuroptics":
+                        ToolStripMenuItem NeuropticsOrderBtn = new ToolStripMenuItem();
+                        NeuropticsOrderBtn.Text = $"{item_name} Neuroptics";
+                        NeuropticsOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(NeuropticsOrderBtn);
-                    break;
-                case "Systems":
-                    ToolStripMenuItem SystemsOrderBtn = new ToolStripMenuItem();
-                    SystemsOrderBtn.Text = $"{item_name} Systems";
-                    SystemsOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(NeuropticsOrderBtn);
+                        break;
+                    case "Systems":
+                        ToolStripMenuItem SystemsOrderBtn = new ToolStripMenuItem();
+                        SystemsOrderBtn.Text = $"{item_name} Systems";
+                        SystemsOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(SystemsOrderBtn);
-                    break;
-                case "Barrel":
-                    ToolStripMenuItem BarrelOrderBtn = new ToolStripMenuItem();
-                    BarrelOrderBtn.Text = $"{item_name} Barrel";
-                    BarrelOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(SystemsOrderBtn);
+                        break;
+                    case "Barrel":
+                        ToolStripMenuItem BarrelOrderBtn = new ToolStripMenuItem();
+                        BarrelOrderBtn.Text = $"{item_name} Barrel";
+                        BarrelOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(BarrelOrderBtn);
-                    break;
-                case "Stock":
-                    ToolStripMenuItem StockOrderBtn = new ToolStripMenuItem();
-                    StockOrderBtn.Text = $"{item_name} Stock";
-                    StockOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(BarrelOrderBtn);
+                        break;
+                    case "Stock":
+                        ToolStripMenuItem StockOrderBtn = new ToolStripMenuItem();
+                        StockOrderBtn.Text = $"{item_name} Stock";
+                        StockOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(StockOrderBtn);
-                    break;
-                case "Reciever":
-                    ToolStripMenuItem RecieverOrderBtn = new ToolStripMenuItem();
-                    RecieverOrderBtn.Text = $"{item_name} Reciever";
-                    RecieverOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(StockOrderBtn);
+                        break;
+                    case "Reciever":
+                        ToolStripMenuItem RecieverOrderBtn = new ToolStripMenuItem();
+                        RecieverOrderBtn.Text = $"{item_name} Reciever";
+                        RecieverOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(RecieverOrderBtn);
-                    break;
-                case "Blade":
-                    ToolStripMenuItem BladeOrderBtn = new ToolStripMenuItem();
-                    BladeOrderBtn.Text = $"{item_name} Blade";
-                    BladeOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(RecieverOrderBtn);
+                        break;
+                    case "Blade":
+                        ToolStripMenuItem BladeOrderBtn = new ToolStripMenuItem();
+                        BladeOrderBtn.Text = $"{item_name} Blade";
+                        BladeOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(BladeOrderBtn);
-                    break;
-                case "Hilt":
-                    ToolStripMenuItem HiltOrderBtn = new ToolStripMenuItem();
-                    HiltOrderBtn.Text = $"{item_name} Hilt";
-                    HiltOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(BladeOrderBtn);
+                        break;
+                    case "Hilt":
+                        ToolStripMenuItem HiltOrderBtn = new ToolStripMenuItem();
+                        HiltOrderBtn.Text = $"{item_name} Hilt";
+                        HiltOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(HiltOrderBtn);
-                    break;
-                case "Head":
-                    ToolStripMenuItem HeadOrderBtn = new ToolStripMenuItem();
-                    HeadOrderBtn.Text = $"{item_name} Head";
-                    HeadOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(HiltOrderBtn);
+                        break;
+                    case "Head":
+                        ToolStripMenuItem HeadOrderBtn = new ToolStripMenuItem();
+                        HeadOrderBtn.Text = $"{item_name} Head";
+                        HeadOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(HeadOrderBtn);
-                    break;
-                case "Link":
-                    ToolStripMenuItem LinkOrderBtn = new ToolStripMenuItem();
-                    LinkOrderBtn.Text = $"{item_name} Link";
-                    LinkOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(HeadOrderBtn);
+                        break;
+                    case "Link":
+                        ToolStripMenuItem LinkOrderBtn = new ToolStripMenuItem();
+                        LinkOrderBtn.Text = $"{item_name} Link";
+                        LinkOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(LinkOrderBtn);
-                    break;
-                case "Carapace":
-                    ToolStripMenuItem CarapaceOrderBtn = new ToolStripMenuItem();
-                    CarapaceOrderBtn.Text = $"{item_name} Carapace";
-                    CarapaceOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(LinkOrderBtn);
+                        break;
+                    case "Carapace":
+                        ToolStripMenuItem CarapaceOrderBtn = new ToolStripMenuItem();
+                        CarapaceOrderBtn.Text = $"{item_name} Carapace";
+                        CarapaceOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(CarapaceOrderBtn);
-                    break;
-                case "Cerebrum":
-                    ToolStripMenuItem CerebrumOrderBtn = new ToolStripMenuItem();
-                    CerebrumOrderBtn.Text = $"{item_name} Cerebrum";
-                    CerebrumOrderBtn.Click += GetContextMenuFunction;
+                        WarframeMarketOptions.DropDownItems.Add(CarapaceOrderBtn);
+                        break;
+                    case "Cerebrum":
+                        ToolStripMenuItem CerebrumOrderBtn = new ToolStripMenuItem();
+                        CerebrumOrderBtn.Text = $"{item_name} Cerebrum";
+                        CerebrumOrderBtn.Click += GetContextMenuFunction;
 
-                    WarframeMarketOptions.DropDownItems.Add(CerebrumOrderBtn);
-                    break;
+                        WarframeMarketOptions.DropDownItems.Add(CerebrumOrderBtn);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->GenerateOrderMenu{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
 
@@ -2315,26 +2553,36 @@ namespace WarframeTracker
         /// <returns></returns>
         private string GetVaultInformation(string item_name)
         {
-            if (GlobalData.VaultData.Data != null)
+            try
             {
-                for (int i = 0; i < GlobalData.VaultData.Data.Count; i++)
+                if (GlobalData.VaultData.Data != null)
                 {
-                    if (GlobalData.VaultData.Data[i].Name == item_name && GlobalData.VaultData.Data[i].Vaulted)
+                    for (int i = 0; i < GlobalData.VaultData.Data.Count; i++)
                     {
-                        return $"{item_name} was last vaulted on {GlobalData.VaultData.Data[i].VaultedDate} and was last released on {GlobalData.VaultData.Data[i].ReleaseDate}";
+                        if (GlobalData.VaultData.Data[i].Name == item_name && GlobalData.VaultData.Data[i].Vaulted)
+                        {
+                            return $"{item_name} was last vaulted on {GlobalData.VaultData.Data[i].VaultedDate} and was last released on {GlobalData.VaultData.Data[i].ReleaseDate}";
+                        }
+                    }
+                }
+                else
+                {
+                    FetchVaultData();
+
+                    for (int i = 0; i < GlobalData.VaultData.Data.Count; i++)
+                    {
+                        if (GlobalData.VaultData.Data[i].Name == item_name && GlobalData.VaultData.Data[i].Vaulted)
+                        {
+                            return $"{item_name} was last vaulted on {GlobalData.VaultData.Data[i].VaultedDate} and was last released on {GlobalData.VaultData.Data[i].ReleaseDate}";
+                        }
                     }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                FetchVaultData();
-
-                for (int i = 0; i < GlobalData.VaultData.Data.Count; i++)
+                if (Properties.Settings.Default.debug_mode)
                 {
-                    if (GlobalData.VaultData.Data[i].Name == item_name && GlobalData.VaultData.Data[i].Vaulted)
-                    {
-                        return $"{item_name} was last vaulted on {GlobalData.VaultData.Data[i].VaultedDate} and was last released on {GlobalData.VaultData.Data[i].ReleaseDate}";
-                    }
+                    Debugger.Log($"Exception in MainForm->GetVaultInformation{Environment.NewLine}Stack Trace: {ex}");
                 }
             }
 
@@ -2389,7 +2637,7 @@ namespace WarframeTracker
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Error searching for prime relic items. {Environment.NewLine}Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->SearchPrimeRelicItems{Environment.NewLine}Stack Trace: {ex}");
                 }
 
                 return drop_info;
@@ -2407,6 +2655,9 @@ namespace WarframeTracker
 
             try
             {
+                //Testing of new function where we use Where rather than a for loop.
+                var itemsWithGC = GlobalData.DropsData.MissionRewards.Where(item => item.Value.Values.Contains("[GC]")).Select(item => item.Key).ToList();
+
                 //Not correctly serializing the planets
                 foreach (var _planet in GlobalData.DropsData.MissionRewards)
                 {
@@ -2474,7 +2725,7 @@ namespace WarframeTracker
             {
                 if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Error in GetBlueprintData->CheckMissionRewards; Stack Trace: {ex}");
+                    Debugger.Log($"Exception in MainForm->GetBlueprintData->CheckMissionRewards; Stack Trace: {ex}");
                 }
 
                 return drop_info;
@@ -2488,88 +2739,109 @@ namespace WarframeTracker
         /// <param name="e"></param>
         private void GetContextMenuFunction(object sender, EventArgs e)
         {
-            if (sender.ToString().Contains("Vault Status"))
+            try
             {
-                MessageBox.Show(GetVaultInformation(GlobalData.activeItemName));
+                if (sender.ToString().Contains("Vault Status"))
+                {
+                    MessageBox.Show(GetVaultInformation(GlobalData.activeItemName));
+                }
+                else if (sender.ToString().Contains("Set"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Set", true);
+                }
+                else if (sender.ToString().Contains("Nueroptics"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Nueroptics", true);
+                }
+                else if (sender.ToString().Contains("Chassis"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Chassis", true);
+                }
+                else if (sender.ToString().Contains("Systems"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Systems", true);
+                }
+                else if (sender.ToString().Contains("Blueprint"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Blueprint", true);
+                }
+                else if (sender.ToString().Contains("Barrel"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Barrel", true);
+                }
+                else if (sender.ToString().Contains("Stock"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Stock", true);
+                }
+                else if (sender.ToString().Contains("Reciever"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Reciever", true);
+                }
+                else if (sender.ToString().Contains("Blade"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Blade", true);
+                }
+                else if (sender.ToString().Contains("Hilt"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Hilt", true);
+                }
+                else if (sender.ToString().Contains("Head"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Head", true);
+                }
+                else if (sender.ToString().Contains("Link") && !sender.ToString().Contains("Patreon"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Link", true);
+                }
+                else if (sender.ToString().Contains("Carapace"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Carapace", true);
+                }
+                else if (sender.ToString().Contains("Cerebrum"))
+                {
+                    FindOrderInformation(GlobalData.activeItemName, "Cerebrum", true);
+                }
+                else if (sender.ToString().Contains("Refresh"))
+                {
+                    GenerateData();
+                }
+                else if (sender.ToString().Contains("Patreon"))
+                {
+
+                }
+                else if (sender.ToString().Contains("Update"))
+                {
+
+                }
+                else if (sender.ToString().Contains("Repo"))
+                {
+
+                }
+                else if (sender.ToString().Contains("Weapon Damage Simulator"))
+                {
+                    new WeaponSimulator().Show();
+                }
             }
-            else if (sender.ToString().Contains("Set"))
+            catch (Exception ex)
             {
-                FindOrderInformation(GlobalData.activeItemName, "Set", true);
-            }
-            else if (sender.ToString().Contains("Nueroptics"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Nueroptics", true);
-            }
-            else if (sender.ToString().Contains("Chassis"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Chassis", true);
-            }
-            else if (sender.ToString().Contains("Systems"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Systems", true);
-            }
-            else if (sender.ToString().Contains("Blueprint"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Blueprint", true);
-            }
-            else if (sender.ToString().Contains("Barrel"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Barrel", true);
-            }
-            else if (sender.ToString().Contains("Stock"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Stock", true);
-            }
-            else if (sender.ToString().Contains("Reciever"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Reciever", true);
-            }
-            else if (sender.ToString().Contains("Blade"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Blade", true);
-            }
-            else if (sender.ToString().Contains("Hilt"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Hilt", true);
-            }
-            else if (sender.ToString().Contains("Head"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Head", true);
-            }
-            else if (sender.ToString().Contains("Link") && !sender.ToString().Contains("Patreon"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Link", true);
-            }
-            else if (sender.ToString().Contains("Carapace"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Carapace", true);
-            }
-            else if (sender.ToString().Contains("Cerebrum"))
-            {
-                FindOrderInformation(GlobalData.activeItemName, "Cerebrum", true);
-            }
-            else if (sender.ToString().Contains("Refresh"))
-            {
-                GenerateData();
-            }
-            else if (sender.ToString().Contains("Patreon"))
-            {
-                
-            }
-            else if (sender.ToString().Contains("Update"))
-            {
-                
-            }
-            else if (sender.ToString().Contains("Repo"))
-            {
-                
-            }
-            else if (sender.ToString().Contains("Weapon Damage Simulator"))
-            {
-                new WeaponSimulator().Show();
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in MainForm->GetContextMenuFunction{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
         #endregion
+
+        //Reset context menus when the tab is changed
+        private void WarframeTrackerTabControl_TabIndexChanged(object sender, EventArgs e)
+        {
+            FindOrdersMenu.Items.Clear();
+        }
+
+        private void SolarisInfoBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public static class GlobalData

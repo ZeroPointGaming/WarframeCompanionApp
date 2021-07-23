@@ -43,6 +43,36 @@ namespace WarframeTracker
             this.linkPatreonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitSourceRepoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weaponDamageSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WorldStatePage = new System.Windows.Forms.TabPage();
+            this.VoxSolarisGroupBox = new System.Windows.Forms.GroupBox();
+            this.VoxSolarisInfoBox = new System.Windows.Forms.TextBox();
+            this.VentKidsGroupBox = new System.Windows.Forms.GroupBox();
+            this.VentKidsInfoBox = new System.Windows.Forms.TextBox();
+            this.NecraloidBountiesGroupBox = new System.Windows.Forms.GroupBox();
+            this.NecroaloidBountiesTxt = new System.Windows.Forms.TextBox();
+            this.QuillisGroupBox = new System.Windows.Forms.GroupBox();
+            this.QuillsInfoBox = new System.Windows.Forms.TextBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.DailyInfoBox = new System.Windows.Forms.TextBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.BaroInfoBox = new System.Windows.Forms.TextBox();
+            this.SolarisUnitedGroupBox = new System.Windows.Forms.GroupBox();
+            this.SolarisInfoBox = new System.Windows.Forms.TextBox();
+            this.EntratiGroupBox = new System.Windows.Forms.GroupBox();
+            this.EntratiInfoBox = new System.Windows.Forms.TextBox();
+            this.OstronGroupBox = new System.Windows.Forms.GroupBox();
+            this.OstronInfoBox = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.FissureInfoBox = new System.Windows.Forms.TextBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.SortieInfoBox = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.ArbitrationInfoBox = new System.Windows.Forms.TextBox();
+            this.NightwaveChalContainer = new System.Windows.Forms.GroupBox();
+            this.NightwaveInfoBox = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.CycleTimersInfoBox = new System.Windows.Forms.TextBox();
             this.WarframeTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.WarframeOwnedCheckbox = new System.Windows.Forms.CheckBox();
@@ -171,29 +201,6 @@ namespace WarframeTracker
             this.CompanionDescriptionContainer = new System.Windows.Forms.GroupBox();
             this.CompanionDescriptionTxt = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.WorldStatePage = new System.Windows.Forms.TabPage();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.SyndicateInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.DailyInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.BaroInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.SolarisInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.EntratiInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.OstronInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.FissureInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.SortieInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.ArbitrationInfoBox = new System.Windows.Forms.TextBox();
-            this.NightwaveChalContainer = new System.Windows.Forms.GroupBox();
-            this.NightwaveInfoBox = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.CycleTimersInfoBox = new System.Windows.Forms.TextBox();
             this.SettingsTabPage = new System.Windows.Forms.TabPage();
             this.ThemeForegroundColorBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -203,10 +210,24 @@ namespace WarframeTracker
             this.SwitchPlatformComboBox = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.weaponDamageSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindOrdersMenu.SuspendLayout();
             this.WarframeTrackerTabControl.SuspendLayout();
             this.ToolsContextMenu.SuspendLayout();
+            this.WorldStatePage.SuspendLayout();
+            this.VoxSolarisGroupBox.SuspendLayout();
+            this.VentKidsGroupBox.SuspendLayout();
+            this.NecraloidBountiesGroupBox.SuspendLayout();
+            this.QuillisGroupBox.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.SolarisUnitedGroupBox.SuspendLayout();
+            this.EntratiGroupBox.SuspendLayout();
+            this.OstronGroupBox.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.NightwaveChalContainer.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.WarframeTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.WarframeAbilitiesContainer.SuspendLayout();
@@ -277,18 +298,6 @@ namespace WarframeTracker
             this.CompanionStatsContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).BeginInit();
             this.CompanionDescriptionContainer.SuspendLayout();
-            this.WorldStatePage.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.NightwaveChalContainer.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SettingsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -358,6 +367,7 @@ namespace WarframeTracker
             this.WarframeTrackerTabControl.SelectedIndex = 0;
             this.WarframeTrackerTabControl.Size = new System.Drawing.Size(1459, 900);
             this.WarframeTrackerTabControl.TabIndex = 6;
+            this.WarframeTrackerTabControl.TabIndexChanged += new System.EventHandler(this.WarframeTrackerTabControl_TabIndexChanged);
             // 
             // ToolsContextMenu
             // 
@@ -368,7 +378,7 @@ namespace WarframeTracker
             this.visitSourceRepoToolStripMenuItem,
             this.weaponDamageSimulatorToolStripMenuItem});
             this.ToolsContextMenu.Name = "ToolsContextMenu";
-            this.ToolsContextMenu.Size = new System.Drawing.Size(220, 136);
+            this.ToolsContextMenu.Size = new System.Drawing.Size(220, 114);
             // 
             // refreshDataToolStripMenuItem
             // 
@@ -397,6 +407,396 @@ namespace WarframeTracker
             this.visitSourceRepoToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.visitSourceRepoToolStripMenuItem.Text = "Visit Source Repo";
             this.visitSourceRepoToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
+            // 
+            // weaponDamageSimulatorToolStripMenuItem
+            // 
+            this.weaponDamageSimulatorToolStripMenuItem.Name = "weaponDamageSimulatorToolStripMenuItem";
+            this.weaponDamageSimulatorToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.weaponDamageSimulatorToolStripMenuItem.Text = "Weapon Damage Simulator";
+            this.weaponDamageSimulatorToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
+            // 
+            // WorldStatePage
+            // 
+            this.WorldStatePage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.WorldStatePage.Controls.Add(this.VoxSolarisGroupBox);
+            this.WorldStatePage.Controls.Add(this.VentKidsGroupBox);
+            this.WorldStatePage.Controls.Add(this.NecraloidBountiesGroupBox);
+            this.WorldStatePage.Controls.Add(this.QuillisGroupBox);
+            this.WorldStatePage.Controls.Add(this.groupBox15);
+            this.WorldStatePage.Controls.Add(this.groupBox14);
+            this.WorldStatePage.Controls.Add(this.SolarisUnitedGroupBox);
+            this.WorldStatePage.Controls.Add(this.EntratiGroupBox);
+            this.WorldStatePage.Controls.Add(this.OstronGroupBox);
+            this.WorldStatePage.Controls.Add(this.groupBox10);
+            this.WorldStatePage.Controls.Add(this.groupBox9);
+            this.WorldStatePage.Controls.Add(this.groupBox8);
+            this.WorldStatePage.Controls.Add(this.NightwaveChalContainer);
+            this.WorldStatePage.Controls.Add(this.groupBox6);
+            this.WorldStatePage.Location = new System.Drawing.Point(4, 35);
+            this.WorldStatePage.Name = "WorldStatePage";
+            this.WorldStatePage.Size = new System.Drawing.Size(1451, 861);
+            this.WorldStatePage.TabIndex = 8;
+            this.WorldStatePage.Text = "World State";
+            // 
+            // VoxSolarisGroupBox
+            // 
+            this.VoxSolarisGroupBox.Controls.Add(this.VoxSolarisInfoBox);
+            this.VoxSolarisGroupBox.ForeColor = System.Drawing.Color.White;
+            this.VoxSolarisGroupBox.Location = new System.Drawing.Point(753, 665);
+            this.VoxSolarisGroupBox.Name = "VoxSolarisGroupBox";
+            this.VoxSolarisGroupBox.Size = new System.Drawing.Size(356, 186);
+            this.VoxSolarisGroupBox.TabIndex = 13;
+            this.VoxSolarisGroupBox.TabStop = false;
+            this.VoxSolarisGroupBox.Text = "Vox Solaris Bounties";
+            // 
+            // VoxSolarisInfoBox
+            // 
+            this.VoxSolarisInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.VoxSolarisInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VoxSolarisInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VoxSolarisInfoBox.ForeColor = System.Drawing.Color.White;
+            this.VoxSolarisInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.VoxSolarisInfoBox.Multiline = true;
+            this.VoxSolarisInfoBox.Name = "VoxSolarisInfoBox";
+            this.VoxSolarisInfoBox.ReadOnly = true;
+            this.VoxSolarisInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.VoxSolarisInfoBox.Size = new System.Drawing.Size(350, 164);
+            this.VoxSolarisInfoBox.TabIndex = 3;
+            this.VoxSolarisInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // VentKidsGroupBox
+            // 
+            this.VentKidsGroupBox.Controls.Add(this.VentKidsInfoBox);
+            this.VentKidsGroupBox.ForeColor = System.Drawing.Color.White;
+            this.VentKidsGroupBox.Location = new System.Drawing.Point(753, 460);
+            this.VentKidsGroupBox.Name = "VentKidsGroupBox";
+            this.VentKidsGroupBox.Size = new System.Drawing.Size(356, 186);
+            this.VentKidsGroupBox.TabIndex = 12;
+            this.VentKidsGroupBox.TabStop = false;
+            this.VentKidsGroupBox.Text = "Vent Kids Bounties";
+            // 
+            // VentKidsInfoBox
+            // 
+            this.VentKidsInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.VentKidsInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VentKidsInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VentKidsInfoBox.ForeColor = System.Drawing.Color.White;
+            this.VentKidsInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.VentKidsInfoBox.Multiline = true;
+            this.VentKidsInfoBox.Name = "VentKidsInfoBox";
+            this.VentKidsInfoBox.ReadOnly = true;
+            this.VentKidsInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.VentKidsInfoBox.Size = new System.Drawing.Size(350, 164);
+            this.VentKidsInfoBox.TabIndex = 3;
+            this.VentKidsInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // NecraloidBountiesGroupBox
+            // 
+            this.NecraloidBountiesGroupBox.Controls.Add(this.NecroaloidBountiesTxt);
+            this.NecraloidBountiesGroupBox.ForeColor = System.Drawing.Color.White;
+            this.NecraloidBountiesGroupBox.Location = new System.Drawing.Point(380, 665);
+            this.NecraloidBountiesGroupBox.Name = "NecraloidBountiesGroupBox";
+            this.NecraloidBountiesGroupBox.Size = new System.Drawing.Size(356, 186);
+            this.NecraloidBountiesGroupBox.TabIndex = 11;
+            this.NecraloidBountiesGroupBox.TabStop = false;
+            this.NecraloidBountiesGroupBox.Text = "Necraloid Bounties";
+            // 
+            // NecroaloidBountiesTxt
+            // 
+            this.NecroaloidBountiesTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.NecroaloidBountiesTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NecroaloidBountiesTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NecroaloidBountiesTxt.ForeColor = System.Drawing.Color.White;
+            this.NecroaloidBountiesTxt.Location = new System.Drawing.Point(3, 19);
+            this.NecroaloidBountiesTxt.Multiline = true;
+            this.NecroaloidBountiesTxt.Name = "NecroaloidBountiesTxt";
+            this.NecroaloidBountiesTxt.ReadOnly = true;
+            this.NecroaloidBountiesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.NecroaloidBountiesTxt.Size = new System.Drawing.Size(350, 164);
+            this.NecroaloidBountiesTxt.TabIndex = 3;
+            this.NecroaloidBountiesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // QuillisGroupBox
+            // 
+            this.QuillisGroupBox.Controls.Add(this.QuillsInfoBox);
+            this.QuillisGroupBox.ForeColor = System.Drawing.Color.White;
+            this.QuillisGroupBox.Location = new System.Drawing.Point(1126, 460);
+            this.QuillisGroupBox.Name = "QuillisGroupBox";
+            this.QuillisGroupBox.Size = new System.Drawing.Size(317, 186);
+            this.QuillisGroupBox.TabIndex = 10;
+            this.QuillisGroupBox.TabStop = false;
+            this.QuillisGroupBox.Text = "Quillis Bounites";
+            // 
+            // QuillsInfoBox
+            // 
+            this.QuillsInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.QuillsInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.QuillsInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.QuillsInfoBox.ForeColor = System.Drawing.Color.White;
+            this.QuillsInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.QuillsInfoBox.Multiline = true;
+            this.QuillsInfoBox.Name = "QuillsInfoBox";
+            this.QuillsInfoBox.ReadOnly = true;
+            this.QuillsInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.QuillsInfoBox.Size = new System.Drawing.Size(311, 164);
+            this.QuillsInfoBox.TabIndex = 3;
+            this.QuillsInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.DailyInfoBox);
+            this.groupBox15.ForeColor = System.Drawing.Color.White;
+            this.groupBox15.Location = new System.Drawing.Point(8, 399);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(398, 55);
+            this.groupBox15.TabIndex = 9;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Daily Reset Timer";
+            // 
+            // DailyInfoBox
+            // 
+            this.DailyInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.DailyInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DailyInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DailyInfoBox.ForeColor = System.Drawing.Color.White;
+            this.DailyInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.DailyInfoBox.Multiline = true;
+            this.DailyInfoBox.Name = "DailyInfoBox";
+            this.DailyInfoBox.ReadOnly = true;
+            this.DailyInfoBox.Size = new System.Drawing.Size(392, 33);
+            this.DailyInfoBox.TabIndex = 3;
+            this.DailyInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.BaroInfoBox);
+            this.groupBox14.ForeColor = System.Drawing.Color.White;
+            this.groupBox14.Location = new System.Drawing.Point(8, 322);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(398, 71);
+            this.groupBox14.TabIndex = 8;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Void Trader";
+            // 
+            // BaroInfoBox
+            // 
+            this.BaroInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.BaroInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BaroInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BaroInfoBox.ForeColor = System.Drawing.Color.White;
+            this.BaroInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.BaroInfoBox.Multiline = true;
+            this.BaroInfoBox.Name = "BaroInfoBox";
+            this.BaroInfoBox.ReadOnly = true;
+            this.BaroInfoBox.Size = new System.Drawing.Size(392, 49);
+            this.BaroInfoBox.TabIndex = 3;
+            this.BaroInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SolarisUnitedGroupBox
+            // 
+            this.SolarisUnitedGroupBox.Controls.Add(this.SolarisInfoBox);
+            this.SolarisUnitedGroupBox.ForeColor = System.Drawing.Color.White;
+            this.SolarisUnitedGroupBox.Location = new System.Drawing.Point(8, 665);
+            this.SolarisUnitedGroupBox.Name = "SolarisUnitedGroupBox";
+            this.SolarisUnitedGroupBox.Size = new System.Drawing.Size(356, 188);
+            this.SolarisUnitedGroupBox.TabIndex = 7;
+            this.SolarisUnitedGroupBox.TabStop = false;
+            this.SolarisUnitedGroupBox.Text = "Solaris United Bounties";
+            // 
+            // SolarisInfoBox
+            // 
+            this.SolarisInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.SolarisInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SolarisInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SolarisInfoBox.ForeColor = System.Drawing.Color.White;
+            this.SolarisInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.SolarisInfoBox.Multiline = true;
+            this.SolarisInfoBox.Name = "SolarisInfoBox";
+            this.SolarisInfoBox.ReadOnly = true;
+            this.SolarisInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.SolarisInfoBox.Size = new System.Drawing.Size(350, 166);
+            this.SolarisInfoBox.TabIndex = 3;
+            this.SolarisInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SolarisInfoBox.TextChanged += new System.EventHandler(this.SolarisInfoBox_TextChanged);
+            // 
+            // EntratiGroupBox
+            // 
+            this.EntratiGroupBox.Controls.Add(this.EntratiInfoBox);
+            this.EntratiGroupBox.ForeColor = System.Drawing.Color.White;
+            this.EntratiGroupBox.Location = new System.Drawing.Point(380, 460);
+            this.EntratiGroupBox.Name = "EntratiGroupBox";
+            this.EntratiGroupBox.Size = new System.Drawing.Size(356, 186);
+            this.EntratiGroupBox.TabIndex = 6;
+            this.EntratiGroupBox.TabStop = false;
+            this.EntratiGroupBox.Text = "Entrati Bounties";
+            // 
+            // EntratiInfoBox
+            // 
+            this.EntratiInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.EntratiInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EntratiInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EntratiInfoBox.ForeColor = System.Drawing.Color.White;
+            this.EntratiInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.EntratiInfoBox.Multiline = true;
+            this.EntratiInfoBox.Name = "EntratiInfoBox";
+            this.EntratiInfoBox.ReadOnly = true;
+            this.EntratiInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.EntratiInfoBox.Size = new System.Drawing.Size(350, 164);
+            this.EntratiInfoBox.TabIndex = 3;
+            this.EntratiInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // OstronGroupBox
+            // 
+            this.OstronGroupBox.Controls.Add(this.OstronInfoBox);
+            this.OstronGroupBox.ForeColor = System.Drawing.Color.White;
+            this.OstronGroupBox.Location = new System.Drawing.Point(8, 460);
+            this.OstronGroupBox.Name = "OstronGroupBox";
+            this.OstronGroupBox.Size = new System.Drawing.Size(356, 186);
+            this.OstronGroupBox.TabIndex = 5;
+            this.OstronGroupBox.TabStop = false;
+            this.OstronGroupBox.Text = "Ostron Bounties";
+            // 
+            // OstronInfoBox
+            // 
+            this.OstronInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.OstronInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.OstronInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OstronInfoBox.ForeColor = System.Drawing.Color.White;
+            this.OstronInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.OstronInfoBox.Multiline = true;
+            this.OstronInfoBox.Name = "OstronInfoBox";
+            this.OstronInfoBox.ReadOnly = true;
+            this.OstronInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.OstronInfoBox.Size = new System.Drawing.Size(350, 164);
+            this.OstronInfoBox.TabIndex = 3;
+            this.OstronInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.FissureInfoBox);
+            this.groupBox10.ForeColor = System.Drawing.Color.White;
+            this.groupBox10.Location = new System.Drawing.Point(909, 7);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(534, 447);
+            this.groupBox10.TabIndex = 4;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Fissures";
+            // 
+            // FissureInfoBox
+            // 
+            this.FissureInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.FissureInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FissureInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FissureInfoBox.ForeColor = System.Drawing.Color.White;
+            this.FissureInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.FissureInfoBox.Multiline = true;
+            this.FissureInfoBox.Name = "FissureInfoBox";
+            this.FissureInfoBox.ReadOnly = true;
+            this.FissureInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.FissureInfoBox.Size = new System.Drawing.Size(528, 425);
+            this.FissureInfoBox.TabIndex = 3;
+            this.FissureInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.SortieInfoBox);
+            this.groupBox9.ForeColor = System.Drawing.Color.White;
+            this.groupBox9.Location = new System.Drawing.Point(8, 216);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(398, 100);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Sortie";
+            // 
+            // SortieInfoBox
+            // 
+            this.SortieInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.SortieInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SortieInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SortieInfoBox.ForeColor = System.Drawing.Color.White;
+            this.SortieInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.SortieInfoBox.Multiline = true;
+            this.SortieInfoBox.Name = "SortieInfoBox";
+            this.SortieInfoBox.ReadOnly = true;
+            this.SortieInfoBox.Size = new System.Drawing.Size(392, 78);
+            this.SortieInfoBox.TabIndex = 4;
+            this.SortieInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.ArbitrationInfoBox);
+            this.groupBox8.ForeColor = System.Drawing.Color.White;
+            this.groupBox8.Location = new System.Drawing.Point(8, 138);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(398, 75);
+            this.groupBox8.TabIndex = 2;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Arbitration";
+            // 
+            // ArbitrationInfoBox
+            // 
+            this.ArbitrationInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.ArbitrationInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ArbitrationInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ArbitrationInfoBox.ForeColor = System.Drawing.Color.White;
+            this.ArbitrationInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.ArbitrationInfoBox.Multiline = true;
+            this.ArbitrationInfoBox.Name = "ArbitrationInfoBox";
+            this.ArbitrationInfoBox.ReadOnly = true;
+            this.ArbitrationInfoBox.Size = new System.Drawing.Size(392, 53);
+            this.ArbitrationInfoBox.TabIndex = 4;
+            this.ArbitrationInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // NightwaveChalContainer
+            // 
+            this.NightwaveChalContainer.Controls.Add(this.NightwaveInfoBox);
+            this.NightwaveChalContainer.ForeColor = System.Drawing.Color.White;
+            this.NightwaveChalContainer.Location = new System.Drawing.Point(412, 7);
+            this.NightwaveChalContainer.Name = "NightwaveChalContainer";
+            this.NightwaveChalContainer.Size = new System.Drawing.Size(491, 447);
+            this.NightwaveChalContainer.TabIndex = 1;
+            this.NightwaveChalContainer.TabStop = false;
+            this.NightwaveChalContainer.Text = "Nightwave Challenges";
+            // 
+            // NightwaveInfoBox
+            // 
+            this.NightwaveInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.NightwaveInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NightwaveInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NightwaveInfoBox.ForeColor = System.Drawing.Color.White;
+            this.NightwaveInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.NightwaveInfoBox.Multiline = true;
+            this.NightwaveInfoBox.Name = "NightwaveInfoBox";
+            this.NightwaveInfoBox.ReadOnly = true;
+            this.NightwaveInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.NightwaveInfoBox.Size = new System.Drawing.Size(485, 425);
+            this.NightwaveInfoBox.TabIndex = 2;
+            this.NightwaveInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.CycleTimersInfoBox);
+            this.groupBox6.ForeColor = System.Drawing.Color.White;
+            this.groupBox6.Location = new System.Drawing.Point(8, 7);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(398, 127);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Cycle Timers";
+            // 
+            // CycleTimersInfoBox
+            // 
+            this.CycleTimersInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.CycleTimersInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CycleTimersInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CycleTimersInfoBox.ForeColor = System.Drawing.Color.White;
+            this.CycleTimersInfoBox.Location = new System.Drawing.Point(3, 19);
+            this.CycleTimersInfoBox.Multiline = true;
+            this.CycleTimersInfoBox.Name = "CycleTimersInfoBox";
+            this.CycleTimersInfoBox.ReadOnly = true;
+            this.CycleTimersInfoBox.Size = new System.Drawing.Size(392, 105);
+            this.CycleTimersInfoBox.TabIndex = 3;
+            this.CycleTimersInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // WarframeTabPage
             // 
@@ -469,6 +869,7 @@ namespace WarframeTracker
             this.WarframeAbilitiesTxt.Multiline = true;
             this.WarframeAbilitiesTxt.Name = "WarframeAbilitiesTxt";
             this.WarframeAbilitiesTxt.ReadOnly = true;
+            this.WarframeAbilitiesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.WarframeAbilitiesTxt.Size = new System.Drawing.Size(429, 348);
             this.WarframeAbilitiesTxt.TabIndex = 0;
             // 
@@ -1845,307 +2246,6 @@ namespace WarframeTracker
             this.textBox9.Size = new System.Drawing.Size(383, 70);
             this.textBox9.TabIndex = 0;
             // 
-            // WorldStatePage
-            // 
-            this.WorldStatePage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.WorldStatePage.Controls.Add(this.groupBox16);
-            this.WorldStatePage.Controls.Add(this.groupBox15);
-            this.WorldStatePage.Controls.Add(this.groupBox14);
-            this.WorldStatePage.Controls.Add(this.groupBox13);
-            this.WorldStatePage.Controls.Add(this.groupBox12);
-            this.WorldStatePage.Controls.Add(this.groupBox11);
-            this.WorldStatePage.Controls.Add(this.groupBox10);
-            this.WorldStatePage.Controls.Add(this.groupBox9);
-            this.WorldStatePage.Controls.Add(this.groupBox8);
-            this.WorldStatePage.Controls.Add(this.NightwaveChalContainer);
-            this.WorldStatePage.Controls.Add(this.groupBox6);
-            this.WorldStatePage.Location = new System.Drawing.Point(4, 35);
-            this.WorldStatePage.Name = "WorldStatePage";
-            this.WorldStatePage.Size = new System.Drawing.Size(1451, 861);
-            this.WorldStatePage.TabIndex = 8;
-            this.WorldStatePage.Text = "World State";
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.SyndicateInfoBox);
-            this.groupBox16.ForeColor = System.Drawing.Color.White;
-            this.groupBox16.Location = new System.Drawing.Point(412, 219);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(460, 235);
-            this.groupBox16.TabIndex = 10;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Syndicate Missions";
-            // 
-            // SyndicateInfoBox
-            // 
-            this.SyndicateInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.SyndicateInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SyndicateInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SyndicateInfoBox.ForeColor = System.Drawing.Color.White;
-            this.SyndicateInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.SyndicateInfoBox.Multiline = true;
-            this.SyndicateInfoBox.Name = "SyndicateInfoBox";
-            this.SyndicateInfoBox.ReadOnly = true;
-            this.SyndicateInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SyndicateInfoBox.Size = new System.Drawing.Size(454, 213);
-            this.SyndicateInfoBox.TabIndex = 3;
-            this.SyndicateInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.DailyInfoBox);
-            this.groupBox15.ForeColor = System.Drawing.Color.White;
-            this.groupBox15.Location = new System.Drawing.Point(8, 399);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(398, 55);
-            this.groupBox15.TabIndex = 9;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Daily Reset Timer";
-            // 
-            // DailyInfoBox
-            // 
-            this.DailyInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.DailyInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DailyInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DailyInfoBox.ForeColor = System.Drawing.Color.White;
-            this.DailyInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.DailyInfoBox.Multiline = true;
-            this.DailyInfoBox.Name = "DailyInfoBox";
-            this.DailyInfoBox.ReadOnly = true;
-            this.DailyInfoBox.Size = new System.Drawing.Size(392, 33);
-            this.DailyInfoBox.TabIndex = 3;
-            this.DailyInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.BaroInfoBox);
-            this.groupBox14.ForeColor = System.Drawing.Color.White;
-            this.groupBox14.Location = new System.Drawing.Point(8, 322);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(398, 71);
-            this.groupBox14.TabIndex = 8;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Void Trader";
-            // 
-            // BaroInfoBox
-            // 
-            this.BaroInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.BaroInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BaroInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BaroInfoBox.ForeColor = System.Drawing.Color.White;
-            this.BaroInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.BaroInfoBox.Multiline = true;
-            this.BaroInfoBox.Name = "BaroInfoBox";
-            this.BaroInfoBox.ReadOnly = true;
-            this.BaroInfoBox.Size = new System.Drawing.Size(392, 49);
-            this.BaroInfoBox.TabIndex = 3;
-            this.BaroInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.SolarisInfoBox);
-            this.groupBox13.ForeColor = System.Drawing.Color.White;
-            this.groupBox13.Location = new System.Drawing.Point(381, 460);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(356, 393);
-            this.groupBox13.TabIndex = 7;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Solaris United Bounties";
-            // 
-            // SolarisInfoBox
-            // 
-            this.SolarisInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.SolarisInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SolarisInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SolarisInfoBox.ForeColor = System.Drawing.Color.White;
-            this.SolarisInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.SolarisInfoBox.Multiline = true;
-            this.SolarisInfoBox.Name = "SolarisInfoBox";
-            this.SolarisInfoBox.ReadOnly = true;
-            this.SolarisInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SolarisInfoBox.Size = new System.Drawing.Size(350, 371);
-            this.SolarisInfoBox.TabIndex = 3;
-            this.SolarisInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.EntratiInfoBox);
-            this.groupBox12.ForeColor = System.Drawing.Color.White;
-            this.groupBox12.Location = new System.Drawing.Point(755, 460);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(356, 393);
-            this.groupBox12.TabIndex = 6;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Entrati Bounties";
-            // 
-            // EntratiInfoBox
-            // 
-            this.EntratiInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.EntratiInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.EntratiInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EntratiInfoBox.ForeColor = System.Drawing.Color.White;
-            this.EntratiInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.EntratiInfoBox.Multiline = true;
-            this.EntratiInfoBox.Name = "EntratiInfoBox";
-            this.EntratiInfoBox.ReadOnly = true;
-            this.EntratiInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.EntratiInfoBox.Size = new System.Drawing.Size(350, 371);
-            this.EntratiInfoBox.TabIndex = 3;
-            this.EntratiInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.OstronInfoBox);
-            this.groupBox11.ForeColor = System.Drawing.Color.White;
-            this.groupBox11.Location = new System.Drawing.Point(8, 460);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(356, 393);
-            this.groupBox11.TabIndex = 5;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Ostron Bounties";
-            // 
-            // OstronInfoBox
-            // 
-            this.OstronInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.OstronInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.OstronInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OstronInfoBox.ForeColor = System.Drawing.Color.White;
-            this.OstronInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.OstronInfoBox.Multiline = true;
-            this.OstronInfoBox.Name = "OstronInfoBox";
-            this.OstronInfoBox.ReadOnly = true;
-            this.OstronInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.OstronInfoBox.Size = new System.Drawing.Size(350, 371);
-            this.OstronInfoBox.TabIndex = 3;
-            this.OstronInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.FissureInfoBox);
-            this.groupBox10.ForeColor = System.Drawing.Color.White;
-            this.groupBox10.Location = new System.Drawing.Point(875, 7);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(568, 447);
-            this.groupBox10.TabIndex = 4;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Fissures";
-            // 
-            // FissureInfoBox
-            // 
-            this.FissureInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.FissureInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FissureInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FissureInfoBox.ForeColor = System.Drawing.Color.White;
-            this.FissureInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.FissureInfoBox.Multiline = true;
-            this.FissureInfoBox.Name = "FissureInfoBox";
-            this.FissureInfoBox.ReadOnly = true;
-            this.FissureInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.FissureInfoBox.Size = new System.Drawing.Size(562, 425);
-            this.FissureInfoBox.TabIndex = 3;
-            this.FissureInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.SortieInfoBox);
-            this.groupBox9.ForeColor = System.Drawing.Color.White;
-            this.groupBox9.Location = new System.Drawing.Point(8, 216);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(398, 100);
-            this.groupBox9.TabIndex = 3;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Sortie";
-            // 
-            // SortieInfoBox
-            // 
-            this.SortieInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.SortieInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SortieInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SortieInfoBox.ForeColor = System.Drawing.Color.White;
-            this.SortieInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.SortieInfoBox.Multiline = true;
-            this.SortieInfoBox.Name = "SortieInfoBox";
-            this.SortieInfoBox.ReadOnly = true;
-            this.SortieInfoBox.Size = new System.Drawing.Size(392, 78);
-            this.SortieInfoBox.TabIndex = 4;
-            this.SortieInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.ArbitrationInfoBox);
-            this.groupBox8.ForeColor = System.Drawing.Color.White;
-            this.groupBox8.Location = new System.Drawing.Point(8, 138);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(398, 75);
-            this.groupBox8.TabIndex = 2;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Arbitration";
-            // 
-            // ArbitrationInfoBox
-            // 
-            this.ArbitrationInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.ArbitrationInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ArbitrationInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ArbitrationInfoBox.ForeColor = System.Drawing.Color.White;
-            this.ArbitrationInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.ArbitrationInfoBox.Multiline = true;
-            this.ArbitrationInfoBox.Name = "ArbitrationInfoBox";
-            this.ArbitrationInfoBox.ReadOnly = true;
-            this.ArbitrationInfoBox.Size = new System.Drawing.Size(392, 53);
-            this.ArbitrationInfoBox.TabIndex = 4;
-            this.ArbitrationInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // NightwaveChalContainer
-            // 
-            this.NightwaveChalContainer.Controls.Add(this.NightwaveInfoBox);
-            this.NightwaveChalContainer.ForeColor = System.Drawing.Color.White;
-            this.NightwaveChalContainer.Location = new System.Drawing.Point(412, 7);
-            this.NightwaveChalContainer.Name = "NightwaveChalContainer";
-            this.NightwaveChalContainer.Size = new System.Drawing.Size(460, 206);
-            this.NightwaveChalContainer.TabIndex = 1;
-            this.NightwaveChalContainer.TabStop = false;
-            this.NightwaveChalContainer.Text = "Nightwave Challenges";
-            // 
-            // NightwaveInfoBox
-            // 
-            this.NightwaveInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.NightwaveInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NightwaveInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NightwaveInfoBox.ForeColor = System.Drawing.Color.White;
-            this.NightwaveInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.NightwaveInfoBox.Multiline = true;
-            this.NightwaveInfoBox.Name = "NightwaveInfoBox";
-            this.NightwaveInfoBox.ReadOnly = true;
-            this.NightwaveInfoBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NightwaveInfoBox.Size = new System.Drawing.Size(454, 184);
-            this.NightwaveInfoBox.TabIndex = 2;
-            this.NightwaveInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.CycleTimersInfoBox);
-            this.groupBox6.ForeColor = System.Drawing.Color.White;
-            this.groupBox6.Location = new System.Drawing.Point(8, 7);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(398, 127);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Cycle Timers";
-            // 
-            // CycleTimersInfoBox
-            // 
-            this.CycleTimersInfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.CycleTimersInfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CycleTimersInfoBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CycleTimersInfoBox.ForeColor = System.Drawing.Color.White;
-            this.CycleTimersInfoBox.Location = new System.Drawing.Point(3, 19);
-            this.CycleTimersInfoBox.Multiline = true;
-            this.CycleTimersInfoBox.Name = "CycleTimersInfoBox";
-            this.CycleTimersInfoBox.ReadOnly = true;
-            this.CycleTimersInfoBox.Size = new System.Drawing.Size(392, 105);
-            this.CycleTimersInfoBox.TabIndex = 3;
-            this.CycleTimersInfoBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // SettingsTabPage
             // 
             this.SettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
@@ -2226,13 +2326,6 @@ namespace WarframeTracker
             this.SwitchPlatformComboBox.TabIndex = 0;
             this.SwitchPlatformComboBox.SelectedIndexChanged += new System.EventHandler(this.SwitchPlatformCombobox_SelectedIndexChanged);
             // 
-            // weaponDamageSimulatorToolStripMenuItem
-            // 
-            this.weaponDamageSimulatorToolStripMenuItem.Name = "weaponDamageSimulatorToolStripMenuItem";
-            this.weaponDamageSimulatorToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.weaponDamageSimulatorToolStripMenuItem.Text = "Weapon Damage Simulator";
-            this.weaponDamageSimulatorToolStripMenuItem.Click += new System.EventHandler(this.GetContextMenuFunction);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2247,6 +2340,35 @@ namespace WarframeTracker
             this.FindOrdersMenu.ResumeLayout(false);
             this.WarframeTrackerTabControl.ResumeLayout(false);
             this.ToolsContextMenu.ResumeLayout(false);
+            this.WorldStatePage.ResumeLayout(false);
+            this.VoxSolarisGroupBox.ResumeLayout(false);
+            this.VoxSolarisGroupBox.PerformLayout();
+            this.VentKidsGroupBox.ResumeLayout(false);
+            this.VentKidsGroupBox.PerformLayout();
+            this.NecraloidBountiesGroupBox.ResumeLayout(false);
+            this.NecraloidBountiesGroupBox.PerformLayout();
+            this.QuillisGroupBox.ResumeLayout(false);
+            this.QuillisGroupBox.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.SolarisUnitedGroupBox.ResumeLayout(false);
+            this.SolarisUnitedGroupBox.PerformLayout();
+            this.EntratiGroupBox.ResumeLayout(false);
+            this.EntratiGroupBox.PerformLayout();
+            this.OstronGroupBox.ResumeLayout(false);
+            this.OstronGroupBox.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.NightwaveChalContainer.ResumeLayout(false);
+            this.NightwaveChalContainer.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.WarframeTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -2355,29 +2477,6 @@ namespace WarframeTracker
             ((System.ComponentModel.ISupportInitialize)(this.CompanionImageBox)).EndInit();
             this.CompanionDescriptionContainer.ResumeLayout(false);
             this.CompanionDescriptionContainer.PerformLayout();
-            this.WorldStatePage.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.NightwaveChalContainer.ResumeLayout(false);
-            this.NightwaveChalContainer.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.SettingsTabPage.ResumeLayout(false);
             this.SettingsTabPage.PerformLayout();
             this.ResumeLayout(false);
@@ -2430,7 +2529,7 @@ namespace WarframeTracker
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.TextBox BaroInfoBox;
         private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.TextBox SyndicateInfoBox;
+        private System.Windows.Forms.TextBox QuillsInfoBox;
         private System.Windows.Forms.ComboBox PrimaryWeaponComboBox;
         private System.Windows.Forms.GroupBox PrimaryWeaponContainer;
         private System.Windows.Forms.ComboBox WarframeComboBox;
@@ -2559,6 +2658,18 @@ namespace WarframeTracker
         private System.Windows.Forms.CheckBox SWOwnedCheckBox;
         private System.Windows.Forms.CheckBox CompanionOwnedCheckbox;
         private System.Windows.Forms.ToolStripMenuItem weaponDamageSimulatorToolStripMenuItem;
+        private System.Windows.Forms.GroupBox NecraloidBountiesGroupBox;
+        private System.Windows.Forms.TextBox NecroaloidBountiesTxt;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox VoxSolarisInfoBox;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox VentKidsInfoBox;
+        private System.Windows.Forms.GroupBox VoxSolarisGroupBox;
+        private System.Windows.Forms.GroupBox VentKidsGroupBox;
+        private System.Windows.Forms.GroupBox QuillisGroupBox;
+        private System.Windows.Forms.GroupBox SolarisUnitedGroupBox;
+        private System.Windows.Forms.GroupBox EntratiGroupBox;
+        private System.Windows.Forms.GroupBox OstronGroupBox;
     }
 }
 

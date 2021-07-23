@@ -12,6 +12,8 @@ namespace WarframeTracker
 {
     public partial class WeaponSimulator : Form
     {
+        readonly Debug.Debug Debugger = new Debug.Debug();
+
         public WeaponSimulator()
         {
             InitializeComponent();
@@ -19,24 +21,34 @@ namespace WarframeTracker
 
         private void WeaponSimulator_Load(object sender, EventArgs e)
         {
-            foreach (Items.PrimaryWeapons.Root Weapon in GlobalData.PrimaryWeaponDatabase.Values)
+            try
             {
-                WeaponsComboBox.Items.Add(Weapon.Name);
-            }
+                foreach (Items.PrimaryWeapons.Root Weapon in GlobalData.PrimaryWeaponDatabase.Values)
+                {
+                    WeaponsComboBox.Items.Add(Weapon.Name);
+                }
 
-            foreach (Items.SecondaryWeapons.Root Weapon in GlobalData.SecondaryWeaponDatabase.Values)
-            {
-                WeaponsComboBox.Items.Add(Weapon.Name);
-            }
+                foreach (Items.SecondaryWeapons.Root Weapon in GlobalData.SecondaryWeaponDatabase.Values)
+                {
+                    WeaponsComboBox.Items.Add(Weapon.Name);
+                }
 
-            foreach (Items.Melee.Root Weapon in GlobalData.MeleeWeaponDatabase.Values)
-            {
-                WeaponsComboBox.Items.Add(Weapon.Name);
-            }
+                foreach (Items.Melee.Root Weapon in GlobalData.MeleeWeaponDatabase.Values)
+                {
+                    WeaponsComboBox.Items.Add(Weapon.Name);
+                }
 
-            foreach (Items.Enemies.Root Enemy in GlobalData.EnemyDatabase.Values)
+                foreach (Items.Enemies.Root Enemy in GlobalData.EnemyDatabase.Values)
+                {
+                    EnemiesComboBox.Items.Add(Enemy.Name);
+                }
+            }
+            catch (Exception ex)
             {
-                EnemiesComboBox.Items.Add(Enemy.Name);
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Exception in WeaponSimulator->WeaponSimulator_Load{Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
     }

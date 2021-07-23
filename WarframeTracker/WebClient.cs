@@ -199,6 +199,13 @@ namespace WarframeTracker.WebInterface
                     return DownloadImage("https://static.wikia.nocookie.net/warframe/images/0/06/Xaku.PNG/revision/latest/scale-to-width-down/270?cb=20200907135937");
                 #endregion
 
+                #region Necramechs
+                case "Bonewidow":
+                    return DownloadImage("https://static.wikia.nocookie.net/warframe/images/f/fc/Bonewidow1.png/revision/latest/scale-to-width-down/343?cb=20201225225109");
+                case "Voidrig":
+                    return DownloadImage("https://static.wikia.nocookie.net/warframe/images/d/d7/Voidrig1.png/revision/latest/scale-to-width-down/350?cb=20201225222859");
+                #endregion
+
                 case "Credits":
                     return Image.FromFile(Environment.CurrentDirectory.ToString() + "/data/img/credits.jpg");
                 case "Platinum":

@@ -384,6 +384,7 @@ namespace WarframeTracker.WarframeStats.AllDropsData
 
     public class Root
     {
+        //CONVERT TO HASHSETS??
         [JsonProperty("missionRewards")]
         public Dictionary<string, Dictionary<string, object>> MissionRewards;
 

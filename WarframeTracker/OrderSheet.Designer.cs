@@ -43,7 +43,6 @@ namespace WarframeTracker
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 41);
             this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(688, 5000);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -52,6 +51,7 @@ namespace WarframeTracker
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(625, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -65,7 +65,6 @@ namespace WarframeTracker
             this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(13, 326);
             this.flowLayoutPanel2.MaximumSize = new System.Drawing.Size(688, 5000);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -108,6 +107,7 @@ namespace WarframeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.ClientSize = new System.Drawing.Size(713, 618);
             this.Controls.Add(this.InGameCheckbox);
             this.Controls.Add(this.OnlineCheckbox);
@@ -115,6 +115,7 @@ namespace WarframeTracker
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "OrderSheet";
             this.Text = "OrderSheet";
             this.Load += new System.EventHandler(this.OrderSheet_Load);

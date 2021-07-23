@@ -17,7 +17,6 @@ namespace WarframeTracker
     public partial class OrderSheet : Form
     {
         #region Delcare variables
-        public bool DebugMode = true;
         Debug.Debug Debugger = new Debug.Debug();
         WTWebClient WebManager = new WTWebClient();
         private Dictionary<string, string> L_Orders = new Dictionary<string, string>();
@@ -30,8 +29,14 @@ namespace WarframeTracker
 
         private void OrderSheet_Load(object sender, EventArgs e)
         {
-            RefereshOrders();
-            DebugMode = Properties.Settings.Default.debug_mode;
+            try
+            {
+                RefereshOrders();
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Error in OrderSheet->OrderSheet_Load{Environment.NewLine}Stack Trace: {ex}"); }
+            }
         }
 
         private void OrderLabel_Click(object sender, EventArgs e)
@@ -42,17 +47,16 @@ namespace WarframeTracker
                 string user = txt.Text.Split(" ").FirstOrDefault();
                 Clipboard.SetText(L_Orders[user]);
 
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
-                    MessageBox.Show($"Updated clipboard information: {L_Orders[user]}");
                     Debugger.Log($"Updated clipboard information: {L_Orders[user]}");
                 }
             }
             catch (Exception ex)
             {
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Error in orderlabel_click function. Stack trace: {ex}");
+                    Debugger.Log($"Error in OrderSheet-OrderLabel_Click function. {Environment.NewLine}Data: {sender}{Environment.NewLine}Stack trace: {ex}");
                 }
             }
         }
@@ -60,27 +64,34 @@ namespace WarframeTracker
         private void RefereshOrders()
         {
             #region Reset
-            flowLayoutPanel1.Controls.Clear();
-            flowLayoutPanel2.Controls.Clear();
-            L_Orders.Clear();
+            try
+            {
+                flowLayoutPanel1.Controls.Clear();
+                flowLayoutPanel2.Controls.Clear();
+                L_Orders.Clear();
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Error in OrderSheet->RefreshOrders->ResetFunction{Environment.NewLine}Stack Trace: {ex}"); }
+            }
             #endregion
 
             try
             {
                 #region Clean data
-                string original_item = GlobalData.activeItemName;
-                string original_part = GlobalData.activeSearch;
-                GlobalData.activeItemName = GlobalData.activeItemName.ToLower().Replace(" ", "_");
-                GlobalData.activeSearch = GlobalData.activeSearch.ToLower().Replace(" ", "_");
+                string formatted_item = GlobalData.activeItemName.ToLower().Replace(" ", "_");
+                string formatted_part = GlobalData.activeSearch.ToLower().Replace(" ", "_");
+                string built_query = $"{GlobalData.activeItemName}_{GlobalData.activeSearch}";
+
                 this.Text = $"{GlobalData.activeItemName}_{GlobalData.activeSearch} Open Orders";
                 #endregion
 
-                if (DebugMode)
+                if (Properties.Settings.Default.debug_mode)
                 {
-                    Debugger.Log($"Order URL Name: {GlobalData.activeItemName}_{GlobalData.activeSearch}");
+                    Debugger.Log($"Order URL Name: {built_query}");
                 }
 
-                HttpWebRequest request = WebManager.GenerateRequest($"{GlobalData.activeItemName}_{GlobalData.activeSearch}", "OrderCall");
+                HttpWebRequest request = WebManager.GenerateRequest($"{built_query}", "OrderCall");
                 HttpWebResponse response = WebManager.GenerateResponse(request);
 
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
@@ -103,13 +114,13 @@ namespace WarframeTracker
                             #region Generate list of wisper commands for the orders list
                             if (!L_Orders.ContainsKey(_order.User.IngameName))
                             {
-                                L_Orders.Add(_order.User.IngameName, $"/w {_order.User.IngameName} i would like to buy {original_item} {original_part} for {_order.Platinum}. Warframe Companion App!");
+                                L_Orders.Add(_order.User.IngameName, $"/w {_order.User.IngameName} i would like to buy {GlobalData.activeItemName} {GlobalData.activeSearch} for {_order.Platinum}. Warframe Companion App!");
                             }
                             #endregion
 
                             #region Create a new control and add it to the layout panels
                             TextBox new_label = new TextBox();
-                            new_label.Text = $"{_order.User.IngameName} is {_order.OrderType}ing {original_item} {original_part} and is {_order.User.Status}. Asking price is {_order.Platinum} on {_order.Platform}.";
+                            new_label.Text = $"{_order.User.IngameName} is {_order.OrderType}ing {GlobalData.activeItemName} {GlobalData.activeSearch} and is {_order.User.Status}. Asking price is {_order.Platinum} on {_order.Platform}.";
                             new_label.Width = this.Width;
                             new_label.ReadOnly = true;
                             new_label.BorderStyle = BorderStyle.None;
@@ -152,19 +163,32 @@ namespace WarframeTracker
                     }
                     else
                     {
-                        Debugger.Log($"Error loading order list.{Environment.NewLine}Response status code: {response.StatusCode} {Environment.NewLine}Response Payload: {reader.ReadToEnd()}");
+                        if (Properties.Settings.Default.debug_mode)
+                        {
+                            Debugger.Log($"Error loading order list.{Environment.NewLine}Response status code: {response.StatusCode} {Environment.NewLine}Response Payload: {reader.ReadToEnd()}");
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                if (Properties.Settings.Default.debug_mode)
+                {
+                    Debugger.Log($"Error loading order list OrderSheet->RefreshOrders({GlobalData.activeItemName} {GlobalData.activeSearch}){Environment.NewLine}Stack Trace: {ex}");
+                }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RefereshOrders();
+            try
+            {
+                RefereshOrders();
+            }
+            catch (Exception ex)
+            {
+                if (Properties.Settings.Default.debug_mode) { Debugger.Log($"Exception in OrderSheet->RefreshButton_Click{Environment.NewLine}Stack Trace: {ex}"); }
+            }
         }
     }
 }

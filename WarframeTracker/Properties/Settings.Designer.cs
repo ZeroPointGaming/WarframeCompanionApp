@@ -46,5 +46,29 @@ namespace WarframeTracker.Properties {
                 this["debug_mode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("55, 55, 55")]
+        public global::System.Drawing.Color background_color {
+            get {
+                return ((global::System.Drawing.Color)(this["background_color"]));
+            }
+            set {
+                this["background_color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color foreground_color {
+            get {
+                return ((global::System.Drawing.Color)(this["foreground_color"]));
+            }
+            set {
+                this["foreground_color"] = value;
+            }
+        }
     }
 }
