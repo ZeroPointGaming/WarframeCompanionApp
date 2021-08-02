@@ -1516,107 +1516,110 @@ namespace WarframeTracker
                     FissureInfoBox.Text += ($"Tier {WorldInformation.Fissures[i].TierNum} {WorldInformation.Fissures[i].Tier} Relic {WorldInformation.Fissures[i].MissionType} Mission. Enemy Type {WorldInformation.Fissures[i].Enemy} at {WorldInformation.Fissures[i].Node} Expiring in {WorldInformation.Fissures[i].Eta} minutes.") + Environment.NewLine;
                 }
 
-                NightwaveChalContainer.Text = $"Nightwave Challenges For Season {WorldInformation.Nightwave.Season} Expires on {WorldInformation.Nightwave.Expiry}";
-                for (int i = 0; i < WorldInformation.Nightwave.ActiveChallenges.Count; i++)
+                if (WorldInformation.Nightwave != null)
                 {
-                    NightwaveInfoBox.Text += ($"{WorldInformation.Nightwave.ActiveChallenges[i].Desc} for {WorldInformation.Nightwave.ActiveChallenges[i].Reputation} points. Expires on {WorldInformation.Nightwave.ActiveChallenges[i].Expiry}" + Environment.NewLine);
-                }
-
-                foreach (var _syn in WorldInformation.SyndicateMissions)
-                {
-                    switch (_syn.Syndicate)
+                    NightwaveChalContainer.Text = $"Nightwave Challenges For Season {WorldInformation.Nightwave.Season} Expires on {WorldInformation.Nightwave.Expiry}";
+                    for (int i = 0; i < WorldInformation.Nightwave.ActiveChallenges.Count; i++)
                     {
-                        case "Ostrons":
-                            foreach (var _job in _syn.Jobs)
-                            {
-                                OstronInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
-                            }
-                            break;
-                        case "Entrati":
-                            foreach (var _job in _syn.Jobs)
-                            {
-                                EntratiInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
-                            }
-                            break;
-                        case "Solaris United":
-                            foreach (var _job in _syn.Jobs)
-                            {
-                                SolarisInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
-                            }
-                            break;
-                        case "Arbiters of Hexis":
+                        NightwaveInfoBox.Text += ($"{WorldInformation.Nightwave.ActiveChallenges[i].Desc} for {WorldInformation.Nightwave.ActiveChallenges[i].Reputation} points. Expires on {WorldInformation.Nightwave.ActiveChallenges[i].Expiry}" + Environment.NewLine);
+                    }
 
-                            break;
-                        case "Assassins":
+                    foreach (var _syn in WorldInformation.SyndicateMissions)
+                    {
+                        switch (_syn.Syndicate)
+                        {
+                            case "Ostrons":
+                                foreach (var _job in _syn.Jobs)
+                                {
+                                    OstronInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                                }
+                                break;
+                            case "Entrati":
+                                foreach (var _job in _syn.Jobs)
+                                {
+                                    EntratiInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                                }
+                                break;
+                            case "Solaris United":
+                                foreach (var _job in _syn.Jobs)
+                                {
+                                    SolarisInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                                }
+                                break;
+                            case "Arbiters of Hexis":
 
-                            break;
-                        case "Cephalon Suda":
+                                break;
+                            case "Assassins":
 
-                            break;
-                        case "Operations Syndicate":
+                                break;
+                            case "Cephalon Suda":
 
-                            break;
-                        case "Necraloid":
-                            if (_syn.Jobs.Count < 1) { NecraloidBountiesGroupBox.Visible = false; }
-                            foreach (var _job in _syn.Jobs)
-                            {
-                                NecroaloidBountiesTxt.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
-                            }
-                            break;
-                        case "New Loka":
+                                break;
+                            case "Operations Syndicate":
 
-                            break;
-                        case "Perrin Sequence":
+                                break;
+                            case "Necraloid":
+                                if (_syn.Jobs.Count < 1) { NecraloidBountiesGroupBox.Visible = false; }
+                                foreach (var _job in _syn.Jobs)
+                                {
+                                    NecroaloidBountiesTxt.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                                }
+                                break;
+                            case "New Loka":
 
-                            break;
-                        case "Quills":
-                            if (_syn.Jobs.Count < 1) { QuillisGroupBox.Visible = false; }
-                            foreach (var _job in _syn.Jobs)
-                            {
-                                QuillsInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
-                            }
-                            break;
-                        case "RadioLegion2Syndicate":
+                                break;
+                            case "Perrin Sequence":
 
-                            break;
-                        case "RadioLegion3Syndicate":
+                                break;
+                            case "Quills":
+                                if (_syn.Jobs.Count < 1) { QuillisGroupBox.Visible = false; }
+                                foreach (var _job in _syn.Jobs)
+                                {
+                                    QuillsInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                                }
+                                break;
+                            case "RadioLegion2Syndicate":
 
-                            break;
-                        case "RadioLegionIntermission2Syndicate":
+                                break;
+                            case "RadioLegion3Syndicate":
 
-                            break;
-                        case "RadioLegionIntermission3Syndicate":
+                                break;
+                            case "RadioLegionIntermission2Syndicate":
 
-                            break;
-                        case "RadioLegionIntermission4Syndicate":
+                                break;
+                            case "RadioLegionIntermission3Syndicate":
 
-                            break;
-                        case "RadioLegionIntermissionSyndicate":
+                                break;
+                            case "RadioLegionIntermission4Syndicate":
 
-                            break;
-                        case "RadioLegionSyndicate":
+                                break;
+                            case "RadioLegionIntermissionSyndicate":
 
-                            break;
-                        case "Red Veil":
+                                break;
+                            case "RadioLegionSyndicate":
 
-                            break;
-                        case "Steel Meridian":
-                            
-                            break;
-                        case "Vent Kids":
-                            if (_syn.Jobs.Count < 1) { VentKidsGroupBox.Visible = false; }
-                            foreach (var _job in _syn.Jobs)
-                            {
-                                VentKidsInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
-                            }
-                            break;
-                        case "Vox Solaris":
-                            if (_syn.Jobs.Count < 1) { VoxSolarisGroupBox.Visible = false; }
-                            foreach (var _job in _syn.Jobs)
-                            {
-                                VoxSolarisInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
-                            }
-                            break;
+                                break;
+                            case "Red Veil":
+
+                                break;
+                            case "Steel Meridian":
+
+                                break;
+                            case "Vent Kids":
+                                if (_syn.Jobs.Count < 1) { VentKidsGroupBox.Visible = false; }
+                                foreach (var _job in _syn.Jobs)
+                                {
+                                    VentKidsInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                                }
+                                break;
+                            case "Vox Solaris":
+                                if (_syn.Jobs.Count < 1) { VoxSolarisGroupBox.Visible = false; }
+                                foreach (var _job in _syn.Jobs)
+                                {
+                                    VoxSolarisInfoBox.Text += $"{_job.Type}, level {_job.EnemyLevels.FirstOrDefault()}{Environment.NewLine}";
+                                }
+                                break;
+                        }
                     }
                 }
                 #endregion

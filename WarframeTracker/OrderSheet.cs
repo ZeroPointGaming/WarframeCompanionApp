@@ -81,7 +81,7 @@ namespace WarframeTracker
                 #region Clean data
                 string formatted_item = GlobalData.activeItemName.ToLower().Replace(" ", "_");
                 string formatted_part = GlobalData.activeSearch.ToLower().Replace(" ", "_");
-                string built_query = $"{GlobalData.activeItemName}_{GlobalData.activeSearch}";
+                string built_query = $"{formatted_item}_{formatted_part}";
 
                 this.Text = $"{GlobalData.activeItemName}_{GlobalData.activeSearch} Open Orders";
                 #endregion
@@ -124,6 +124,8 @@ namespace WarframeTracker
                             new_label.Width = this.Width;
                             new_label.ReadOnly = true;
                             new_label.BorderStyle = BorderStyle.None;
+                            new_label.BackColor = Properties.Settings.Default.background_color;
+                            new_label.ForeColor = Properties.Settings.Default.foreground_color;
                             new_label.Click += OrderLabel_Click;
 
                             if (new_label.Text.Contains("buying"))
