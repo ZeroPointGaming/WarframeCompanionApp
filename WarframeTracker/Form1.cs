@@ -197,7 +197,7 @@ namespace WarframeTracker
 
                     if (frame.Name.ToLower().Contains("prime"))
                     {
-                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name} Blueprint");
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{frame.Name}");
                         for (int i = 0; i < RelicLocations.Count; i++)
                         {
                             WarframeComponentTxt.Text += $"{RelicLocations[i]}{Environment.NewLine}";
@@ -408,7 +408,7 @@ namespace WarframeTracker
                 {
                     if (Weapon.Name.ToLower().Contains("prime"))
                     {
-                        List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}");
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}", "");
                         for (int r = 0; r < RelicLocations.Count; r++)
                         {
                             PWCompDataTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
@@ -635,7 +635,7 @@ namespace WarframeTracker
                 #region Export Component Drop Data
                 if (Weapon.Name.ToLower().Contains("prime"))
                 {
-                    List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}");
+                    List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}", "");
                     for (int r = 0; r < RelicLocations.Count; r++)
                     {
                         SWComponentDataTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
@@ -1006,7 +1006,7 @@ namespace WarframeTracker
                 #region Export component drop data
                 if (Weapon.Name.ToLower().Contains("prime"))
                 {
-                    List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}");
+                    List<String> RelicLocations = SearchPrimeRelicItems($"{Weapon.Name}", "");
                     for (int r = 0; r < RelicLocations.Count; r++)
                     {
                         MWWeaponCompDataTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
@@ -1127,7 +1127,7 @@ namespace WarframeTracker
 
                     if (Pet.Name.ToLower().Contains("prime"))
                     {
-                        List<String> RelicLocations = SearchPrimeRelicItems($"{Pet.Name}");
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{Pet.Name}", "");
                         for (int r = 0; r < RelicLocations.Count; r++)
                         {
                             CopmpanionDropsTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
@@ -1256,7 +1256,7 @@ namespace WarframeTracker
 
                     if (Pet.Name.ToLower().Contains("prime"))
                     {
-                        List<String> RelicLocations = SearchPrimeRelicItems($"{Pet.Name}");
+                        List<String> RelicLocations = SearchPrimeRelicItems($"{Pet.Name}", "");
                         for (int r = 0; r < RelicLocations.Count; r++)
                         {
                             CopmpanionDropsTxt.Text += $"{RelicLocations[r]}{Environment.NewLine}";
@@ -2597,7 +2597,7 @@ namespace WarframeTracker
         /// </summary>
         /// <param name="item_name"></param>
         /// <returns></returns>
-        private List<string> SearchPrimeRelicItems(string item_name)
+        private List<string> SearchPrimeRelicItems(string item_name, string bp = "Blueprint")
         {
             List<string> drop_info = new List<string>();
 
@@ -2609,7 +2609,7 @@ namespace WarframeTracker
                     {
                         foreach (WarframeStats.AllDropsData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
                         {
-                            if (Reward.ItemName.Contains(item_name))
+                            if (Reward.ItemName.Contains(item_name) && Reward.ItemName.Contains(bp))
                             {
                                 drop_info.Add($"{Reward.ItemName} drops from {GlobalData.DropsData.Relics[i].Tier} {GlobalData.DropsData.Relics[i].RelicName} {GlobalData.DropsData.Relics[i].State} with a {Reward.Chance}% chance.");
                             }
@@ -2622,16 +2622,24 @@ namespace WarframeTracker
                 {
                     FetchDropsData();
 
-                    for (int i = 0; i < GlobalData.DropsData.Relics.Count; i++)
+                    if (GlobalData.DropsData != null)
                     {
-                        foreach (WarframeStats.AllDropsData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
+                        if (GlobalData.DropsData.Relics != null)
                         {
-                            if (Reward.ItemName.Contains(item_name))
+                            for (int i = 0; i < GlobalData.DropsData.Relics.Count; i++)
                             {
-                                drop_info.Add($"{Reward.ItemName} drops from {GlobalData.DropsData.Relics[i].Tier} {GlobalData.DropsData.Relics[i].RelicName} {GlobalData.DropsData.Relics[i].State} with a {Reward.Chance}% chance.");
+                                foreach (WarframeStats.AllDropsData.Reward Reward in GlobalData.DropsData.Relics[i].Rewards)
+                                {
+                                    if (Reward.ItemName.Contains(item_name))
+                                    {
+                                        drop_info.Add($"{Reward.ItemName} drops from {GlobalData.DropsData.Relics[i].Tier} {GlobalData.DropsData.Relics[i].RelicName} {GlobalData.DropsData.Relics[i].State} with a {Reward.Chance}% chance.");
+                                    }
+                                }
                             }
                         }
                     }
+                    
+                    
 
                     return drop_info;
                 }

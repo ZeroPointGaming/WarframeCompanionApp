@@ -256,7 +256,7 @@ namespace WarframeTracker.WarframeStats.AllDropsData
         public string Rarity;
 
         [JsonProperty("chance")]
-        public double Chance;
+        public object Chance;
 
         [JsonProperty("item")]
         public string _Item;
