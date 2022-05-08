@@ -1343,25 +1343,28 @@ namespace WarframeTracker
                         GenerateOrderMenu(Pet.Name, "Set");
                     }
 
-                    for (int x = 0; x < Pet.Components.Count; x++)
+                    if (Pet != null && Pet.Components != null && Pet.Components.Count >= 1)
                     {
-                        switch (Pet.Components[x].Name)
+                        for (int x = 0; x < Pet.Components.Count; x++)
                         {
-                            case "Set":
-                                GenerateOrderMenu(Pet.Name, "Set");
-                                break;
-                            case "Carapace":
-                                GenerateOrderMenu(Pet.Name, "Carapace");
-                                break;
-                            case "Cerebrum":
-                                GenerateOrderMenu(Pet.Name, "Cerebrum");
-                                break;
-                            case "Systems":
-                                GenerateOrderMenu(Pet.Name, "Systems");
-                                break;
-                            case "Blueprint":
-                                GenerateOrderMenu(Pet.Name, "Blueprint");
-                                break;
+                            switch (Pet.Components[x].Name)
+                            {
+                                case "Set":
+                                    GenerateOrderMenu(Pet.Name, "Set");
+                                    break;
+                                case "Carapace":
+                                    GenerateOrderMenu(Pet.Name, "Carapace");
+                                    break;
+                                case "Cerebrum":
+                                    GenerateOrderMenu(Pet.Name, "Cerebrum");
+                                    break;
+                                case "Systems":
+                                    GenerateOrderMenu(Pet.Name, "Systems");
+                                    break;
+                                case "Blueprint":
+                                    GenerateOrderMenu(Pet.Name, "Blueprint");
+                                    break;
+                            }
                         }
                     }
 

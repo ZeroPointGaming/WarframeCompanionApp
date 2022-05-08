@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "40tyrEZmPRsFHuJI2PjXLVRjjS3RhQMTIC1DKBsmaGvrfbChDOH+ZNxTq2svHDbZzQRbogMZcyTWWV14cFzmZA==",
+  "dgSpecHash": "PEEs9uv93GZRhE4+EAcXdVnsZMrv2DMIHbKWegCcxtkSe1hqtDJr7ScCa/8WyJmPrnfd08+EsxlK1Lf0XDHxQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Redaj\\Source\\0pointgaming\\WarframeCompanionApp\\WarframeTracker\\WarframeTracker.csproj",
+  "projectFilePath": "Z:\\Project Backups\\Source\\0pointgaming\\WarframeCompanionApp\\WarframeTracker\\WarframeTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Redaj\\.nuget\\packages\\lzma-sdk\\19.0.0\\lzma-sdk.19.0.0.nupkg.sha512",
     "C:\\Users\\Redaj\\.nuget\\packages\\metroframework\\1.2.0.3\\metroframework.1.2.0.3.nupkg.sha512",

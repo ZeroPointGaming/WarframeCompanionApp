@@ -51,3 +51,30 @@ C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debu
 C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.genruntimeconfig.cache
 C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.csproj.AssemblyReference.cache
 C:\Users\Redaj\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.WeaponSimulator.resources
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\WarframeTracker.exe
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\WarframeTracker.deps.json
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\WarframeTracker.runtimeconfig.json
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\WarframeTracker.runtimeconfig.dev.json
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\WarframeTracker.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\WarframeTracker.pdb
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\SevenZip.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\MetroFramework.Design.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\MetroFramework.Fonts.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\MetroFramework.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.csproj.AssemblyReference.cache
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.Form1.resources
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.OrderSheet.resources
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.Properties.Resources.resources
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.WeaponSimulator.resources
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.csproj.GenerateResource.cache
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.GeneratedMSBuildEditorConfig.editorconfig
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.AssemblyInfoInputs.cache
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.AssemblyInfo.cs
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.csproj.CoreCompileInputs.cache
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.csproj.CopyComplete
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\refint\WarframeTracker.dll
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.pdb
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\WarframeTracker.genruntimeconfig.cache
+Z:\Project Backups\Source\0pointgaming\WarframeCompanionApp\WarframeTracker\obj\Debug\net5.0-windows\ref\WarframeTracker.dll
