@@ -31,5 +31,3 @@ namespace WarframeTracker.WarframeStats.WorldSpace {}
 //OGGTechnologies
 namespace WarframeTracker.OGTech.ValutedItemData {}
 ```
-
-Want to donate to support our project, feel free to do so here: https://www.patreon.com/ecm_gaming
